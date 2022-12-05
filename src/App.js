@@ -1,7 +1,28 @@
-import "./App.css";
+import "./App.css"
+import { Grommet } from "grommet"
 
-function App() {
-	return <div className="App"></div>;
+const theme = {
+	global: {
+		font: {
+			size: "18px",
+			height: "20px",
+		},
+	},
 }
 
-export default App;
+function App() {
+	return (
+		<Grommet theme={theme}>
+			<header className="App-header">
+				<p>
+					Edit <code>src/App.js</code> and save to reload.
+				</p>
+				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+					Learn React
+				</a>
+			</header>
+		</Grommet>
+	)
+}
+
+export default App
