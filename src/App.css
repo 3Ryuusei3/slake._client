@@ -1,29 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
 :root {
 	/* Light theme */
 	--bg-primary: #ffffff;
 	--bg-navbar: #e9e9e9;
-	--bg-interact: #ebebe9;
+	--bg-interact: #e3e3e3;
 	--bg-modal: #d5d5d5;
 	--text-primary: #37352f;
 	--text-secondary: #8f8e8a;
 
 	/* Dark theme */
-	--bg-primary: #191919;
-	--bg-navbar: #202020;
-	--bg-interact: #2c2c2c;
-	--bg-modal: #272727;
-	--text-primary: #d3d3d3;
-	--text-secondary: #9b9b9b;
+	--dark-bg-primary: #191919;
+	--dark-bg-navbar: #202020;
+	--dark-bg-interact: #2c2c2c;
+	--dark-bg-modal: #272727;
+	--dark-text-primary: #f6f6f6;
+	--dark-text-secondary: #9b9b9b;
 
 	/* Colors */
 	--color-primary: #eb5757;
-	--color-primary-hover: #db4e4e;
+	--color-primary-interact: #db4e4e;
+	--color-primary-btn: #f9efef;
+	--color-primary-btn-interact: #fbd8d8;
 	--color-secondary: #0075d3;
-	--color-secondary-hover: #006dc6;
+	--color-secondary-interact: #006dc6;
+
+	/* Font family */
+	font-family: "Noto Sans", sans-serif;
+
+	/* Font weight */
+	--slogan: 700;
+	--title: 600;
+	--button: 500;
+	--subtitle: 400;
+	--link: 300;
+	--text: 200;
+
+	/* Font size */
+	--xxxxl: 68px;
+	--xxxl: 50px;
+	--xxl: 38px;
+	--xl: 28px;
+	--lg: 24px;
+	--md: 20px;
+	--sm: 16px;
+	--xs: 14px;
+	--xxs: 12px;
 }
+
+/* General styling */
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+h1 {
+	font-weight: var(--slogan) !important;
+	font-size: var(--xxxxl) !important;
+	line-height: 0.8 !important;
+}
+
+h2 {
+	font-weight: var(--subtitle);
+}
+
+h4 {
+	color: var(--text-secondary) !important;
+}
+
+a,
+button {
+	font-weight: var(--link);
+}
+
+p {
+	font-weight: var(--text);
+}
+
+.form-control {
+	padding: 4px 8px !important;
+	background-color: var(--color-primary-btn) !important;
+}
+
+input::placeholder {
+	font-size: var(--xs) !important;
+}
+
+/* Bootstrap classes */
+.text-dark {
+	color: var(--text-primary) !important;
+}
+
+.text-muted {
+	font-size: var(--xxs) !important;
+}
+
+/* Utility classes */
+
+.red-btn,
+.red-outline-btn {
+	display: block !important;
+	font-weight: var(--button) !important;
+	background-color: var(--color-primary) !important;
+	font-size: var(--sm) !important;
+	text-decoration: none !important;
+	color: var(--dark-text-primary) !important;
+	border: 1px solid var(--color-primary) !important;
+	border-radius: 8px !important;
+	padding: 8px 10px !important;
+}
+
+.red-btn:hover {
+	background-color: var(--color-primary-interact) !important;
+}
+
+.red-outline-btn {
+	background-color: var(--color-primary-btn) !important;
+	color: var(--color-primary) !important;
+}
+
+.red-outline-btn:hover {
+	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.brand-link {
+	text-decoration: none !important;
+	color: var(--text-primary) !important;
+	font-weight: var(--button) !important;
+	font-size: var(--md) !important;
+	border-radius: 8px !important;
+	padding: 8px 10px !important;
+}
+
+.brand-link:hover {
+	background-color: var(--bg-interact) !important;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: var(--text-primary) !important;
+	font-weight: var(--button) !important;
+	font-size: var(--sm) !important;
+	padding: 8px 10px !important;
+	display: block !important;
+}
+
+.nav-link:hover {
+	background-color: var(--bg-interact) !important;
+	border-radius: 8px !important;
 }
