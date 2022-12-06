@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+
 import authService from "../../services/auth.service"
+import uploadServices from '../../services/upload.service'
 
 const SignUpForm = () => {
 	const [signupData, setSignupData] = useState({
@@ -16,9 +18,22 @@ const SignUpForm = () => {
 		setSignupData({ ...signupData, [name]: value })
 	}
 
+
+	const handleFileUpload = e => {
+		const formData = new FormData()
+		formData.append('imageData', e.target.files[0])
+
+		uploadServices
+			.uploadimage(formData)
+			.then(res => {
+				setSignupData({ ...signupData, imageUrl: res.data.cloudinary_url })
+			})
+			.catch(err => console.log('error servicio de upload en form', err))
+	}
+
 	const navigate = useNavigate()
 
-	const handleSubmit = e => {
+	const handleFormSubmit = e => {
 		e.preventDefault()
 
 		authService
@@ -29,10 +44,10 @@ const SignUpForm = () => {
 			.catch(err => console.log(err))
 	}
 
-	const { email, username, password, imageUrl } = signupData
+	const { email, username, password } = signupData
 
 	return (
-		<Form className="d-flex flex-column gap-2" onSubmit={handleSubmit}>
+		<Form className="d-flex flex-column gap-2" onSubmit={handleFormSubmit}>
 			<Form.Group className="mb-3" controlId="username">
 				<Form.Label className="text-muted">Username</Form.Label>
 				<Form.Control type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
@@ -48,10 +63,11 @@ const SignUpForm = () => {
 				<Form.Control type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
 			</Form.Group>
 
-			<Form.Group className="mb-3" controlId="imageUrl">
+			<Form.Group className="mb-3" controlId="image">
 				<Form.Label className="text-muted">Image</Form.Label>
-				<Form.Control type="text" value={imageUrl} name="imageUrl" onChange={handleInputChange} placeholder="Select an image..." />
+				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
+
 			<Button type="submit" className="red-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 				Submit
 			</Button>
