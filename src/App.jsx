@@ -5,11 +5,11 @@ import { useContext } from "react"
 import { AuthContext } from "./context/auth.context"
 
 function App() {
-	const { user, logoutUser } = useContext(AuthContext)
+	const { user } = useContext(AuthContext)
 
 	return (
 		<>
-			{user && <Navigation />}
+			{!user && <Navigation />}
 			<AppRoutes />
 		</>
 	)

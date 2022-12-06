@@ -200,6 +200,9 @@ input::placeholder {
 
 .headerIcon {
 	position: absolute;
+	background-color: transparent !important;
+	border: none;
+	display: block !important;
 	padding-left: 320px;
 	top: -35px;
 	font-size: var(--icon) !important;
@@ -207,4 +210,8 @@ input::placeholder {
 
 .headerTitle {
 	padding-left: 320px;
+}
+
+.EmojiPickerReact {
+	margin-left: 300px;
 }

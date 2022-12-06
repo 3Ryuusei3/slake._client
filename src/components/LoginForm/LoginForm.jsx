@@ -27,7 +27,7 @@ const LoginForm = () => {
 				const tokenFromServer = data.authToken
 				storeToken(tokenFromServer)
 				authenticateUser()
-				navigate("/")
+				navigate("/dashboard")
 			})
 			.catch(err => console.log(err))
 	}

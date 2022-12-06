@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
 import authService from "../../services/auth.service"
-import uploadServices from '../../services/upload.service'
+import uploadServices from "../../services/upload.service" //QUITAR S
 
 const SignUpForm = () => {
 	const [signupData, setSignupData] = useState({
@@ -18,17 +18,16 @@ const SignUpForm = () => {
 		setSignupData({ ...signupData, [name]: value })
 	}
 
-
 	const handleFileUpload = e => {
 		const formData = new FormData()
-		formData.append('imageData', e.target.files[0])
+		formData.append("imageData", e.target.files[0])
 
 		uploadServices
 			.uploadimage(formData)
 			.then(res => {
 				setSignupData({ ...signupData, imageUrl: res.data.cloudinary_url })
 			})
-			.catch(err => console.log('error servicio de upload en form', err))
+			.catch(err => console.log("error servicio de upload en form", err))
 	}
 
 	const navigate = useNavigate()
@@ -39,7 +38,8 @@ const SignUpForm = () => {
 		authService
 			.signup(signupData)
 			.then(() => {
-				navigate("/")
+				console.log(signupData)
+				navigate("/login")
 			})
 			.catch(err => console.log(err))
 	}
