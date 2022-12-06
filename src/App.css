@@ -185,6 +185,11 @@ input::placeholder {
 	font-size: var(--xs);
 }
 
+.sidebar-brand {
+	font-weight: var(--button) !important;
+	font-size: var(--md) !important;
+}
+
 /* Dashboard */
 
 .headerImg {

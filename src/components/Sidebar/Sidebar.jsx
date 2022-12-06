@@ -1,9 +1,13 @@
-import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact"
+import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact/dist/index"
+import { useContext } from "react"
 import { NavLink } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
 
-function Sidebar() {
+const Sidebar = () => {
+	const { logoutUser } = useContext(AuthContext)
+
 	return (
-		<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "absolute", top: "0" }}>
+		<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "absolute" }}>
 			<CDBSidebar style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" }}>
 				<CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
 					<a href="/" className="text-decoration-none" style={{ color: "inherit", fontWeight: "var(--button)", letterSpacing: "0.2px" }}>
@@ -11,7 +15,7 @@ function Sidebar() {
 					</a>
 				</CDBSidebarHeader>
 
-				<CDBSidebarContent className="sidebar-content">
+				<CDBSidebarContent className="sidebar-content p-0">
 					<CDBSidebarMenu>
 						<CDBSidebarMenuItem className="sidebar-label">Private</CDBSidebarMenuItem>
 						<NavLink exact to="/dashboard" activeClassName="activeClicked" style={{ color: "inherit" }}>
@@ -25,17 +29,20 @@ function Sidebar() {
 						</NavLink>
 						<CDBSidebarMenuItem className="sidebar-label">Settings</CDBSidebarMenuItem>
 						<NavLink exact to="/profile" activeClassName="activeClicked" style={{ color: "inherit" }}>
-							<CDBSidebarMenuItem icon="user">Settings</CDBSidebarMenuItem>
+							<CDBSidebarMenuItem icon="home">Profile</CDBSidebarMenuItem>
 						</NavLink>
 						<NavLink exact to="/profile" activeClassName="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="credit-card">Plan</CDBSidebarMenuItem>
+						</NavLink>
+						<NavLink as="div" activeClassName="activeClicked" style={{ color: "red" }} onClick={logoutUser}>
+							<CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>
 						</NavLink>
 					</CDBSidebarMenu>
 				</CDBSidebarContent>
 
 				<CDBSidebarFooter style={{ textAlign: "center" }}>
 					<div
-						className="sidebar-btn-wrapper"
+						className="sidebar-btn-wrapper sidebar-brand"
 						style={{
 							padding: "20px 5px",
 						}}
