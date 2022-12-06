@@ -16,12 +16,13 @@
 	--dark-bg-modal: #272727;
 	--dark-text-primary: #f6f6f6;
 	--dark-text-secondary: #9b9b9b;
+	--dark-text-terciary: #b2b2b2;
 
 	/* Colors */
-	--color-primary: #eb5757;
-	--color-primary-interact: #db4e4e;
-	--color-primary-btn: #f9efef;
-	--color-primary-btn-interact: #fbd8d8;
+	--color-primary: #6c63ff;
+	--color-primary-interact: #6058f8;
+	--color-primary-btn: #f0effd;
+	--color-primary-btn-interact: #dfdefc;
 	--color-secondary: #0075d3;
 	--color-secondary-interact: #006dc6;
 
@@ -86,6 +87,7 @@ p {
 
 input::placeholder {
 	font-size: var(--xs) !important;
+	color: var(--dark-text-secondary) !important;
 }
 
 /* Bootstrap classes */
@@ -97,9 +99,17 @@ input::placeholder {
 	font-size: var(--xxs) !important;
 }
 
+.text-light {
+	color: var(--dark-text-primary) !important;
+}
+
 /* Utility classes */
 
-.red-btn,
+.nav-icon {
+	width: 25px;
+}
+
+.purple-btn,
 .red-outline-btn {
 	display: block !important;
 	font-weight: var(--button) !important;
@@ -109,10 +119,9 @@ input::placeholder {
 	color: var(--dark-text-primary) !important;
 	border: 1px solid var(--color-primary) !important;
 	border-radius: 8px !important;
-	padding: 8px 10px !important;
 }
 
-.red-btn:hover {
+.purple-btn:hover {
 	background-color: var(--color-primary-interact) !important;
 }
 
@@ -131,23 +140,20 @@ input::placeholder {
 	font-weight: var(--button) !important;
 	font-size: var(--md) !important;
 	border-radius: 8px !important;
-	padding: 8px 10px !important;
 }
 
-.brand-link:hover {
-	background-color: var(--bg-interact) !important;
-}
-
-.nav-link {
+.nav-btn {
 	text-decoration: none;
 	color: var(--text-primary) !important;
 	font-weight: var(--button) !important;
 	font-size: var(--sm) !important;
-	padding: 8px 10px !important;
 	display: block !important;
+	margin-inline: 16px;
+	margin-top: 2px !important;
 }
 
-.nav-link:hover {
+.nav-btn:hover {
 	background-color: var(--bg-interact) !important;
 	border-radius: 8px !important;
+	text-decoration: none !important;
 }
