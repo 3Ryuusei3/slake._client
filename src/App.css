@@ -38,6 +38,7 @@
 	--text: 200;
 
 	/* Font size */
+	--icon: 90px;
 	--xxxxl: 68px;
 	--xxxl: 50px;
 	--xxl: 38px;
@@ -64,7 +65,8 @@ h1 {
 }
 
 h2 {
-	font-weight: var(--subtitle);
+	font-weight: var(--title) !important;
+	font-size: var(--xxxl) !important;
 }
 
 h4 {
@@ -78,11 +80,6 @@ button {
 
 p {
 	font-weight: var(--text);
-}
-
-.form-control {
-	padding: 4px 8px !important;
-	background-color: var(--color-primary-btn) !important;
 }
 
 input::placeholder {
@@ -103,11 +100,12 @@ input::placeholder {
 	color: var(--dark-text-primary) !important;
 }
 
-/* Utility classes */
-
-.nav-icon {
-	width: 25px;
+.form-control {
+	padding: 4px 8px !important;
+	background-color: var(--color-primary-btn) !important;
 }
+
+/* Utility classes */
 
 .purple-btn,
 .red-outline-btn {
@@ -156,4 +154,52 @@ input::placeholder {
 	background-color: var(--bg-interact) !important;
 	border-radius: 8px !important;
 	text-decoration: none !important;
+}
+
+/* Navbar */
+
+.nav-icon {
+	width: 25px;
+}
+
+/* Sidebar */
+
+.sidebar > div:not(.toggled) {
+	min-width: 210px !important;
+}
+
+.sidebar li {
+	margin: 4px 10px;
+}
+
+.sidebar-content span {
+	font-weight: var(--subtitle);
+}
+
+.sidebar-content p {
+	font-weight: var(--link);
+}
+
+.sidebar-label {
+	color: var(--text-secondary);
+	font-size: var(--xs);
+}
+
+/* Dashboard */
+
+.headerImg {
+	object-fit: cover;
+	width: 100%;
+	height: 200px;
+}
+
+.headerIcon {
+	position: absolute;
+	padding-left: 320px;
+	top: -35px;
+	font-size: var(--icon) !important;
+}
+
+.headerTitle {
+	padding-left: 320px;
 }
