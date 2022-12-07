@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-function ToDo({ isSidebarOpen }) {
-	const [toDoList, setToDoList] = useState([])
+function ToDo({ isSidebarOpen, dashboardData }) {
+	const [toDoList, setToDoList] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
 
 	const addToDoItem = item => {
 		const newToDo = {
 			id: Math.random(),
+			isDone: false,
 			text: item,
 		}
 		setToDoList([...toDoList, newToDo])
@@ -51,19 +52,19 @@ function ToDo({ isSidebarOpen }) {
 
 export default ToDo
 
-/* 
+/*
 
-    <li>
-        <input type="checkbox" />
-        <input type="text" name="" id="" value="Buy tomatoes" />
-    </li>
-    <li>
-        <input type="checkbox" />
-        <input type="text" name="" id="" value="Finish project" />
-    </li>
-    <li>
-        <input type="checkbox" />
-        <input type="text" name="" id="" value="Go to Uniqlo" />
-    </li>
+	<li>
+		<input type="checkbox" />
+		<input type="text" name="" id="" value="Buy tomatoes" />
+	</li>
+	<li>
+		<input type="checkbox" />
+		<input type="text" name="" id="" value="Finish project" />
+	</li>
+	<li>
+		<input type="checkbox" />
+		<input type="text" name="" id="" value="Go to Uniqlo" />
+	</li>
 
 */

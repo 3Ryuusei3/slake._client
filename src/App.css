@@ -169,7 +169,7 @@ input::placeholder {
 
 /* Sidebar */
 
-.sidebar > div:not(.toggled) {
+.sidebar>div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
 }
@@ -279,8 +279,13 @@ input::placeholder {
 	margin-bottom: 4px;
 }
 
+.Callout div {
+	width: 90%;
+}
+
 .Callout input {
 	border: none;
+	width: 100%;
 	background-color: var(--bg-navbar);
 }
 

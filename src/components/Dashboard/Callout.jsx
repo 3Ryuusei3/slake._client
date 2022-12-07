@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-function Callout({ isSidebarOpen }) {
-	const [callout, setCallout] = useState("")
+function Callout({ isSidebarOpen, dashboardData }) {
+	const [callout, setCallout] = useState(dashboardData.callout)
 
 	const handleCallout = e => {
 		setCallout(e.target.value)

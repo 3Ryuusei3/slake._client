@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-function HeaderTitle({ isSidebarOpen }) {
-	const [title, setTitle] = useState("")
+function HeaderTitle({ isSidebarOpen, dashboardData }) {
+	const [title, setTitle] = useState(dashboardData.header.title)
 
 	const handleTitle = e => {
 		setTitle(e.target.value)

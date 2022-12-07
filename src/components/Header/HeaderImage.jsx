@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Modal } from "react-bootstrap"
 import NewHeaderImgForm from "../NewHeaderImgForm/NewHeaderImgForm"
 
-function HeaderImage({ isSidebarOpen }) {
+function HeaderImage({ isSidebarOpen, dashboardData }) {
 	const [showIcon, setShowIcon] = useState(false)
 	const [showImgModal, setShowImgModal] = useState(false)
 
@@ -29,7 +29,7 @@ function HeaderImage({ isSidebarOpen }) {
 					onMouseOver={handleMouseOver}
 					onMouseOut={handleMouseOut}
 					className="headerImg"
-					src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670076521/gradienta-PRgmOiN9jIE-unsplash_nexkln.jpg"
+					src={dashboardData.header.image}
 					alt=""
 				/>
 			</div>

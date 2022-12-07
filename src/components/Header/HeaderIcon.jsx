@@ -1,8 +1,8 @@
 import EmojiPicker, { EmojiStyle, Emoji } from "emoji-picker-react"
 import { useState } from "react"
 
-function HeaderIcon({ isSidebarOpen }) {
-	const [selectedEmoji, setSelectedEmoji] = useState("")
+function HeaderIcon({ isSidebarOpen, dashboardData }) {
+	const [selectedEmoji, setSelectedEmoji] = useState("\u1F642")
 	const [showPicker, setShowPicker] = useState(false)
 
 	function onClick(emojiData) {

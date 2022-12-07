@@ -2,12 +2,12 @@ import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
 
-function Header({ isSidebarOpen }) {
+function Header({ isSidebarOpen, dashboardData }) {
 	return (
 		<div style={{ postion: "relative" }}>
-			<HeaderImage isSidebarOpen={isSidebarOpen} />
-			<HeaderIcon isSidebarOpen={isSidebarOpen} />
-			<HeaderTitle isSidebarOpen={isSidebarOpen} />
+			<HeaderImage dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+			<HeaderIcon dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+			<HeaderTitle dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 		</div>
 	)
 }
