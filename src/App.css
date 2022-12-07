@@ -82,6 +82,10 @@ p {
 	font-weight: var(--text);
 }
 
+input:focus {
+	outline: none;
+}
+
 input::placeholder {
 	font-size: var(--xs) !important;
 	color: var(--dark-text-secondary) !important;
@@ -280,6 +284,71 @@ input::placeholder {
 	background-color: var(--bg-navbar);
 }
 
-.Callout input:focus {
-	outline: none;
+.addTodoInput {
+	background-color: var(--bg-navbar);
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 16px;
+	border-radius: 4px;
+}
+
+.todoList i {
+	color: var(--dark-text-primary);
+}
+
+.addTodoInput input {
+	background-color: transparent;
+	width: 100%;
+	margin-left: 16px;
+	border: none;
+}
+
+.addTodoInput button {
+	border: none;
+	padding: 3px 7px;
+	background-color: var(--color-primary);
+	font-weight: var(--button);
+	border-radius: 4px;
+}
+
+.todoList ul {
+	margin-top: 20px;
+	margin-left: 16px;
+	list-style: none;
+	padding-left: 2px;
+}
+
+.todoList li {
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+}
+
+.todoList li div {
+	display: flex;
+	align-items: center;
+}
+
+.todoList input[type="checkbox"] {
+	margin-left: 5px;
+	margin-right: 20px;
+	border-radius: none;
+	width: 1.15em;
+	height: 1.15em;
+	accent-color: var(--color-primary);
+}
+
+.todoList ul input[type="text"] {
+	border: none;
+}
+
+.deleteTodo {
+	border: none;
+	padding: 3px 7px;
+	background-color: rgb(252, 131, 131);
+	font-weight: var(--button);
+	border-radius: 4px;
 }
