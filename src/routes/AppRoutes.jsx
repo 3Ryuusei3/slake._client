@@ -3,6 +3,7 @@ import Dashboard from "../pages/Dashboard/Dashboard"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import HomePage from "./../pages/HomePage/HomePage"
 import SignupPage from "./../pages/SignupPage/Signup"
+import PrivateRoute from "./PrivateRoute"
 
 const AppRoutes = () => {
 	return (
@@ -10,7 +11,11 @@ const AppRoutes = () => {
 			<Route path="/" element={<HomePage />} />
 			<Route path="/signup" element={<SignupPage />} />
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="/dashboard" element={<Dashboard />} />
+
+
+			<Route element={<PrivateRoute />}>
+				<Route path="/dashboard" element={<Dashboard />} />
+			</Route>
 		</Routes>
 	)
 }
