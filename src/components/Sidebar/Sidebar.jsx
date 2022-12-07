@@ -3,13 +3,26 @@ import { useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 	const { user, logoutUser } = useContext(AuthContext)
+
+	const handleToggle = () => {
+		setIsSidebarOpen(!isSidebarOpen)
+	}
 
 	return (
 		<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "absolute" }}>
 			<CDBSidebar style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" }}>
-				<CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+				<CDBSidebarHeader
+					prefix={
+						<i
+							onClick={() => {
+								handleToggle()
+							}}
+							className="fa fa-bars fa-large"
+						></i>
+					}
+				>
 					<a href="/" className="text-decoration-none" style={{ color: "inherit", fontWeight: "var(--button)", letterSpacing: "0.2px" }}>
 						{!user ? "" : user.username}
 					</a>

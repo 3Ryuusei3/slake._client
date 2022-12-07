@@ -150,7 +150,8 @@ input::placeholder {
 	margin-top: 2px !important;
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+.nav-btn:focus {
 	background-color: var(--bg-interact) !important;
 	border-radius: 8px !important;
 	text-decoration: none !important;
@@ -165,7 +166,8 @@ input::placeholder {
 /* Sidebar */
 
 .sidebar > div:not(.toggled) {
-	min-width: 210px !important;
+	min-width: 230px !important;
+	width: 230px !important;
 }
 
 .sidebar li {
@@ -192,10 +194,28 @@ input::placeholder {
 
 /* Dashboard */
 
+.Header {
+	margin-left: 80px;
+}
+
 .headerImg {
 	object-fit: cover;
 	width: 100%;
 	height: 200px;
+}
+
+.headerInput {
+	border: none;
+	font-size: var(--xxxl);
+	font-weight: var(--slogan) !important;
+}
+
+.headerInput::placeholder {
+	font-size: var(--xxxl) !important;
+}
+
+.headerInput:focus {
+	outline: none;
 }
 
 .headerIcon {
@@ -203,15 +223,20 @@ input::placeholder {
 	background-color: transparent !important;
 	border: none;
 	display: block !important;
-	padding-left: 320px;
 	top: -35px;
 	font-size: var(--icon) !important;
 }
 
-.headerTitle {
-	padding-left: 320px;
+.EmojiPickerReact {
+	margin-left: 60px;
 }
 
-.EmojiPickerReact {
-	margin-left: 300px;
+.leftPaddingSm {
+	transition: 0.4s ease;
+	padding-left: 150px;
+}
+
+.leftPaddingLg {
+	padding-left: 300px;
+	transition: 0.4s ease;
 }
