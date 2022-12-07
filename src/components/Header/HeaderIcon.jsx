@@ -13,7 +13,7 @@ function HeaderIcon({ isSidebarOpen }) {
 	return (
 		<div style={{ position: "relative" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
 			<h1 className="headerIcon" onClick={() => setShowPicker(val => !val)}>
-				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={60} /> : "👀"}
+				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={70} /> : <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f440.png" alt="" />}
 			</h1>
 			{showPicker && <EmojiPicker width="270px" height="350px" onEmojiClick={onClick} previewConfig={{ showPreview: false }} />}
 		</div>
