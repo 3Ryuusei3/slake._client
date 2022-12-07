@@ -13,12 +13,18 @@ const SignUpForm = () => {
 		imageUrl: "",
 	})
 
+	const [loadingImage, setLoadingImage] = useState(false)
+	const [errors, setErrors] = useState('')
+
 	const handleInputChange = e => {
 		const { value, name } = e.target
 		setSignupData({ ...signupData, [name]: value })
 	}
 
 	const handleFileUpload = e => {
+
+		setLoadingImage(true)
+
 		const formData = new FormData()
 		formData.append("imageData", e.target.files[0])
 
@@ -26,8 +32,9 @@ const SignUpForm = () => {
 			.uploadimage(formData)
 			.then(res => {
 				setSignupData({ ...signupData, imageUrl: res.data.cloudinary_url })
+				setLoadingImage(false)
 			})
-			.catch(err => console.log("error servicio de upload en form", err))
+			.catch(err => console.log('Internal server error', err))
 	}
 
 	const navigate = useNavigate()
@@ -41,7 +48,7 @@ const SignUpForm = () => {
 				console.log(signupData)
 				navigate("/login")
 			})
-			.catch(err => console.log(err))
+			.catch(err => setErrors(err.response.data.message))
 	}
 
 	const { email, username, password } = signupData
@@ -68,8 +75,10 @@ const SignUpForm = () => {
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
-			<Button type="submit" className="red-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
-				Submit
+			{<p>{errors}</p>}
+
+			<Button type="submit" className="red-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
+				{loadingImage ? 'Uploading...' : 'Submit'}
 			</Button>
 		</Form>
 	)
