@@ -17,16 +17,13 @@ function Dashboard() {
 			.getDashboardByUser(user._id)
 			.then(res => {
 				setDashboardData(res.data[0])
-
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	useEffect(() => {
 		getDashboardData()
-
 	}, [])
-
 
 	return (
 		<>
