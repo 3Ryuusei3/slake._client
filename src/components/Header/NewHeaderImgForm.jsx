@@ -8,42 +8,51 @@ import { AuthContext } from "../../context/auth.context"
 
 
 
-const NewHeaderImgForm = () => {
-	/* const { user } = useContext(AuthContext) */ // Temporal
 
+const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
+
+	const { user } = useContext(AuthContext)
 	const [headerImg, setHeaderImg] = useState({
 		header: {
 			image: "",
 		},
 	})
+	const [loadingImage, setLoadingImage] = useState(false)
 
-	const dashboard_id = "6390d3aecca812f121b0da08" //Temporal
 
 	const handleFileUpload = e => {
+
+		setLoadingImage(true)
+
 		const formData = new FormData()
 		formData.append("imageData", e.target.files[0])
-		console.log(formData)
+		//console.log(formData)
 
 		uploadServices
 			.uploadimage(formData)
 			.then(res => {
 				setHeaderImg({ image: res.data.cloudinary_url })
+				setLoadingImage(false)
+
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	const handleImageSubmit = e => {
 		e.preventDefault()
-
+		let dashboardId = ''
 		dashboardServices
-			.updateImage(dashboard_id, headerImg)
-			.then(res => {
+			.getDashboardByUser(user._id)
+			.then((res) => {
+				dashboardId = res.data[0]._id
+				return dashboardServices.updateImage(dashboardId, headerImg)
+			}).then(res => {
 				setHeaderImg({ image: res.data.cloudinary_url })
+				setShowImgModal(false)
+				getDashboardData()
+
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
-
-
-		// JUN
 	}
 
 	return (
@@ -52,8 +61,8 @@ const NewHeaderImgForm = () => {
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
-			<Button type="submit" className="red-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }}>
-				Submit
+			<Button type="submit" className="red-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage} >
+				{loadingImage ? 'Uploading...' : 'Submit'}
 			</Button>
 		</Form>
 	)

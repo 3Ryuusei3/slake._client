@@ -11,7 +11,7 @@ const PrivateRoute = () => {
     }
 
     if (!user) {
-        return <Navigate to="/login" />
+        return <Navigate to="/login" /> // AÑADIR UN USE EFFECT
     }
 
     return <Outlet />

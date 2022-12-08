@@ -34,7 +34,7 @@ function Dashboard() {
 				!dashboardData ? <h1>Cargando</h1> :
 					<>
 						<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-						<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+						<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} getDashboardData={getDashboardData} />
 						<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 						<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 					</>

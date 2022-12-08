@@ -19,8 +19,8 @@ class DashboardService {
         })
     }
 
-    getDashboardByUser(id) {
-        return this.api.get(`/${id}`)
+    getDashboardByUser() {
+        return this.api.get('/')
     }
 
     updateImage(id, image) {

@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Modal } from "react-bootstrap"
-import NewHeaderImgForm from "../NewHeaderImgForm/NewHeaderImgForm"
+import NewHeaderImgForm from "./NewHeaderImgForm"
 
-function HeaderImage({ isSidebarOpen, dashboardData }) {
+
+function HeaderImage({ isSidebarOpen, dashboardData, getDashboardData }) {
 	const [showIcon, setShowIcon] = useState(false)
 	const [showImgModal, setShowImgModal] = useState(false)
 
@@ -30,7 +31,7 @@ function HeaderImage({ isSidebarOpen, dashboardData }) {
 					onMouseOut={handleMouseOut}
 					className="headerImg"
 					src={dashboardData.header.image}
-					alt=""
+					alt={dashboardData.header.username}
 				/>
 			</div>
 			<Modal show={showImgModal} onHide={closeImgModal}>
@@ -38,7 +39,7 @@ function HeaderImage({ isSidebarOpen, dashboardData }) {
 					<Modal.Title>Change header image</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<NewHeaderImgForm closeModal={closeImgModal} />
+					<NewHeaderImgForm setShowImgModal={setShowImgModal} getDashboardData={getDashboardData} />
 				</Modal.Body>
 			</Modal>
 		</>
