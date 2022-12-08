@@ -6,6 +6,7 @@ import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import dashboardServices from "../../services/dashboard.service"
 
+
 function Dashboard() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 	const [dashboardData, setDashboardData] = useState()

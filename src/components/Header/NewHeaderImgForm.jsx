@@ -50,7 +50,6 @@ const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
 				setHeaderImg({ image: res.data.cloudinary_url })
 				setShowImgModal(false)
 				getDashboardData()
-
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
