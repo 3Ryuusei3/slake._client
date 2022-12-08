@@ -169,9 +169,19 @@ input::placeholder {
 
 /* Sidebar */
 
-.sidebar>div:not(.toggled) {
+.sidebar > div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
+}
+
+.sidebarProfileImg {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.head-text {
+	padding-top: 4px;
 }
 
 .sidebar li {
@@ -221,6 +231,7 @@ input::placeholder {
 .headerImageButton i {
 	font-size: var(--xl);
 	color: var(--color-primary-btn-interact);
+	border-radius: 4px;
 }
 
 .headerInput {
@@ -332,6 +343,12 @@ input::placeholder {
 	width: 90%;
 }
 
+.todoList li:hover,
+.todoList ul input[type="text"]:hover {
+	background-color: var(--color-primary-btn-interact);
+	transition: 0.3s ease;
+}
+
 .todoList li div {
 	display: flex;
 	align-items: center;
@@ -348,6 +365,8 @@ input::placeholder {
 
 .todoList ul input[type="text"] {
 	border: none;
+	width: 100%;
+	padding: 3px 7px;
 }
 
 .deleteTodo {

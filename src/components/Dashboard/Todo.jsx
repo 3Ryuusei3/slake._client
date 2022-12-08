@@ -3,10 +3,10 @@ import { useState } from "react"
 function ToDo({ isSidebarOpen, dashboardData }) {
 	const [toDoList, setToDoList] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
+	const [toDoId, setToDoId] = useState("")
 
 	const addToDoItem = item => {
 		const newToDo = {
-			id: Math.random(),
 			isDone: false,
 			text: item,
 		}
@@ -16,9 +16,18 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 
 	const deleteTodo = id => {
 		const newToDoList = toDoList.filter(elm => elm.id !== id)
-
 		setToDoList(newToDoList)
 	}
+
+	const handleMouseOver = id => {
+		setToDoId(id)
+	}
+
+	const handleMouseOut = () => {
+		setToDoId("")
+	}
+
+	console.log(toDoList)
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
@@ -31,16 +40,18 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 					<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
 				</div>
 				<ul>
-					{toDoList.map(elm => {
+					{toDoList.map((elm, idx) => {
 						return (
-							<li key={elm.id}>
-								<div>
+							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+								<div style={{ width: "100%" }}>
 									<input type="checkbox" />
-									<input type="text" value={elm.text} />
+									<input type="text" name={`todo${elm.id}`} value={elm.text} onChange={() => {}} />
 								</div>
-								<button className="deleteTodo" onClick={() => deleteTodo(elm.id)}>
-									<i className="bi bi-x-lg"></i>
-								</button>
+								{toDoId === idx && (
+									<button className="deleteTodo" onClick={() => deleteTodo(elm.id)}>
+										<i className="bi bi-x-lg"></i>
+									</button>
+								)}
 							</li>
 						)
 					})}
@@ -52,19 +63,14 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 
 export default ToDo
 
-/*
+/* 
 
-	<li>
-		<input type="checkbox" />
-		<input type="text" name="" id="" value="Buy tomatoes" />
-	</li>
-	<li>
-		<input type="checkbox" />
-		<input type="text" name="" id="" value="Finish project" />
-	</li>
-	<li>
-		<input type="checkbox" />
-		<input type="text" name="" id="" value="Go to Uniqlo" />
-	</li>
+const handleInputChange = (e, id) => {
+		const { name, value } = e.target
+		/* setToDoList(...toDoList[id], toDoList[id].name: value)
+	}
 
+onChange={() => {
+											handleInputChange(idx)
+										}}
 */

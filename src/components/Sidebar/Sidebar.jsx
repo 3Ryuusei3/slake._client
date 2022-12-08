@@ -15,12 +15,13 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 			<CDBSidebar style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" }}>
 				<CDBSidebarHeader
 					prefix={
-						<i
+						<img
+							src={user.imageUrl}
 							onClick={() => {
 								handleToggle()
 							}}
-							className="fa fa-bars fa-large"
-						></i>
+							className="sidebarProfileImg"
+						></img>
 					}
 				>
 					<a href="/" className="text-decoration-none" style={{ color: "inherit", fontWeight: "var(--button)", letterSpacing: "0.2px" }}>
@@ -34,17 +35,17 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 						<NavLink to="/dashboard" activeclassname="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
 						</NavLink>
-						<NavLink to="/tables" activeclassname="activeClicked" style={{ color: "inherit" }}>
+						<NavLink to="/kanban" activeclassname="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="th-large">Kanban</CDBSidebarMenuItem>
 						</NavLink>
-						<NavLink to="/tables" activeclassname="activeClicked" style={{ color: "inherit" }}>
+						<NavLink to="/notes" activeclassname="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="sticky-note">Notes</CDBSidebarMenuItem>
 						</NavLink>
 						<CDBSidebarMenuItem className="sidebar-label">Settings</CDBSidebarMenuItem>
 						<NavLink to="/profile" activeclassname="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="home">Profile</CDBSidebarMenuItem>
 						</NavLink>
-						<NavLink to="/profile" activeclassname="activeClicked" style={{ color: "inherit" }}>
+						<NavLink to="/plan" activeclassname="activeClicked" style={{ color: "inherit" }}>
 							<CDBSidebarMenuItem icon="credit-card">Plan</CDBSidebarMenuItem>
 						</NavLink>
 						<NavLink as="div" to="/" activeclassname="activeClicked" style={{ color: "red" }} onClick={logoutUser}>

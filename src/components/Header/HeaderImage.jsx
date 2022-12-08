@@ -22,16 +22,10 @@ function HeaderImage({ isSidebarOpen, dashboardData }) {
 			<div style={!isSidebarOpen ? { paddingLeft: "80px", transition: "0.3s ease", position: "relative" } : { paddingLeft: "230px", transition: "0.4s ease", position: "relative" }}>
 				{showIcon && (
 					<button className="headerImageButton" onMouseOver={handleMouseOver} onClick={openImgModal}>
-						<i class="bi bi-image"></i>
+						<i className="bi bi-image"></i>
 					</button>
 				)}
-				<img
-					onMouseOver={handleMouseOver}
-					onMouseOut={handleMouseOut}
-					className="headerImg"
-					src={dashboardData.header.image}
-					alt=""
-				/>
+				<img onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="headerImg" src={dashboardData.header.image} alt="" />
 			</div>
 			<Modal show={showImgModal} onHide={closeImgModal}>
 				<Modal.Header closeButton>

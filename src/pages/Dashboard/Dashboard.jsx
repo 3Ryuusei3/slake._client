@@ -17,28 +17,26 @@ function Dashboard() {
 			.getDashboardByUser(user._id)
 			.then(res => {
 				setDashboardData(res.data[0])
-
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	useEffect(() => {
 		getDashboardData()
-
 	}, [])
-
 
 	return (
 		<>
-			{
-				!dashboardData ? <h1>Cargando</h1> :
-					<>
-						<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-						<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-						<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-						<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-					</>
-			}
+			{!dashboardData ? (
+				<h1>Cargando</h1>
+			) : (
+				<>
+					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+					<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+					<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+					<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+				</>
+			)}
 		</>
 	)
 }
