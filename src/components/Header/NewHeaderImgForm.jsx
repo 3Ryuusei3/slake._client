@@ -23,7 +23,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 		//console.log(formData)
 
 		uploadServices
-			.uploadimage(formData)
+			.uploadSingleFile(formData)
 			.then(res => {
 				setHeaderImg({ image: res.data.cloudinary_url })
 				setLoadingImage(false)

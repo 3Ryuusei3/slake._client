@@ -19,7 +19,7 @@ class UploadServices {
         })
     }
 
-    uploadimage(imageForm) {
+    uploadSingleFile(imageForm) {
         return this.api.post('/image', imageForm)
     }
 }

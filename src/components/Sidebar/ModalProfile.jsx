@@ -16,7 +16,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 	const [loadingImage, setLoadingImage] = useState(false)
 	const [errors, setErrors] = useState("")
 	const [imgData, setImgData] = useState({
-		image: user.imageUrl,
+		imageUrl: user.imageUrl,
 	})
 
 	const handleFileUpload = e => {
@@ -26,9 +26,9 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 		formData.append("imageData", e.target.files[0])
 
 		uploadServices
-			.uploadimage(formData)
+			.uploadSingleFile(formData)
 			.then(res => {
-				setImgData({ image: res.data.cloudinary_url })
+				setImgData({ imageUrl: res.data.cloudinary_url })
 				setLoadingImage(false)
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
@@ -42,12 +42,10 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 	const handleFormSubmit = e => {
 		e.preventDefault()
 
-		console.log({ ...userData, image: imgData.image })
-
 		userService
-			.updateUser({ ...userData, image: imgData.image })
+			.updateUser({ ...userData, imageUrl: imgData.imageUrl })
 			.then(() => {
-				setUserData({ ...userData, image: imgData.image })
+				setUserData({ ...userData, imageUrl: imgData.imageUrl })
 				setShowModal(false)
 				getDashboardData()
 			})

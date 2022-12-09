@@ -4,6 +4,7 @@ import { Card, Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 const Pricing = () => {
+
 	const { user } = useContext(AuthContext)
 
 	return (
