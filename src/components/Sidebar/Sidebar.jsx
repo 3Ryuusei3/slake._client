@@ -4,22 +4,19 @@ import { NavLink } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import ModalProfile from "./ModalProfile"
 
-
-
-
-
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-
-	const { user, logoutUser } = useContext(AuthContext)
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, getDashboardData }) => {
 
 	const [showModal, setShowModal] = useState(false)
 
-
+	const { user, logoutUser } = useContext(AuthContext)
 
 
 	const handleToggle = () => {
 		setIsSidebarOpen(!isSidebarOpen)
 	}
+
+	const openSidebarModal = () => setShowModal(true)
+	const closeSidebarModal = () => setShowModal(false)
 
 	return (
 		<>
@@ -54,7 +51,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 								<CDBSidebarMenuItem icon="sticky-note">Notes</CDBSidebarMenuItem>
 							</NavLink>
 							<CDBSidebarMenuItem className="sidebar-label">Settings</CDBSidebarMenuItem>
-							<NavLink onClick={() => setShowModal(true)} activeclassname="activeClicked" style={{ color: "inherit" }}>
+							<NavLink onClick={openSidebarModal} activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="home">Profile</CDBSidebarMenuItem>
 							</NavLink>
 							<NavLink to="/plan" activeclassname="activeClicked" style={{ color: "inherit" }}>
@@ -78,7 +75,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 					</CDBSidebarFooter>
 				</CDBSidebar>
 			</div>
-			<ModalProfile show={showModal} setShowModal={setShowModal} />
+			<ModalProfile showModal={showModal} closeSidebarModal={closeSidebarModal} setShowModal={setShowModal} getDashboardData={getDashboardData} />
 		</>
 	)
 }

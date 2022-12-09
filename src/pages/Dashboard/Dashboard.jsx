@@ -13,7 +13,6 @@ function Dashboard() {
 	const { user } = useContext(AuthContext)
 
 	const getDashboardData = () => {
-		console.log(user)
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
@@ -31,7 +30,7 @@ function Dashboard() {
 			{
 				!dashboardData ? <h1>Cargando</h1> :
 					<>
-						<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+						<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} getDashboardData={getDashboardData} />
 						<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} getDashboardData={getDashboardData} />
 						<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 						<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />

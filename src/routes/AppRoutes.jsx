@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard/Dashboard"
 import Kanban from "../pages/Kanban/Kanban"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import Notes from "../pages/Notes/Notes"
+import Pricing from "../pages/Pricing /Pricing"
 import HomePage from "./../pages/HomePage/HomePage"
 import SignupPage from "./../pages/SignupPage/Signup"
 import PrivateRoute from "./PrivateRoute"
@@ -19,6 +20,7 @@ const AppRoutes = () => {
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/kanban" element={<Kanban />} />
 				<Route path="/notes" element={<Notes />} />
+				{/* <Route path="/plan" element={<Pricing />} /> */}
 			</Route>
 		</Routes>
 	)

@@ -18,7 +18,7 @@ class UserService {
     }
 
     updateUser(userData) {
-        this.api.put('/update', userData)
+        return this.api.put('/update', userData)
     }
 }
 

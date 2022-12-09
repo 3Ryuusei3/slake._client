@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth.context"
 
 
 
-const ModalPricing = ({ showModalPricing, setShowModalPricing }) => {
+const ModalPricing = () => {
 
 
     const { user } = useContext(AuthContext)
@@ -21,7 +21,7 @@ const ModalPricing = ({ showModalPricing, setShowModalPricing }) => {
             centered
             show={showModalPricing}
         >
-            <Modal.Header closeButton onClick={() => setShowModalPricing(false)}>
+            <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Modal heading
                 </Modal.Title>

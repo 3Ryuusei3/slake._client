@@ -6,7 +6,7 @@ import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 
 
-const ModalProfile = ({ showModal, setShowModal }) => {
+const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboardData }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -51,10 +51,12 @@ const ModalProfile = ({ showModal, setShowModal }) => {
         console.log({ ...userData, image: imgData.image })
 
         userService
-            .updateUser({ ...userData }) //ACTUALIZA EN BASE DE DATOS PERO ME DA UN FALLO EN FRONT Y NO SIGUE EL THEN.
+            .updateUser({ ...userData, image: imgData.image })
             .then(() => {
-                setUserData(...userData)
+                console.log('hola')
+                setUserData({ ...userData, image: imgData.image })
                 setShowModal(false)
+                getDashboardData()
             })
             .catch(err => setErrors(err.response.data.message))
     }
@@ -63,11 +65,10 @@ const ModalProfile = ({ showModal, setShowModal }) => {
 
     return (
         <>
-            <Modal
+            <Modal show={showModal} onHide={closeSidebarModal}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
-                show={showModal}
             >
                 <Modal.Header closeButton onClick={() => setShowModal(false)}>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -98,7 +99,6 @@ const ModalProfile = ({ showModal, setShowModal }) => {
                     </Form>
                 </Modal.Body>
                 <p>{errors}</p>
-
             </Modal>
         </>
     )
