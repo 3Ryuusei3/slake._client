@@ -14,7 +14,8 @@ const SignUpForm = () => {
 	})
 
 	const [loadingImage, setLoadingImage] = useState(false)
-	const [errors, setErrors] = useState('')
+	const [errors, setErrors] = useState([])
+
 
 	const handleInputChange = e => {
 		const { value, name } = e.target
@@ -48,10 +49,12 @@ const SignUpForm = () => {
 				console.log(signupData)
 				navigate("/login")
 			})
-			.catch(err => setErrors(err.response.data.message))
+			.catch(err => setErrors(err.response.data.errorMessages))
 	}
 
 	const { email, username, password } = signupData
+
+	console.log(errors)
 
 	return (
 		<Form className="d-flex flex-column gap-2" onSubmit={handleFormSubmit}>
@@ -75,7 +78,7 @@ const SignUpForm = () => {
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
-			{<p>{errors}</p>}
+			{errors.length ? <h4>{errors.map(elm => <p key={elm}>{elm}</p>)}</h4> : undefined}
 
 			<Button type="submit" className="red-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 				{loadingImage ? 'Uploading...' : 'Submit'}

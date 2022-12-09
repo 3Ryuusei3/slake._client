@@ -58,7 +58,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
                 setShowModal(false)
                 getDashboardData()
             })
-            .catch(err => setErrors(err.response.data.message))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const { username, email } = userData
