@@ -14,8 +14,9 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 		setInput("")
 	}
 
-	const deleteTodo = id => {
-		const newToDoList = toDoList.filter(elm => elm.id !== id)
+	const deleteTodo = idx => {
+		let newToDoList = [...toDoList]
+		newToDoList.splice(idx, 1)
 		setToDoList(newToDoList)
 	}
 
@@ -27,7 +28,21 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 		setToDoId("")
 	}
 
-	console.log(toDoList)
+	const handleToDoItemText = (i, e) => {
+		let toDoListCopy = [...toDoList]
+		toDoListCopy[i].text = e.target.value
+		setToDoList(toDoListCopy)
+	}
+
+	const handleToDoItemCheck = (i, e) => {
+		let toDoListCopy = [...toDoList]
+		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
+		setToDoList(toDoListCopy)
+	}
+
+	const isItemChecked = i => {
+		return toDoList[i].isDone ? true : false
+	}
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
@@ -43,12 +58,12 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 					{toDoList.map((elm, idx) => {
 						return (
 							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-								<div style={{ width: "100%" }}>
-									<input type="checkbox" />
-									<input type="text" name={`todo${elm.id}`} value={elm.text} onChange={() => {}} />
+								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
+									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} />
+									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} />
 								</div>
 								{toDoId === idx && (
-									<button className="deleteTodo" onClick={() => deleteTodo(elm.id)}>
+									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>
 										<i className="bi bi-x-lg"></i>
 									</button>
 								)}
