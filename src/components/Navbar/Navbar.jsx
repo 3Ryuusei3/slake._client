@@ -6,7 +6,7 @@ function Navigation() {
 	return (
 		<>
 			<Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-				<Container className="py-2">
+				<Container fluid className="py-2">
 					<Navbar.Brand>
 						<Link to="/" className="brand-link py-2 px-3">
 							<img className="nav-icon me-3 mb-1" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670318446/favicon_rpvk1o.ico" alt="" />

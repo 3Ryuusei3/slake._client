@@ -5,11 +5,9 @@ import { AuthContext } from "../../context/auth.context"
 import ModalProfile from "./ModalProfile"
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, getDashboardData }) => {
-
 	const [showModal, setShowModal] = useState(false)
 
 	const { user, logoutUser } = useContext(AuthContext)
-
 
 	const handleToggle = () => {
 		setIsSidebarOpen(!isSidebarOpen)
@@ -57,7 +55,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, getDashboardData }) => {
 							<NavLink to="/plan" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="credit-card">Plan</CDBSidebarMenuItem>
 							</NavLink>
-							<NavLink as="div" to="/" activeclassname="activeClicked" style={{ color: "red" }} onClick={logoutUser}>
+							<NavLink className="logout-btn" as="div" to="/" activeclassname="activeClicked" onClick={logoutUser}>
 								<CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>
 							</NavLink>
 						</CDBSidebarMenu>

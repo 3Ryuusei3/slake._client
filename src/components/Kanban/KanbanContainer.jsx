@@ -33,8 +33,3 @@ function KanbanContainer({ isSidebarOpen }) {
 }
 
 export default KanbanContainer
-
-/*
-
-
-*/

@@ -23,8 +23,8 @@
 	--color-primary-interact: #6058f8;
 	--color-primary-btn: #f0effd;
 	--color-primary-btn-interact: #dfdefc;
-	--color-secondary: #0075d3;
-	--color-secondary-interact: #006dc6;
+	--color-secondary: #e15047;
+	--color-secondary-interact: #fae2e0;
 
 	/* Font family */
 	font-family: "Noto Sans", sans-serif;
@@ -116,6 +116,7 @@ input::placeholder {
 /* Utility classes */
 
 .purple-btn,
+.purple-outline-btn,
 .red-outline-btn {
 	display: block !important;
 	font-weight: var(--button) !important;
@@ -131,13 +132,23 @@ input::placeholder {
 	background-color: var(--color-primary-interact) !important;
 }
 
-.red-outline-btn {
+.purple-outline-btn {
 	background-color: var(--color-primary-btn) !important;
 	color: var(--color-primary) !important;
 }
 
-.red-outline-btn:hover {
+.purple-outline-btn:hover {
 	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.red-outline-btn {
+	border: 1px solid var(--color-secondary) !important;
+	background-color: var(--color-secondary-btn) !important;
+	color: var(--color-secondary) !important;
+}
+
+.red-outline-btn:hover {
+	background-color: var(--color-secondary-interact) !important;
 }
 
 .brand-link {
@@ -203,6 +214,10 @@ input::placeholder {
 .sidebar-label {
 	color: var(--text-secondary);
 	font-size: var(--xs);
+}
+
+.logout-btn {
+	color: var(--color-secondary) !important;
 }
 
 .sidebar-brand {
@@ -389,4 +404,24 @@ input::placeholder {
 
 .crossedItem input[type="text"] {
 	color: var(--dark-text-secondary) !important;
+}
+
+/* Profile */
+
+.profileHeader {
+	background-color: var(--bg-navbar) !important;
+}
+
+/* Pricing */
+
+.pricing-header {
+	background-color: var(--bg-navbar) !important;
+}
+
+.pricing-card h3 {
+	color: var(--color-primary);
+}
+
+.pricing-icon {
+	font-size: var(--xxl);
 }

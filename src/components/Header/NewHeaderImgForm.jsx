@@ -54,7 +54,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
-			<Button type="submit" className="red-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
+			<Button type="submit" className="purple-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 				{loadingImage ? "Uploading..." : "Submit"}
 			</Button>
 		</Form>

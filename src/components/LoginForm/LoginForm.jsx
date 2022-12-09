@@ -46,7 +46,7 @@ const LoginForm = () => {
 				<Form.Control type="password" value={password} name="password" onChange={handleInputChange} placeholder="Enter your password..." />
 			</Form.Group>
 
-			<Button type="submit" className="red-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+			<Button type="submit" className="purple-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 				Submit
 			</Button>
 		</Form>
