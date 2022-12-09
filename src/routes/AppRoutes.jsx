@@ -15,12 +15,12 @@ const AppRoutes = () => {
 			<Route path="/" element={<HomePage />} />
 			<Route path="/signup" element={<SignupPage />} />
 			<Route path="/login" element={<LoginPage />} />
+			<Route path="/plan" element={<Pricing />} />
 
 			<Route element={<PrivateRoute />}>
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/kanban" element={<Kanban />} />
 				<Route path="/notes" element={<Notes />} />
-				{/* <Route path="/plan" element={<Pricing />} /> */}
 			</Route>
 		</Routes>
 	)
