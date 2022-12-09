@@ -1,13 +1,17 @@
-import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact/dist/index"
 import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
+
 import ModalProfile from "./ModalProfile"
 
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, getDashboardData }) => {
+import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact/dist/index"
+
+const Sidebar = ({ getDashboardData }) => {
 	const [showModal, setShowModal] = useState(false)
 
 	const { user, logoutUser } = useContext(AuthContext)
+	const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext)
 
 	const handleToggle = () => {
 		setIsSidebarOpen(!isSidebarOpen)
@@ -24,6 +28,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, getDashboardData }) => {
 						prefix={
 							<img
 								src={user.imageUrl}
+								alt="profile"
 								onClick={() => {
 									handleToggle()
 								}}

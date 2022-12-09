@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SidebarContext } from "../../context/sidebar.context"
 
-function HeaderTitle({ isSidebarOpen, headerData }) {
-	const [title, setTitle] = useState(headerData.header.title)
+function HeaderTitle({ headerTitle }) {
+	const [title, setTitle] = useState(headerTitle)
+
+	const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext)
 
 	const handleTitle = e => {
 		setTitle(e.target.value)

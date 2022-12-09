@@ -33,7 +33,7 @@ const Pricing = () => {
 					<h1>A new way to organize.</h1>
 				</Row>
 				<Row className="justify-content-center">
-					<Col className="p-0 m-0" md={4}>
+					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
 						<Card style={{ width: "18rem" }} className="mb-2">
 							<Card.Header className="pricing-header">
 								<div className="d-flex gap-3 mt-3">
@@ -42,20 +42,23 @@ const Pricing = () => {
 								</div>
 								<p>For organizing every corner of your work of life</p>
 							</Card.Header>
-							<Card.Body>
+							<Card.Body className="pricing-body">
 								<Card.Title>
 									<h3>Free</h3>
 								</Card.Title>
 								<Card.Text>
 									<ul className="mb-4">
 										<li>
-											<i className="bi bi-check-lg"> Basic Note page.</i>
+											<i className="bi bi-check-lg"></i>
+											<p>Basic Note page.</p>
 										</li>
 										<li>
-											<i className="bi bi-check-lg"> Only five Notes.</i>
+											<i className="bi bi-check-lg"></i>
+											<p>Only five Notes.</p>
 										</li>
 										<li>
-											<i className="bi bi-check-lg"> To-do</i>
+											<i className="bi bi-check-lg"></i>
+											<p>To-do</p>
 										</li>
 									</ul>
 									{!user ? (
@@ -71,8 +74,8 @@ const Pricing = () => {
 							</Card.Body>
 						</Card>
 					</Col>
-					<Col className="p-0 m-0" md={4}>
-						<Card style={{ width: "18rem" }} className="mb-2 pricing-card">
+					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
+						<Card style={{ width: "18rem" }} className="m-0 p-0 mb-2 pricing-card">
 							<Card.Header className="pricing-header">
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-up-fill"></i>
@@ -80,7 +83,7 @@ const Pricing = () => {
 								</div>
 								<p>For organizing every corner of your work of life and more!</p>
 							</Card.Header>
-							<Card.Body>
+							<Card.Body className="pricing-body">
 								<Card.Title>
 									<h3>
 										<i className="bi bi-currency-dollar"></i> 10
@@ -89,13 +92,16 @@ const Pricing = () => {
 								<Card.Text>
 									<ul className="mb-4">
 										<li>
-											<i className="bi bi-check-lg"> Kan-Ban</i>
+											<i className="bi bi-check-lg"> </i>
+											<p>Kan-Ban.</p>
 										</li>
 										<li>
-											<i className="bi bi-check-lg"> Unlimited Notes.</i>
+											<i className="bi bi-check-lg"></i>
+											<p>Unlimited Notes.</p>
 										</li>
 										<li>
-											<i className="bi bi-check-lg"> Personal space</i>
+											<i className="bi bi-check-lg"></i>
+											<p>Personal space.</p>
 										</li>
 									</ul>
 									{!user ? (

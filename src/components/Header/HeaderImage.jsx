@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Modal } from "react-bootstrap"
+import { SidebarContext } from "../../context/sidebar.context"
+
 import NewHeaderImgForm from "./NewHeaderImgForm"
 
-function HeaderImage({ isSidebarOpen, headerData, setHeaderData }) {
+function HeaderImage({ headerImg, setHeaderData }) {
 	const [showIcon, setShowIcon] = useState(false)
 	const [showImgModal, setShowImgModal] = useState(false)
+
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const handleMouseOver = () => {
 		setShowIcon(true)
@@ -25,7 +29,7 @@ function HeaderImage({ isSidebarOpen, headerData, setHeaderData }) {
 						<i className="bi bi-image"></i>
 					</button>
 				)}
-				<img onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="headerImg" src={headerData.header.image} alt="" />
+				<img onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="headerImg" src={headerImg} alt="" />
 			</div>
 			<Modal show={showImgModal} onHide={closeImgModal}>
 				<Modal.Header closeButton>

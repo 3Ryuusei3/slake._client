@@ -422,6 +422,20 @@ input::placeholder {
 	color: var(--color-primary);
 }
 
+.pricing-body ul {
+	list-style: none;
+	padding-left: 20px;
+}
+
+.pricing-body li {
+	display: flex;
+	gap: 10px;
+}
+
+.pricing-body li p {
+	margin-bottom: 0;
+}
+
 .pricing-icon {
 	font-size: var(--xxl);
 }
