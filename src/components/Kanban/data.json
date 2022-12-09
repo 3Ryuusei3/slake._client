@@ -1,0 +1,31 @@
+[
+	{
+		"_id": "638b8790d6cedac4ca97b10e",
+		"header": {
+			"image": "https://res.cloudinary.com/dhws4e2ty/image/upload/v1670077002/patrick-tomasso-Oaqk7qqNh_c-unsplash_hczjdw.jpg",
+			"icon": "📕",
+			"title": "Note"
+		},
+		"column": [
+			{
+				"number": 0,
+				"title": "To do",
+				"cards": [
+					{
+						"text": "Ver vídeos Material UI",
+						"_id": "638b8790d6cedac4ca97b110"
+					},
+					{
+						"text": "Hacer HomePage",
+						"_id": "638b8790d6cedac4ca97b111"
+					},
+					{
+						"text": "Hacer pruebas",
+						"_id": "638b8790d6cedaac4ca97b11"
+					}
+				],
+				"_id": "638b8790d6cedac4ca97b10f"
+			}
+		]
+	}
+]

@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import kanbanServices from "../../services/kanban.service"
+import KanbanContainer from "../../components/Kanban/KanbanContainer"
 
 function Kanban() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
@@ -29,6 +30,7 @@ function Kanban() {
 			) : (
 				<>
 					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+					<KanbanContainer isSidebarOpen={isSidebarOpen} />
 				</>
 			)}
 		</>
