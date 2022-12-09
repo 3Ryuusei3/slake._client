@@ -6,7 +6,6 @@ import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import dashboardServices from "../../services/dashboard.service"
 
-
 function Dashboard() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 	const [dashboardData, setDashboardData] = useState()
@@ -27,15 +26,16 @@ function Dashboard() {
 
 	return (
 		<>
-			{
-				!dashboardData ? <h1>Cargando</h1> :
-					<>
-						<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} getDashboardData={getDashboardData} />
-						<Header dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} getDashboardData={getDashboardData} />
-						<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-						<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-					</>
-			}
+			{!dashboardData ? (
+				<h1>Cargando</h1>
+			) : (
+				<>
+					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} getDashboardData={getDashboardData} />
+					<Header isSidebarOpen={isSidebarOpen} />
+					<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+					<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+				</>
+			)}
 		</>
 	)
 }

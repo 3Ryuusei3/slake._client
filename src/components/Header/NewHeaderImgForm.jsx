@@ -6,11 +6,7 @@ import uploadServices from "../../services/upload.service"
 
 import { AuthContext } from "../../context/auth.context"
 
-
-
-
-const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
-
+const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 	const { user } = useContext(AuthContext)
 	const [headerImg, setHeaderImg] = useState({
 		header: {
@@ -19,9 +15,7 @@ const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
 	})
 	const [loadingImage, setLoadingImage] = useState(false)
 
-
 	const handleFileUpload = e => {
-
 		setLoadingImage(true)
 
 		const formData = new FormData()
@@ -33,23 +27,23 @@ const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
 			.then(res => {
 				setHeaderImg({ image: res.data.cloudinary_url })
 				setLoadingImage(false)
-
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	const handleImageSubmit = e => {
 		e.preventDefault()
-		let dashboardId = ''
+		let dashboardId = ""
 		dashboardServices
 			.getDashboardByUser(user._id)
-			.then((res) => {
+			.then(res => {
 				dashboardId = res.data[0]._id
 				return dashboardServices.updateImage(dashboardId, headerImg)
-			}).then(res => {
+			})
+			.then(res => {
 				setHeaderImg({ image: res.data.cloudinary_url })
 				setShowImgModal(false)
-				getDashboardData()
+				setHeaderData()
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
@@ -60,8 +54,8 @@ const NewHeaderImgForm = ({ setShowImgModal, getDashboardData }) => {
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
-			<Button type="submit" className="red-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage} >
-				{loadingImage ? 'Uploading...' : 'Submit'}
+			<Button type="submit" className="red-outline-btn px-5 mt-3" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
+				{loadingImage ? "Uploading..." : "Submit"}
 			</Button>
 		</Form>
 	)

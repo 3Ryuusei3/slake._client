@@ -1,8 +1,8 @@
 import EmojiPicker, { EmojiStyle, Emoji } from "emoji-picker-react"
 import { useState } from "react"
 
-function HeaderIcon({ isSidebarOpen, dashboardData }) {
-	const [selectedEmoji, setSelectedEmoji] = useState("\u1F642")
+function HeaderIcon({ isSidebarOpen, headerData }) {
+	const [selectedEmoji, setSelectedEmoji] = useState()
 	const [showPicker, setShowPicker] = useState(false)
 
 	function onClick(emojiData) {
@@ -13,7 +13,7 @@ function HeaderIcon({ isSidebarOpen, dashboardData }) {
 	return (
 		<div style={{ position: "relative" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
 			<h1 className="headerIcon" onClick={() => setShowPicker(val => !val)}>
-				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={70} /> : <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f440.png" alt="" />}
+				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={80} /> : headerData.header.icon}
 			</h1>
 			{showPicker && <EmojiPicker width="270px" height="350px" onEmojiClick={onClick} previewConfig={{ showPreview: false }} />}
 		</div>
