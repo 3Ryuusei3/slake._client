@@ -53,9 +53,9 @@ function Header({ isSidebarOpen }) {
 			) : (
 				<>
 					<div style={{ postion: "relative" }}>
-						<HeaderImage headerData={headerData} isSidebarOpen={isSidebarOpen} setHeaderData={setHeaderData} />
-						<HeaderIcon headerData={headerData} isSidebarOpen={isSidebarOpen} />
-						<HeaderTitle headerData={headerData} isSidebarOpen={isSidebarOpen} />
+						<HeaderImage headerImg={headerData.header.image} setHeaderData={setHeaderData} />
+						<HeaderIcon headerIcon={headerData.header.icon} />
+						<HeaderTitle headerTitle={headerData.header.title} />
 					</div>
 				</>
 			)}

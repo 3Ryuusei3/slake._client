@@ -1,9 +1,13 @@
-import EmojiPicker, { EmojiStyle, Emoji } from "emoji-picker-react"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SidebarContext } from "../../context/sidebar.context"
 
-function HeaderIcon({ isSidebarOpen, headerData }) {
+import EmojiPicker, { EmojiStyle, Emoji } from "emoji-picker-react"
+
+function HeaderIcon({ headerIcon }) {
 	const [selectedEmoji, setSelectedEmoji] = useState()
 	const [showPicker, setShowPicker] = useState(false)
+
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	function onClick(emojiData) {
 		setSelectedEmoji(emojiData.unified)
@@ -13,7 +17,7 @@ function HeaderIcon({ isSidebarOpen, headerData }) {
 	return (
 		<div style={{ position: "relative" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
 			<h1 className="headerIcon" onClick={() => setShowPicker(val => !val)}>
-				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={80} /> : headerData.header.icon}
+				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={80} /> : headerIcon}
 			</h1>
 			{showPicker && <EmojiPicker width="270px" height="350px" onEmojiClick={onClick} previewConfig={{ showPreview: false }} />}
 		</div>

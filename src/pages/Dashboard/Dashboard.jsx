@@ -1,15 +1,20 @@
+import { useState, useContext, useEffect } from "react"
+import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
+
+import dashboardServices from "../../services/dashboard.service"
+
 import Header from "../../components/Header/Header"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
-import { useState, useContext, useEffect } from "react"
-import { AuthContext } from "../../context/auth.context"
-import dashboardServices from "../../services/dashboard.service"
 
 function Dashboard() {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+	/* const [isSidebarOpen, setIsSidebarOpen] = useState(true) */
 	const [dashboardData, setDashboardData] = useState()
+
 	const { user } = useContext(AuthContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const getDashboardData = () => {
 		dashboardServices
@@ -30,7 +35,7 @@ function Dashboard() {
 				<h1>Cargando</h1>
 			) : (
 				<>
-					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} getDashboardData={getDashboardData} />
+					<Sidebar getDashboardData={getDashboardData} />
 					<Header isSidebarOpen={isSidebarOpen} />
 					<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 					<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
