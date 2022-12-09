@@ -253,7 +253,7 @@ input::placeholder {
 	background-color: transparent !important;
 	border: none;
 	display: block !important;
-	top: -35px;
+	top: -40px;
 	font-size: var(--icon) !important;
 }
 

@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import notesServices from "../../services/notes.service"
+import Header from "../../components/Header/Header"
 
 function Notes() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
@@ -29,6 +30,7 @@ function Notes() {
 			) : (
 				<>
 					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+					<Header isSidebarOpen={isSidebarOpen} />
 				</>
 			)}
 		</>
