@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
+
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
@@ -9,7 +10,7 @@ import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
 
-function Header({ isSidebarOpen }) {
+function Header() {
 	const [headerData, setHeaderData] = useState()
 
 	const { user } = useContext(AuthContext)

@@ -21,9 +21,9 @@ class KanbanService {
 		return this.api.get(`/`)
 	}
 
-	/* updateImage(id, image) {
+	updateImage(id, image) {
 		return this.api.put(`/update/image/${id}`, image)
-	} */
+	}
 }
 
 const kanbanServices = new KanbanService()

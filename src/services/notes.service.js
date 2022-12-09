@@ -21,9 +21,9 @@ class NotesService {
 		return this.api.get(`/`)
 	}
 
-	/* updateImage(id, image) {
+	updateImage(id, image) {
 		return this.api.put(`/update/image/${id}`, image)
-	} */
+	}
 }
 
 const notesServices = new NotesService()

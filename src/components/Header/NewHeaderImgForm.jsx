@@ -1,10 +1,14 @@
 import { useState, useContext } from "react"
-import { Form, Button } from "react-bootstrap"
+import { useLocation } from "react-router-dom"
 
 import dashboardServices from "../../services/dashboard.service"
+import kanbanServices from "../../services/kanban.service"
+import notesServices from "../../services/notes.service"
 import uploadServices from "../../services/upload.service"
 
 import { AuthContext } from "../../context/auth.context"
+
+import { Form, Button } from "react-bootstrap"
 
 const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 	const { user } = useContext(AuthContext)
@@ -15,12 +19,14 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 	})
 	const [loadingImage, setLoadingImage] = useState(false)
 
+	let location = useLocation()
+	let pageLocation = location.pathname.substring(1)
+
 	const handleFileUpload = e => {
 		setLoadingImage(true)
 
 		const formData = new FormData()
 		formData.append("imageData", e.target.files[0])
-		//console.log(formData)
 
 		uploadServices
 			.uploadSingleFile(formData)
@@ -33,19 +39,44 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 
 	const handleImageSubmit = e => {
 		e.preventDefault()
-		let dashboardId = ""
-		dashboardServices
-			.getDashboardByUser(user._id)
-			.then(res => {
-				dashboardId = res.data[0]._id
-				return dashboardServices.updateImage(dashboardId, headerImg)
-			})
-			.then(res => {
-				setHeaderImg({ image: res.data.cloudinary_url })
-				setShowImgModal(false)
-				setHeaderData()
-			})
-			.catch(err => console.log({ message: "Internal server error:", err }))
+
+		if (pageLocation === "dashboard") {
+			dashboardServices
+				.getDashboardByUser(user._id)
+				.then(res => {
+					return dashboardServices.updateImage(res.data[0]._id, headerImg)
+				})
+				.then(res => {
+					setHeaderImg({ image: res.data.cloudinary_url })
+					setShowImgModal(false)
+					setHeaderData()
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "kanban") {
+			kanbanServices
+				.getKanbanByUser(user._id)
+				.then(res => {
+					return kanbanServices.updateImage(res.data[0]._id, headerImg)
+				})
+				.then(res => {
+					setHeaderImg({ image: res.data.cloudinary_url })
+					setShowImgModal(false)
+					setHeaderData()
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "notes") {
+			notesServices
+				.getNotesByUser(user._id)
+				.then(res => {
+					return notesServices.updateImage(res.data[0]._id, headerImg)
+				})
+				.then(res => {
+					setHeaderImg({ image: res.data.cloudinary_url })
+					setShowImgModal(false)
+					setHeaderData()
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		}
 	}
 
 	return (

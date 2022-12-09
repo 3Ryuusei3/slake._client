@@ -36,7 +36,7 @@ function Dashboard() {
 			) : (
 				<>
 					<Sidebar getDashboardData={getDashboardData} />
-					<Header isSidebarOpen={isSidebarOpen} />
+					<Header />
 					<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 					<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
 				</>
