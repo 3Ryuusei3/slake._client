@@ -29,9 +29,6 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 				.then(res => {
 					return dashboardServices.updateHeader(res.data[0]._id, { title })
 				})
-				.then(() => {
-					setTitle()
-				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "kanban") {
 			kanbanServices
@@ -39,18 +36,12 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 				.then(res => {
 					return kanbanServices.updateHeader(res.data[0]._id, { title })
 				})
-				.then(() => {
-					setTitle()
-				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {
 			notesServices
 				.getNotesByUser(user._id)
 				.then(res => {
 					return notesServices.updateHeader(res.data[0]._id, { title })
-				})
-				.then(() => {
-					setTitle()
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		}

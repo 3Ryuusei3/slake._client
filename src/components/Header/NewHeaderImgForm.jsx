@@ -56,7 +56,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 			kanbanServices
 				.getKanbanByUser(user._id)
 				.then(res => {
-					return kanbanServices.updateImage(res.data[0]._id, headerImg)
+					return kanbanServices.updateHeader(res.data[0]._id, headerImg)
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
@@ -68,7 +68,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 			notesServices
 				.getNotesByUser(user._id)
 				.then(res => {
-					return notesServices.updateImage(res.data[0]._id, headerImg)
+					return notesServices.updateHeader(res.data[0]._id, headerImg)
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })

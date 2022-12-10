@@ -24,6 +24,11 @@ class DashboardService {
 	updateHeader(id, header) {
 		return this.api.put(`/update/header/${id}`, header)
 	}
+
+	updateCallout(id, callout) {
+		return this.api.put(`/update/callout/${id}`, callout)
+	}
+
 }
 
 const dashboardServices = new DashboardService()

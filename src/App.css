@@ -184,7 +184,7 @@ input::placeholder {
 
 /* Sidebar */
 
-.sidebar > div:not(.toggled) {
+.sidebar>div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
 }
@@ -290,6 +290,45 @@ input::placeholder {
 	margin-left: 300px;
 	transition: 0.4s ease;
 }
+
+/* ----- */
+
+.emojiHeader {
+	position: absolute;
+	bottom: -20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.react-emoji {
+	width: 20% !important;
+
+}
+
+.react-input-emoji--input {
+	font-size: var(--xxxl);
+}
+
+.react-emoji>* {
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none;
+}
+
+.react-emoji svg {
+	color: none
+}
+
+.saveIconBtn {
+	width: 20px;
+	height: 20px;
+	border: none;
+	border-radius: 2px;
+	background-color: var(--color-primary);
+}
+
 
 /* Dashboard */
 
