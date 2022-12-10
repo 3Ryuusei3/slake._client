@@ -2,13 +2,21 @@ import { useState, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 import dashboardServices from "../../services/dashboard.service"
 
-
 function ToDo({ isSidebarOpen, dashboardData }) {
 	const [todo, setTodo] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
 	const [toDoId, setToDoId] = useState("")
 
 	const { user } = useContext(AuthContext)
+
+	const handleTodoUpdate = () => {
+		dashboardServices
+			.getDashboardByUser(user._id)
+			.then(res => {
+				return dashboardServices.updateTodo(res.data[0]._id, [...todo])
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
+	}
 
 	const addToDoItem = item => {
 		const newToDo = {
@@ -23,8 +31,8 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 	const deleteTodo = (idx, e) => {
 		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
-		setTodo(newToDoList)
 		handleTodoUpdate()
+		setTodo(newToDoList)
 	}
 
 	const handleMouseOver = id => {
@@ -39,22 +47,14 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].text = e.target.value
 		setTodo(toDoListCopy)
+		handleTodoUpdate()
 	}
 
 	const handleToDoItemCheck = (i, e) => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
 		setTodo(toDoListCopy)
-	}
-
-	const handleTodoUpdate = () => {
-
-		dashboardServices
-			.getDashboardByUser(user._id)
-			.then(res => {
-				return dashboardServices.updateTodo(res.data[0]._id, [...todo])
-			})
-			.catch(err => console.log({ message: "Internal server error:", err }))
+		handleTodoUpdate()
 	}
 
 	const isItemChecked = i => {
@@ -76,7 +76,7 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 						return (
 							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} />
+									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={handleTodoUpdate} checked={elm.isDone ? true : false} />
 									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={handleTodoUpdate} />
 								</div>
 								{toDoId === idx && (
@@ -94,4 +94,3 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 }
 
 export default ToDo
-

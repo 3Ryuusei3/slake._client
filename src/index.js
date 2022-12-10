@@ -9,13 +9,11 @@ import { SidebarProviderWrapper } from "./context/sidebar.context"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-	<React.StrictMode>
-		<AuthProviderWrapper>
-			<SidebarProviderWrapper>
-				<Router>
-					<App />
-				</Router>
-			</SidebarProviderWrapper>
-		</AuthProviderWrapper>
-	</React.StrictMode>
+	<AuthProviderWrapper>
+		<SidebarProviderWrapper>
+			<Router>
+				<App />
+			</Router>
+		</SidebarProviderWrapper>
+	</AuthProviderWrapper>
 )
