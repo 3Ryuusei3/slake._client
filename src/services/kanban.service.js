@@ -21,8 +21,8 @@ class KanbanService {
 		return this.api.get(`/`)
 	}
 
-	updateImage(id, image) {
-		return this.api.put(`/update/image/${id}`, image)
+	updateHeader(id, header) {
+		return this.api.put(`/update/header/${id}`, header)
 	}
 }
 

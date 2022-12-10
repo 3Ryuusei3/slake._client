@@ -1,35 +1,29 @@
-import axios from 'axios'
+import axios from "axios"
 
 class DashboardService {
-    constructor() {
+	constructor() {
+		this.api = axios.create({
+			baseURL: `${process.env.REACT_APP_API_URL}/dashboard`,
+		})
 
-        this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/dashboard`
-        })
+		this.api.interceptors.request.use(config => {
+			const storedToken = localStorage.getItem("authToken")
 
-        this.api.interceptors.request.use((config) => {
+			if (storedToken) {
+				config.headers = { Authorization: `Bearer ${storedToken}` }
+			}
 
-            const storedToken = localStorage.getItem("authToken");
+			return config
+		})
+	}
 
-            if (storedToken) {
-                config.headers = { Authorization: `Bearer ${storedToken}` }
-            }
+	getDashboardByUser() {
+		return this.api.get("/")
+	}
 
-            return config
-        })
-    }
-
-    getDashboardByUser() {
-        return this.api.get('/')
-    }
-
-    updateImage(id, image) {
-        return this.api.put(`/update/image/${id}`, image)
-    }
-
-    updateHeader(id, header) {
-        return this.api.put(`/update/header/${id}`, header)
-    }
+	updateHeader(id, header) {
+		return this.api.put(`/update/header/${id}`, header)
+	}
 }
 
 const dashboardServices = new DashboardService()

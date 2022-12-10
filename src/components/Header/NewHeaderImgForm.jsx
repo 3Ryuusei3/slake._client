@@ -44,12 +44,12 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 			dashboardServices
 				.getDashboardByUser(user._id)
 				.then(res => {
-					return dashboardServices.updateImage(res.data[0]._id, headerImg)
+					return dashboardServices.updateHeader(res.data[0]._id, headerImg)
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
-					setShowImgModal(false)
 					setHeaderData()
+					setShowImgModal(false)
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "kanban") {
