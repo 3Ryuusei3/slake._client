@@ -24,6 +24,10 @@ class KanbanService {
 	updateHeader(id, header) {
 		return this.api.put(`/update/header/${id}`, header)
 	}
+
+	updateKanban(id, lanes) {
+		return this.api.put(`/update/${id}`, lanes)
+	}
 }
 
 const kanbanServices = new KanbanService()

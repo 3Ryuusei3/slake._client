@@ -56,8 +56,6 @@ const SignUpForm = () => {
 
 	const { email, username, password } = signupData
 
-	console.log(errors)
-
 	return (
 		<Form className="d-flex flex-column gap-2" onSubmit={handleFormSubmit}>
 			<Form.Group className="mb-3" controlId="username">

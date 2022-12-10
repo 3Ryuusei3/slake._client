@@ -1,57 +1,49 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { useOutletContext } from "react-router-dom"
 import Board from "react-trello"
+import { AuthContext } from "../../context/auth.context"
+import kanbanServices from "../../services/kanban.service"
 
 function KanbanContainer({ isSidebarOpen }) {
-	const [kanban, setKanban] = useState([])
 
-	useEffect(() => {
-		setKanban(data)
-	}, [])
+	const { user } = useContext(AuthContext)
+	const [lanes, setLanes] = useState()
 
-	const data = {
-		lanes: [
-			{
-				id: "lane1",
-				title: "Planned Tasks",
-				label: "2/2",
-				cards: [
-					{ id: "Card1", title: "Write Blog", description: "Can AI make memes", label: "30 mins", draggable: false },
-					{ id: "Card2", title: "Pay Rent", description: "Transfer via NEFT", label: "5 mins", metadata: { sha: "be312a1" } },
-				],
-			},
-			{
-				id: "lane2",
-				title: "Completed",
-				label: "0/0",
-				cards: [],
-			},
-		],
+	const getKanbanData = () => {
+		kanbanServices
+			.getKanbanByUser(user._id)
+			.then(res => {
+				setLanes({ "lanes": res.data[0].lanes })
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
+
+	useEffect(() => {
+		getKanbanData()
+	}, [])
+
+	const handleKanbanUpdate = (data) => {
+		kanbanServices
+			.getKanbanByUser(user._id)
+			.then(res => {
+				return kanbanServices.updateKanban(res.data[0]._id, { lanes: data })
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
+	}
+
+
 	return (
-		<div className="me-6 mt-4" style={!isSidebarOpen ? { marginLeft: "150px", transition: "0.3s ease", position: "relative" } : { marginLeft: "300px", transition: "0.4s ease", position: "relative" }}>
-			<Board editable draggable canAddLanes collapsibleLanes editLaneTitle data={data} />
-		</div>
+		<>
+			{!lanes ? (
+				<h1>Cargando</h1>
+			) : (
+				<div className="me-6 mt-4" style={!isSidebarOpen ? { marginLeft: "150px", transition: "0.3s ease", position: "relative" } : { marginLeft: "300px", transition: "0.4s ease", position: "relative" }}>
+					<Board onDataChange={(data) => { handleKanbanUpdate(data) }} editable draggable editLaneTitle data={lanes} laneDraggable={false} />
+				</div>
+			)}
+		</>
 	)
 }
 
 export default KanbanContainer
-
-/* 
-
-<DragDropContext onDragEnd={onDragEnd}>
-				{kanban.map((kan, idx) => {
-					const columnId = kan.column.map(col => {
-						return col._id
-					})
-					const columnTitle = kan.column.map(col => {
-						return col.title
-					})
-					const tasks = kan.column.map(col => {
-						return col.cards.map(card => card)
-					})
-					return <Column isSidebarOpen={isSidebarOpen} key={idx} tasks={tasks} columnTitle={columnTitle} columnId={columnId} />
-				})}
-			</DragDropContext>
-
-*/
