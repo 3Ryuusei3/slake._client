@@ -1,23 +1,30 @@
-import { useEffect, useState } from "react"
+import { useState, useContext } from "react"
+import { AuthContext } from "../../context/auth.context"
+import dashboardServices from "../../services/dashboard.service"
+
 
 function ToDo({ isSidebarOpen, dashboardData }) {
-	const [toDoList, setToDoList] = useState([...dashboardData.todo])
+	const [todo, setTodo] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
 	const [toDoId, setToDoId] = useState("")
 
+	const { user } = useContext(AuthContext)
+
 	const addToDoItem = item => {
 		const newToDo = {
-			isDone: false,
 			text: item,
+			isDone: false,
 		}
-		setToDoList([...toDoList, newToDo])
+		setTodo([...todo, newToDo])
+		handleTodoUpdate()
 		setInput("")
 	}
 
-	const deleteTodo = idx => {
-		let newToDoList = [...toDoList]
+	const deleteTodo = (idx, e) => {
+		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
-		setToDoList(newToDoList)
+		setTodo(newToDoList)
+		handleTodoUpdate()
 	}
 
 	const handleMouseOver = id => {
@@ -29,19 +36,29 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 	}
 
 	const handleToDoItemText = (i, e) => {
-		let toDoListCopy = [...toDoList]
+		let toDoListCopy = [...todo]
 		toDoListCopy[i].text = e.target.value
-		setToDoList(toDoListCopy)
+		setTodo(toDoListCopy)
 	}
 
 	const handleToDoItemCheck = (i, e) => {
-		let toDoListCopy = [...toDoList]
+		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
-		setToDoList(toDoListCopy)
+		setTodo(toDoListCopy)
+	}
+
+	const handleTodoUpdate = () => {
+
+		dashboardServices
+			.getDashboardByUser(user._id)
+			.then(res => {
+				return dashboardServices.updateTodo(res.data[0]._id, [...todo])
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	const isItemChecked = i => {
-		return toDoList[i].isDone ? true : false
+		return todo[i].isDone ? true : false
 	}
 
 	return (
@@ -55,12 +72,12 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 					<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
 				</div>
 				<ul>
-					{toDoList.map((elm, idx) => {
+					{todo.map((elm, idx) => {
 						return (
 							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
 									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} />
-									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} />
+									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={handleTodoUpdate} />
 								</div>
 								{toDoId === idx && (
 									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>
@@ -78,14 +95,3 @@ function ToDo({ isSidebarOpen, dashboardData }) {
 
 export default ToDo
 
-/*
-
-const handleInputChange = (e, id) => {
-		const { name, value } = e.target
-		/* setToDoList(...toDoList[id], toDoList[id].name: value)
-	}
-
-onChange={() => {
-											handleInputChange(idx)
-										}}
-*/

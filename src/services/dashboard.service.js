@@ -29,6 +29,10 @@ class DashboardService {
 		return this.api.put(`/update/callout/${id}`, callout)
 	}
 
+	updateTodo(id, todo) {
+		return this.api.put(`/update/todo/${id}`, todo)
+	}
+
 }
 
 const dashboardServices = new DashboardService()
