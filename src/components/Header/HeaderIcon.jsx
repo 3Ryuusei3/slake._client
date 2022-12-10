@@ -40,27 +40,21 @@ function HeaderIcon({ headerIcon }) {
 					return dashboardServices.updateHeader(res.data[0]._id, { icon })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
-		} /* else if (pageLocation === "kanban") {
+		} else if (pageLocation === "kanban") {
 			kanbanServices
 				.getKanbanByUser(user._id)
 				.then(res => {
-					return kanbanServices.updateHeader(res.data[0]._id, { selectedEmoji })
-				})
-				.then(() => {
-					setSelectedEmoji()
+					return kanbanServices.updateHeader(res.data[0]._id, { icon })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {
 			notesServices
 				.getNotesByUser(user._id)
 				.then(res => {
-					return notesServices.updateHeader(res.data[0]._id, { selectedEmoji })
-				})
-				.then(() => {
-					setSelectedEmoji()
+					return notesServices.updateHeader(res.data[0]._id, { icon })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
-		} */
+		}
 	}
 
 	const fireAllActions = () => {
@@ -77,37 +71,16 @@ function HeaderIcon({ headerIcon }) {
 	}); */
 	/* console.log("DOM: ", emojiSaveBtn[0]) */
 
-
 	return (
 		<>
 			<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
-
 				<div className="emojiHeader">
-
-					<InputEmoji
-						value={icon}
-						onChange={setIcon}
-						placeholder={headerIcon}
-						height={100}
-					/>
-					<button className="saveIconBtn" onBlur={handleEmojiUpdate}>
-					</button>
+					<InputEmoji value={icon} onChange={setIcon} placeholder={headerIcon} height={100} theme="light" />
+					<button className="saveIconBtn" onClick={handleEmojiUpdate}></button>
 				</div>
-
 			</div>
 		</>
 	)
 }
 
 export default HeaderIcon
-
-
-/*
-
-<h1 className="headerIcon" onClick={() => setShowPicker(val => !val)} onChange={handleEmojiUpdate}>
-				{selectedEmoji ? <Emoji unified={selectedEmoji} emojiStyle={EmojiStyle.APPLE} size={80} /> : headerIcon}
-			</h1>
-
-			{showPicker && <EmojiPicker width="270px" height="350px" onEmojiClick={onClick} previewConfig={{ showPreview: false }} />}
-
-*/
