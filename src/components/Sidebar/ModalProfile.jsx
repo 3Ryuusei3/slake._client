@@ -4,6 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap"
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
+import toast from 'react-hot-toast'
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboardData }) => {
 	const { user } = useContext(AuthContext)
@@ -18,6 +19,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 	const [imgData, setImgData] = useState({
 		imageUrl: user.imageUrl,
 	})
+	const notify = () => toast.success('All your change will be available, next time :)')
 
 	const handleFileUpload = e => {
 		setLoadingImage(true)
@@ -47,6 +49,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 			.then(() => {
 				setUserData({ ...userData, imageUrl: imgData.imageUrl })
 				setShowModal(false)
+				notify()
 				getDashboardData()
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))

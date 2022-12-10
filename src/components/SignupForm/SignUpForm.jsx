@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import toast from 'react-hot-toast'
 
 import authService from "../../services/auth.service"
 import uploadServices from "../../services/upload.service" //QUITAR S
@@ -16,6 +17,8 @@ const SignUpForm = () => {
 	const [loadingImage, setLoadingImage] = useState(false)
 	const [errors, setErrors] = useState([])
 
+	const notify = () => toast.success('Success Sign Up')
+
 	const handleInputChange = e => {
 		const { value, name } = e.target
 		setSignupData({ ...signupData, [name]: value })
@@ -28,7 +31,7 @@ const SignUpForm = () => {
 		formData.append("imageData", e.target.files[0])
 
 		uploadServices
-			.uploadimage(formData)
+			.uploadSingleFile(formData)
 			.then(res => {
 				setSignupData({ ...signupData, imageUrl: res.data.cloudinary_url })
 				setLoadingImage(false)
@@ -44,7 +47,9 @@ const SignUpForm = () => {
 		authService
 			.signup(signupData)
 			.then(() => {
+				notify()
 				navigate("/login")
+
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}

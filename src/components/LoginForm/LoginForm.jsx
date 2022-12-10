@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import authService from "../../services/auth.service"
+import toast from 'react-hot-toast'
 
 const LoginForm = () => {
 	const [signupData, setSignupData] = useState({
@@ -15,6 +16,7 @@ const LoginForm = () => {
 		setSignupData({ ...signupData, [name]: value })
 	}
 
+	const notify = () => toast.success('Succesfull Log In')
 	const navigate = useNavigate()
 	const { storeToken, authenticateUser } = useContext(AuthContext)
 
@@ -27,6 +29,7 @@ const LoginForm = () => {
 				const tokenFromServer = data.authToken
 				storeToken(tokenFromServer)
 				authenticateUser()
+				notify()
 				navigate("/dashboard")
 			})
 			.catch(err => console.log(err))
