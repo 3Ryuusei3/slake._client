@@ -6,8 +6,6 @@ import { AuthContext } from "../../context/auth.context"
 
 import InputEmoji from "react-input-emoji"
 
-import { Picker } from "emoji-mart"
-
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
@@ -56,14 +54,6 @@ function HeaderIcon({ headerIcon }) {
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		}
 	}
-
-	const fireAllActions = () => {
-		setIcon()
-		handleEmojiUpdate()
-	}
-	console.log("Icon in DDBB ", headerIcon)
-
-	console.log("Icon in input: ", icon)
 
 	/* const emojiSaveBtn = document.getElementsByClassName("react-input-emoji--button");
 	emojiSaveBtn[0].addEventListener('blur', (e) => {

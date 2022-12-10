@@ -23,7 +23,7 @@ const Sidebar = ({ getDashboardData }) => {
 
 	return (
 		<>
-			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "absolute" }}>
+			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "fixed" }}>
 				<CDBSidebar style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" }}>
 					<CDBSidebarHeader
 						prefix={
