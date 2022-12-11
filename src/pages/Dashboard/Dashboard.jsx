@@ -8,6 +8,12 @@ import Header from "../../components/Header/Header"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
+import HeaderSkeleton from "../../components/Header/Headerskeleton"
+
+
+
+
+
 
 function Dashboard() {
 	/* const [isSidebarOpen, setIsSidebarOpen] = useState(true) */
@@ -32,7 +38,7 @@ function Dashboard() {
 	return (
 		<>
 			{!dashboardData ? (
-				<h1>Cargando</h1>
+				<HeaderSkeleton />
 			) : (
 				<>
 					<Sidebar getDashboardData={getDashboardData} />

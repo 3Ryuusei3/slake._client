@@ -37,7 +37,7 @@ const Sidebar = ({ getDashboardData }) => {
 							></img>
 						}
 					>
-						<a href="/" className="text-decoration-none" style={{ color: "inherit", fontWeight: "var(--button)", letterSpacing: "0.2px" }}>
+						<a href="/dashboard" className="text-decoration-none" style={{ color: "inherit", fontWeight: "var(--button)", letterSpacing: "0.2px" }}>
 							{!user ? "" : user.username}
 						</a>
 					</CDBSidebarHeader>
