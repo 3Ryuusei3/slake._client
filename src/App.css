@@ -21,13 +21,14 @@
 	/* Colors */
 	--color-primary: #6c63ff;
 	--color-primary-interact: #6058f8;
-	--color-primary-btn: #f0effd;
-	--color-primary-btn-interact: #dfdefc;
+	--color-primary-btn: #eae9fd;
+	--color-primary-btn-interact: #e2e1fd;
+	--color-primary-btn-second-interact: #d1d0fa;
 	--color-secondary: #e15047;
 	--color-secondary-interact: #fae2e0;
 
 	/* Font family */
-	font-family: "Noto Sans", sans-serif;
+	font-family: "Noto Sans", sans-serif !important;
 
 	/* Font weight */
 	--slogan: 700;
@@ -82,8 +83,13 @@ p {
 	font-weight: var(--text);
 }
 
-input:focus {
-	outline: none;
+input,
+textarea,
+input:focus,
+textarea:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
 }
 
 input::placeholder {
@@ -117,8 +123,8 @@ input::placeholder {
 
 .purple-btn,
 .purple-outline-btn,
-.red-outline-btn {
-	display: block !important;
+.red-outline-btn,
+.react-trello-lane button {
 	font-weight: var(--button) !important;
 	background-color: var(--color-primary) !important;
 	font-size: var(--sm) !important;
@@ -128,16 +134,24 @@ input::placeholder {
 	border-radius: 8px !important;
 }
 
+.purple-btn,
+.purple-outline-btn,
+.red-outline-btn {
+	display: block !important;
+}
+
 .purple-btn:hover {
 	background-color: var(--color-primary-interact) !important;
 }
 
-.purple-outline-btn {
+.purple-outline-btn,
+.react-trello-lane button {
 	background-color: var(--color-primary-btn) !important;
 	color: var(--color-primary) !important;
 }
 
-.purple-outline-btn:hover {
+.purple-outline-btn:hover,
+.react-trello-lane button:hover {
 	background-color: var(--color-primary-btn-interact) !important;
 }
 
@@ -149,6 +163,20 @@ input::placeholder {
 
 .red-outline-btn:hover {
 	background-color: var(--color-secondary-interact) !important;
+}
+
+.gray-outline-button,
+.react-trello-lane button:last-child,
+.react-trello-lane a {
+	border: 1px solid var(--text-secondary) !important;
+	background-color: var(--bg-navbar) !important;
+	color: var(--text-secondary) !important;
+}
+
+.gray-outline-button,
+.react-trello-lane button:last-child:hover,
+.react-trello-lane a:hover {
+	background-color: var(--bg-modal) !important;
 }
 
 .brand-link {
@@ -188,7 +216,7 @@ input::placeholder {
 	z-index: 9999;
 }
 
-.sidebar>div:not(.toggled) {
+.sidebar > div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
 }
@@ -332,7 +360,7 @@ input::placeholder {
 	left: 0 !important;
 }
 
-.react-emoji>* {
+.react-emoji > * {
 	padding: 0 !important;
 	margin: 0 !important;
 	border: none;
@@ -492,6 +520,112 @@ input::placeholder {
 
 .react-trello-board {
 	background-color: transparent !important;
+	padding-inline: 0 !important;
+	min-height: 100vh !important;
+}
+
+[contenteditable="true"] {
+	outline: none !important;
+}
+
+.smooth-dnd-draggable-wrapper:first-child .react-trello-lane {
+	background-color: var(--color-primary-btn) !important;
+}
+
+.smooth-dnd-draggable-wrapper:nth-child(2) .react-trello-lane {
+	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.smooth-dnd-draggable-wrapper:nth-child(3) .react-trello-lane {
+	background-color: var(--color-primary-btn-second-interact) !important;
+}
+
+.react-trello-lane {
+	padding-inline: 20px !important;
+}
+
+.react-trello-lane header {
+	border: none !important;
+}
+
+.smooth-dnd-draggable-wrapper > section > header textarea {
+	margin-top: 12px !important;
+	font-size: var(--lg) !important;
+	min-height: 26px !important;
+}
+
+.react-trello-lane header span:nth-child(2) {
+	display: none;
+}
+
+.react-trello-board textarea {
+	min-width: 100%;
+	margin-block: 5px;
+}
+
+.react-trello-lane a {
+	max-width: max-content;
+	padding-inline: 16px !important;
+	border-radius: 4px !important;
+	margin-inline: auto !important;
+	margin-bottom: 8px !important;
+}
+
+.react-trello-lane a:hover {
+	text-decoration: none;
+}
+
+.react-trello-lane div {
+	width: 100% !important;
+	margin-inline: auto !important;
+}
+
+.react-trello-lane div div {
+	background-color: transparent !important;
+	min-width: 100% !important;
+	max-width: none !important;
+}
+
+.react-trello-card,
+.react-trello-lane div div article {
+	border: none !important;
+	width: 100% !important;
+	max-width: none !important;
+	margin-bottom: 20px !important;
+}
+
+.react-trello-card header {
+	margin-bottom: 2px;
+}
+
+.react-trello-card header textarea {
+	color: var(--color-primary) !important;
+	font-size: var(--sm) !important;
+}
+
+.react-trello-card div textarea {
+	font-size: var(--xs) !important;
+	min-height: 20px !important;
+}
+
+.react-trello-lane article button:last-child {
+	transition: all 0.5s ease !important;
+	display: inline-block !important;
+	border: none !important;
+	font-size: 12px !important;
+	height: 15px !important;
+	line-height: 1px !important;
+	margin: 12px !important;
+	margin-left: 260px !important;
+	padding: 0 !important;
+	text-align: center !important;
+	width: 15px !important;
+	background-color: transparent !important;
+	cursor: pointer;
+	opacity: 0;
+	font-weight: initial !important;
+	color: initial !important;
+	border-radius: initial !important;
 }
 
 /* Profile */
