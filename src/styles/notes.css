@@ -1,0 +1,33 @@
+/* Notes */
+
+.createNewNote {
+	border: none;
+	padding: 3px 7px;
+	background-color: var(--color-primary);
+	font-weight: var(--button);
+	border-radius: 4px;
+	height: max-content;
+	color: var(--text-primary);
+}
+
+table {
+	width: 100%;
+}
+
+tbody {
+	box-shadow: 0 0 0 1px var(--bg-interact);
+}
+
+th {
+	padding: 10px 5px;
+}
+
+.noteHeaderIcon {
+	font-size: var(--sm);
+	margin-right: 5px;
+}
+
+td {
+	padding: 5px;
+	box-shadow: 0 0 0 1px var(--bg-interact);
+}

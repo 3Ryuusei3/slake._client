@@ -1,14 +1,18 @@
 /* import Header from "../../components/Header/Header" */
-import Sidebar from "../../components/Sidebar/Sidebar"
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
 import notesServices from "../../services/notes.service"
+
 import Header from "../../components/Header/Header"
+import NotesList from "../../components/Notes/NoteList"
+import Sidebar from "../../components/Sidebar/Sidebar"
 
 function Notes() {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 	const [notesData, setNotesData] = useState()
+
 	const { user } = useContext(AuthContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const getNotesData = () => {
 		notesServices
@@ -29,8 +33,9 @@ function Notes() {
 				<h1>Cargando</h1>
 			) : (
 				<>
-					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-					<Header isSidebarOpen={isSidebarOpen} />
+					<Sidebar />
+					<Header />
+					<NotesList />
 				</>
 			)}
 		</>

@@ -1,0 +1,45 @@
+/* General styling */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1 {
+	font-weight: var(--slogan) !important;
+	font-size: var(--xxxxl) !important;
+	line-height: 0.8 !important;
+}
+
+h2 {
+	font-weight: var(--title) !important;
+	font-size: var(--xxxl) !important;
+}
+
+h4 {
+	color: var(--text-secondary) !important;
+}
+
+a,
+button {
+	font-weight: var(--link);
+}
+
+p {
+	font-weight: var(--text);
+}
+
+input,
+textarea,
+input:focus,
+textarea:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
+}
+
+input::placeholder {
+	font-size: var(--xs) !important;
+	color: var(--dark-text-secondary) !important;
+}

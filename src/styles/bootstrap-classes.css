@@ -1,0 +1,26 @@
+/* Bootstrap classes */
+
+.text-dark {
+	color: var(--text-primary) !important;
+}
+
+.text-muted {
+	font-size: var(--xxs) !important;
+}
+
+.text-muted-lg {
+	font-size: var(--xs) !important;
+}
+
+.text-light {
+	color: var(--dark-text-primary) !important;
+}
+
+.form-control {
+	padding: 4px 8px !important;
+	background-color: var(--color-primary-btn) !important;
+}
+
+.me-6 {
+	margin-right: 70px;
+}

@@ -1,0 +1,46 @@
+/* Sidebar */
+
+.sidebar {
+	z-index: 9999;
+}
+
+.sidebar > div:not(.toggled) {
+	min-width: 230px !important;
+	width: 230px !important;
+}
+
+.sidebarProfileImg {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.head-text {
+	padding-top: 4px;
+}
+
+.sidebar li {
+	margin: 4px 10px;
+}
+
+.sidebar-content span {
+	font-weight: var(--subtitle);
+}
+
+.sidebar-content p {
+	font-weight: var(--link);
+}
+
+.sidebar-label {
+	color: var(--text-secondary);
+	font-size: var(--xs);
+}
+
+.logout-btn {
+	color: var(--color-secondary) !important;
+}
+
+.sidebar-brand {
+	font-weight: var(--button) !important;
+	font-size: var(--md) !important;
+}

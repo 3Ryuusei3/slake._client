@@ -1,13 +1,16 @@
 import { useState, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
+
 import dashboardServices from "../../services/dashboard.service"
 
-function ToDo({ isSidebarOpen, dashboardData }) {
+function ToDo({ dashboardData }) {
 	const [todo, setTodo] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
 	const [toDoId, setToDoId] = useState("")
 
 	const { user } = useContext(AuthContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const handleTodoUpdate = () => {
 		dashboardServices
