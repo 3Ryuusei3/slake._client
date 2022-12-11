@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
-import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
@@ -10,16 +9,10 @@ import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
 import HeaderSkeleton from "../../components/Header/Headerskeleton"
 
-
-
-
-
-
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
 
 	const { user } = useContext(AuthContext)
-	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const getDashboardData = () => {
 		dashboardServices

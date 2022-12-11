@@ -10,10 +10,7 @@ import notesServices from "../../services/notes.service"
 import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
-import ContentLoader, { rect } from "react-content-loader"
-
-
-
+import ContentLoader from "react-content-loader"
 
 function Header() {
 	const [headerData, setHeaderData] = useState()
@@ -27,7 +24,6 @@ function Header() {
 			<rect x="0" y="70" rx="5" ry="5" width="100" height="13" />
 		</ContentLoader>
 	)
-
 
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
@@ -73,8 +69,7 @@ function Header() {
 						<HeaderTitle headerTitle={headerData.header.title} setHeaderData={setHeaderData} />
 					</div>
 				</>
-			)
-			}
+			)}
 		</>
 	)
 }
