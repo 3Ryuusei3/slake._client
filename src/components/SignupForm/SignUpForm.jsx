@@ -79,11 +79,11 @@ const SignUpForm = () => {
 			</Form.Group>
 
 			{errors.length ? (
-				<h4>
+				<p>
 					{errors.map(elm => (
 						<p key={elm}>{elm}</p>
 					))}
-				</h4>
+				</p>
 			) : undefined}
 
 			<Button type="submit" className="purple-outline-btn mt-3 px-5" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>

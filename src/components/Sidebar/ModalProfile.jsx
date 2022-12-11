@@ -19,7 +19,8 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 	const [imgData, setImgData] = useState({
 		imageUrl: user.imageUrl,
 	})
-	const notify = () => toast.success('All your change will be available, next time :)')
+
+	const notify = () => toast.success(`Thanks for change your profile, ${user.username}`)
 
 	const handleFileUpload = e => {
 		setLoadingImage(true)

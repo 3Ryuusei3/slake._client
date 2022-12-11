@@ -17,11 +17,12 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 	let pageLocation = location.pathname.substring(1)
 
 	const handleTitle = e => {
+		handleTitleUpdate()
 		setTitle(e.target.value)
 	}
 
-	const handleTitleUpdate = e => {
-		e.preventDefault()
+	const handleTitleUpdate = () => {
+
 
 		if (pageLocation === "dashboard") {
 			dashboardServices

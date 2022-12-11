@@ -11,10 +11,11 @@ function Callout({ isSidebarOpen, dashboardData }) {
 
 	const handleCallout = e => {
 		setCallout(e.target.value)
+		handleCallout()
 	}
 
-	const handleCalloutUpdate = e => {
-		e.preventDefault()
+	const handleCalloutUpdate = () => {
+
 
 		dashboardServices
 			.getDashboardByUser(user._id)
