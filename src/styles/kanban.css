@@ -1,0 +1,103 @@
+/* Kanban */
+
+.react-trello-board {
+	background-color: transparent !important;
+	padding-inline: 0 !important;
+	min-height: 100vh !important;
+}
+
+[contenteditable="true"] {
+	outline: none !important;
+}
+
+.smooth-dnd-draggable-wrapper:first-child .react-trello-lane {
+	background-color: var(--color-primary-btn) !important;
+}
+
+.smooth-dnd-draggable-wrapper:nth-child(2) .react-trello-lane {
+	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.smooth-dnd-draggable-wrapper:nth-child(3) .react-trello-lane {
+	background-color: var(--color-primary-btn-second-interact) !important;
+}
+
+.react-trello-lane {
+	padding-inline: 20px !important;
+}
+
+.react-trello-lane header {
+	border: none !important;
+}
+
+.smooth-dnd-draggable-wrapper > section > header textarea {
+	margin-top: 12px !important;
+	font-size: var(--lg) !important;
+	min-height: 26px !important;
+}
+
+.react-trello-lane header span:nth-child(2) {
+	display: none;
+}
+
+.react-trello-board textarea {
+	width: 100%;
+	margin-block: 5px;
+}
+
+.react-trello-lane a {
+	max-width: max-content;
+	padding-inline: 16px !important;
+	border-radius: 4px !important;
+	margin-inline: auto !important;
+	margin-bottom: 8px !important;
+}
+
+.react-trello-lane a:hover {
+	text-decoration: none;
+}
+
+.react-trello-lane div {
+	width: 100% !important;
+	margin-inline: auto !important;
+}
+
+.react-trello-lane div div {
+	background-color: transparent !important;
+	min-width: 290px !important;
+	max-width: none !important;
+}
+
+.react-trello-card,
+.react-trello-lane div div article {
+	border: none !important;
+	width: 290px !important;
+	max-width: none !important;
+	margin-bottom: 20px !important;
+}
+
+.react-trello-card header {
+	margin-bottom: 2px;
+	display: flex;
+}
+
+.react-trello-card header textarea {
+	color: var(--color-primary) !important;
+	font-size: var(--sm) !important;
+}
+
+.react-trello-card div textarea {
+	font-size: var(--xs) !important;
+	padding-right: 26px !important;
+	min-height: 20px !important;
+}
+
+.react-trello-card header div {
+	left: 120px;
+	top: 10px;
+}
+
+.react-trello-card header div button {
+	border: none !important;
+	background-color: transparent !important;
+}

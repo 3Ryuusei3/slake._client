@@ -16,7 +16,6 @@ import HeaderSkeleton from "../../components/Header/Headerskeleton"
 
 
 function Dashboard() {
-	/* const [isSidebarOpen, setIsSidebarOpen] = useState(true) */
 	const [dashboardData, setDashboardData] = useState()
 
 	const { user } = useContext(AuthContext)
@@ -43,8 +42,8 @@ function Dashboard() {
 				<>
 					<Sidebar getDashboardData={getDashboardData} />
 					<Header />
-					<Callout dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
-					<ToDo dashboardData={dashboardData} isSidebarOpen={isSidebarOpen} />
+					<Callout dashboardData={dashboardData} />
+					<ToDo dashboardData={dashboardData} />
 				</>
 			)}
 		</>

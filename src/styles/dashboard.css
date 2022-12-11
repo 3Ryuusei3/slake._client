@@ -1,0 +1,114 @@
+/* Dashboard */
+
+.Callout {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex-grow: 1;
+	background-color: var(--bg-navbar);
+	border-radius: 4px;
+	padding: 10px 16px;
+	width: 90%;
+}
+
+.Callout p {
+	font-size: var(--lg);
+	margin-bottom: 4px;
+}
+
+.Callout div {
+	width: 90%;
+}
+
+.Callout input {
+	border: none;
+	width: 100%;
+	background-color: var(--bg-navbar);
+}
+
+.addTodoInput {
+	background-color: var(--bg-navbar);
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 16px;
+	border-radius: 4px;
+}
+
+.todoList i {
+	color: var(--dark-text-primary);
+}
+
+.addTodoInput input {
+	background-color: transparent;
+	width: 100%;
+	margin-left: 16px;
+	border: none;
+}
+
+.addTodoInput button {
+	border: none;
+	padding: 3px 7px;
+	background-color: var(--color-primary);
+	font-weight: var(--button);
+	border-radius: 4px;
+}
+
+.todoList ul {
+	margin-top: 20px;
+	margin-left: 16px;
+	list-style: none;
+	padding-left: 2px;
+}
+
+.todoList li {
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+}
+
+.todoList li:hover,
+.todoList ul input[type="text"]:hover {
+	background-color: var(--color-primary-btn-interact);
+	transition: 0.3s ease;
+}
+
+.todoList li div {
+	display: flex;
+	align-items: center;
+}
+
+.todoList input[type="checkbox"] {
+	margin-left: 5px;
+	margin-right: 20px;
+	border-radius: none;
+	width: 1.15em;
+	height: 1.15em;
+	accent-color: var(--color-primary);
+}
+
+.todoList ul input[type="text"] {
+	border: none;
+	width: 100%;
+	padding: 3px 7px;
+	background-color: transparent;
+}
+
+.deleteTodo {
+	border: none;
+	padding: 3px 7px;
+	background-color: rgb(252, 131, 131);
+	font-weight: var(--button);
+	border-radius: 4px;
+}
+
+.crossedItem {
+	text-decoration: line-through !important;
+	color: var(--dark-text-secondary) !important;
+}
+
+.crossedItem input[type="text"] {
+	color: var(--dark-text-secondary) !important;
+}

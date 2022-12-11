@@ -2,15 +2,20 @@
 import Sidebar from "../../components/Sidebar/Sidebar"
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
 import notesServices from "../../services/notes.service"
+
 import Header from "../../components/Header/Header"
 import ContentLoader, { rect } from "react-content-loader"
 
+import NotesList from "../../components/Notes/NoteList"
+import Sidebar from "../../components/Sidebar/Sidebar"
 
 function Notes() {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 	const [notesData, setNotesData] = useState()
+
 	const { user } = useContext(AuthContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const HeaderSkeleton = () => (
 		<ContentLoader viewBox="0 0 400 475" className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
@@ -40,8 +45,9 @@ function Notes() {
 				<HeaderSkeleton />
 			) : (
 				<>
-					<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-					<Header isSidebarOpen={isSidebarOpen} />
+					<Sidebar />
+					<Header />
+					<NotesList />
 				</>
 			)}
 		</>
