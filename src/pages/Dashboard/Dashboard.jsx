@@ -33,7 +33,6 @@ function Dashboard() {
 				<CalloutSkeleton />
 			) : (
 				<>
-					<CalloutSkeleton />
 					<Sidebar />
 					<Header />
 					<Callout dashboardData={dashboardData} />

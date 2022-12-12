@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 
 import { SidebarContext } from "../../context/sidebar.context"
@@ -10,11 +10,8 @@ import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 
-/* import EmojiPicker, { EmojiStyle, Emoji } from "emoji-picker-react" */
-
 function HeaderIcon({ headerIcon }) {
 	const [icon, setIcon] = useState()
-	/* const [showPicker, setShowPicker] = useState(false) */
 
 	const { user } = useContext(AuthContext)
 
@@ -23,14 +20,11 @@ function HeaderIcon({ headerIcon }) {
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
 
-	/* function onClick(emojiData) {
-		setSelectedEmoji(emojiData.unified)
-		setShowPicker(false)
-	} */
+	useEffect(() => {
+		handleEmojiUpdate()
+	}, [icon])
 
-	const handleEmojiUpdate = e => {
-		e.preventDefault()
-
+	const handleEmojiUpdate = () => {
 		if (pageLocation === "dashboard") {
 			dashboardServices
 				.getDashboardByUser(user._id)
@@ -55,18 +49,11 @@ function HeaderIcon({ headerIcon }) {
 		}
 	}
 
-	/* const emojiSaveBtn = document.getElementsByClassName("react-input-emoji--button");
-	emojiSaveBtn[0].addEventListener('blur', (e) => {
-		handleEmojiUpdate(e)
-	}); */
-	/* console.log("DOM: ", emojiSaveBtn[0]) */
-
 	return (
 		<>
 			<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
 				<div className="emojiHeader">
 					<InputEmoji value={icon} onChange={setIcon} placeholder={headerIcon} height={100} theme="light" />
-					<button className="saveIconBtn" onClick={handleEmojiUpdate}></button>
 				</div>
 			</div>
 		</>

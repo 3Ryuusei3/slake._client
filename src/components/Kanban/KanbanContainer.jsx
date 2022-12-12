@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { useOutletContext } from "react-router-dom"
-import Board from "react-trello"
 import { AuthContext } from "../../context/auth.context"
+
 import kanbanServices from "../../services/kanban.service"
+
+import Board from "react-trello"
 
 function KanbanContainer({ isSidebarOpen }) {
 	const { user } = useContext(AuthContext)

@@ -48,7 +48,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
-					setHeaderData()
+					setHeaderData(res.data)
 					setShowImgModal(false)
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))

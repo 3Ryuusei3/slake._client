@@ -20,7 +20,6 @@ const Sidebar = () => {
 	const openSidebarModal = () => setShowModal(true)
 	const closeSidebarModal = () => setShowModal(false)
 
-
 	return (
 		<>
 			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "fixed" }}>

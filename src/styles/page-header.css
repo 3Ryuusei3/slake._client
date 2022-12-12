@@ -55,7 +55,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
+	width: max-content;
 }
 
 .react-emoji {
@@ -115,12 +115,4 @@
 
 .react-emoji svg {
 	fill: transparent !important;
-}
-
-.saveIconBtn {
-	width: 20px;
-	height: 20px;
-	border: none;
-	border-radius: 2px;
-	background-color: var(--color-primary);
 }
