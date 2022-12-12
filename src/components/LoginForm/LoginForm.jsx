@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import authService from "../../services/auth.service"
-import toast from 'react-hot-toast'
+
 
 const LoginForm = () => {
 	const [signupData, setSignupData] = useState({
@@ -21,7 +21,7 @@ const LoginForm = () => {
 		setSignupData({ ...signupData, [name]: value })
 	}
 
-	//const notify = () => toast.success(`Welcome back, ${user.username}`)
+
 
 	const handleFormSubmit = e => {
 		e.preventDefault()
@@ -32,7 +32,6 @@ const LoginForm = () => {
 				const tokenFromServer = data.authToken
 				storeToken(tokenFromServer)
 				authenticateUser()
-				//notify()
 				navigate("/dashboard")
 			})
 			.catch(err => setErrors(err.response.data.message))

@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react"
+import { BulletList, Code } from "react-content-loader"
 import { AuthContext } from "../../context/auth.context"
 
 import dashboardServices from "../../services/dashboard.service"
@@ -7,7 +8,7 @@ import Header from "../../components/Header/Header"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
-import CalloutSkeleton from "../../components/Dashboard/Calloutskeleton"
+
 
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
@@ -30,7 +31,10 @@ function Dashboard() {
 	return (
 		<>
 			{!dashboardData ? (
-				<CalloutSkeleton />
+				<div style={{ paddingLeft: "300px" }}>
+					<Code />
+					<BulletList />
+				</div>
 			) : (
 				<>
 					<Sidebar />

@@ -7,7 +7,9 @@ const AuthContext = createContext()
 function AuthProviderWrapper(props) {
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-	const notify = user => toast.success(`Welcome back, ${user}`)
+	const notifyLogIn = user => toast.success(`Welcome back, ${user}`)
+	const notifyLogOut = () => toast.error('See you soon')
+
 
 	const storeToken = token => {
 		localStorage.setItem("authToken", token)
@@ -20,7 +22,7 @@ function AuthProviderWrapper(props) {
 			authService
 				.verify(token)
 				.then(({ data }) => {
-					notify(data.username)
+					notifyLogIn(data.username)
 					setUser(data)
 					setIsLoading(false)
 				})
@@ -34,7 +36,7 @@ function AuthProviderWrapper(props) {
 	const logoutUser = () => {
 		setUser(null)
 		setIsLoading(false)
-		notify()
+		notifyLogOut()
 		localStorage.removeItem("authToken")
 	}
 

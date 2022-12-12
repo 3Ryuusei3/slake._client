@@ -3,11 +3,13 @@ import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
 import singleNoteService from "../../services/singleNote.service"
+import { List } from "react-content-loader"
 
 function NotesList() {
 	const [notes, setNotes] = useState()
 	const [input, setInput] = useState("")
 	const [noteId, setNoteId] = useState("")
+
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
@@ -29,7 +31,9 @@ function NotesList() {
 	return (
 		<>
 			{!notes ? (
-				<h1>Cargando...</h1>
+				<div style={{ paddingLeft: "300px" }}>
+					<List />
+				</div>
 			) : (
 				<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ paddingRight: "70px" }}>
 					<div className="d-flex justify-content-between align-items-center">
@@ -88,7 +92,7 @@ function NotesList() {
 
 export default NotesList
 
-/* 
+/*
 
 {todo.map((elm, idx) => {
 						return (

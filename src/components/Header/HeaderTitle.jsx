@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
+
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
@@ -22,7 +23,6 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 	}
 
 	const handleTitleUpdate = () => {
-
 
 		if (pageLocation === "dashboard") {
 			dashboardServices

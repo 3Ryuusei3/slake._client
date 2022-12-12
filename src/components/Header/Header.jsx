@@ -58,12 +58,11 @@ function Header() {
 				<HeaderSkeleton />
 			) : (
 				<>
-					<HeaderSkeleton />
-					{/* <div style={{ postion: "relative" }}>
+					<div style={{ postion: "relative" }}>
 						<HeaderImage headerImg={headerData.header.image} headerData={headerData} setHeaderData={setHeaderData} />
 						<HeaderIcon headerIcon={headerData.header.icon} />
 						<HeaderTitle headerTitle={headerData.header.title} setHeaderData={setHeaderData} />
-					</div> */}
+					</div>
 				</>
 			)}
 		</>

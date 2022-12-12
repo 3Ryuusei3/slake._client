@@ -9,9 +9,10 @@ function HeaderSkeleton() {
     const { isSidebarOpen } = useContext(SidebarContext)
 
     return (
-        <ContentLoader viewBox="0 0 200 100" className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
-            <rect x="0" y="0" rx="5" ry="5" width="400" height="80" />
-            <rect x="0" y="90" rx="5" ry="5" width="100" height="13" />
+        <ContentLoader viewBox="0 0 200 60" className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
+            <rect x="0" y="0" rx="5" ry="5" width="200" height="40" />
+            <rect x="10" y="35" rx="5" ry="5" width="10" height="20" />
+            <rect x="0" y="45" rx="5" ry="5" width="200" height="10" />
         </ContentLoader>
     )
 

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
@@ -9,6 +10,7 @@ function Callout({ dashboardData }) {
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
+
 
 	const handleCallout = e => {
 		setCallout(e.target.value)

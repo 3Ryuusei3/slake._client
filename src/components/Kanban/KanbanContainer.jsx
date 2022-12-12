@@ -5,10 +5,12 @@ import { AuthContext } from "../../context/auth.context"
 import kanbanServices from "../../services/kanban.service"
 
 import Board from "react-trello"
+import { Instagram } from "react-content-loader"
 
 function KanbanContainer({ isSidebarOpen }) {
 	const { user } = useContext(AuthContext)
 	const [lanes, setLanes] = useState()
+
 
 	const getKanbanData = () => {
 		kanbanServices
@@ -35,7 +37,10 @@ function KanbanContainer({ isSidebarOpen }) {
 	return (
 		<>
 			{!lanes ? (
-				<h1>Cargando</h1>
+				<div style={{ paddingLeft: "300px" }}>
+					<Instagram />
+				</div>
+
 			) : (
 				<div
 					className="me-6 mt-4"
