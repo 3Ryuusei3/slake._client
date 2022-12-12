@@ -7,7 +7,7 @@ import Header from "../../components/Header/Header"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
-import HeaderSkeleton from "../../components/Header/Headerskeleton"
+import CalloutSkeleton from "../../components/Dashboard/Calloutskeleton"
 
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
@@ -30,10 +30,11 @@ function Dashboard() {
 	return (
 		<>
 			{!dashboardData ? (
-				<HeaderSkeleton />
+				<CalloutSkeleton />
 			) : (
 				<>
-					<Sidebar getDashboardData={getDashboardData} />
+					<CalloutSkeleton />
+					<Sidebar />
 					<Header />
 					<Callout dashboardData={dashboardData} />
 					<ToDo dashboardData={dashboardData} />

@@ -7,7 +7,7 @@ import ModalProfile from "./ModalProfile"
 
 import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact/dist/index"
 
-const Sidebar = ({ getDashboardData }) => {
+const Sidebar = () => {
 	const [showModal, setShowModal] = useState(false)
 
 	const { user, logoutUser } = useContext(AuthContext)
@@ -79,7 +79,7 @@ const Sidebar = ({ getDashboardData }) => {
 					</CDBSidebarFooter>
 				</CDBSidebar>
 			</div>
-			<ModalProfile showModal={showModal} closeSidebarModal={closeSidebarModal} setShowModal={setShowModal} getDashboardData={getDashboardData} />
+			<ModalProfile showModal={showModal} closeSidebarModal={closeSidebarModal} setShowModal={setShowModal} />
 		</>
 	)
 }
