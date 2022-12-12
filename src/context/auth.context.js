@@ -1,14 +1,13 @@
 import { createContext, useEffect, useState } from "react"
 import authService from "../services/auth.service"
-import toast from 'react-hot-toast'
-
+import toast from "react-hot-toast"
 
 const AuthContext = createContext()
 
 function AuthProviderWrapper(props) {
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-	const notify = () => toast.error('See you soon')
+	const notify = user => toast.success(`Welcome back, ${user}`)
 
 	const storeToken = token => {
 		localStorage.setItem("authToken", token)
@@ -16,17 +15,20 @@ function AuthProviderWrapper(props) {
 
 	const authenticateUser = () => {
 		const token = localStorage.getItem("authToken")
-		setIsLoading(true)
-		authService
-			.verify(token)
-			.then(({ data }) => {
-				setUser(data)
-				setIsLoading(false)
-			})
-			.catch(err => {
-				console.error("algo malo paso aw :3", err)
-				setIsLoading(false)
-			})
+		if (token) {
+			setIsLoading(true)
+			authService
+				.verify(token)
+				.then(({ data }) => {
+					notify(data.username)
+					setUser(data)
+					setIsLoading(false)
+				})
+				.catch(err => {
+					console.error("algo malo paso aw :3", err)
+					setIsLoading(false)
+				})
+		}
 	}
 
 	const logoutUser = () => {

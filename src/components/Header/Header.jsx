@@ -57,6 +57,8 @@ function Header() {
 		getHeaderData()
 	}, [])
 
+	console.log(headerData)
+
 	return (
 		<>
 			{!headerData ? (

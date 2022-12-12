@@ -18,7 +18,7 @@ class NotesService {
 	}
 
 	getNotesByUser() {
-		return this.api.get(`/`)
+		return this.api.get("/")
 	}
 
 	updateHeader(id, header) {

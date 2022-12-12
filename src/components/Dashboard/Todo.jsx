@@ -12,11 +12,12 @@ function ToDo({ dashboardData }) {
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 
-	const handleTodoUpdate = () => {
+	const handleTodoUpdate = newTodo => {
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
-				return dashboardServices.updateTodo(res.data[0]._id, [...todo])
+				console.log(todo)
+				return dashboardServices.updateTodo(res.data[0]._id, [...newTodo])
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
@@ -27,15 +28,15 @@ function ToDo({ dashboardData }) {
 			isDone: false,
 		}
 		setTodo([...todo, newToDo])
-		handleTodoUpdate()
+		handleTodoUpdate([...todo, newToDo])
 		setInput("")
 	}
 
 	const deleteTodo = (idx, e) => {
 		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
-		handleTodoUpdate()
 		setTodo(newToDoList)
+		handleTodoUpdate(newToDoList)
 	}
 
 	const handleMouseOver = id => {
@@ -50,14 +51,14 @@ function ToDo({ dashboardData }) {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].text = e.target.value
 		setTodo(toDoListCopy)
-		handleTodoUpdate()
+		handleTodoUpdate(toDoListCopy)
 	}
 
 	const handleToDoItemCheck = (i, e) => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
 		setTodo(toDoListCopy)
-		handleTodoUpdate()
+		handleTodoUpdate(toDoListCopy)
 	}
 
 	const isItemChecked = i => {
@@ -79,8 +80,8 @@ function ToDo({ dashboardData }) {
 						return (
 							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={handleTodoUpdate} checked={elm.isDone ? true : false} />
-									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={handleTodoUpdate} />
+									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
+									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={() => handleTodoUpdate(todo)} />
 								</div>
 								{toDoId === idx && (
 									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>

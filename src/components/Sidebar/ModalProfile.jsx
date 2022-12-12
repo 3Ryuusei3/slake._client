@@ -4,9 +4,9 @@ import { Modal, Button, Form } from "react-bootstrap"
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast"
 
-const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboardData }) => {
+const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	const { user } = useContext(AuthContext)
 
 	const [userData, setUserData] = useState({
@@ -51,7 +51,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal, getDashboard
 				setUserData({ ...userData, imageUrl: imgData.imageUrl })
 				setShowModal(false)
 				notify()
-				getDashboardData()
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}

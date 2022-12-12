@@ -33,7 +33,7 @@ function Dashboard() {
 				<HeaderSkeleton />
 			) : (
 				<>
-					<Sidebar getDashboardData={getDashboardData} />
+					<Sidebar />
 					<Header />
 					<Callout dashboardData={dashboardData} />
 					<ToDo dashboardData={dashboardData} />
