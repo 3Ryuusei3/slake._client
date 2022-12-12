@@ -9,19 +9,20 @@ import InputEmoji from "react-input-emoji"
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
+import singleNoteService from "../../services/singleNote.service"
 
 function HeaderIcon({ headerIcon }) {
-	const [icon, setIcon] = useState()
+	const [icon, setIcon] = useState(headerIcon)
 
 	const { user } = useContext(AuthContext)
-
 	const { isSidebarOpen } = useContext(SidebarContext)
 
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
 
 	useEffect(() => {
-		handleEmojiUpdate()
+		icon && handleEmojiUpdate()
+		setIcon(icon)
 	}, [icon])
 
 	const handleEmojiUpdate = () => {
@@ -44,6 +45,15 @@ function HeaderIcon({ headerIcon }) {
 				.getNotesByUser(user._id)
 				.then(res => {
 					return notesServices.updateHeader(res.data[0]._id, { icon })
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (location.pathname.includes("/note/")) {
+			let noteId = location.pathname.slice(6)
+
+			singleNoteService
+				.getNoteByNoteId(noteId)
+				.then(res => {
+					return singleNoteService.updateHeader(res.data._id, { icon })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		}

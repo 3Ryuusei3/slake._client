@@ -18,16 +18,20 @@ class SingleNoteService {
 	}
 
 	createNewNote() {
-		return this.api.create("/note/new")
+		return this.api.post("/new")
 	}
 
 	getNotesListByUser(id) {
 		return this.api.get(`/list/${id}`)
 	}
 
-	/* updateHeader(id, header) {
+	getNoteByNoteId(id) {
+		return this.api.get(`/${id}`)
+	}
+
+	updateHeader(id, header) {
 		return this.api.put(`/update/header/${id}`, header)
-	} */
+	}
 }
 
 const singleNoteService = new SingleNoteService()

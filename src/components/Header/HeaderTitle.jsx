@@ -7,6 +7,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
+import singleNoteService from "../../services/singleNote.service"
 
 function HeaderTitle({ headerTitle, setHeaderData }) {
 	const [title, setTitle] = useState(headerTitle)
@@ -43,6 +44,15 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 				.getNotesByUser(user._id)
 				.then(res => {
 					return notesServices.updateHeader(res.data[0]._id, { title })
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (location.pathname.includes("/note/")) {
+			let noteId = location.pathname.slice(6)
+
+			singleNoteService
+				.getNoteByNoteId(noteId)
+				.then(res => {
+					return singleNoteService.updateHeader(res.data._id, { title })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		}

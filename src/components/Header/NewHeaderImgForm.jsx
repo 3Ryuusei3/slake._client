@@ -5,6 +5,7 @@ import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import uploadServices from "../../services/upload.service"
+import singleNoteService from "../../services/singleNote.service"
 
 import { AuthContext } from "../../context/auth.context"
 
@@ -60,8 +61,8 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
+					setHeaderData(res.data)
 					setShowImgModal(false)
-					setHeaderData()
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {
@@ -72,8 +73,22 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
+					setHeaderData(res.data)
 					setShowImgModal(false)
-					setHeaderData()
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (location.pathname.includes("/note/")) {
+			let noteId = location.pathname.slice(6)
+
+			singleNoteService
+				.getNoteByNoteId(noteId)
+				.then(res => {
+					return singleNoteService.updateHeader(res.data._id, headerImg)
+				})
+				.then(res => {
+					setHeaderImg({ image: res.data.cloudinary_url })
+					setHeaderData(res.data)
+					setShowImgModal(false)
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		}

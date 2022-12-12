@@ -1,17 +1,18 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { SidebarContext } from "../../context/sidebar.context"
 
 import KanbanContainer from "../../components/Kanban/KanbanContainer"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Header from "../../components/Header/Header"
 
 function Kanban() {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	return (
 		<>
-			<Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-			<Header isSidebarOpen={isSidebarOpen} />
-			<KanbanContainer isSidebarOpen={isSidebarOpen} />
+			<Sidebar />
+			<Header />
+			<KanbanContainer />
 		</>
 	)
 }

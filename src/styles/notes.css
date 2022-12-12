@@ -31,3 +31,9 @@ td {
 	padding: 5px;
 	box-shadow: 0 0 0 1px var(--bg-interact);
 }
+
+td a {
+	text-decoration: none;
+	color: var(--text-primary);
+	font-weight: var(--subtitle);
+}
