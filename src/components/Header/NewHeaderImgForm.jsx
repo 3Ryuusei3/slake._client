@@ -1,13 +1,13 @@
 import { useState, useContext } from "react"
 import { useLocation } from "react-router-dom"
 
+import { AuthContext } from "../../context/auth.context"
+
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import uploadServices from "../../services/upload.service"
 import singleNoteService from "../../services/singleNote.service"
-
-import { AuthContext } from "../../context/auth.context"
 
 import { Form, Button } from "react-bootstrap"
 

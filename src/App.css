@@ -65,3 +65,10 @@
 	--xs: 14px;
 	--xxs: 12px;
 }
+
+.block,
+.block > * {
+	background-color: #6058f8 !important;
+	border: 1px solid black;
+	color: white !important;
+}

@@ -22,7 +22,6 @@ function HeaderIcon({ headerIcon }) {
 
 	useEffect(() => {
 		icon && handleEmojiUpdate()
-		setIcon(icon)
 	}, [icon])
 
 	const handleEmojiUpdate = () => {

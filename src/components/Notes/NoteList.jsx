@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
+
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
@@ -10,7 +11,6 @@ function NotesList() {
 	const [notes, setNotes] = useState()
 	const [input, setInput] = useState("")
 	const [noteId, setNoteId] = useState("")
-
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
@@ -109,23 +109,3 @@ function NotesList() {
 }
 
 export default NotesList
-
-/*
-
-{todo.map((elm, idx) => {
-						return (
-							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={handleTodoUpdate} checked={elm.isDone ? true : false} />
-									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={handleTodoUpdate} />
-								</div>
-								{toDoId === idx && (
-									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>
-										<i className="bi bi-x-lg"></i>
-									</button>
-								)}
-							</li>
-						)
-					})}
-
-*/
