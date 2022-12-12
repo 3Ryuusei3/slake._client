@@ -2,16 +2,15 @@ import { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 
-
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
+import singleNoteService from "../../services/singleNote.service"
 
 import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
-import HeaderSkeleton from './Headerskeleton'
-
+import HeaderSkeleton from "./Headerskeleton"
 
 function Header() {
 	const [headerData, setHeaderData] = useState()
@@ -43,6 +42,15 @@ function Header() {
 					setHeaderData(res.data[0])
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (location.pathname.includes("/note/")) {
+			let noteId = location.pathname.slice(6)
+
+			singleNoteService
+				.getNoteByNoteId(noteId)
+				.then(res => {
+					setHeaderData(res.data)
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
 		}
 	}
 
@@ -50,20 +58,17 @@ function Header() {
 		getHeaderData()
 	}, [])
 
-	console.log(headerData)
-
 	return (
 		<>
 			{!headerData ? (
 				<HeaderSkeleton />
 			) : (
 				<>
-					<HeaderSkeleton />
-					{/* <div style={{ postion: "relative" }}>
+					<div style={{ postion: "relative" }}>
 						<HeaderImage headerImg={headerData.header.image} headerData={headerData} setHeaderData={setHeaderData} />
 						<HeaderIcon headerIcon={headerData.header.icon} />
 						<HeaderTitle headerTitle={headerData.header.title} setHeaderData={setHeaderData} />
-					</div> */}
+					</div>
 				</>
 			)}
 		</>

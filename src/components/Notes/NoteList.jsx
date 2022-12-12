@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
@@ -16,7 +17,6 @@ function NotesList() {
 		singleNoteService
 			.getNotesListByUser(user._id)
 			.then(res => {
-				console.log(res.data)
 				setNotes(res.data)
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
@@ -26,6 +26,23 @@ function NotesList() {
 		getNotes()
 	}, [])
 
+	const addNewNote = () => {
+		singleNoteService
+			.createNewNote({ owner: user._id })
+			.then(res => {
+				setNotes([...notes, res.data])
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
+	}
+
+	const handleMouseOver = id => {
+		setNoteId(id)
+	}
+
+	const handleMouseOut = () => {
+		setNoteId("")
+	}
+
 	return (
 		<>
 			{!notes ? (
@@ -34,11 +51,11 @@ function NotesList() {
 				<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ paddingRight: "70px" }}>
 					<div className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
-						<button className="createNewNote">
+						<button className="createNewNote" onClick={() => addNewNote()}>
 							<i className="bi bi-plus-lg"></i>
 						</button>
 					</div>
-					<div className="noteList pt-3">
+					<div className="noteList pt-2">
 						<table>
 							<thead>
 								<tr className="text-muted text-muted-lg">
@@ -61,18 +78,19 @@ function NotesList() {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>My first ever note</td>
-									<td>Diary</td>
-									<td>11/12/2022</td>
-									<td>No</td>
-								</tr>
-								{notes.map(elm => {
+								{notes.map((elm, idx) => {
+									let date = new Date(elm.updatedAt)
 									return (
-										<tr>
-											<td>{elm.header.title}</td>
+										<tr key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+											<td className="d-flex justify-content-between">
+												<div>
+													<span className="me-2">{elm.header.icon}</span>
+													<Link to={`/note/${elm._id}`}>{elm.header.title}</Link>
+												</div>
+												{noteId === idx ? <i class="bi bi-trash3"></i> : <i class="bi bi-trash3" style={{ color: "transparent" }}></i>}
+											</td>
 											<td>{elm.tag}</td>
-											<td>{elm.createdAt}</td>
+											<td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
 											<td>{elm.shared ? "Yes" : "No"}</td>
 										</tr>
 									)
