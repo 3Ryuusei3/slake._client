@@ -32,6 +32,10 @@ class SingleNoteService {
 	updateHeader(id, header) {
 		return this.api.put(`/update/header/${id}`, header)
 	}
+
+	updateBlocks(id, blocks) {
+		return this.api.put(`/update/blocks/${id}`, blocks)
+	}
 }
 
 const singleNoteService = new SingleNoteService()

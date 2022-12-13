@@ -91,7 +91,7 @@ function NotesList() {
 													<span className="me-2">{elm.header.icon}</span>
 													<Link to={`/note/${elm._id}`}>{elm.header.title}</Link>
 												</div>
-												{noteId === idx ? <i class="bi bi-trash3"></i> : <i class="bi bi-trash3" style={{ color: "transparent" }}></i>}
+												{noteId === idx ? <i className="bi bi-trash3"></i> : <i className="bi bi-trash3" style={{ color: "transparent" }}></i>}
 											</td>
 											<td>{elm.tag}</td>
 											<td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>

@@ -9,6 +9,7 @@
 @import "./styles/dashboard.css";
 @import "./styles/kanban.css";
 @import "./styles/notes.css";
+@import "./styles/singlenote.css";
 @import "./styles/profile.css";
 @import "./styles/pricing.css";
 @import "./styles/utility-classes.css";
@@ -64,11 +65,4 @@
 	--sm: 16px;
 	--xs: 14px;
 	--xxs: 12px;
-}
-
-.block,
-.block > * {
-	background-color: #6058f8 !important;
-	border: 1px solid black;
-	color: white !important;
 }
