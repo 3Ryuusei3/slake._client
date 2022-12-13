@@ -135,10 +135,6 @@
 	accent-color: var(--color-primary);
 }
 
-.todoList-dark input[type="checkbox"] {
-	accent-color: var(--light-color-primary);
-}
-
 .todoList ul input[type="text"],
 .todoList-dark ul input[type="text"] {
 	border: none;
