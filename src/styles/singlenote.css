@@ -1,4 +1,72 @@
+/*  */
 /* Single notes */
+/*  */
+
+/* Header */
+
+.blockList p,
+.blockList-dark p {
+	color: var(--text-primary);
+}
+
+.blockList-dark p {
+	color: var(--dark-text-primary);
+}
+
+.noteCategory {
+	padding: 3px 10px;
+	border-radius: 4px;
+}
+
+.categoryMenu,
+.categoryMenu-dark {
+	position: absolute;
+	left: 80px;
+	top: 0px;
+	z-index: 50;
+	padding: 10px;
+	background-color: var(--bg-navbar);
+	color: var(--text-primary);
+	border-radius: 4px;
+	box-shadow: 0px 0px 10px var(--text-secondary);
+}
+
+.categoryMenu-dark {
+	background-color: var(--dark-bg-modal);
+	box-shadow: 0px 0px 10px var(--text-primary) !important;
+}
+
+.categoryMenu ul,
+.categoryMenu-dark ul {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.categoryBtn,
+.categoryBtn-dark {
+	border: none;
+	color: var(--text-primary);
+}
+
+.categoryBtn-dark {
+	color: var(--dark-text-primary);
+}
+
+.blockList input[type="checkbox"],
+.blockList-dark input[type="checkbox"] {
+	margin-left: 5px;
+	margin-right: 20px;
+	border-radius: none;
+	width: 1.15em;
+	height: 1.15em;
+	accent-color: var(--color-primary);
+}
+
+/* Block list */
 
 .blockList {
 	color: var(--dark-text-primary);
@@ -35,7 +103,8 @@
 	background-color: var(--bg-modal);
 }
 
-.deleteBlock {
+.deleteBlock,
+.deleteBlock-dark {
 	border: none;
 	padding: 3px 7px;
 	font-weight: var(--button);
@@ -47,7 +116,12 @@
 	color: var(--text-primary) !important;
 }
 
-.blockHandler {
+.deleteBlock-dark i {
+	color: var(--dark-text-primary) !important;
+}
+
+.blockHandler,
+.blockHandler-dark {
 	background-color: transparent !important;
 	border: none;
 	padding: 3px 7px;
@@ -64,7 +138,12 @@
 	color: var(--text-primary) !important;
 }
 
-.blockMenu {
+.blockHandler-dark i {
+	color: var(--dark-text-primary) !important;
+}
+
+.blockMenu,
+.blockMenu-dark {
 	position: absolute;
 	top: -30px;
 	background-color: var(--bg-navbar);
@@ -76,26 +155,40 @@
 	margin-inline: auto !important;
 }
 
-.blockMenu ul {
+.blockMenu-dark {
+	background-color: var(--dark-bg-navbar);
+	box-shadow: 0px 0px 10px var(--text-primary) !important;
+}
+
+.blockMenu ul,
+.blockMenu-dark ul {
 	display: flex;
 	align-items: center;
 	padding: 2px 10px;
 	margin: 0 !important;
+	list-style: none;
 	gap: 16px;
 }
 
-.blockMenu ul li {
+.blockMenu ul li,
+.blockMenu-dark ul li {
 	margin: 0;
 }
 
-.blockMenu ul li button {
+.blockMenu ul li button,
+.blockMenu-dark ul li button {
 	border: none;
 	background-color: transparent !important;
 }
 
-.blockMenu ul li i {
+.blockMenu ul li i,
+.blockMenu-dark ul li i {
 	font-size: var(--md);
 	color: var(--text-primary);
+}
+
+.blockMenu-dark ul li i {
+	color: var(--dark-text-primary);
 }
 
 /* HTML Tag */
@@ -137,9 +230,10 @@
 /*  */
 
 .colorBlock {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	background-color: var(--bg-modal) !important;
+	margin-top: 6px !important;
 }
 
 .colorNone {
@@ -147,43 +241,59 @@
 }
 
 /* Light */
-.colorBlue {
+.colorBlue,
+.DiaryCategory {
 	background-color: var(--block-blue) !important;
 }
-.colorRed {
+.colorRed,
+.WorkCategory {
 	background-color: var(--block-red) !important;
 }
-.colorYellow {
+.colorYellow,
+.SchoolCategory {
 	background-color: var(--block-yellow) !important;
 }
-.colorGreen {
+.colorGreen,
+.TravelCategory {
 	background-color: var(--block-green) !important;
 }
-.colorOrange {
+.colorOrange,
+.SocialCategory {
 	background-color: var(--block-orange) !important;
 }
-.colorPurple {
+.colorPurple,
+.OtherCategory {
 	background-color: var(--block-purple) !important;
 }
 
 /* Dark */
-.colorBlueDark {
+.colorBlueDark,
+.DiaryCategoryDark {
 	background-color: var(--dark-block-blue) !important;
 }
-.colorRedDark {
+.colorRedDark,
+.WorkCategoryDark {
 	background-color: var(--dark-block-red) !important;
 }
-.colorYellowDark {
+.colorYellowDark,
+.SchoolCategoryDark {
 	background-color: var(--dark-block-yellow) !important;
 }
-.colorGreenDark {
+.colorGreenDark,
+.TravelCategoryDark {
 	background-color: var(--dark-block-green) !important;
 }
-.colorOrangeDark {
+.colorOrangeDark,
+.SocialCategoryDark {
 	background-color: var(--dark-block-orange) !important;
 }
-.colorPurpleDark {
+.colorPurpleDark,
+.OtherCategoryDark {
 	background-color: var(--dark-block-purple) !important;
+}
+
+.fontDark {
+	color: var(--dark-text-primary) !important;
 }
 
 /* ColorPickers */

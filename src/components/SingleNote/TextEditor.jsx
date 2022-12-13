@@ -1,14 +1,19 @@
 import { useState, useContext } from "react"
 
 import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 import singleNoteService from "../../services/singleNote.service"
 
 function TextEditor({ singleNoteData, noteId }) {
+	const [category, setCategory] = useState(singleNoteData.tag)
+	const [categoryMenu, setCategoryMenu] = useState(false)
+	const [shared, setShared] = useState(singleNoteData.shared)
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [blockId, setBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
 
 	const { isSidebarOpen } = useContext(SidebarContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const handleBlockUpdate = newBlock => {
 		singleNoteService
@@ -17,6 +22,32 @@ function TextEditor({ singleNoteData, noteId }) {
 				return singleNoteService.updateBlocks(res.data._id, [...newBlock])
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
+	}
+
+	// Handle note metadata
+	const handleNoteCheck = () => {
+		setShared(!shared)
+	}
+
+	const handleNoteCategory = e => {
+		e.preventDefault()
+
+		console.log(e.target.value)
+		setCategory(e.target.name)
+		console.log(category)
+		setCategoryMenu(false)
+	}
+
+	const showCategoryMenu = () => {
+		setCategoryMenu(true)
+	}
+
+	const handleMouseOverCategory = id => {
+		setCategoryMenu(true)
+	}
+
+	const handleMouseOutCategory = id => {
+		setCategoryMenu(false)
 	}
 
 	// Add, edit or Delete blocks
@@ -191,14 +222,62 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ marginRight: "80px" }}>
-			<div className="blockList pt-2 pb-5">
+			<div className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+				<div className="d-flex gap-5 pb-3">
+					<div className="d-flex align-items-center position-relative">
+						<p className="me-2 mb-0 noteCategoryName ">Category:</p>
+						<p onClick={showCategoryMenu} className={!darkMode ? `noteCategory ${category}Category mb-0` : `noteCategory ${category}CategoryDark mb-0`}>
+							{category}
+						</p>
+						{categoryMenu && (
+							<div onMouseOver={handleMouseOverCategory} onMouseOut={handleMouseOutCategory} className={!darkMode ? "categoryMenu" : "categoryMenu-dark"}>
+								<ul>
+									<li>
+										<button onClick={e => handleNoteCategory(e)} name="Diary" className={!darkMode ? "categoryBtn noteCategory DiaryCategory" : "categoryBtn-dark noteCategory DiaryCategoryDark"}>
+											Diary
+										</button>
+									</li>
+									<li>
+										<button onClick={handleNoteCategory} name="Work" className={!darkMode ? "categoryBtn noteCategory WorkCategory" : "categoryBtn-dark noteCategory WorkCategoryDark"}>
+											Work
+										</button>
+									</li>
+									<li>
+										<button onClick={handleNoteCategory} name="School" className={!darkMode ? "categoryBtn noteCategory SchoolCategory" : "categoryBtn-dark noteCategory SchoolCategoryDark"}>
+											School
+										</button>
+									</li>
+									<li>
+										<button onClick={handleNoteCategory} name="Travel" className={!darkMode ? "categoryBtn noteCategory TravelCategory" : "categoryBtn-dark noteCategory TravelCategoryDark"}>
+											Travel
+										</button>
+									</li>
+									<li>
+										<button onClick={handleNoteCategory} name="Social" className={!darkMode ? "categoryBtn noteCategory SocialCategory" : "categoryBtn-dark noteCategory SocialCategoryDark"}>
+											Social
+										</button>
+									</li>
+									<li>
+										<button onClick={handleNoteCategory} name="Other" className={!darkMode ? "categoryBtn noteCategory OtherCategory" : "categoryBtn-dark noteCategory OtherCategoryDark"}>
+											Other
+										</button>
+									</li>
+								</ul>
+							</div>
+						)}
+					</div>
+					<div className="d-flex ms-5 align-items-center">
+						<p className="me-2 mb-0">Shared:</p>
+						<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
+					</div>
+				</div>
 				<ul className="blockUl">
 					{block.map((elm, idx) => {
 						return (
 							<li className="block" key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 								{blockId === idx && (
 									<button
-										className="blockHandler"
+										className={!darkMode ? "blockHandler" : "blockHandler-dark"}
 										onClick={() => {
 											handleBlockMenu()
 										}}
@@ -207,7 +286,7 @@ function TextEditor({ singleNoteData, noteId }) {
 									</button>
 								)}
 								{blockId === idx && showMenu && (
-									<div className="blockMenu" onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
+									<div className={!darkMode ? "blockMenu" : "blockMenu-dark"} onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
 										<ul>
 											<li>
 												<button onClick={() => changeIntoH1(blockId)}>
@@ -231,7 +310,7 @@ function TextEditor({ singleNoteData, noteId }) {
 											</li>
 											<li>
 												<button onClick={() => deleteType(blockId)}>
-													<i class="bi bi-fonts"></i>
+													<i className="bi bi-fonts"></i>
 												</button>
 											</li>
 											<li>
@@ -290,7 +369,7 @@ function TextEditor({ singleNoteData, noteId }) {
 								<div style={{ width: "100%" }}>
 									<input
 										type="text"
-										className={`${elm.htmlTag}Block color${elm.style} ${elm.type}Block`}
+										className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
 										name={`block${idx}`}
 										value={elm.content}
 										onKeyDown={e => manageBlockByKey(e, elm, idx)}
@@ -298,7 +377,7 @@ function TextEditor({ singleNoteData, noteId }) {
 									/>
 								</div>
 								{blockId === idx && block.length > 1 && (
-									<button className="deleteBlock" onClick={() => deleteBlock(idx)}>
+									<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
 										<i className="bi bi-trash3"></i>
 									</button>
 								)}
