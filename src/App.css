@@ -36,7 +36,7 @@
 	/* Colors */
 	--color-primary: #6c63ff;
 	--color-primary-interact: #6058f8;
-	--color-primary-btn: #eae9fd;
+	--color-primary-btn: #f2f2ff;
 	--color-primary-btn-interact: #e2e1fd;
 	--color-primary-btn-second-interact: #d1d0fa;
 	--color-secondary: #e15047;
@@ -67,7 +67,7 @@
 }
 
 .block,
-.block > * {
+.block>* {
 	background-color: #6058f8 !important;
 	border: 1px solid black;
 	color: white !important;

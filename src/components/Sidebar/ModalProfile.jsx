@@ -5,9 +5,12 @@ import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import toast from "react-hot-toast"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
+
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const [userData, setUserData] = useState({
 		username: user.username,
@@ -15,7 +18,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	})
 
 	const [loadingImage, setLoadingImage] = useState(false)
-	const [errors, setErrors] = useState("")
+	const [errors, setErrors] = useState()
 	const [imgData, setImgData] = useState({
 		imageUrl: user.imageUrl,
 	})
@@ -60,12 +63,12 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	return (
 		<>
 			<Modal show={showModal} onHide={closeSidebarModal} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
-				<Modal.Header className="profileHeader" closeButton onClick={() => setShowModal(false)}>
+				<Modal.Header className={!darkMode ? "profileHeader" : "profileHeader-dark"} closeButton onClick={() => setShowModal(false)}>
 					<Modal.Title className="px-2" id="contained-modal-title-vcenter">
 						{`${user.username} Profile`}
 					</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>
+				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-primary)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
 					<Form onSubmit={handleFormSubmit} className="px-2">
 						<Form.Label className="text-muted">Image</Form.Label>
 						<div className="d-flex align-items-center justify-content-between mb-4">
@@ -92,7 +95,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 						</Button>
 					</Form>
 				</Modal.Body>
-				<p>{errors}</p>
+				{errors && (<p className={!darkMode ? "errors-message" : "errors-message-dark"}>{errors}</p>)}
 			</Modal>
 		</>
 	)
