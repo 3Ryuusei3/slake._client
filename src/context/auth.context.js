@@ -32,7 +32,7 @@ function AuthProviderWrapper(props) {
 					setIsLoading(false)
 				})
 				.catch(err => {
-					console.error("algo malo paso aw :3", err)
+					console.error("Internal Server Error", err)
 					setIsLoading(false)
 				})
 		}

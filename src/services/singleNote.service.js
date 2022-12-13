@@ -36,6 +36,10 @@ class SingleNoteService {
 	updateBlocks(id, blocks) {
 		return this.api.put(`/update/blocks/${id}`, blocks)
 	}
+
+	deleteNoteByNoteId(id) {
+		return this.api.delete(`/delete/${id}`)
+	}
 }
 
 const singleNoteService = new SingleNoteService()

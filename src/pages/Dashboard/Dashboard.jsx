@@ -16,6 +16,7 @@ function Dashboard() {
 	const { user } = useContext(AuthContext)
 
 	const getDashboardData = () => {
+
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
@@ -25,6 +26,7 @@ function Dashboard() {
 	}
 
 	useEffect(() => {
+
 		getDashboardData()
 	}, [])
 

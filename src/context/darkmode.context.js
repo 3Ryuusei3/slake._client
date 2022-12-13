@@ -5,7 +5,7 @@ const DarkModeContext = createContext()
 
 function DarkModeProviderWrapper(props) {
 
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(true)
 
 
     return <DarkModeContext.Provider value={{ setDarkMode, darkMode }}>
