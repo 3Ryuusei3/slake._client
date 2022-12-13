@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { useLocation } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
@@ -9,10 +10,12 @@ import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
+
 function HeaderTitle({ headerTitle, setHeaderData }) {
 	const [title, setTitle] = useState(headerTitle)
-	const { user } = useContext(AuthContext)
 
+	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 
 	let location = useLocation()
@@ -60,7 +63,7 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
-			<input className="headerTitle headerInput" placeholder="Untitled" value={title} onChange={handleTitle} onBlur={handleTitleUpdate} />
+			<input className={!darkMode ? "headerInput" : "headerInput-dark"} placeholder="Untitled" value={title} onChange={handleTitle} onBlur={handleTitleUpdate} />
 		</div>
 	)
 }

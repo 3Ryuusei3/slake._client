@@ -24,3 +24,7 @@
 .me-6 {
 	margin-right: 70px;
 }
+
+.modal-dialog {
+	border-radius: 32px !important;
+}

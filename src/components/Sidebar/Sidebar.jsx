@@ -2,6 +2,9 @@ import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
+
+
 
 import ModalProfile from "./ModalProfile"
 
@@ -12,9 +15,14 @@ const Sidebar = () => {
 
 	const { user, logoutUser } = useContext(AuthContext)
 	const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext)
+	const { darkMode, setDarkMode } = useContext(DarkModeContext)
 
 	const handleToggle = () => {
 		setIsSidebarOpen(!isSidebarOpen)
+	}
+
+	const toggleDarkMode = () => {
+		setDarkMode(!darkMode)
 	}
 
 	const openSidebarModal = () => setShowModal(true)
@@ -23,7 +31,7 @@ const Sidebar = () => {
 	return (
 		<>
 			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "fixed" }}>
-				<CDBSidebar style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" }}>
+				<CDBSidebar style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
 					<CDBSidebarHeader
 						prefix={
 							<img
@@ -59,6 +67,9 @@ const Sidebar = () => {
 							</NavLink>
 							<NavLink to="/plan" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="credit-card">Plan</CDBSidebarMenuItem>
+							</NavLink>
+							<NavLink activeclassname="activeClicked" style={{ color: "inherit" }} onClick={() => { toggleDarkMode() }}>
+								<CDBSidebarMenuItem icon={!darkMode ? 'moon' : 'sun'}>{!darkMode ? 'Dark Mode' : 'Light Mode'}</CDBSidebarMenuItem>
 							</NavLink>
 							<NavLink className="logout-btn" as="div" to="/" activeclassname="activeClicked" onClick={logoutUser}>
 								<CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>

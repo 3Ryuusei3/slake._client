@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 import { Modal } from "react-bootstrap"
+import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
 import NewHeaderImgForm from "./NewHeaderImgForm"
@@ -9,6 +10,7 @@ function HeaderImage({ headerImg, setHeaderData }) {
 	const [showImgModal, setShowImgModal] = useState(false)
 
 	const { isSidebarOpen } = useContext(SidebarContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const handleMouseOver = () => {
 		setShowIcon(true)
@@ -32,10 +34,10 @@ function HeaderImage({ headerImg, setHeaderData }) {
 				<img onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="headerImg" src={headerImg} alt="" />
 			</div>
 			<Modal show={showImgModal} onHide={closeImgModal}>
-				<Modal.Header closeButton>
+				<Modal.Header style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }} closeButton>
 					<Modal.Title>Change header image</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>
+				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
 					<NewHeaderImgForm setShowImgModal={setShowImgModal} setHeaderData={setHeaderData} />
 				</Modal.Body>
 			</Modal>

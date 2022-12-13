@@ -95,3 +95,13 @@
 	margin-left: 300px;
 	transition: 0.4s ease;
 }
+
+.errors-message {
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+}
+
+.errors-message-dark {
+	color: var(--dark-text-primary);
+	background-color: var(--dark-bg-primary);
+}
