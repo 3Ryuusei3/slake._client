@@ -1,4 +1,8 @@
+/*  */
 /* Dashboard */
+/*  */
+
+/* Callout */
 
 .Callout,
 .Callout-dark {
@@ -10,12 +14,12 @@
 	border-radius: 4px;
 	padding: 10px 16px;
 	width: 90%;
-	color: var(--text-primary)
+	color: var(--text-primary);
 }
 
 .Callout-dark {
 	background-color: var(--dark-bg-navbar);
-	color: var(--dark-text-primary)
+	color: var(--dark-text-primary);
 }
 
 .Callout p,
@@ -34,13 +38,15 @@
 	border: none;
 	width: 100%;
 	background-color: var(--bg-navbar);
-	color: var(--text-primary)
+	color: var(--text-primary);
 }
 
 .Callout-dark input {
 	background-color: var(--dark-bg-navbar);
-	color: var(--dark-text-primary)
+	color: var(--dark-text-primary);
 }
+
+/* Todo */
 
 .addTodoInput,
 .addTodoInput-dark {
@@ -50,14 +56,13 @@
 	justify-content: space-between;
 	padding: 10px 16px;
 	border-radius: 4px;
-	color: var(--text-primary)
+	color: var(--text-primary);
 }
 
 .addTodoInput-dark {
 	background-color: var(--dark-bg-navbar);
-	color: var(--dark-text-primary)
+	color: var(--dark-text-primary);
 }
-
 
 .todoList i,
 .todoList-dark i {
@@ -67,8 +72,6 @@
 .todoList-dark i {
 	color: var(--light-text-primary);
 }
-
-
 
 .addTodoInput input,
 .addTodoInput-dark input {
@@ -145,7 +148,7 @@
 }
 
 .todoList-dark ul input[type="text"] {
-	color: var(--dark-text-primary)
+	color: var(--dark-text-primary);
 }
 
 .deleteTodo {
@@ -166,10 +169,13 @@
 	color: var(--light-text-secondary) !important;
 }
 
-
 .crossedItem input[type="text"],
 .crossedItem-dark input[type="text"] {
 	color: var(--dark-text-secondary) !important;
+}
+
+.crossedItem-dark input[type="text"] {
+	color: var(--light-text-secondary) !important;
 }
 
 .crossedItem-dark input[type="text"] {
