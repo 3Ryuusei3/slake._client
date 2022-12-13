@@ -33,11 +33,32 @@ function ToDo({ dashboardData }) {
 		setInput("")
 	}
 
+	const addToDoItemAtIdx = (item, idx) => {
+		const newToDo = {
+			text: item,
+			isDone: false,
+		}
+		let newToDoList = [...todo]
+		newToDoList.splice(idx + 1, 0, newToDo)
+		setTodo(newToDoList)
+		handleTodoUpdate(newToDoList)
+	}
+
 	const deleteTodo = (idx, e) => {
 		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
 		setTodo(newToDoList)
 		handleTodoUpdate(newToDoList)
+	}
+
+	const manageBlockByKey = (e, elm, idx) => {
+		if (e.key === "Enter") {
+			addToDoItemAtIdx("", idx)
+		}
+		if (e.key === "Backspace" && elm.text === "") {
+			e.preventDefault()
+			deleteTodo(idx)
+		}
 	}
 
 	const handleMouseOver = id => {
@@ -82,11 +103,18 @@ function ToDo({ dashboardData }) {
 							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
 									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
-									<input type="text" name={`todoItem${idx}`} value={elm.text} onChange={e => handleToDoItemText(idx, e)} onBlur={() => handleTodoUpdate(todo)} />
+									<input
+										type="text"
+										onKeyDown={e => manageBlockByKey(e, elm, idx)}
+										name={`todoItem${idx}`}
+										value={elm.text}
+										onChange={e => handleToDoItemText(idx, e)}
+										onBlur={() => handleTodoUpdate(todo)}
+									/>
 								</div>
 								{toDoId === idx && (
 									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>
-										<i className="bi bi-x-lg"></i>
+										<i className="bi bi-trash3"></i>
 									</button>
 								)}
 							</li>

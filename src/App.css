@@ -43,6 +43,28 @@
 	--color-secondary: #e15047;
 	--color-secondary-interact: #fae2e0;
 
+	/* Block colors */
+	--block-blue: #d1e4ec;
+	--block-red: #fadada;
+	--block-yellow: #fbf1d1;
+	--block-green: #d0ebe6;
+	--block-orange: #fae6d3;
+	--block-purple: #e4d9f3;
+
+	--text-blue: #529cca;
+	--text-red: #ff7369;
+	--text-yellow: #ffdc49;
+	--text-green: #4dab9a;
+	--text-orange: #ffa344;
+	--text-purple: #9a6dd7;
+
+	--dark-block-blue: #364954;
+	--dark-block-red: #594141;
+	--dark-block-yellow: #59563b;
+	--dark-block-green: #354c4b;
+	--dark-block-orange: #594a3a;
+	--dark-block-purple: #443f57;
+
 	/* Font family */
 	font-family: "Noto Sans", sans-serif !important;
 

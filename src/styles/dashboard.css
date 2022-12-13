@@ -1,4 +1,8 @@
+/*  */
 /* Dashboard */
+/*  */
+
+/* Callout */
 
 .Callout {
 	display: flex;
@@ -25,6 +29,8 @@
 	width: 100%;
 	background-color: var(--bg-navbar);
 }
+
+/* Todo */
 
 .addTodoInput {
 	background-color: var(--bg-navbar);
