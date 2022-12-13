@@ -42,7 +42,7 @@
 	background-color: var(--bg-navbar);
 	box-shadow: 0px 0px 10px var(--text-secondary);
 	border-radius: 4px;
-	left: -65px;
+	left: -60px;
 	display: flex !important;
 	justify-content: center !important;
 	align-items: center !important;

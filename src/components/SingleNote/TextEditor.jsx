@@ -7,7 +7,7 @@ function TextEditor({ singleNoteData, noteId }) {
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [input, setInput] = useState("")
 	const [blockId, setBlockId] = useState("")
-	const [showMenu, setShowMenu] = useState(true)
+	const [showMenu, setShowMenu] = useState(false)
 
 	const { isSidebarOpen } = useContext(SidebarContext)
 
@@ -43,6 +43,14 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	const handleMouseOut = () => {
 		setBlockId("")
+	}
+
+	const handleMenuOut = () => {
+		setShowMenu(false)
+	}
+
+	const handleMenuIn = () => {
+		setShowMenu(true)
 	}
 
 	const handleBlockText = (i, e) => {
@@ -109,7 +117,7 @@ function TextEditor({ singleNoteData, noteId }) {
 									</button>
 								)}
 								{blockId === idx && showMenu && (
-									<div className="blockMenu">
+									<div className="blockMenu" onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
 										<ul>
 											<li>
 												<button onClick={() => changeIntoH1(blockId)}>
