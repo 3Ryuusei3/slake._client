@@ -18,6 +18,7 @@
 		"react-bootstrap": "^2.6.0",
 		"react-content-loader": "^6.2.0",
 		"react-contenteditable": "^3.3.6",
+		"react-dark-mode-toggle": "^0.2.0",
 		"react-dom": "^18.2.0",
 		"react-hot-toast": "^2.4.0",
 		"react-input-emoji": "^4.3.0",

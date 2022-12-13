@@ -1,15 +1,18 @@
 import { useContext, useState } from "react"
 
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
+
 
 function Callout({ dashboardData }) {
 	const [callout, setCallout] = useState(dashboardData.callout)
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 
 	const handleCallout = e => {
@@ -28,7 +31,7 @@ function Callout({ dashboardData }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
-			<div className="Callout">
+			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>
 					<input onChange={handleCallout} type="text" value={callout} onBlur={handleCalloutUpdate} placeholder="This is your callout" />

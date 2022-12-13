@@ -1,9 +1,11 @@
 import { useState, useContext } from "react"
 
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
+
 
 function ToDo({ dashboardData }) {
 	const [todo, setTodo] = useState([...dashboardData.todo])
@@ -12,6 +14,7 @@ function ToDo({ dashboardData }) {
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const handleTodoUpdate = newTodo => {
 		dashboardServices
@@ -90,8 +93,8 @@ function ToDo({ dashboardData }) {
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
 			<h3 className="pt-5">To-do</h3>
-			<div className="todoList pt-3">
-				<div className="addTodoInput">
+			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"} >
+				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
 					<button onClick={() => addToDoItem(input)}>
 						<i className="bi bi-plus-lg"></i>
 					</button>
@@ -122,7 +125,7 @@ function ToDo({ dashboardData }) {
 					})}
 				</ul>
 			</div>
-		</div>
+		</div >
 	)
 }
 

@@ -4,7 +4,8 @@
 
 /* Callout */
 
-.Callout {
+.Callout,
+.Callout-dark {
 	display: flex;
 	align-items: center;
 	gap: 20px;
@@ -13,46 +14,75 @@
 	border-radius: 4px;
 	padding: 10px 16px;
 	width: 90%;
+	color: var(--text-primary);
 }
 
-.Callout p {
+.Callout-dark {
+	background-color: var(--dark-bg-navbar);
+	color: var(--dark-text-primary);
+}
+
+.Callout p,
+.Callout-dark p {
 	font-size: var(--lg);
 	margin-bottom: 4px;
 }
 
-.Callout div {
+.Callout div,
+.Callout-dark div {
 	width: 90%;
 }
 
-.Callout input {
+.Callout input,
+.Callout-dark input {
 	border: none;
 	width: 100%;
 	background-color: var(--bg-navbar);
+	color: var(--text-primary);
+}
+
+.Callout-dark input {
+	background-color: var(--dark-bg-navbar);
+	color: var(--dark-text-primary);
 }
 
 /* Todo */
 
-.addTodoInput {
+.addTodoInput,
+.addTodoInput-dark {
 	background-color: var(--bg-navbar);
 	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	padding: 10px 16px;
 	border-radius: 4px;
+	color: var(--text-primary);
 }
 
-.todoList i {
+.addTodoInput-dark {
+	background-color: var(--dark-bg-navbar);
 	color: var(--dark-text-primary);
 }
 
-.addTodoInput input {
+.todoList i,
+.todoList-dark i {
+	color: var(--dark-text-primary);
+}
+
+.todoList-dark i {
+	color: var(--light-text-primary);
+}
+
+.addTodoInput input,
+.addTodoInput-dark input {
 	background-color: transparent;
 	width: 100%;
 	margin-left: 16px;
 	border: none;
 }
 
-.addTodoInput button {
+.addTodoInput button,
+.addTodoInput-dark button {
 	border: none;
 	padding: 3px 7px;
 	background-color: var(--color-primary);
@@ -60,14 +90,16 @@
 	border-radius: 4px;
 }
 
-.todoList ul {
+.todoList ul,
+.todoList-dark ul {
 	margin-top: 20px;
 	margin-left: 16px;
 	list-style: none;
 	padding-left: 2px;
 }
 
-.todoList li {
+.todoList li,
+.todoList-dark li {
 	margin-bottom: 10px;
 	display: flex;
 	align-items: center;
@@ -81,12 +113,20 @@
 	transition: 0.3s ease;
 }
 
-.todoList li div {
+.todoList-dark li:hover,
+.todoList-dark ul input[type="text"]:hover {
+	background-color: var(--dark-bg-interact);
+	transition: 0.3s ease;
+}
+
+.todoList li div,
+.todoList-dark li div {
 	display: flex;
 	align-items: center;
 }
 
-.todoList input[type="checkbox"] {
+.todoList input[type="checkbox"],
+.todoList-dark input[type="checkbox"] {
 	margin-left: 5px;
 	margin-right: 20px;
 	border-radius: none;
@@ -95,11 +135,20 @@
 	accent-color: var(--color-primary);
 }
 
-.todoList ul input[type="text"] {
+.todoList-dark input[type="checkbox"] {
+	accent-color: var(--light-color-primary);
+}
+
+.todoList ul input[type="text"],
+.todoList-dark ul input[type="text"] {
 	border: none;
 	width: 100%;
 	padding: 3px 7px;
 	background-color: transparent;
+}
+
+.todoList-dark ul input[type="text"] {
+	color: var(--dark-text-primary);
 }
 
 .deleteTodo {
@@ -110,11 +159,25 @@
 	border-radius: 4px;
 }
 
-.crossedItem {
+.crossedItem,
+.crossedItem-dark {
 	text-decoration: line-through !important;
 	color: var(--dark-text-secondary) !important;
 }
 
-.crossedItem input[type="text"] {
+.crossedItem-dark {
+	color: var(--light-text-secondary) !important;
+}
+
+.crossedItem input[type="text"],
+.crossedItem-dark input[type="text"] {
 	color: var(--dark-text-secondary) !important;
+}
+
+.crossedItem-dark input[type="text"] {
+	color: var(--light-text-secondary) !important;
+}
+
+.crossedItem-dark input[type="text"] {
+	color: var(--light-text-secondary) !important;
 }

@@ -3,3 +3,8 @@
 .profileHeader {
 	background-color: var(--bg-navbar) !important;
 }
+
+.profileHeader-dark {
+	color: var(--dark-text-primary);
+	background-color: var(--dark-bg-navbar) !important;
+}

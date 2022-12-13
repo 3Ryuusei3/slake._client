@@ -10,9 +10,12 @@ import uploadServices from "../../services/upload.service"
 import singleNoteService from "../../services/singleNote.service"
 
 import { Form, Button } from "react-bootstrap"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
+
 	const [headerImg, setHeaderImg] = useState({
 		header: {
 			image: "",
@@ -96,7 +99,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 
 	return (
 		<Form onSubmit={handleImageSubmit}>
-			<Form.Group className="mt-2" controlId="image">
+			<Form.Group className="mt-2" controlId="image" >
 				<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
