@@ -2,6 +2,8 @@ import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
+
 import authService from "../../services/auth.service"
 
 
@@ -11,9 +13,11 @@ const LoginForm = () => {
 		password: "",
 	})
 
+	const { darkMode } = useContext(DarkModeContext)
+
 	const [errors, setErrors] = useState()
 
-	const { storeToken, authenticateUser, user } = useContext(AuthContext)
+	const { storeToken, authenticateUser } = useContext(AuthContext)
 	const navigate = useNavigate()
 
 	const handleInputChange = e => {
@@ -43,12 +47,12 @@ const LoginForm = () => {
 		<Form className="d-flex flex-column gap-2" onSubmit={handleFormSubmit}>
 			<Form.Group className="mb-3" controlId="email">
 				<Form.Label className="text-muted">Email</Form.Label>
-				<Form.Control type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
+				<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
 			</Form.Group>
 
 			<Form.Group className="mb-3" controlId="password">
 				<Form.Label className="text-muted">Password</Form.Label>
-				<Form.Control type="password" value={password} name="password" onChange={handleInputChange} placeholder="Enter your password..." />
+				<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="password" value={password} name="password" onChange={handleInputChange} placeholder="Enter your password..." />
 			</Form.Group>
 
 			<p>{errors}</p>

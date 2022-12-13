@@ -19,6 +19,13 @@
 .form-control {
 	padding: 4px 8px !important;
 	background-color: var(--color-primary-btn) !important;
+	color: var(--text-primary) !important;
+}
+
+.form-control-dark {
+	padding: 4px 8px !important;
+	background-color: var(--dark-bg-dark) !important;
+	color: var(--light-text-primary) !important;
 }
 
 .me-6 {

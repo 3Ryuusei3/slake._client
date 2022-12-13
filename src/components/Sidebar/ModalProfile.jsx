@@ -23,7 +23,9 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 		imageUrl: user.imageUrl,
 	})
 
-	const notify = () => toast.success(`Thanks for change your profile, ${user.username}`)
+	const notify = () => toast(`Thanks for change your profile, ${user.username}`, {
+		icon: '✔️'
+	})
 
 	const handleFileUpload = e => {
 		setLoadingImage(true)
@@ -74,17 +76,17 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 						<div className="d-flex align-items-center justify-content-between mb-4">
 							<img src={user.imageUrl} className="sidebarProfileImg" />
 							<Form.Group className="mt-2" controlId="image">
-								<Form.Control type="file" onChange={handleFileUpload} placeholder="Select an image..." />
+								<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 							</Form.Group>
 						</div>
 						{/* ASOCIAR LA IMAGEN DEL USUARIO AL FORM DE CAMBIO  */}
 						<Form.Group className="mb-3" controlId="username">
 							<Form.Label className="text-muted">Username</Form.Label>
-							<Form.Control type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
+							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
 						</Form.Group>
 						<Form.Group className="mb-3" controlId="email">
 							<Form.Label className="text-muted">Email address</Form.Label>
-							<Form.Control type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
+							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
 						</Form.Group>
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}

@@ -1,27 +1,52 @@
 /* Pricing */
 
+.pricing-card-dark {
+	background-color: var(--bg-navbar);
+}
+
+.pricing-card-dark {
+	background-color: var(--dark-bg-navbar);
+}
+
 .pricing-header {
 	background-color: var(--bg-navbar) !important;
+}
+
+.pricing-header-dark {
+	background-color: var(--dark-bg-navbar) !important;
 }
 
 .pricing-card h3 {
 	color: var(--color-primary);
 }
 
-.pricing-body ul {
+.pricing-body {
+	background-color: var(--bg-modal);
+}
+
+.pricing-body-dark {
+	background-color: var(--dark-bg-modal);
+}
+
+
+.pricing-body ul,
+.pricing-body-dark ul {
 	list-style: none;
 	padding-left: 20px;
 }
 
-.pricing-body li {
+.pricing-body li,
+.pricing-body-dark li {
 	display: flex;
 	gap: 10px;
 }
 
-.pricing-body li p {
+.pricing-body li p,
+.pricing-body-dark li p {
 	margin-bottom: 0;
 }
 
-.pricing-icon {
+.pricing-icon,
+.pricing-icon-dark {
 	font-size: var(--xxl);
 }

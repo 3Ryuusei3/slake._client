@@ -3,3 +3,45 @@
 .nav-icon {
 	width: 25px;
 }
+
+.brand-link,
+.brand-link-dark {
+	text-decoration: none !important;
+	color: var(--text-primary) !important;
+	font-weight: var(--button) !important;
+	font-size: var(--md) !important;
+	border-radius: 8px !important;
+}
+
+.brand-link-dark {
+	color: var(--dark-text-primary) !important;
+}
+
+.nav-btn,
+.nav-btn-dark {
+	text-decoration: none;
+	color: var(--text-primary) !important;
+	font-weight: var(--button) !important;
+	font-size: var(--sm) !important;
+	display: block !important;
+	margin-inline: 16px;
+	margin-top: 2px !important;
+}
+
+.nav-btn-dark {
+	color: var(--dark-text-primary) !important;
+}
+
+.nav-btn:hover,
+.nav-btn:focus {
+	background-color: var(--bg-interact) !important;
+	border-radius: 8px !important;
+	text-decoration: none !important;
+}
+
+.nav-btn-dark:hover,
+.nav-btn-dark:focus {
+	background-color: var(--dark-bg-interact) !important;
+	border-radius: 8px !important;
+	text-decoration: none !important;
+}

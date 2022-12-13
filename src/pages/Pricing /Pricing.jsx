@@ -2,10 +2,12 @@ import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { Card, Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 const Pricing = () => {
 
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	return (
 		<>
@@ -35,14 +37,14 @@ const Pricing = () => {
 				<Row className="justify-content-center">
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
 						<Card style={{ width: "18rem" }} className="mb-2">
-							<Card.Header className="pricing-header">
+							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-fill"></i>
 									<h2>Free</h2>
 								</div>
 								<p>For organizing every corner of your work of life</p>
 							</Card.Header>
-							<Card.Body className="pricing-body">
+							<Card.Body className={!darkMode ? "pricing-body" : "pricing-body-dark"}>
 								<Card.Title>
 									<h3>Free</h3>
 								</Card.Title>
@@ -75,15 +77,15 @@ const Pricing = () => {
 						</Card>
 					</Col>
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
-						<Card style={{ width: "18rem" }} className="m-0 p-0 mb-2 pricing-card">
-							<Card.Header className="pricing-header">
+						<Card style={{ width: "18rem" }} className={!darkMode ? "pricing-card m-0 p-0 mb-2" : "pricing-card-dark m-0 p-0 mb-2"} >
+							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-up-fill"></i>
 									<h2>Plus</h2>
 								</div>
 								<p>For organizing every corner of your work of life and more!</p>
 							</Card.Header>
-							<Card.Body className="pricing-body">
+							<Card.Body className={!darkMode ? "pricing-body" : "pricing-body-dark"}>
 								<Card.Title>
 									<h3>
 										<i className="bi bi-currency-dollar"></i> 10

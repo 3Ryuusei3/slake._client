@@ -8,8 +8,12 @@ function AuthProviderWrapper(props) {
 
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-	const notifyLogIn = user => toast.success(`Welcome back, ${user}`)
-	const notifyLogOut = () => toast.error('See you soon ')
+	const notifyLogIn = user => toast(`Welcome back, ${user}`, {
+		icon: '🎉',
+	})
+	const notifyLogOut = () => toast('See you soon', {
+		icon: '👋🏼'
+	})
 
 
 	const storeToken = token => {

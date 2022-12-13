@@ -61,31 +61,6 @@
 	background-color: var(--bg-navbar) !important;
 }
 
-.brand-link {
-	text-decoration: none !important;
-	color: var(--text-primary) !important;
-	font-weight: var(--button) !important;
-	font-size: var(--md) !important;
-	border-radius: 8px !important;
-}
-
-.nav-btn {
-	text-decoration: none;
-	color: var(--text-primary) !important;
-	font-weight: var(--button) !important;
-	font-size: var(--sm) !important;
-	display: block !important;
-	margin-inline: 16px;
-	margin-top: 2px !important;
-}
-
-.nav-btn:hover,
-.nav-btn:focus {
-	background-color: var(--bg-interact) !important;
-	border-radius: 8px !important;
-	text-decoration: none !important;
-}
-
 .leftPaddingSm {
 	transition: 0.4s ease;
 	margin-left: 150px;

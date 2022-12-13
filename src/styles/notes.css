@@ -12,10 +12,15 @@
 
 table {
 	width: 100%;
+	border-color: red !important;
 }
 
-tbody {
+.tbody-color {
 	box-shadow: 0 0 0 1px var(--bg-interact);
+}
+
+.tbody-color-dark {
+	box-shadow: 0 0 0 1px var(--dark-bg-interact);
 }
 
 th {
@@ -36,4 +41,22 @@ td a {
 	text-decoration: none;
 	color: var(--text-primary);
 	font-weight: var(--subtitle);
+}
+
+.singleNoteLink {
+	color: var(--text-primary) !important;
+	text-decoration: none !important;
+}
+
+.singleNoteLink-dark {
+	color: var(--dark-text-terciary) !important;
+	text-decoration: none !important;
+}
+
+.table-color-border {
+	border: 1px solid var(--dark-bg-primary) !important;
+}
+
+.table-color-border-dark {
+	border: 1px solid var(--dark-bg-interact) !important;
 }

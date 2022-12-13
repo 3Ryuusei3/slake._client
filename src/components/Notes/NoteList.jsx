@@ -3,17 +3,19 @@ import { Link } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
+
 
 import singleNoteService from "../../services/singleNote.service"
 import { List } from "react-content-loader"
 
 function NotesList() {
 	const [notes, setNotes] = useState()
-	const [input, setInput] = useState("")
 	const [noteId, setNoteId] = useState("")
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const getNotes = () => {
 		singleNoteService
@@ -81,7 +83,7 @@ function NotesList() {
 									</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody className={!darkMode ? 'tbody-color' : 'tbody-color-dark'}>
 								{notes.map((elm, idx) => {
 									let date = new Date(elm.updatedAt)
 									return (
@@ -89,7 +91,7 @@ function NotesList() {
 											<td className="d-flex justify-content-between">
 												<div>
 													<span className="me-2">{elm.header.icon}</span>
-													<Link to={`/note/${elm._id}`}>{elm.header.title}</Link>
+													<Link to={`/note/${elm._id}`} className={!darkMode ? 'singleNoteLink' : 'singleNoteLink-dark'}>{elm.header.title}</Link>
 												</div>
 												{noteId === idx ? <i className="bi bi-trash3"></i> : <i className="bi bi-trash3" style={{ color: "transparent" }}></i>}
 											</td>
