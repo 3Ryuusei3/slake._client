@@ -59,7 +59,7 @@ const Sidebar = () => {
 							<NavLink to="/notes" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="sticky-note">Notes</CDBSidebarMenuItem>
 							</NavLink>
-							<NavLink to="/shared" activeclassname="activeClicked" style={{ color: "inherit" }}>
+							<NavLink to="/shared_notes" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="share">Shared notes</CDBSidebarMenuItem>
 							</NavLink>
 							<CDBSidebarMenuItem className="sidebar-label mt-3">Settings</CDBSidebarMenuItem>

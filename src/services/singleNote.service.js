@@ -44,6 +44,10 @@ class SingleNoteService {
 	deleteNoteByNoteId(id) {
 		return this.api.delete(`/delete/${id}`)
 	}
+
+	getSharedNotes() {
+		return this.api.get("shared")
+	}
 }
 
 const singleNoteService = new SingleNoteService()

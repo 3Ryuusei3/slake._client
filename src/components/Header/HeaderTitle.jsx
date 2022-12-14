@@ -10,8 +10,7 @@ import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
-
-function HeaderTitle({ headerTitle, setHeaderData }) {
+function HeaderTitle({ headerTitle }) {
 	const [title, setTitle] = useState(headerTitle)
 
 	const { user } = useContext(AuthContext)
@@ -26,8 +25,9 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 		setTitle(e.target.value)
 	}
 
-	const handleTitleUpdate = () => {
+	console.log()
 
+	const handleTitleUpdate = () => {
 		if (pageLocation === "dashboard") {
 			dashboardServices
 				.getDashboardByUser(user._id)
@@ -63,7 +63,14 @@ function HeaderTitle({ headerTitle, setHeaderData }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
-			<input className={!darkMode ? "headerInput" : "headerInput-dark"} placeholder="Untitled" value={title} onChange={handleTitle} onBlur={handleTitleUpdate} />
+			<input
+				readOnly={location.pathname.includes("shared") ? true : false}
+				className={!darkMode ? "headerInput" : "headerInput-dark"}
+				placeholder="Untitled"
+				value={title}
+				onChange={handleTitle}
+				onBlur={handleTitleUpdate}
+			/>
 		</div>
 	)
 }

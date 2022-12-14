@@ -105,9 +105,11 @@ function NotesList() {
 													{noteId === idx ? <i className="bi bi-trash3"></i> : <i className="bi bi-trash3" style={{ color: "transparent" }}></i>}
 												</button>
 											</td>
-											<td>{elm.tag}</td>
+											<td>
+												<span className={!darkMode ? `noteCategory ${elm.tag}Category mb-0` : `noteCategory ${elm.tag}CategoryDark mb-0`}>{elm.tag}</span>
+											</td>
 											<td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
-											<td>{elm.shared ? "Yes" : "No"}</td>
+											<td>{elm.shared ? "✅" : "❌"}</td>
 										</tr>
 									)
 								})}
