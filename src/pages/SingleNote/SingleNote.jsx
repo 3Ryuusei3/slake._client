@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useLocation } from "react-router-dom"
 
+import { AuthContext } from "../../context/auth.context"
 import singleNoteService from "../../services/singleNote.service"
 
 import Header from "../../components/Header/Header"
@@ -13,11 +14,12 @@ function SingleNote() {
 
 	const [singleNoteData, setSingleNoteData] = useState()
 
+	const { user } = useContext(AuthContext)
+
 	const getSingleNoteData = () => {
 		singleNoteService
 			.getNoteByNoteId(noteId)
 			.then(res => {
-				console.log(res.data)
 				setSingleNoteData(res.data)
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
@@ -29,9 +31,15 @@ function SingleNote() {
 
 	return (
 		<>
-			<Sidebar />
-			<Header />
-			{singleNoteData && <TextEditor singleNoteData={singleNoteData} noteId={noteId} />}
+			{singleNoteData && (
+				<div>
+					<Sidebar />
+					<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}}>
+						<Header />
+					</div>
+					{singleNoteData && <TextEditor singleNoteData={singleNoteData} noteId={noteId} />}
+				</div>
+			)}
 		</>
 	)
 }

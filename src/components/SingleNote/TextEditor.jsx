@@ -1,6 +1,8 @@
-import { useState, useEffect, useContext, useRef } from "react"
+import { useState, useContext } from "react"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import toast from "react-hot-toast"
 
+import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 import singleNoteService from "../../services/singleNote.service"
@@ -13,18 +15,15 @@ function TextEditor({ singleNoteData, noteId }) {
 	const [blockId, setBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
 
-	/* const refBlock = useRef(null) */
-	/* 	const refBlockList = useRef(block) */
-
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
+	const { user } = useContext(AuthContext)
 
-	/* useEffect(() => {
-		console.log('------------', refBlock.current)
-		if (refBlock.current) {
-			refBlock.current.focus()
-		}
-	}, [block]) */
+	const notify = () => toast.error("You cannot edit this note")
+
+	if (user._id !== singleNoteData.owner) {
+		notify()
+	}
 
 	const handleMetadataUpdate = metadata => {
 		singleNoteService
@@ -106,10 +105,6 @@ function TextEditor({ singleNoteData, noteId }) {
 		setBlockId("")
 	}
 
-	/* const handleFocus = ref => {
-		refBlock.current = ref
-	} */
-
 	const handleMenuOut = () => {
 		setShowMenu(false)
 	}
@@ -126,21 +121,16 @@ function TextEditor({ singleNoteData, noteId }) {
 	const manageBlockByKey = (e, elm, idx) => {
 		if (e.key === "Enter") {
 			addBlockAtIdx("", idx)
-			/* 			handleFocus(refBlockList[idx]) */
 		}
 		if (e.key === "Backspace" && elm.content === "") {
 			e.preventDefault()
 			deleteBlock(idx)
-			/* handleFocus(refBlockList[idx - 1]) */
 		}
 		if (e.key === "ArrowDown" && idx < block.length) {
 		}
 		if (e.key === "ArrowUp" && idx > block.length) {
 		}
 	}
-
-	/* console.log("Block list:", refBlockList.current) */
-	/* console.log("Current block:", refBlock.current) */
 
 	// Block styling
 	const changeIntoH1 = i => {
@@ -261,7 +251,7 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ marginRight: "80px" }}>
-			<div className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
 				<div className="d-flex gap-5 pb-3">
 					<div className="d-flex align-items-center position-relative">
 						<p className="me-2 mb-0 noteCategoryName ">Category:</p>
@@ -441,11 +431,3 @@ function TextEditor({ singleNoteData, noteId }) {
 }
 
 export default TextEditor
-
-/* 
-
-ref={refBlock}
-onFocus={ref => handleFocus(ref)}
-autoFocus={idx === blockId + 1 ? true : false}
-
-*/
