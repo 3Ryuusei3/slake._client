@@ -1,15 +1,20 @@
 import { useContext, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 
 import { DarkModeContext } from "../../context/darkmode.context"
+import authService from "../../services/auth.service"
+
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
+
 	const { user, refreshToken } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
+	const navigate = useNavigate()
 
 	const [userData, setUserData] = useState({
 		username: user.username,
@@ -63,6 +68,17 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}
 
+	const handleDeleteAccount = () => {
+
+		authService
+			.deleteUser(user._id)
+			.then(() => {
+				localStorage.removeItem("authToken")
+				navigate("/")
+			})
+			.catch(err => setErrors(err.response.data.errorMessages))
+	}
+
 	const { username, email, isDark } = userData
 
 	return (
@@ -112,7 +128,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 						</Button>
 
 						{/* FALTA HACER MODAL DE CONFIRMACIÓN Y SUBMIT DE BORRAR CUENTA */}
-						<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+						<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={handleDeleteAccount}>
 							Delete account
 						</Button>
 					</Form>

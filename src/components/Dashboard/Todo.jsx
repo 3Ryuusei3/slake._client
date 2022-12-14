@@ -17,37 +17,42 @@ function ToDo({ dashboardData }) {
 	const { darkMode } = useContext(DarkModeContext)
 
 	const handleTodoUpdate = newTodo => {
+
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
-				console.log(todo)
 				return dashboardServices.updateTodo(res.data[0]._id, [...newTodo])
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
 	const addToDoItem = item => {
+
 		const newToDo = {
 			text: item,
 			isDone: false,
 		}
+
 		setTodo([...todo, newToDo])
 		handleTodoUpdate([...todo, newToDo])
 		setInput("")
 	}
 
 	const addToDoItemAtIdx = (item, idx) => {
+
 		const newToDo = {
 			text: item,
 			isDone: false,
 		}
+
 		let newToDoList = [...todo]
 		newToDoList.splice(idx + 1, 0, newToDo)
 		setTodo(newToDoList)
 		handleTodoUpdate(newToDoList)
 	}
 
-	const deleteTodo = (idx, e) => {
+	const deleteTodo = (idx) => {
+
 		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
 		setTodo(newToDoList)
@@ -55,9 +60,11 @@ function ToDo({ dashboardData }) {
 	}
 
 	const manageBlockByKey = (e, elm, idx) => {
+
 		if (e.key === "Enter") {
 			addToDoItemAtIdx("", idx)
 		}
+
 		if (e.key === "Backspace" && elm.text === "") {
 			e.preventDefault()
 			deleteTodo(idx)
@@ -79,7 +86,7 @@ function ToDo({ dashboardData }) {
 		handleTodoUpdate(toDoListCopy)
 	}
 
-	const handleToDoItemCheck = (i, e) => {
+	const handleToDoItemCheck = (i) => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
 		setTodo(toDoListCopy)

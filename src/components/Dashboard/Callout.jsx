@@ -21,6 +21,7 @@ function Callout({ dashboardData }) {
 	}
 
 	const handleCalloutUpdate = () => {
+
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
