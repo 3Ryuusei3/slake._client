@@ -5,12 +5,15 @@ import toast from "react-hot-toast"
 const AuthContext = createContext()
 
 function AuthProviderWrapper(props) {
+
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
+
 	const notifyLogIn = user =>
 		toast(`Welcome back, ${user}`, {
 			icon: "🎉",
 		})
+
 	const notifyLogOut = () =>
 		toast("See you soon", {
 			icon: "👋🏼",

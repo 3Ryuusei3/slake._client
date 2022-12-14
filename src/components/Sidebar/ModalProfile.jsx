@@ -4,7 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap"
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import toast from "react-hot-toast"
+
 import { DarkModeContext } from "../../context/darkmode.context"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
@@ -15,6 +15,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	const [userData, setUserData] = useState({
 		username: user.username,
 		email: user.email,
+		isDark: user.isDark
 	})
 
 	const [loadingImage, setLoadingImage] = useState(false)
@@ -42,7 +43,16 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	const handleInputChange = e => {
 		const { value, name } = e.target
+
 		setUserData({ ...userData, [name]: value })
+
+	}
+
+	const handleCheckBox = e => {
+		const { checked, name } = e.target
+
+		setUserData({ ...userData, [name]: checked })
+
 	}
 
 	const handleFormSubmit = e => {
@@ -59,7 +69,8 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}
 
-	const { username, email } = userData
+	const { username, email, isDark } = userData
+	console.log(userData)
 
 	return (
 		<>
@@ -70,7 +81,9 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-primary)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
+
 					<Form onSubmit={handleFormSubmit} className="px-2">
+
 						<Form.Label className="text-muted">Image</Form.Label>
 						<div className="d-flex align-items-center justify-content-between mb-4">
 							<img src={user.imageUrl} className="sidebarProfileImg" />
@@ -78,18 +91,30 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 								<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 							</Form.Group>
 						</div>
-						{/* ASOCIAR LA IMAGEN DEL USUARIO AL FORM DE CAMBIO  */}
+
 						<Form.Group className="mb-3" controlId="username">
 							<Form.Label className="text-muted">Username</Form.Label>
 							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
 						</Form.Group>
+
 						<Form.Group className="mb-3" controlId="email">
 							<Form.Label className="text-muted">Email address</Form.Label>
 							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
 						</Form.Group>
+
+						<Form.Group className="mb-3" controlId="theme">
+							<Form.Label className="text-muted">What do you prefer ?</Form.Label>
+							<br />
+							Dark Mode
+
+							<input type="checkbox" style={{ maxWidth: "max-content", marginInline: "auto" }} name='isDark' onChange={handleCheckBox} checked={isDark ? true : false} />
+
+						</Form.Group>
+
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}
 						</Button>
+
 						{/* FALTA HACER MODAL DE CONFIRMACIÓN Y SUBMIT DE BORRAR CUENTA */}
 						<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 							Delete account
@@ -103,3 +128,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 }
 
 export default ModalProfile
+
+
+//

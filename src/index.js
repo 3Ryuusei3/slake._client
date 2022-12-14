@@ -10,13 +10,13 @@ import { DarkModeProviderWrapper } from "./context/darkmode.context"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-	<DarkModeProviderWrapper>
-		<AuthProviderWrapper>
+	<AuthProviderWrapper>
+		<DarkModeProviderWrapper>
 			<SidebarProviderWrapper>
 				<Router>
 					<App />
 				</Router>
 			</SidebarProviderWrapper>
-		</AuthProviderWrapper>
-	</DarkModeProviderWrapper>
+		</DarkModeProviderWrapper>
+	</AuthProviderWrapper>
 )
