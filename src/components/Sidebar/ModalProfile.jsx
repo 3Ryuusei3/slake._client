@@ -9,7 +9,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
-	const { user } = useContext(AuthContext)
+	const { user, refreshToken } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
 
 	const [userData, setUserData] = useState({
@@ -23,9 +23,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 		imageUrl: user.imageUrl,
 	})
 
-	const notify = () => toast(`Thanks for change your profile, ${user.username}`, {
-		icon: '✔️'
-	})
+
 
 	const handleFileUpload = e => {
 		setLoadingImage(true)
@@ -54,8 +52,9 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 			.updateUser({ ...userData, imageUrl: imgData.imageUrl })
 			.then(() => {
 				setUserData({ ...userData, imageUrl: imgData.imageUrl })
+				refreshToken()
 				setShowModal(false)
-				notify()
+
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}

@@ -8,7 +8,8 @@ function AuthProviderWrapper(props) {
 
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-	const notifyLogIn = user => toast(`Welcome back, ${user}`, {
+
+	const notifyLogIn = user => toast(`We are happy to see you again, ${user}`, {
 		icon: '🎉',
 	})
 	const notifyLogOut = () => toast('See you soon', {
@@ -21,7 +22,9 @@ function AuthProviderWrapper(props) {
 	}
 
 	const authenticateUser = () => {
+
 		const token = localStorage.getItem("authToken")
+
 		if (token) {
 			setIsLoading(true)
 			authService
@@ -45,11 +48,21 @@ function AuthProviderWrapper(props) {
 		localStorage.removeItem("authToken")
 	}
 
+	const refreshToken = () => {
+
+		authService.refreshToken()
+			.then(({ data }) => {
+				const newToken = data.refreshedToken
+				storeToken(newToken)
+				authenticateUser()
+			})
+	}
+
 	useEffect(() => {
 		authenticateUser()
 	}, [])
 
-	return <AuthContext.Provider value={{ storeToken, authenticateUser, user, logoutUser, isLoading }}>{props.children}</AuthContext.Provider>
+	return <AuthContext.Provider value={{ storeToken, refreshToken, authenticateUser, user, logoutUser, isLoading }}>{props.children}</AuthContext.Provider>
 }
 
 export { AuthContext, AuthProviderWrapper }
