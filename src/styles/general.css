@@ -1,5 +1,9 @@
 /* General styling */
 
+#root {
+	min-height: max-content !important;
+}
+
 * {
 	margin: 0;
 	padding: 0;

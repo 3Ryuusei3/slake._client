@@ -4,8 +4,6 @@ import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-
-
 import ModalProfile from "./ModalProfile"
 
 import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from "cdbreact/dist/index"
@@ -61,15 +59,24 @@ const Sidebar = () => {
 							<NavLink to="/notes" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="sticky-note">Notes</CDBSidebarMenuItem>
 							</NavLink>
-							<CDBSidebarMenuItem className="sidebar-label">Settings</CDBSidebarMenuItem>
+							<NavLink to="/shared" activeclassname="activeClicked" style={{ color: "inherit" }}>
+								<CDBSidebarMenuItem icon="share">Shared notes</CDBSidebarMenuItem>
+							</NavLink>
+							<CDBSidebarMenuItem className="sidebar-label mt-3">Settings</CDBSidebarMenuItem>
 							<NavLink onClick={openSidebarModal} activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="home">Profile</CDBSidebarMenuItem>
 							</NavLink>
 							<NavLink to="/plan" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="credit-card">Plan</CDBSidebarMenuItem>
 							</NavLink>
-							<NavLink activeclassname="activeClicked" style={{ color: "inherit" }} onClick={() => { toggleDarkMode() }}>
-								<CDBSidebarMenuItem icon={!darkMode ? 'moon' : 'sun'}>{!darkMode ? 'Dark Mode' : 'Light Mode'}</CDBSidebarMenuItem>
+							<NavLink
+								activeclassname="activeClicked"
+								style={{ color: "inherit" }}
+								onClick={() => {
+									toggleDarkMode()
+								}}
+							>
+								<CDBSidebarMenuItem icon={!darkMode ? "moon" : "sun"}>{!darkMode ? "Dark Mode" : "Light Mode"}</CDBSidebarMenuItem>
 							</NavLink>
 							<NavLink className="logout-btn" as="div" to="/" activeclassname="activeClicked" onClick={logoutUser}>
 								<CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>

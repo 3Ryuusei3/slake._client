@@ -1,4 +1,5 @@
 import { useState, useContext } from "react"
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
@@ -89,6 +90,16 @@ function ToDo({ dashboardData }) {
 		return todo[i].isDone ? true : false
 	}
 
+	function handleOnDragEnd(result) {
+		if (!result.destination) return
+
+		let toDoListCopy = [...todo]
+		const [reorderedItem] = toDoListCopy.splice(result.source.index, 1)
+		toDoListCopy.splice(result.destination.index, 0, reorderedItem)
+		setTodo(toDoListCopy)
+		handleTodoUpdate(toDoListCopy)
+	}
+
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
 			<h3 className="pt-5">To-do</h3>
@@ -99,30 +110,41 @@ function ToDo({ dashboardData }) {
 					</button>
 					<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
 				</div>
-				<ul>
-					{todo.map((elm, idx) => {
-						return (
-							<li key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-								<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-									<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
-									<input
-										type="text"
-										onKeyDown={e => manageBlockByKey(e, elm, idx)}
-										name={`todoItem${idx}`}
-										value={elm.text}
-										onChange={e => handleToDoItemText(idx, e)}
-										onBlur={() => handleTodoUpdate(todo)}
-									/>
-								</div>
-								{toDoId === idx && (
-									<button className="deleteTodo" onClick={() => deleteTodo(idx)}>
-										<i className="bi bi-trash3"></i>
-									</button>
-								)}
-							</li>
-						)
-					})}
-				</ul>
+				<DragDropContext onDragEnd={handleOnDragEnd}>
+					<Droppable droppableId="todo">
+						{provided => (
+							<ul {...provided.droppableProps} ref={provided.innerRef}>
+								{todo.map((elm, idx) => {
+									return (
+										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
+											{provided => (
+												<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+													<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
+														<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
+														<input
+															type="text"
+															onKeyDown={e => manageBlockByKey(e, elm, idx)}
+															name={`todoItem${idx}`}
+															value={elm.text}
+															onChange={e => handleToDoItemText(idx, e)}
+															onBlur={() => handleTodoUpdate(todo)}
+														/>
+													</div>
+													{toDoId === idx && (
+														<button className={!darkMode ? "deleteTodo" : "deleteTodo-dark"} onClick={() => deleteTodo(idx)}>
+															<i className="bi bi-trash3"></i>
+														</button>
+													)}
+												</li>
+											)}
+										</Draggable>
+									)
+								})}
+								{provided.placeholder}
+							</ul>
+						)}
+					</Droppable>
+				</DragDropContext>
 			</div>
 		</div>
 	)

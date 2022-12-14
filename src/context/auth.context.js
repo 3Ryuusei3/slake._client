@@ -5,17 +5,16 @@ import toast from "react-hot-toast"
 const AuthContext = createContext()
 
 function AuthProviderWrapper(props) {
-
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-
-	const notifyLogIn = user => toast(`We are happy to see you again, ${user}`, {
-		icon: '🎉',
-	})
-	const notifyLogOut = () => toast('See you soon', {
-		icon: '👋🏼'
-	})
-
+	const notifyLogIn = user =>
+		toast(`Welcome back, ${user}`, {
+			icon: "🎉",
+		})
+	const notifyLogOut = () =>
+		toast("See you soon", {
+			icon: "👋🏼",
+		})
 
 	const storeToken = token => {
 		localStorage.setItem("authToken", token)
