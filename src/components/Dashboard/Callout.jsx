@@ -6,14 +6,12 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
-
 function Callout({ dashboardData }) {
 	const [callout, setCallout] = useState(dashboardData.callout)
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
-
 
 	const handleCallout = e => {
 		setCallout(e.target.value)
@@ -30,7 +28,7 @@ function Callout({ dashboardData }) {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
+		<div className={!isSidebarOpen ? "leftPaddingSm mt-3" : "leftPaddingLg mt-3"}>
 			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>

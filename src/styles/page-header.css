@@ -39,7 +39,8 @@
 	color: var(--dark-color-primary);
 }
 
-.headerInput::placeholder {
+.headerInput::placeholder,
+.headerInput-dark::placeholder {
 	font-size: var(--xxxl) !important;
 }
 

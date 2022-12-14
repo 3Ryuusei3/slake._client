@@ -46,6 +46,12 @@
 	color: var(--dark-text-primary);
 }
 
+.Callout button,
+.Callout-dark button {
+	background-color: transparent !important;
+	border: none !important;
+}
+
 /* Todo */
 
 .addTodoInput,

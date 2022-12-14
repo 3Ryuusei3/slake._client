@@ -60,7 +60,7 @@ function NotesList() {
 					<List />
 				</div>
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ paddingRight: "70px" }}>
+				<div className={!isSidebarOpen ? "leftPaddingSm my-3 mb-5" : "leftPaddingLg my-3 mb-5"} style={{ paddingRight: "70px" }}>
 					<div className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
 						<button className="createNewNote" onClick={() => addNewNote()}>
