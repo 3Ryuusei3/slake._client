@@ -108,8 +108,8 @@ function ToDo({ dashboardData }) {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
-			<h3 className="pt-5">To-do</h3>
+		<div className={!isSidebarOpen ? "leftPaddingSm pb-5" : "leftPaddingLg pb-5"}>
+			<h3 className="pt-4">To-do</h3>
 			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
 				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
 					<button onClick={() => addToDoItem(input)}>

@@ -32,7 +32,7 @@ function SharedList() {
 			{!sharedNotesList ? (
 				<h1>Cargando</h1>
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm py-4" : "leftPaddingLg py-4"} style={{ marginRight: "80px" }}>
+				<div className={!isSidebarOpen ? "leftPaddingSm py-5" : "leftPaddingLg py-5"} style={{ marginRight: "80px" }}>
 					<Container>
 						<Row className="gap-5">
 							{sharedNotesList.map(elm => {

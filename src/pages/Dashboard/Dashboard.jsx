@@ -8,7 +8,7 @@ import Header from "../../components/Header/Header"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
-
+import Quote from "../../components/Dashboard/Quote"
 
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
@@ -16,7 +16,6 @@ function Dashboard() {
 	const { user } = useContext(AuthContext)
 
 	const getDashboardData = () => {
-
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
@@ -26,7 +25,6 @@ function Dashboard() {
 	}
 
 	useEffect(() => {
-
 		getDashboardData()
 	}, [])
 
@@ -42,6 +40,7 @@ function Dashboard() {
 					<Sidebar />
 					<Header />
 					<Callout dashboardData={dashboardData} />
+					<Quote />
 					<ToDo dashboardData={dashboardData} />
 				</>
 			)}
