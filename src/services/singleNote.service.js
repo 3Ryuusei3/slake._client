@@ -37,6 +37,10 @@ class SingleNoteService {
 		return this.api.put(`/update/blocks/${id}`, blocks)
 	}
 
+	updateMetadata(id, metadata) {
+		return this.api.put(`/update/metadata/${id}`, metadata)
+	}
+
 	deleteNoteByNoteId(id) {
 		return this.api.delete(`/delete/${id}`)
 	}

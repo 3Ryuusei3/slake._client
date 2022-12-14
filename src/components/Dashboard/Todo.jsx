@@ -6,7 +6,6 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
-
 function ToDo({ dashboardData }) {
 	const [todo, setTodo] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
@@ -93,7 +92,7 @@ function ToDo({ dashboardData }) {
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"}>
 			<h3 className="pt-5">To-do</h3>
-			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"} >
+			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
 				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
 					<button onClick={() => addToDoItem(input)}>
 						<i className="bi bi-plus-lg"></i>
@@ -125,7 +124,7 @@ function ToDo({ dashboardData }) {
 					})}
 				</ul>
 			</div>
-		</div >
+		</div>
 	)
 }
 

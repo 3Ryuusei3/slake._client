@@ -1,16 +1,14 @@
 import { useState, useContext, useEffect } from "react"
-import { Link, UNSAFE_NavigationContext } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-
 import singleNoteService from "../../services/singleNote.service"
 import { List } from "react-content-loader"
 
 function NotesList() {
-
 	const [notes, setNotes] = useState()
 	const [noteId, setNoteId] = useState("")
 
@@ -19,7 +17,6 @@ function NotesList() {
 	const { darkMode } = useContext(DarkModeContext)
 
 	const getNotes = () => {
-
 		singleNoteService
 			.getNotesListByUser(user._id)
 			.then(res => {
@@ -41,13 +38,11 @@ function NotesList() {
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
-
 	const deleteNoteByNoteId = () => {
-
 		singleNoteService
 			.deleteNoteByNoteId(notes[noteId]._id, { new: true })
 			.then(() => getNotes())
-			.catch(err => console.log({ message: 'Internal server error', err }))
+			.catch(err => console.log({ message: "Internal server error", err }))
 	}
 
 	const handleMouseOver = id => {
@@ -94,7 +89,7 @@ function NotesList() {
 									</th>
 								</tr>
 							</thead>
-							<tbody className={!darkMode ? 'tbody-color' : 'tbody-color-dark'}>
+							<tbody className={!darkMode ? "tbody-color" : "tbody-color-dark"}>
 								{notes.map((elm, idx) => {
 									let date = new Date(elm.updatedAt)
 									return (
@@ -102,9 +97,11 @@ function NotesList() {
 											<td className="d-flex justify-content-between">
 												<div>
 													<span className="me-2">{elm.header.icon}</span>
-													<Link to={`/note/${elm._id}`} className={!darkMode ? 'singleNoteLink' : 'singleNoteLink-dark'}>{elm.header.title}</Link>
+													<Link to={`/note/${elm._id}`} className={!darkMode ? "singleNoteLink" : "singleNoteLink-dark"}>
+														{elm.header.title}
+													</Link>
 												</div>
-												<button onClick={() => deleteNoteByNoteId()}>
+												<button className={!darkMode ? "deleteNoteBtn" : "deleteNoteBtn-dark"} onClick={() => deleteNoteByNoteId()}>
 													{noteId === idx ? <i className="bi bi-trash3"></i> : <i className="bi bi-trash3" style={{ color: "transparent" }}></i>}
 												</button>
 											</td>

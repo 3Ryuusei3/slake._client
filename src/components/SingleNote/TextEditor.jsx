@@ -5,7 +5,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import singleNoteService from "../../services/singleNote.service"
 
 function TextEditor({ singleNoteData, noteId }) {
-	const [category, setCategory] = useState(singleNoteData.tag)
+	const [tag, setTag] = useState(singleNoteData.tag)
 	const [categoryMenu, setCategoryMenu] = useState(false)
 	const [shared, setShared] = useState(singleNoteData.shared)
 	const [block, setBlock] = useState([...singleNoteData.block])
@@ -14,6 +14,15 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
+
+	const handleMetadataUpdate = metadata => {
+		singleNoteService
+			.getNoteByNoteId(noteId)
+			.then(res => {
+				return singleNoteService.updateMetadata(res.data._id, { ...metadata })
+			})
+			.catch(err => console.log({ message: "Internal server error:", err }))
+	}
 
 	const handleBlockUpdate = newBlock => {
 		singleNoteService
@@ -27,14 +36,13 @@ function TextEditor({ singleNoteData, noteId }) {
 	// Handle note metadata
 	const handleNoteCheck = () => {
 		setShared(!shared)
+		handleMetadataUpdate({ tag, shared: !shared })
 	}
 
 	const handleNoteCategory = e => {
 		e.preventDefault()
-
-		console.log(e.target.value)
-		setCategory(e.target.name)
-		console.log(category)
+		setTag(e.target.name)
+		handleMetadataUpdate({ tag: e.target.name, shared })
 		setCategoryMenu(false)
 	}
 
@@ -226,14 +234,14 @@ function TextEditor({ singleNoteData, noteId }) {
 				<div className="d-flex gap-5 pb-3">
 					<div className="d-flex align-items-center position-relative">
 						<p className="me-2 mb-0 noteCategoryName ">Category:</p>
-						<p onClick={showCategoryMenu} className={!darkMode ? `noteCategory ${category}Category mb-0` : `noteCategory ${category}CategoryDark mb-0`}>
-							{category}
+						<p onClick={showCategoryMenu} className={!darkMode ? `noteCategory ${tag}Category mb-0` : `noteCategory ${tag}CategoryDark mb-0`}>
+							{tag}
 						</p>
 						{categoryMenu && (
 							<div onMouseOver={handleMouseOverCategory} onMouseOut={handleMouseOutCategory} className={!darkMode ? "categoryMenu" : "categoryMenu-dark"}>
 								<ul>
 									<li>
-										<button onClick={e => handleNoteCategory(e)} name="Diary" className={!darkMode ? "categoryBtn noteCategory DiaryCategory" : "categoryBtn-dark noteCategory DiaryCategoryDark"}>
+										<button onClick={handleNoteCategory} name="Diary" className={!darkMode ? "categoryBtn noteCategory DiaryCategory" : "categoryBtn-dark noteCategory DiaryCategoryDark"}>
 											Diary
 										</button>
 									</li>

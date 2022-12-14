@@ -43,6 +43,17 @@ td a {
 	font-weight: var(--subtitle);
 }
 
+.deleteNoteBtn,
+.deleteNoteBtn-dark {
+	border: none;
+	background-color: transparent;
+	color: var(--text-primary);
+}
+
+.deleteNoteBtn-dark {
+	color: var(--dark-text-primary);
+}
+
 .singleNoteLink {
 	color: var(--text-primary) !important;
 	text-decoration: none !important;
