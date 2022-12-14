@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { useLocation } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
@@ -10,7 +11,6 @@ import uploadServices from "../../services/upload.service"
 import singleNoteService from "../../services/singleNote.service"
 
 import { Form, Button } from "react-bootstrap"
-import { DarkModeContext } from "../../context/darkmode.context"
 
 const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 	const { user } = useContext(AuthContext)
@@ -99,7 +99,7 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 
 	return (
 		<Form onSubmit={handleImageSubmit}>
-			<Form.Group className="mt-2" controlId="image" >
+			<Form.Group className="mt-2" controlId="image">
 				<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 

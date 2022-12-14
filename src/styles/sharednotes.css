@@ -1,0 +1,53 @@
+/* Shared notes */
+
+.sharedCard,
+.sharedCard-dark {
+	padding-inline: 0 !important;
+	position: relative;
+}
+
+.sharedCard a {
+	color: var(--text-primary) !important;
+}
+
+.sharedCard-dark a {
+	color: var(--dark-text-primary) !important;
+}
+
+.sharedCard-dark {
+	color: var(--dark-text-primary) !important;
+	border: 1px solid var(--bg-primary) !important;
+	background-color: var(--dark-bg-navbar) !important;
+}
+
+.sharedCard img,
+.sharedCard-dark img {
+	object-fit: cover !important;
+	width: 100% !important;
+	height: 140px !important;
+}
+
+.sharedCard-dark .card-img-top {
+	border-bottom: 1px solid var(--bg-primary) !important;
+}
+
+.sharedCard .card-title,
+.sharedCard-dark .card-title {
+	font-size: var(--lg) !important;
+}
+
+.sharedIcon {
+	position: absolute;
+	left: 20px;
+	top: 110px;
+}
+
+.sharedProfilePicture {
+	position: absolute;
+	max-width: 50px !important;
+	max-height: 50px !important;
+	border-radius: 50%;
+	right: -25px;
+	top: -25px;
+	border-bottom: none !important;
+}

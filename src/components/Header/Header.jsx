@@ -42,6 +42,14 @@ function Header() {
 					setHeaderData(res.data[0])
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "shared_notes") {
+			setHeaderData({
+				header: {
+					image: "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+					title: "Shared notes",
+					icon: "📚",
+				},
+			})
 		} else if (location.pathname.includes("/note/")) {
 			let noteId = location.pathname.slice(6)
 

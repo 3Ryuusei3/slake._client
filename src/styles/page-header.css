@@ -32,13 +32,12 @@
 	border: none;
 	font-size: var(--xxxl);
 	font-weight: var(--slogan) !important;
-	color: var(--light-color-primary)
+	color: var(--light-color-primary);
 }
 
 .headerInput-dark {
-	color: var(--dark-color-primary)
+	color: var(--dark-color-primary);
 }
-
 
 .headerInput::placeholder {
 	font-size: var(--xxxl) !important;
@@ -92,7 +91,7 @@
 	left: 0 !important;
 }
 
-.react-emoji>* {
+.react-emoji > * {
 	padding: 0 !important;
 	margin: 0 !important;
 	border: none;

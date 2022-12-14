@@ -9,6 +9,7 @@ import HomePage from "./../pages/HomePage/HomePage"
 import SingleNote from "./../pages/SingleNote/SingleNote"
 import SignupPage from "./../pages/SignupPage/Signup"
 import PrivateRoute from "./PrivateRoute"
+import SharedNotes from "../pages/SharedNotes/SharedNotes"
 
 const AppRoutes = () => {
 	return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/kanban" element={<Kanban />} />
 				<Route path="/notes" element={<Notes />} />
+				<Route path="/shared_notes" element={<SharedNotes />} />
 				<Route path="/note/:id" element={<SingleNote />} />
 			</Route>
 		</Routes>

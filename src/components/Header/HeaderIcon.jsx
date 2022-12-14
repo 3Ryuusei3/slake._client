@@ -10,15 +10,21 @@ import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 function HeaderIcon({ headerIcon }) {
 	const [icon, setIcon] = useState(headerIcon)
 
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
+	let isSharedRoute = false
+	if (location.pathname.includes("shared")) {
+		isSharedRoute = true
+	}
 
 	useEffect(() => {
 		icon && handleEmojiUpdate()
@@ -61,8 +67,8 @@ function HeaderIcon({ headerIcon }) {
 	return (
 		<>
 			<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
-				<div className="emojiHeader">
-					<InputEmoji value={icon} onChange={setIcon} placeholder={headerIcon} height={100} theme="light" />
+				<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}}>
+					<InputEmoji value={icon} onChange={setIcon} placeholder={headerIcon} height={100} theme={!darkMode ? "light" : "dark"} />
 				</div>
 			</div>
 		</>
