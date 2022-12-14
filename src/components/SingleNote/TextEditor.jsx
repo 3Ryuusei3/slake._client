@@ -1,4 +1,5 @@
-import { useState, useContext } from "react"
+import { useState, useEffect, useContext, useRef } from "react"
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
@@ -12,8 +13,18 @@ function TextEditor({ singleNoteData, noteId }) {
 	const [blockId, setBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
 
+	/* const refBlock = useRef(null) */
+	/* 	const refBlockList = useRef(block) */
+
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
+
+	/* useEffect(() => {
+		console.log('------------', refBlock.current)
+		if (refBlock.current) {
+			refBlock.current.focus()
+		}
+	}, [block]) */
 
 	const handleMetadataUpdate = metadata => {
 		singleNoteService
@@ -95,6 +106,10 @@ function TextEditor({ singleNoteData, noteId }) {
 		setBlockId("")
 	}
 
+	/* const handleFocus = ref => {
+		refBlock.current = ref
+	} */
+
 	const handleMenuOut = () => {
 		setShowMenu(false)
 	}
@@ -111,16 +126,21 @@ function TextEditor({ singleNoteData, noteId }) {
 	const manageBlockByKey = (e, elm, idx) => {
 		if (e.key === "Enter") {
 			addBlockAtIdx("", idx)
+			/* 			handleFocus(refBlockList[idx]) */
 		}
 		if (e.key === "Backspace" && elm.content === "") {
 			e.preventDefault()
 			deleteBlock(idx)
+			/* handleFocus(refBlockList[idx - 1]) */
 		}
 		if (e.key === "ArrowDown" && idx < block.length) {
 		}
 		if (e.key === "ArrowUp" && idx > block.length) {
 		}
 	}
+
+	/* console.log("Block list:", refBlockList.current) */
+	/* console.log("Current block:", refBlock.current) */
 
 	// Block styling
 	const changeIntoH1 = i => {
@@ -228,6 +248,17 @@ function TextEditor({ singleNoteData, noteId }) {
 		handleBlockUpdate(blocksCopy)
 	}
 
+	// Drag and Drop
+	function handleOnDragEnd(result) {
+		if (!result.destination) return
+
+		let newBlockList = [...block]
+		const [reorderedItem] = newBlockList.splice(result.source.index, 1)
+		newBlockList.splice(result.destination.index, 0, reorderedItem)
+		setBlock(newBlockList)
+		handleBlockUpdate(newBlockList)
+	}
+
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm my-3" : "leftPaddingLg my-3"} style={{ marginRight: "80px" }}>
 			<div className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
@@ -279,120 +310,131 @@ function TextEditor({ singleNoteData, noteId }) {
 						<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
 					</div>
 				</div>
-				<ul className="blockUl">
-					{block.map((elm, idx) => {
-						return (
-							<li className="block" key={idx} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-								{blockId === idx && (
-									<button
-										className={!darkMode ? "blockHandler" : "blockHandler-dark"}
-										onClick={() => {
-											handleBlockMenu()
-										}}
-									>
-										<i className="bi bi-grid-3x2-gap"></i>
-									</button>
-								)}
-								{blockId === idx && showMenu && (
-									<div className={!darkMode ? "blockMenu" : "blockMenu-dark"} onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
-										<ul>
-											<li>
-												<button onClick={() => changeIntoH1(blockId)}>
-													<i className="bi bi-type-h1"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => changeIntoH2(blockId)}>
-													<i className="bi bi-type-h2"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => changeIntoH3(blockId)}>
-													<i className="bi bi-type-h3"></i>
-												</button>
-											</li>
-											<li className="me-3">
-												<button onClick={() => changeIntoP(blockId)}>
-													<i className="bi bi-paragraph"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => deleteType(blockId)}>
-													<i className="bi bi-fonts"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => changeIntoBold(blockId)}>
-													<i className="bi bi-type-bold"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => changeIntoItalics(blockId)}>
-													<i className="bi bi-type-italic"></i>
-												</button>
-											</li>
-											<li className="me-3">
-												<button onClick={() => changeIntoUnderline(blockId)}>
-													<i className="bi bi-type-underline"></i>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorNone(blockId)}>
-													<div className="colorBlock colorNone"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorBlue(blockId)}>
-													<div className="colorBlock colorTextBlue"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorRed(blockId)}>
-													<div className="colorBlock colorTextRed"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorYellow(blockId)}>
-													<div className="colorBlock colorTextYellow"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorGreen(blockId)}>
-													<div className="colorBlock colorTextGreen"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorOrange(blockId)}>
-													<div className="colorBlock colorTextOrange"></div>
-												</button>
-											</li>
-											<li>
-												<button onClick={() => colorPurple(blockId)}>
-													<div className="colorBlock colorTextPurple"></div>
-												</button>
-											</li>
-										</ul>
-									</div>
-								)}
-								<div style={{ width: "100%" }}>
-									<input
-										type="text"
-										className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
-										name={`block${idx}`}
-										value={elm.content}
-										onKeyDown={e => manageBlockByKey(e, elm, idx)}
-										onChange={e => handleBlockText(idx, e)}
-									/>
-								</div>
-								{blockId === idx && block.length > 1 && (
-									<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
-										<i className="bi bi-trash3"></i>
-									</button>
-								)}
-							</li>
-						)
-					})}
-				</ul>
+				<DragDropContext onDragEnd={handleOnDragEnd}>
+					<Droppable droppableId="blocks">
+						{provided => (
+							<ul className="blockUl" {...provided.droppableProps} ref={provided.innerRef}>
+								{block.map((elm, idx) => {
+									return (
+										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
+											{provided => (
+												<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+													{blockId === idx && (
+														<button
+															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
+															onClick={() => {
+																handleBlockMenu()
+															}}
+														>
+															<i className="bi bi-grid-3x2-gap"></i>
+														</button>
+													)}
+													{blockId === idx && showMenu && (
+														<div className={!darkMode ? "blockMenu" : "blockMenu-dark"} onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
+															<ul>
+																<li>
+																	<button onClick={() => changeIntoH1(blockId)}>
+																		<i className="bi bi-type-h1"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => changeIntoH2(blockId)}>
+																		<i className="bi bi-type-h2"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => changeIntoH3(blockId)}>
+																		<i className="bi bi-type-h3"></i>
+																	</button>
+																</li>
+																<li className="me-3">
+																	<button onClick={() => changeIntoP(blockId)}>
+																		<i className="bi bi-paragraph"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => deleteType(blockId)}>
+																		<i className="bi bi-fonts"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => changeIntoBold(blockId)}>
+																		<i className="bi bi-type-bold"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => changeIntoItalics(blockId)}>
+																		<i className="bi bi-type-italic"></i>
+																	</button>
+																</li>
+																<li className="me-3">
+																	<button onClick={() => changeIntoUnderline(blockId)}>
+																		<i className="bi bi-type-underline"></i>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorNone(blockId)}>
+																		<div className="colorBlock colorNone"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorBlue(blockId)}>
+																		<div className="colorBlock colorTextBlue"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorRed(blockId)}>
+																		<div className="colorBlock colorTextRed"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorYellow(blockId)}>
+																		<div className="colorBlock colorTextYellow"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorGreen(blockId)}>
+																		<div className="colorBlock colorTextGreen"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorOrange(blockId)}>
+																		<div className="colorBlock colorTextOrange"></div>
+																	</button>
+																</li>
+																<li>
+																	<button onClick={() => colorPurple(blockId)}>
+																		<div className="colorBlock colorTextPurple"></div>
+																	</button>
+																</li>
+															</ul>
+														</div>
+													)}
+													<div style={{ width: "100%" }}>
+														<input
+															type="text"
+															className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
+															name={`block${idx}`}
+															value={elm.content}
+															onKeyDown={e => manageBlockByKey(e, elm, idx)}
+															onChange={e => handleBlockText(idx, e)}
+														/>
+													</div>
+													{blockId === idx && block.length > 1 && (
+														<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
+															<i className="bi bi-trash3"></i>
+														</button>
+													)}
+												</li>
+											)}
+										</Draggable>
+									)
+								})}
+								{provided.placeholder}
+							</ul>
+						)}
+					</Droppable>
+				</DragDropContext>
 			</div>
 		</div>
 	)
@@ -402,6 +444,8 @@ export default TextEditor
 
 /* 
 
+ref={refBlock}
+onFocus={ref => handleFocus(ref)}
 autoFocus={idx === blockId + 1 ? true : false}
 
 */

@@ -81,8 +81,9 @@
 }
 
 .block {
+	padding: 4px;
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 4px;
 	display: flex;
 	align-items: center;
 }
@@ -124,7 +125,7 @@
 .blockHandler-dark {
 	background-color: transparent !important;
 	border: none;
-	padding: 3px 7px;
+	padding: 3px 2px;
 	font-weight: var(--button);
 	border-radius: 4px;
 	position: absolute;

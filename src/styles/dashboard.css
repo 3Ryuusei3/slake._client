@@ -81,6 +81,10 @@
 	border: none;
 }
 
+.addTodoInput-dark input {
+	color: var(--dark-text-primary);
+}
+
 .addTodoInput button,
 .addTodoInput-dark button {
 	border: none;
@@ -109,13 +113,14 @@
 
 .todoList li:hover,
 .todoList ul input[type="text"]:hover {
+	border-radius: 4px;
 	background-color: var(--color-primary-btn-interact);
 	transition: 0.3s ease;
 }
 
 .todoList-dark li:hover,
 .todoList-dark ul input[type="text"]:hover {
-	background-color: var(--dark-bg-interact);
+	color: var(--dark-text-primary) !important;
 	transition: 0.3s ease;
 }
 
@@ -147,12 +152,20 @@
 	color: var(--dark-text-primary);
 }
 
-.deleteTodo {
+.deleteTodo,
+.deleteTodo-dark {
 	border: none;
 	padding: 3px 7px;
-	background-color: rgb(252, 131, 131);
 	font-weight: var(--button);
+	background-color: transparent;
 	border-radius: 4px;
+}
+.deleteTodo i {
+	color: var(--text-primary) !important;
+}
+
+.deleteTodo-dark i {
+	color: var(--dark-text-primary) !important;
 }
 
 .crossedItem,
