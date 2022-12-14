@@ -8,14 +8,13 @@ import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
-
 	const { user, refreshToken } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
 
 	const [userData, setUserData] = useState({
 		username: user.username,
 		email: user.email,
-		isDark: user.isDark
+		isDark: user.isDark,
 	})
 
 	const [loadingImage, setLoadingImage] = useState(false)
@@ -23,8 +22,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	const [imgData, setImgData] = useState({
 		imageUrl: user.imageUrl,
 	})
-
-
 
 	const handleFileUpload = e => {
 		setLoadingImage(true)
@@ -45,14 +42,12 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 		const { value, name } = e.target
 
 		setUserData({ ...userData, [name]: value })
-
 	}
 
 	const handleCheckBox = e => {
 		const { checked, name } = e.target
 
 		setUserData({ ...userData, [name]: checked })
-
 	}
 
 	const handleFormSubmit = e => {
@@ -64,13 +59,11 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 				setUserData({ ...userData, imageUrl: imgData.imageUrl })
 				refreshToken()
 				setShowModal(false)
-
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}
 
 	const { username, email, isDark } = userData
-	console.log(userData)
 
 	return (
 		<>
@@ -81,9 +74,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-primary)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
-
 					<Form onSubmit={handleFormSubmit} className="px-2">
-
 						<Form.Label className="text-muted">Image</Form.Label>
 						<div className="d-flex align-items-center justify-content-between mb-4">
 							<img src={user.imageUrl} className="sidebarProfileImg" />
@@ -99,16 +90,21 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 						<Form.Group className="mb-3" controlId="email">
 							<Form.Label className="text-muted">Email address</Form.Label>
-							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
+							<Form.Control
+								className={!darkMode ? "form-control" : "form-control-dark"}
+								type="email"
+								value={email}
+								name="email"
+								onChange={handleInputChange}
+								placeholder="Enter your email address..."
+							/>
 						</Form.Group>
 
 						<Form.Group className="mb-3" controlId="theme">
 							<Form.Label className="text-muted">What do you prefer ?</Form.Label>
 							<br />
 							Dark Mode
-
-							<input type="checkbox" style={{ maxWidth: "max-content", marginInline: "auto" }} name='isDark' onChange={handleCheckBox} checked={isDark ? true : false} />
-
+							<input type="checkbox" style={{ maxWidth: "max-content", marginInline: "auto" }} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
 						</Form.Group>
 
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
@@ -121,13 +117,12 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 						</Button>
 					</Form>
 				</Modal.Body>
-				{errors && (<p className={!darkMode ? "errors-message" : "errors-message-dark"}>{errors}</p>)}
+				{errors && <p className={!darkMode ? "errors-message" : "errors-message-dark"}>{errors}</p>}
 			</Modal>
 		</>
 	)
 }
 
 export default ModalProfile
-
 
 //
