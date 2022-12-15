@@ -14,7 +14,7 @@ const SignUpForm = () => {
 		email: "",
 		username: "",
 		password: "",
-		imageUrl: "",
+		imageUrl: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1670076098/kindpng_786207_intiwh.png",
 	})
 
 	const { darkMode } = useContext(DarkModeContext)
