@@ -1,0 +1,32 @@
+/* Homepage */
+
+.featureImg {
+	width: 100%;
+	border-radius: 4px;
+	box-shadow: 0 0 10px var(--text-secondary);
+}
+
+.home-icon {
+	width: 70px;
+	margin-inline: auto;
+	rotate: 5deg;
+}
+
+.footer {
+	background-color: var(--bg-navbar);
+}
+
+.footer-dark {
+	background-color: var(--dark-bg-navbar);
+}
+
+.footer a,
+.footer-dark a {
+	text-decoration: none;
+	color: var(--text-primary);
+	font-weight: var(--title);
+}
+
+.footer-dark a {
+	color: var(--dark-text-primary);
+}
