@@ -4,7 +4,7 @@
 	z-index: 9999;
 }
 
-.sidebar > div:not(.toggled) {
+.sidebar>div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
 }
@@ -43,4 +43,13 @@
 .sidebar-brand {
 	font-weight: var(--button) !important;
 	font-size: var(--md) !important;
+}
+
+.modalProfileCheckBox,
+.modalProfileCheckBox-dark {
+	border-radius: none;
+	width: 1.15em;
+	height: 1.15em;
+	accent-color: var(--color-primary);
+	max-width: "max-content";
 }

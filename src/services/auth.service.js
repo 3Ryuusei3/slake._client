@@ -34,8 +34,8 @@ class AuthService {
 		return this.api.get("/refreshtoken", { headers: { Authorization: `Bearer ${refreshedToken}` } })
 	}
 
-	deleteUser(userData) {
-		return this.api.delete("/delete/:id", userData)
+	deleteUser(id) {
+		return this.api.delete(`/delete/${id}`)
 	}
 
 

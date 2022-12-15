@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+
 
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
@@ -12,9 +12,9 @@ import authService from "../../services/auth.service"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
-	const { user, refreshToken } = useContext(AuthContext)
+	const { user, refreshToken, logoutUser } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
-	const navigate = useNavigate()
+
 
 	const [userData, setUserData] = useState({
 		username: user.username,
@@ -70,11 +70,11 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	const handleDeleteAccount = () => {
 
+
 		authService
 			.deleteUser(user._id)
 			.then(() => {
-				localStorage.removeItem("authToken")
-				navigate("/")
+				logoutUser()
 			})
 			.catch(err => setErrors(err.response.data.errorMessages))
 	}
@@ -118,9 +118,10 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 						<Form.Group className="mb-3" controlId="theme">
 							<Form.Label className="text-muted">What do you prefer ?</Form.Label>
-							<br />
-							Dark Mode
-							<input type="checkbox" style={{ maxWidth: "max-content", marginInline: "auto" }} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
+							<div className="d-flex align-items-center gap-3">
+								Dark Mode
+								<input type="checkbox" className={!darkMode ? "modalProfileCheckBox" : "modalProfileCheckBox-dark"} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
+							</div>
 						</Form.Group>
 
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
@@ -128,10 +129,10 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 						</Button>
 
 						{/* FALTA HACER MODAL DE CONFIRMACIÓN Y SUBMIT DE BORRAR CUENTA */}
-						<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={handleDeleteAccount}>
-							Delete account
-						</Button>
 					</Form>
+					<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={handleDeleteAccount}>
+						Delete account
+					</Button>
 				</Modal.Body>
 				{errors && <p className={!darkMode ? "errors-message" : "errors-message-dark"}>{errors}</p>}
 			</Modal>
