@@ -9,7 +9,6 @@ import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 import authService from "../../services/auth.service"
 
-
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	const { user, refreshToken, logoutUser } = useContext(AuthContext)
@@ -123,6 +122,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 								<input type="checkbox" className={!darkMode ? "modalProfileCheckBox" : "modalProfileCheckBox-dark"} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
 							</div>
 						</Form.Group>
+						{/* CAMBIAR: ESTILO MODAL */}
 
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}

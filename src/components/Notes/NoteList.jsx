@@ -10,6 +10,7 @@ import { List } from "react-content-loader"
 
 function NotesList() {
 	const [notes, setNotes] = useState()
+	const [notesCopy, setNotesCopy] = useState()
 	const [noteId, setNoteId] = useState("")
 
 	const { user } = useContext(AuthContext)
@@ -20,6 +21,7 @@ function NotesList() {
 		singleNoteService
 			.getNotesListByUser(user._id)
 			.then(res => {
+				setNotesCopy(res.data)
 				setNotes(res.data)
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
@@ -29,11 +31,21 @@ function NotesList() {
 		getNotes()
 	}, [])
 
+	const handleSearchInput = e => {
+		if (e.target.value === "") {
+			setNotes(notesCopy)
+		} else {
+			const filteredNotes = notesCopy.filter(elm => elm.header.title.toLowerCase().includes(e.target.value.toLowerCase()))
+			setNotes(filteredNotes)
+		}
+	}
+
 	const addNewNote = () => {
 		singleNoteService
 			.createNewNote({ owner: user._id })
 			.then(res => {
 				setNotes([...notes, res.data])
+				setNotesCopy([...notesCopy, res.data])
 			})
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
@@ -63,9 +75,12 @@ function NotesList() {
 				<div className={!isSidebarOpen ? "leftPaddingSm my-3 mb-5" : "leftPaddingLg my-3 mb-5"} style={{ paddingRight: "70px" }}>
 					<div className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
-						<button className="createNewNote" onClick={() => addNewNote()}>
-							<i className="bi bi-plus-lg"></i>
-						</button>
+						<div>
+							<input onChange={handleSearchInput} className={!darkMode ? "note-search" : "note-search-dark"} type="text" placeholder="Search a note" />
+							<button className="createNewNote" onClick={() => addNewNote()}>
+								<i className="bi bi-plus-lg"></i>
+							</button>
+						</div>
 					</div>
 					<div className="noteList pt-2">
 						<table>

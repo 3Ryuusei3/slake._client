@@ -1,17 +1,24 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import { Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import WOW from "wowjs"
 
 function Homepage() {
 	const { darkMode } = useContext(DarkModeContext)
 
+	useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init()
+	}, [])
+
 	return (
 		<>
 			<Container className="py-5">
-				<Row className="mt-5 pb-5 align-items-center justify-content-lg-end">
+				<Row className="mt-5 pb-5 align-items-center justify-content-lg-end wow fadeInUp " data-wow-duration="2s">
 					<Col lg={{ span: 7 }} className="text-center">
 						<div className="d-flex my-5 pb-5">
 							<img src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670317681/undraw_experience_design_re_ca7l_bgrfu1.svg" alt="Team" width="100%" />
@@ -28,7 +35,7 @@ function Homepage() {
 					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5">
+				<Row className="align-items-center my-5 py-5 wow fadeInRight" data-wow-duration="2s">
 					<Col lg={{ span: 7 }}>
 						<img
 							className="featureImg"
@@ -49,9 +56,9 @@ function Homepage() {
 					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5">
+				<Row className="align-items-center my-5 py-5  wow fadeInLeft " data-wow-duration="2s">
 					<Col lg={{ span: 5 }}>
-						<div className=" pt-3 text-end pe-4">
+						<div className=" pt-3 text-end pe-4 ">
 							<h1>🔖</h1>
 							<h2>You said Trello? We say slake.</h2>
 							<h4 className="pt-4">Plan your future, get one step ahead of the game.</h4>
@@ -70,14 +77,14 @@ function Homepage() {
 					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5">
+				<Row className="align-items-center my-5 py-5 wow fadeInRight " data-wow-duration="2s">
 					<Col lg={{ span: 7 }}>
 						<img
 							className="featureImg"
 							src={
 								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094631/Captura_de_pantalla_2022-12-15_a_las_9.54.04_ggj2ob.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094630/Captura_de_pantalla_2022-12-15_a_las_9.54.09_etfzcs.png"
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.59_nyf7pg.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.54_cn8alo.png"
 							}
 							alt="Dashboard image"
 						/>
@@ -85,13 +92,13 @@ function Homepage() {
 					<Col lg={{ span: 5 }}>
 						<div className=" pt-3 ps-4">
 							<h1>📚</h1>
-							<h2>Never lose any note again</h2>
+							<h2>Never lose any notes again</h2>
 							<h4 className="pt-4">Why memorize if you can note it down?</h4>
 						</div>
 					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5">
+				<Row className="align-items-center my-5 py-5 wow fadeInLeft " data-wow-duration="2s">
 					<Col lg={{ span: 5 }}>
 						<div className=" pt-3 text-end pe-4">
 							<h1>📝</h1>
@@ -112,7 +119,7 @@ function Homepage() {
 					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5">
+				<Row className="align-items-center my-5 py-5 wow fadeInRight ">
 					<Col lg={{ span: 7 }}>
 						<img
 							className="featureImg"
@@ -134,7 +141,7 @@ function Homepage() {
 				</Row>
 				<hr />
 
-				<Row className="text-center pt-5">
+				<Row className="text-center pt-5 wow fadeInUp ">
 					<img className="home-icon mb-3" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670318446/favicon_rpvk1o.ico" alt="" />
 					<h2>Start using slake. today</h2>
 					<h4 className="pt-2 pb-5">Get started for free.</h4>

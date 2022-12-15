@@ -1,5 +1,22 @@
 /* Notes */
 
+.note-search,
+.note-search-dark {
+	background-color: var(--bg-navbar) !important;
+	color: var(--text-primary) !important;
+	padding: 4px 5px;
+	border: none;
+	width: 250px;
+	border-radius: 4px;
+	margin-right: 20px;
+	padding-left: 16px;
+}
+
+.note-search-dark {
+	color: var(--dark-text-primary) !important;
+	background-color: var(--dark-bg-navbar) !important;
+}
+
 .createNewNote {
 	border: none;
 	padding: 3px 7px;
@@ -8,6 +25,10 @@
 	border-radius: 4px;
 	height: max-content;
 	color: var(--text-primary);
+}
+
+.createNewNote i {
+	color: var(--dark-text-primary);
 }
 
 table {

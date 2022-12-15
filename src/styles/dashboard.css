@@ -72,11 +72,7 @@
 
 .todoList i,
 .todoList-dark i {
-	color: var(--dark-text-primary);
-}
-
-.todoList-dark i {
-	color: var(--light-text-primary);
+	color: var(--dark-text-primary) !important;
 }
 
 .addTodoInput input,
