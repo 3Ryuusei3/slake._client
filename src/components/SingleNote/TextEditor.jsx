@@ -1,11 +1,13 @@
 import { useState, useContext } from "react"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import toast from "react-hot-toast"
 
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+
 import singleNoteService from "../../services/singleNote.service"
+
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import toast from "react-hot-toast"
 
 function TextEditor({ singleNoteData, noteId }) {
 	const [tag, setTag] = useState(singleNoteData.tag)

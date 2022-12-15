@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from "react"
-import { Container, Row, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../../context/auth.context"
+
 import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
+
 import singleNoteService from "../../services/singleNote.service"
+
+import { Container, Row, Card } from "react-bootstrap"
+import { Instagram } from "react-content-loader"
 
 function SharedList() {
 	const [sharedNotesList, setSharedNotesList] = useState()
 
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
-	const { user } = useContext(AuthContext)
 
 	const getSharedNotesList = () => {
 		singleNoteService
@@ -30,7 +32,7 @@ function SharedList() {
 	return (
 		<>
 			{!sharedNotesList ? (
-				<h1>Cargando</h1>
+				<Instagram />
 			) : (
 				<div className={!isSidebarOpen ? "leftPaddingSm py-5" : "leftPaddingLg py-5"} style={{ marginRight: "80px" }}>
 					<Container>

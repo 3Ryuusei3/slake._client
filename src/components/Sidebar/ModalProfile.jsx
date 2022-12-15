@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
-import { Modal, Button, Form } from "react-bootstrap"
 
+import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 import uploadServices from "../../services/upload.service"
 import userService from "../../services/user.service"
-import { AuthContext } from "../../context/auth.context"
-
-import { DarkModeContext } from "../../context/darkmode.context"
 import authService from "../../services/auth.service"
+
+import { Modal, Button, Form } from "react-bootstrap"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
@@ -69,7 +69,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	const handleDeleteAccount = () => {
 
-
 		authService
 			.deleteUser(user._id)
 			.then(() => {
@@ -122,13 +121,9 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 								<input type="checkbox" className={!darkMode ? "modalProfileCheckBox" : "modalProfileCheckBox-dark"} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
 							</div>
 						</Form.Group>
-						{/* CAMBIAR: ESTILO MODAL */}
-
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}
 						</Button>
-
-						{/* FALTA HACER MODAL DE CONFIRMACIÓN Y SUBMIT DE BORRAR CUENTA */}
 					</Form>
 					<Button type="submit" className="red-outline-btn px-5 mt-4 mb-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={handleDeleteAccount}>
 						Delete account
@@ -141,5 +136,3 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 }
 
 export default ModalProfile
-
-//

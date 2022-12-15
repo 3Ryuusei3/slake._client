@@ -13,6 +13,7 @@ import singleNoteService from "../../services/singleNote.service"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 function HeaderIcon({ headerIcon }) {
+
 	const [icon, setIcon] = useState(headerIcon)
 
 	const { user } = useContext(AuthContext)
@@ -22,6 +23,7 @@ function HeaderIcon({ headerIcon }) {
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
 	let isSharedRoute = false
+
 	if (location.pathname.includes("shared")) {
 		isSharedRoute = true
 	}

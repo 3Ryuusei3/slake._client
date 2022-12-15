@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react"
-import { BulletList, Code } from "react-content-loader"
 import { AuthContext } from "../../context/auth.context"
 
 import dashboardServices from "../../services/dashboard.service"
@@ -9,6 +8,8 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
+
+import { Code } from "react-content-loader"
 
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
@@ -33,7 +34,6 @@ function Dashboard() {
 			{!dashboardData ? (
 				<div style={{ paddingLeft: "300px" }}>
 					<Code />
-					<BulletList />
 				</div>
 			) : (
 				<>

@@ -16,6 +16,7 @@ function HeaderImage({ headerImg, setHeaderData }) {
 
 	let location = useLocation()
 	let isSharedRoute = false
+
 	if (location.pathname.includes("shared")) {
 		isSharedRoute = true
 	}

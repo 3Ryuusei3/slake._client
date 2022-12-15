@@ -1,12 +1,12 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
 
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import authService from "../../services/auth.service"
-import uploadServices from "../../services/upload.service" //QUITAR S
+import uploadServices from "../../services/upload.service"
 
+import toast from "react-hot-toast"
 import { Form, Button } from "react-bootstrap"
 
 const SignUpForm = () => {
@@ -23,7 +23,7 @@ const SignUpForm = () => {
 	const [errors, setErrors] = useState([])
 
 	const notify = () =>
-		toast("Success Sign Up", {
+		toast("Sign Up successful", {
 			icon: "💜",
 		})
 
