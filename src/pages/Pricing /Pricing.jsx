@@ -110,7 +110,7 @@ const Pricing = () => {
 											Get Started
 										</Link>
 									) : (
-										<Link to="/STRIPE" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get PRO
 										</Link>
 									)}

@@ -9,9 +9,7 @@ import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 import authService from "../../services/auth.service"
 
-
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
-
 	const { user, refreshToken } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
 	const navigate = useNavigate()
@@ -69,7 +67,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	}
 
 	const handleDeleteAccount = () => {
-
 		authService
 			.deleteUser(user._id)
 			.then(() => {
@@ -122,6 +119,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 							Dark Mode
 							<input type="checkbox" style={{ maxWidth: "max-content", marginInline: "auto" }} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
 						</Form.Group>
+						{/* CAMBIAR: ESTILO MODAL */}
 
 						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}
