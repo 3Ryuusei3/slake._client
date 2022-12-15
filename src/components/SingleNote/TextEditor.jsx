@@ -161,6 +161,13 @@ function TextEditor({ singleNoteData, noteId }) {
 		handleBlockUpdate(blocksCopy)
 	}
 
+	const changeIntoUl = i => {
+		let blocksCopy = [...block]
+		blocksCopy[i].htmlTag = "ul"
+		setBlock(blocksCopy)
+		handleBlockUpdate(blocksCopy)
+	}
+
 	const changeIntoBold = i => {
 		let blocksCopy = [...block]
 		blocksCopy[i].type = "bold"
@@ -337,9 +344,14 @@ function TextEditor({ singleNoteData, noteId }) {
 																		<i className="bi bi-type-h3"></i>
 																	</button>
 																</li>
-																<li className="me-3">
+																<li>
 																	<button onClick={() => changeIntoP(blockId)}>
 																		<i className="bi bi-paragraph"></i>
+																	</button>
+																</li>
+																<li className="me-3">
+																	<button onClick={() => changeIntoUl(blockId)}>
+																		<i class="bi bi-list-ul"></i>
 																	</button>
 																</li>
 																<li>
