@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 const Pricing = () => {
-
 	const { user } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
 
@@ -77,7 +76,7 @@ const Pricing = () => {
 						</Card>
 					</Col>
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
-						<Card style={{ width: "18rem" }} className={!darkMode ? "pricing-card m-0 p-0 mb-2" : "pricing-card-dark m-0 p-0 mb-2"} >
+						<Card style={{ width: "18rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-up-fill"></i>

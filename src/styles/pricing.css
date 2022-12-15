@@ -14,6 +14,7 @@
 
 .pricing-header-dark {
 	background-color: var(--dark-bg-navbar) !important;
+	border-bottom: 2px solid var(--dark-text-secondary) !important;
 }
 
 .pricing-card h3 {
@@ -27,7 +28,6 @@
 .pricing-body-dark {
 	background-color: var(--dark-bg-modal);
 }
-
 
 .pricing-body ul,
 .pricing-body-dark ul {
