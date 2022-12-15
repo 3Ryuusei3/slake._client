@@ -31,7 +31,7 @@ function Quote() {
 						<button onClick={genNewQuote}>🎈</button>
 						<div>
 							<p style={{ fontSize: "16px", fontStyle: "italic", marginLeft: "8px" }}>
-								{quotes[rndNum].phrase} - {quotes[rndNum].author} 2022
+								"{quotes[rndNum].phrase}" - {quotes[rndNum].author} 2022
 							</p>
 						</div>
 					</div>

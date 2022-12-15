@@ -1,8 +1,12 @@
+/*  */
 /* Page header */
+/*  */
 
 .Header {
 	margin-left: 80px;
 }
+
+/* Header Img */
 
 .headerImg {
 	object-fit: cover;
@@ -27,8 +31,12 @@
 	filter: drop-shadow(0 0 4px var(--text-primary));
 }
 
+/* Header title */
+
 .headerInput,
 .headerInput-dark {
+	width: 100%;
+	padding-right: 80px;
 	border: none;
 	font-size: var(--xxxl);
 	font-weight: var(--slogan) !important;
@@ -56,6 +64,8 @@
 	top: -40px;
 	font-size: var(--icon) !important;
 }
+
+/* Header emoji */
 
 .emojiHeader {
 	position: absolute;

@@ -2,7 +2,7 @@
 
 .nav-icon {
 	width: 25px;
-	rotate: 5degm;
+	rotate: -5deg;
 }
 
 .brand-link,
@@ -45,4 +45,22 @@
 	background-color: var(--dark-bg-interact) !important;
 	border-radius: 8px !important;
 	text-decoration: none !important;
+}
+
+@media screen and (max-width: 991px) {
+	.navbar-nav {
+		margin-top: 5px !important;
+	}
+
+	.nav-btn {
+		margin-top: 15px !important;
+		width: max-content;
+		padding-inline: 10px;
+	}
+
+	.navbar-collapse .purple-btn {
+		width: unset !important;
+		margin-top: 10px;
+		margin-inline: auto !important;
+	}
 }

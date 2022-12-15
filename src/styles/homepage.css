@@ -9,7 +9,7 @@
 .home-icon {
 	width: 70px;
 	margin-inline: auto;
-	rotate: 5deg;
+	rotate: -5deg;
 }
 
 .footer {
