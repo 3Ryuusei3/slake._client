@@ -1,6 +1,10 @@
 # You can find a live version here: https://slake.netlify.app/
 
-This is roductivity app created with MERN that replicates the functionality of Notion. The user can create and share notes, manage his dashboard, create to-do lists and update the kanban.
+## The server is alocated here: https://github.com/3Ryuusei3/slake._client
+
+### Description
+
+This is a productivity app created with MERN that replicates the functionality of Notion. The user can create and share notes, manage his dashboard, create to-do lists and update the kanban.
 
 
 
