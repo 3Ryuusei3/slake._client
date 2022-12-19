@@ -1,6 +1,6 @@
 # You can find a live version here: https://slake.netlify.app/
 
-## The server is alocated here: https://github.com/3Ryuusei3/slake._client
+## The server is alocated here: https://github.com/3Ryuusei3/slake._server
 
 ### Description
 
