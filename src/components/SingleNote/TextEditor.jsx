@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react"
 
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
@@ -16,6 +16,9 @@ function TextEditor({ singleNoteData, noteId }) {
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [blockId, setBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
+	const [offset, setOffset] = useState()
+
+	const blockRef = useRef([])
 
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
@@ -26,6 +29,23 @@ function TextEditor({ singleNoteData, noteId }) {
 	if (user._id !== singleNoteData.owner) {
 		notify()
 	}
+
+	/* References for correct caret positioning */
+
+	useEffect(() => {
+		blockRef.current = blockRef.current.slice(0, block.length)
+	}, [block])
+
+	useLayoutEffect(() => {
+		if (offset !== undefined) {
+			const newRange = document.createRange()
+			newRange.setStart(blockRef.current[blockId].childNodes[0], offset)
+
+			const selection = document.getSelection()
+			selection.removeAllRanges()
+			selection.addRange(newRange)
+		}
+	})
 
 	const handleMetadataUpdate = metadata => {
 		singleNoteService
@@ -89,11 +109,15 @@ function TextEditor({ singleNoteData, noteId }) {
 		newBlockList.splice(idx, 1)
 		setBlock(newBlockList)
 		handleBlockUpdate(newBlockList)
+		setOffset(undefined)
 	}
 
 	const handleBlockText = (i, e) => {
+		const range = document.getSelection().getRangeAt(0)
+		setOffset(range.startOffset)
+
 		let blocksCopy = [...block]
-		blocksCopy[i].content = e.target.value
+		blocksCopy[i].content = e.target.textContent
 		setBlock(blocksCopy)
 		handleBlockUpdate(blocksCopy)
 	}
@@ -353,7 +377,7 @@ function TextEditor({ singleNoteData, noteId }) {
 																</li>
 																<li className="me-3">
 																	<button onClick={() => changeIntoUl(blockId)}>
-																		<i class="bi bi-list-ul"></i>
+																		<i className="bi bi-list-ul"></i>
 																	</button>
 																</li>
 																<li>
@@ -414,15 +438,18 @@ function TextEditor({ singleNoteData, noteId }) {
 															</ul>
 														</div>
 													)}
-													<div style={{ width: "100%" }}>
-														<input
-															type="text"
-															className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
-															name={`block${idx}`}
-															value={elm.content}
-															onKeyDown={e => manageBlockByKey(e, elm, idx)}
-															onChange={e => handleBlockText(idx, e)}
-														/>
+													<div
+														name={`block${idx}`}
+														className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
+														contentEditable
+														suppressContentEditableWarning
+														spellCheck="false"
+														onInput={e => handleBlockText(idx, e)}
+														onKeyDown={e => manageBlockByKey(e, elm, idx)}
+														onBlur={() => setOffset(undefined)}
+														ref={el => (blockRef.current[idx] = el)}
+													>
+														{elm.content}
 													</div>
 													{blockId === idx && block.length > 1 && (
 														<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
