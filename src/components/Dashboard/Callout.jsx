@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useRef, useLayoutEffect } from "react"
 
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
@@ -8,18 +8,31 @@ import dashboardServices from "../../services/dashboard.service"
 
 function Callout({ dashboardData }) {
 	const [callout, setCallout] = useState(dashboardData.callout)
+	const [offset, setOffset] = useState()
+	const calloutRef = useRef()
 
 	const { user } = useContext(AuthContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
 
+	useLayoutEffect(() => {
+		if (offset !== undefined) {
+			const newRange = document.createRange()
+			newRange.setStart(calloutRef.current.childNodes[0], offset)
+
+			const selection = document.getSelection()
+			selection.removeAllRanges()
+			selection.addRange(newRange)
+		}
+	})
+
 	const handleCallout = e => {
-		setCallout(e.target.value)
-		handleCallout()
+		const range = document.getSelection().getRangeAt(0)
+		setOffset(range.startOffset)
+		setCallout(e.target.textContent)
 	}
 
 	const handleCalloutUpdate = () => {
-
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
@@ -33,7 +46,9 @@ function Callout({ dashboardData }) {
 			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>
-					<input onChange={handleCallout} type="text" value={callout} onBlur={handleCalloutUpdate} placeholder="This is your callout" />
+					<div contentEditable suppressContentEditableWarning onInput={handleCallout} onBlur={handleCalloutUpdate} ref={calloutRef}>
+						{callout}
+					</div>
 				</div>
 			</div>
 		</div>
