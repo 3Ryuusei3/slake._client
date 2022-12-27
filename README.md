@@ -1,3 +1,14 @@
+# You can find a live version here: https://slake.netlify.app/
+
+## The server is alocated here: https://github.com/3Ryuusei3/slake._server
+
+### Description
+
+This is a productivity app created with MERN that replicates the functionality of Notion. The user can create and share notes, manage his dashboard, create to-do lists and update the kanban.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
