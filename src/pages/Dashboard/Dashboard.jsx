@@ -8,6 +8,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
+import Weather from "../../components/Weather/Weather"
 
 import { Code } from "react-content-loader"
 
@@ -42,6 +43,7 @@ function Dashboard() {
 					<Callout dashboardData={dashboardData} />
 					<Quote />
 					<ToDo dashboardData={dashboardData} />
+					<Weather />
 				</>
 			)}
 		</>
