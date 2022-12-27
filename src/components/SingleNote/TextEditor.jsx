@@ -33,11 +33,11 @@ function TextEditor({ singleNoteData, noteId }) {
 	/* References for correct caret positioning */
 
 	useEffect(() => {
-		blockRef.current = blockRef.current.slice(0, block.length)
+		blockRef.current = blockRef.current.slice(0, singleNoteData.block.length)
 	}, [block])
 
 	useLayoutEffect(() => {
-		if (offset !== undefined) {
+		if (offset !== undefined && offset > 0) {
 			const newRange = document.createRange()
 			newRange.setStart(blockRef.current[blockId].childNodes[0], offset)
 
@@ -106,10 +106,10 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	const deleteBlock = idx => {
 		let newBlockList = [...block]
+		setOffset(undefined)
 		newBlockList.splice(idx, 1)
 		setBlock(newBlockList)
 		handleBlockUpdate(newBlockList)
-		setOffset(undefined)
 	}
 
 	const handleBlockText = (i, e) => {
@@ -129,6 +129,7 @@ function TextEditor({ singleNoteData, noteId }) {
 
 	const handleMouseOut = () => {
 		setBlockId("")
+		setOffset(undefined)
 	}
 
 	const handleMenuOut = () => {
