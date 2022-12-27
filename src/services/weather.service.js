@@ -7,7 +7,9 @@ class WeatherService {
 
         })
 
-        console.log(`${process.env.REACT_APP_API_URL_WEATHER}/weather?q=madrid&units=metric&APPID=${process.env.REACT_APP_APPID}`)
+        console.log('API URL ________', `${process.env.REACT_APP_API_URL_WEATHER}/weather`)
+
+        console.log('API KEY ----------', `${process.env.REACT_APP_API_KEY_WEATHER}`)
 
         this.api.interceptors.request.use((config) => {
 
