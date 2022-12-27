@@ -91,14 +91,16 @@
 .block div {
 	display: flex;
 	align-items: center;
-}
-
-.block div input[type="text"] {
 	border: none;
 	width: 100%;
-	padding: 3px 7px;
+	padding: 6px 8px;
 	background-color: transparent;
+	border-radius: 2px;
 	word-break: break-word;
+}
+
+.fontLight {
+	color: var(--text-primary) !important;
 }
 
 .block div input[type="text"]:focus {
@@ -107,11 +109,19 @@
 
 .deleteBlock,
 .deleteBlock-dark {
+	position: absolute;
+	top: 4px;
+	bottom: 4px;
+	right: -32px;
 	border: none;
-	padding: 3px 7px;
+	padding: 0px 10px;
 	font-weight: var(--button);
-	border-radius: 4px;
-	background-color: transparent !important;
+	border-radius: 0 4px 4px 0;
+	background-color: var(--bg-modal) !important;
+}
+
+.deleteBlock-dark {
+	background-color: var(--dark-bg-modal) !important;
 }
 
 .deleteBlock i {
@@ -218,7 +228,16 @@
 .ulBlock {
 	font-size: 16px;
 	font-weight: 400;
-	padding-left: 30px !important;
+	padding-left: 40px !important;
+	position: relative;
+}
+
+.ulBlock::after {
+	position: absolute;
+	content: "●";
+	font-size: 7px;
+	left: 16px;
+	z-index: 100;
 }
 
 .boldBlock {

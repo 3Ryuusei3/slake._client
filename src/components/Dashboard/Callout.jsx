@@ -46,7 +46,7 @@ function Callout({ dashboardData }) {
 			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>
-					<div contentEditable suppressContentEditableWarning onInput={handleCallout} onBlur={handleCalloutUpdate} ref={calloutRef}>
+					<div contentEditable suppressContentEditableWarning spellCheck="false" onInput={handleCallout} onBlur={handleCalloutUpdate} ref={calloutRef}>
 						{callout}
 					</div>
 				</div>
