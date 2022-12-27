@@ -11,9 +11,10 @@ function Weather() {
 
     const getWeatherData = () => {
         weatherService
-            .getWeatherBySearch(searchCity)
+            .getKey()
             .then((res) => {
-                console.log(res)
+                console.log(res.data)
+                return weatherService.getWeatherBySearch(searchCity, res.data)
             })
             .catch(err => console.log({ message: 'Internal Server Error', err }))
     }

@@ -4,12 +4,14 @@ class WeatherService {
     constructor() {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL_WEATHER}/weather`,
-
         })
 
-        console.log('API URL ________', `${process.env.REACT_APP_API_URL_WEATHER}/weather`)
+        this.key = axios.create({
+            baseURL: `${process.env.REACT_APP_API_URL}/weather/key`
+        })
 
-        console.log('API KEY ----------', `${process.env.REACT_APP_API_KEY_WEATHER}`)
+        console.log('API URL ---------', `${process.env.REACT_APP_API_URL_WEATHER}/weather`)
+
 
         this.api.interceptors.request.use((config) => {
 
@@ -22,9 +24,13 @@ class WeatherService {
         })
     }
 
+    getKey() {
+        return this.key.get('')
+    }
 
-    getWeatherBySearch(searchCity) {
-        return this.api.get(`?q=${searchCity}&units=metric&APPID=${process.env.REACT_APP_API_KEY_WEATHER}`)
+
+    getWeatherBySearch(searchCity, key) {
+        return this.api.get(`?q=${searchCity}&units=metric&APPID=${key}`)
     }
 
 }
