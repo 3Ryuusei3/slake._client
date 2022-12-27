@@ -44,7 +44,7 @@ function Homepage() {
 									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.28_glskzy.png"
 									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.32_ezjwfx.png"
 							}
-							alt="Dashboard image"
+							alt="Dashboard"
 						/>
 					</Col>
 					<Col lg={{ span: 5 }}>
@@ -72,7 +72,7 @@ function Homepage() {
 									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.39_x1mh5g.png"
 									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094631/Captura_de_pantalla_2022-12-15_a_las_9.52.43_izjjuv.png"
 							}
-							alt="Dashboard image"
+							alt="Kanban"
 						/>
 					</Col>
 				</Row>
@@ -86,7 +86,7 @@ function Homepage() {
 									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.59_nyf7pg.png"
 									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.54_cn8alo.png"
 							}
-							alt="Dashboard image"
+							alt="Notes"
 						/>
 					</Col>
 					<Col lg={{ span: 5 }}>
@@ -114,7 +114,7 @@ function Homepage() {
 									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094630/Captura_de_pantalla_2022-12-15_a_las_9.56.21_enxtec.png"
 									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094630/Captura_de_pantalla_2022-12-15_a_las_9.56.15_f8aavq.png"
 							}
-							alt="Dashboard image"
+							alt="Note"
 						/>
 					</Col>
 				</Row>
@@ -128,7 +128,7 @@ function Homepage() {
 									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671097193/Captura_de_pantalla_2022-12-15_a_las_10.39.29_szor6n.png"
 									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671097193/Captura_de_pantalla_2022-12-15_a_las_10.39.23_mimxff.png"
 							}
-							alt="Dashboard image"
+							alt="Shared notes"
 						/>
 					</Col>
 					<Col lg={{ span: 5 }}>

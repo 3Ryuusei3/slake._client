@@ -33,7 +33,7 @@ function TextEditor({ singleNoteData, noteId }) {
 	/* References for correct caret positioning */
 
 	useEffect(() => {
-		blockRef.current = blockRef.current.slice(0, singleNoteData.block.length)
+		blockRef.current = blockRef.current.slice(0, block.length)
 	}, [block])
 
 	useLayoutEffect(() => {

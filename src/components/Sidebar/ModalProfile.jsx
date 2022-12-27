@@ -10,10 +10,8 @@ import authService from "../../services/auth.service"
 import { Modal, Button, Form } from "react-bootstrap"
 
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
-
 	const { user, refreshToken, logoutUser } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
-
 
 	const [userData, setUserData] = useState({
 		username: user.username,
@@ -68,7 +66,6 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	}
 
 	const handleDeleteAccount = () => {
-
 		authService
 			.deleteUser(user._id)
 			.then(() => {
@@ -91,7 +88,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 					<Form onSubmit={handleFormSubmit} className="px-2">
 						<Form.Label className="text-muted">Image</Form.Label>
 						<div className="d-flex align-items-center justify-content-between mb-4">
-							<img src={user.imageUrl} className="sidebarProfileImg" />
+							<img src={user.imageUrl} className="sidebarProfileImg" alt="profile" />
 							<Form.Group className="mt-2" controlId="image">
 								<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 							</Form.Group>

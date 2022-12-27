@@ -41,7 +41,7 @@ function SharedList() {
 								return (
 									<Card key={elm._id} className={!darkMode ? "sharedCard" : "sharedCard-dark"}>
 										<h1 className="sharedIcon">{elm.header.icon}</h1>
-										<img className="sharedProfilePicture" src={elm.owner.imageUrl} alt={`${elm.owner.username} profile picture`} />
+										<img className="sharedProfilePicture" src={elm.owner.imageUrl} alt={`${elm.owner.username} profile`} />
 										<Card.Img variant="top" src={elm.header.image} />
 										<Card.Body className="px-4 pt-5">
 											<Link to={`/note/${elm._id}`} style={{ textDecoration: "none" }}>
