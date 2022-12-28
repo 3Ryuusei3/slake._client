@@ -43,8 +43,14 @@
 }
 
 table {
-	display: inline-block;
+	width: 100% !important;
 	padding-right: 2px;
+}
+
+@media (max-width: 500px) {
+	table {
+		display: inline-block;
+	}
 }
 
 .tbody-color {
