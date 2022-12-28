@@ -72,7 +72,7 @@ function NotesList() {
 					<List />
 				</div>
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm my-3 mb-5" : "leftPaddingLg my-3 mb-5"} style={{ paddingRight: "70px" }}>
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5" : "leftPaddingLg rightMargin my-3 mb-5"}>
 					<div className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
 						<div>

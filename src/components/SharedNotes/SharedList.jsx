@@ -34,7 +34,7 @@ function SharedList() {
 			{!sharedNotesList ? (
 				<Instagram />
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm py-5" : "leftPaddingLg py-5"} style={{ marginRight: "80px" }}>
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-5" : "leftPaddingLg rightMargin py-5"}>
 					<Container>
 						<Row className="gap-5">
 							{sharedNotesList.map(elm => {

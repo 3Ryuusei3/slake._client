@@ -34,7 +34,7 @@ function HeaderImage({ headerImg, setHeaderData }) {
 
 	return (
 		<>
-			<div style={!isSidebarOpen ? { paddingLeft: "80px", transition: "0.3s ease", position: "relative" } : { paddingLeft: "230px", transition: "0.4s ease", position: "relative" }}>
+			<div className={!isSidebarOpen ? "headerImgPaddingSm" : "headerImgPaddingLg"}>
 				{showIcon && !isSharedRoute && (
 					<button className="headerImageButton" onMouseOver={handleMouseOver} onClick={openImgModal}>
 						<i className="bi bi-image"></i>

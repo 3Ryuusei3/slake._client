@@ -31,6 +31,28 @@
 	filter: drop-shadow(0 0 4px var(--text-primary));
 }
 
+.headerImgPaddingSm {
+	padding-left: 80px !important;
+	transition: 0.3s ease;
+	position: relative;
+}
+
+.headerImgPaddingLg {
+	padding-left: 230px !important;
+	transition: 0.4s ease;
+	position: relative;
+}
+
+@media (max-width: 600px) {
+	.headerImgPaddingSm {
+		padding-left: 80px !important;
+	}
+
+	.headerImgPaddingLg {
+		padding-left: 80px !important;
+	}
+}
+
 /* Header title */
 
 .headerInput,
