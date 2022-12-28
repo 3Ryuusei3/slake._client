@@ -71,6 +71,24 @@
 	transition: 0.4s ease;
 }
 
+.rightMargin {
+	margin-right: 80px !important;
+}
+
+@media (max-width: 600px) {
+	.leftPaddingSm {
+		margin-left: 120px;
+	}
+
+	.leftPaddingLg {
+		margin-left: 120px;
+	}
+
+	.rightMargin {
+		margin-right: 40px !important;
+	}
+}
+
 .errors-message {
 	color: var(--text-primary);
 	background-color: var(--bg-primary);

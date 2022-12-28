@@ -41,12 +41,8 @@ function KanbanContainer() {
 				<div style={{ paddingLeft: "300px" }}>
 					<Instagram />
 				</div>
-
 			) : (
-				<div
-					className="me-6 mt-4"
-					style={!isSidebarOpen ? { marginLeft: "150px", transition: "0.3s ease", position: "relative" } : { marginLeft: "300px", transition: "0.4s ease", position: "relative" }}
-				>
+				<div className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm" : "mt-4 rightMargin leftPaddingLg"}>
 					<Board
 						onDataChange={data => {
 							handleKanbanUpdate(data)

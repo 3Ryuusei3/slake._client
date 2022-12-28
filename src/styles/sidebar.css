@@ -2,9 +2,10 @@
 
 .sidebar {
 	z-index: 9999;
+	position: fixed !important;
 }
 
-.sidebar>div:not(.toggled) {
+.sidebar > div:not(.toggled) {
 	min-width: 230px !important;
 	width: 230px !important;
 }
