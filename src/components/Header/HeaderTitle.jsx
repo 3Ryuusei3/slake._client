@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useRef, useLayoutEffect } from "react"
 import { useLocation } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
@@ -12,20 +12,34 @@ import singleNoteService from "../../services/singleNote.service"
 
 function HeaderTitle({ headerTitle }) {
 	const [title, setTitle] = useState(headerTitle)
+	const [offset, setOffset] = useState()
+	const titleRef = useRef()
 
 	const { user } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 
+	useLayoutEffect(() => {
+		if (offset !== undefined) {
+			const newRange = document.createRange()
+			newRange.setStart(titleRef.current.childNodes[0], offset)
+
+			const selection = document.getSelection()
+			selection.removeAllRanges()
+			selection.addRange(newRange)
+		}
+	})
+
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
 
 	const handleTitle = e => {
-		handleTitleUpdate()
-		setTitle(e.target.value)
-	}
+		const range = document.getSelection().getRangeAt(0)
+		setOffset(range.startOffset)
 
-	console.log()
+		handleTitleUpdate()
+		setTitle(e.target.textContent)
+	}
 
 	const handleTitleUpdate = () => {
 		if (pageLocation === "dashboard") {
@@ -63,14 +77,9 @@ function HeaderTitle({ headerTitle }) {
 
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
-			<input
-				readOnly={location.pathname.includes("shared") ? true : false}
-				className={!darkMode ? "headerInput" : "headerInput-dark"}
-				placeholder="Untitled"
-				value={title}
-				onChange={handleTitle}
-				onBlur={handleTitleUpdate}
-			/>
+			<div className={!darkMode ? "headerInput" : "headerInput-dark"} contentEditable suppressContentEditableWarning spellCheck="false" onInput={handleTitle} onBlur={handleTitleUpdate} ref={titleRef}>
+				{title}
+			</div>
 		</div>
 	)
 }

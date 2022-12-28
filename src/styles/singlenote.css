@@ -88,7 +88,7 @@
 	align-items: center;
 }
 
-.block div {
+.blockLine {
 	display: flex;
 	align-items: center;
 	border: none;

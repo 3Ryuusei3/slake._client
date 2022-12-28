@@ -441,8 +441,12 @@ function TextEditor({ singleNoteData, noteId }) {
 													)}
 													<div
 														name={`block${idx}`}
-														className={!darkMode ? `${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`}
-														contentEditable
+														className={
+															!darkMode
+																? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
+																: ` blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+														}
+														contentEditable={user._id !== singleNoteData.owner ? false : true}
 														suppressContentEditableWarning
 														spellCheck="false"
 														onInput={e => handleBlockText(idx, e)}
