@@ -6,9 +6,9 @@
 	color: var(--text-primary) !important;
 	padding: 4px 5px;
 	border: none;
-	width: calc(130px + (250 - 130) * ((100vw - 300px) / (1600 - 300)));
+	width: calc(130px + (250 - 130) * ((100vw - 400px) / (1600 - 400)));
 	border-radius: 4px;
-	margin-right: calc(10px + (20 - 10) * ((100vw - 300px) / (1600 - 300)));
+	margin-right: calc(10px + (20 - 10) * ((100vw - 400px) / (1600 - 400)));
 	padding-left: 16px;
 }
 
@@ -31,9 +31,20 @@
 	color: var(--dark-text-primary);
 }
 
+.notesContainer {
+	padding: 2px;
+}
+
+.noteList {
+	width: 100% !important;
+	overflow-x: scroll !important;
+	white-space: nowrap !important;
+	padding: 2px !important;
+}
+
 table {
-	width: 100%;
-	border-color: red !important;
+	display: inline-block;
+	padding-right: 2px;
 }
 
 .tbody-color {

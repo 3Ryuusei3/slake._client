@@ -17,7 +17,6 @@ function ToDo({ dashboardData }) {
 	const { darkMode } = useContext(DarkModeContext)
 
 	const handleTodoUpdate = newTodo => {
-
 		dashboardServices
 			.getDashboardByUser(user._id)
 			.then(res => {
@@ -27,7 +26,6 @@ function ToDo({ dashboardData }) {
 	}
 
 	const addToDoItem = item => {
-
 		const newToDo = {
 			text: item,
 			isDone: false,
@@ -39,7 +37,6 @@ function ToDo({ dashboardData }) {
 	}
 
 	const addToDoItemAtIdx = (item, idx) => {
-
 		const newToDo = {
 			text: item,
 			isDone: false,
@@ -51,8 +48,7 @@ function ToDo({ dashboardData }) {
 		handleTodoUpdate(newToDoList)
 	}
 
-	const deleteTodo = (idx) => {
-
+	const deleteTodo = idx => {
 		let newToDoList = [...todo]
 		newToDoList.splice(idx, 1)
 		setTodo(newToDoList)
@@ -60,7 +56,6 @@ function ToDo({ dashboardData }) {
 	}
 
 	const manageBlockByKey = (e, elm, idx) => {
-
 		if (e.key === "Enter") {
 			addToDoItemAtIdx("", idx)
 		}
@@ -86,7 +81,7 @@ function ToDo({ dashboardData }) {
 		handleTodoUpdate(toDoListCopy)
 	}
 
-	const handleToDoItemCheck = (i) => {
+	const handleToDoItemCheck = i => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
 		setTodo(toDoListCopy)
@@ -108,7 +103,7 @@ function ToDo({ dashboardData }) {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm pb-5" : "leftPaddingLg pb-5"}>
+		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-5" : "leftPaddingLg rightMargin pb-5"}>
 			<h3 className="pt-4">To-do</h3>
 			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
 				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>

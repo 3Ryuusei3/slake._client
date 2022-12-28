@@ -26,6 +26,7 @@
 
 .sidebar-content span {
 	font-weight: var(--subtitle);
+	font-size: var(--sm);
 }
 
 .sidebar-content p {

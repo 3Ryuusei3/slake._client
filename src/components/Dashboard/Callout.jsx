@@ -42,7 +42,7 @@ function Callout({ dashboardData }) {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm mt-3" : "leftPaddingLg mt-3"}>
+		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
 			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>

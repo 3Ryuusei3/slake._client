@@ -12,7 +12,6 @@ import { Modal, Button, Form } from "react-bootstrap"
 const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 	const { user, refreshToken, logoutUser } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
-
 	const [userData, setUserData] = useState({
 		username: user.username,
 		email: user.email,
@@ -78,7 +77,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	return (
 		<>
-			<Modal show={showModal} onHide={closeSidebarModal} size="md" aria-labelledby="contained-modal-title-vcenter" centered>
+			<Modal show={showModal} onHide={closeSidebarModal} size={window.innerWidth > 800 ? "md" : "sm"} aria-labelledby="contained-modal-title-vcenter" centered>
 				<Modal.Header className={!darkMode ? "profileHeader" : "profileHeader-dark"} closeButton onClick={() => setShowModal(false)}>
 					<Modal.Title className="px-2" id="contained-modal-title-vcenter">
 						{`${user.username} Profile`}

@@ -29,12 +29,14 @@ function Quote() {
 	return (
 		<>
 			{quotes && rndNum !== undefined && (
-				<div className={!isSidebarOpen ? "leftPaddingSm pb-1 mt-1" : "leftPaddingLg pb-1 mt-1"}>
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-1 mt-1" : "leftPaddingLg rightMargin pb-1 mt-1"}>
 					<h3 className="pt-4">Quote of the day</h3>
 					<div className={!darkMode ? "Callout py-3" : "Callout-dark py-3"}>
-						<button onClick={genNewQuote}>🎈</button>
+						<button className="quoteBtn" onClick={genNewQuote}>
+							🎈
+						</button>
 						<div>
-							<p style={{ fontSize: "16px", fontStyle: "italic", marginLeft: "8px" }}>
+							<p className="quoteText">
 								"{quotes[rndNum].phrase}" - {quotes[rndNum].author} 2022
 							</p>
 						</div>
