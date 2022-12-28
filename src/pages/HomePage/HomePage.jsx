@@ -1,13 +1,15 @@
 import { useContext, useEffect } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
+import { AuthContext } from "../../context/auth.context"
 
 import { Container, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import WOW from "wowjs"
 
 function Homepage() {
 	const { darkMode } = useContext(DarkModeContext)
+	const { user } = useContext(AuthContext)
 
 	useEffect(() => {
 		new WOW.WOW({
@@ -17,6 +19,7 @@ function Homepage() {
 
 	return (
 		<>
+			{user && <Navigate to="/dashboard" />}
 			<Container className="py-5">
 				<Row className="mt-5 pb-5 align-items-center justify-content-lg-end wow fadeInUp " data-wow-duration="2s">
 					<Col lg={{ span: 7 }} className="text-center">
@@ -29,7 +32,7 @@ function Homepage() {
 							<h1 className="mt-5">One place.</h1>
 							<h1>All your data.</h1>
 							<h1>Just for you.</h1>
-							<h4 className="pt-4">Get ready to organize. </h4>
+							<h4 className="pt-4">Get ready to organize.</h4>
 							<h4>Get ready to be the best version of you.</h4>
 						</div>
 					</Col>

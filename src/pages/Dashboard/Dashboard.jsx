@@ -1,5 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
+import { Code } from "react-content-loader"
+
 
 import dashboardServices from "../../services/dashboard.service"
 
@@ -8,8 +10,8 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import Callout from "../../components/Dashboard/Callout"
 import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
+import Pomodoro from "../../components/Pomodoro/Pomodoro"
 
-import { Code } from "react-content-loader"
 
 function Dashboard() {
 	const [dashboardData, setDashboardData] = useState()
@@ -42,6 +44,7 @@ function Dashboard() {
 					<Callout dashboardData={dashboardData} />
 					<Quote />
 					<ToDo dashboardData={dashboardData} />
+					<Pomodoro />
 
 				</>
 			)}

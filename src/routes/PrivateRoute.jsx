@@ -10,16 +10,20 @@ const PrivateRoute = () => {
 		<ContentLoader viewBox="0 0 400 475">
 			<rect y="5" rx="5" ry="5" width="345" height="60" />
 			<rect x="0" y="70" rx="5" ry="5" width="100" height="13" />
+			<rect x="0" y="180" rx="5" ry="5" width="100" height="13" />
+			<rect y="5" rx="5" ry="5" width="345" height="60" />
+			<rect y="5" rx="5" ry="5" width="345" height="60" />
 		</ContentLoader>
 	)
+
+	if (!user) {
+		return <Navigate to="/login" />
+	}
 
 	if (isLoading) {
 		return <HeaderSkeleton />
 	}
 
-	if (!user) {
-		return <Navigate to="/login" />
-	}
 
 	return <Outlet />
 }
