@@ -6,7 +6,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
-function Callout({ dashboardData }) {
+const Callout = ({ dashboardData }) => {
 	const [callout, setCallout] = useState(dashboardData.callout)
 	const [offset, setOffset] = useState()
 	const calloutRef = useRef()

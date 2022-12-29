@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import { Link, Navigate } from "react-router-dom"
 import WOW from "wowjs"
 
-function Homepage() {
+const Homepage = () => {
 	const { darkMode } = useContext(DarkModeContext)
 	const { user } = useContext(AuthContext)
 

@@ -11,7 +11,7 @@ import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
 import Pomodoro from "../../components/Pomodoro/Pomodoro"
 
-function Dashboard() {
+const Dashboard = () => {
 	const [dashboardData, setDashboardData] = useState()
 
 	const { user } = useContext(AuthContext)

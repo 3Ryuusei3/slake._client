@@ -7,7 +7,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
-function ToDo({ dashboardData }) {
+const ToDo = ({ dashboardData }) => {
 	const [todo, setTodo] = useState([...dashboardData.todo])
 	const [input, setInput] = useState("")
 	const [toDoId, setToDoId] = useState("")
@@ -92,7 +92,7 @@ function ToDo({ dashboardData }) {
 		return todo[i].isDone ? true : false
 	}
 
-	function handleOnDragEnd(result) {
+	const handleOnDragEnd = result => {
 		if (!result.destination) return
 
 		let toDoListCopy = [...todo]

@@ -10,7 +10,7 @@ import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
-function HeaderTitle({ headerTitle }) {
+const HeaderTitle = ({ headerTitle }) => {
 	const [title, setTitle] = useState(headerTitle)
 	const [offset, setOffset] = useState()
 	const titleRef = useRef()

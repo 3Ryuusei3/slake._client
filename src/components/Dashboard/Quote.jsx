@@ -5,7 +5,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import quotesData from "./data.json"
 
-function Quote() {
+const Quote = () => {
 	const [quotes, setQuotes] = useState()
 	const [rndNum, setRndNum] = useState()
 

@@ -7,7 +7,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 import { Modal } from "react-bootstrap"
 import NewHeaderImgForm from "./NewHeaderImgForm"
 
-function HeaderImage({ headerImg, setHeaderData }) {
+const HeaderImage = ({ headerImg, setHeaderData }) => {
 	const [showIcon, setShowIcon] = useState(false)
 	const [showImgModal, setShowImgModal] = useState(false)
 

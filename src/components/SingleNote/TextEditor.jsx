@@ -3,13 +3,15 @@ import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+import CategoryMenu from "./CategoryMenu"
+import BlockMenu from "./BlockMenu"
 
 import singleNoteService from "../../services/singleNote.service"
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 
-function TextEditor({ singleNoteData, noteId }) {
+const TextEditor = ({ singleNoteData, noteId }) => {
 	const [tag, setTag] = useState(singleNoteData.tag)
 	const [categoryMenu, setCategoryMenu] = useState(false)
 	const [shared, setShared] = useState(singleNoteData.shared)
@@ -30,8 +32,7 @@ function TextEditor({ singleNoteData, noteId }) {
 		notify()
 	}
 
-	/* References for correct caret positioning */
-
+	// References for correct caret positioning
 	useEffect(() => {
 		blockRef.current = blockRef.current.slice(0, block.length)
 	}, [block])
@@ -160,120 +161,32 @@ function TextEditor({ singleNoteData, noteId }) {
 	}
 
 	// Block styling
-	const changeIntoH1 = i => {
+	//// Tag
+	const changeIntoTag = (i, tag) => {
 		let blocksCopy = [...block]
-		blocksCopy[i].htmlTag = "h1"
+		blocksCopy[i].htmlTag = `${tag}`
 		setBlock(blocksCopy)
 		handleBlockUpdate(blocksCopy)
 	}
 
-	const changeIntoH2 = i => {
+	//// Type
+	const changeIntoType = (i, type) => {
 		let blocksCopy = [...block]
-		blocksCopy[i].htmlTag = "h2"
+		blocksCopy[i].type = `${type}`
 		setBlock(blocksCopy)
 		handleBlockUpdate(blocksCopy)
 	}
 
-	const changeIntoH3 = i => {
+	//// Color
+	const changeIntoColor = (i, color) => {
 		let blocksCopy = [...block]
-		blocksCopy[i].htmlTag = "h3"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const changeIntoP = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].htmlTag = "p"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const changeIntoUl = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].htmlTag = "ul"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const changeIntoBold = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].type = "bold"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const changeIntoItalics = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].type = "italics"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const changeIntoUnderline = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].type = "underline"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const deleteType = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].type = ""
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorNone = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = ""
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorBlue = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Blue"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorRed = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Red"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorYellow = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Yellow"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorGreen = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Green"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorOrange = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Orange"
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
-	}
-
-	const colorPurple = i => {
-		let blocksCopy = [...block]
-		blocksCopy[i].style = "Purple"
+		blocksCopy[i].style = `${color}`
 		setBlock(blocksCopy)
 		handleBlockUpdate(blocksCopy)
 	}
 
 	// Drag and Drop
-	function handleOnDragEnd(result) {
+	const handleOnDragEnd = result => {
 		if (!result.destination) return
 
 		let newBlockList = [...block]
@@ -287,48 +200,14 @@ function TextEditor({ singleNoteData, noteId }) {
 		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
 				<div className="d-flex gap-5 pb-3">
-					<div className="d-flex align-items-center position-relative">
-						<p className="me-2 mb-0 noteCategoryName ">Category:</p>
-						<p onClick={showCategoryMenu} className={!darkMode ? `noteCategory ${tag}Category mb-0` : `noteCategory ${tag}CategoryDark mb-0`}>
-							{tag}
-						</p>
-						{categoryMenu && (
-							<div onMouseOver={handleMouseOverCategory} onMouseOut={handleMouseOutCategory} className={!darkMode ? "categoryMenu" : "categoryMenu-dark"}>
-								<ul>
-									<li>
-										<button onClick={handleNoteCategory} name="Diary" className={!darkMode ? "categoryBtn noteCategory DiaryCategory" : "categoryBtn-dark noteCategory DiaryCategoryDark"}>
-											Diary
-										</button>
-									</li>
-									<li>
-										<button onClick={handleNoteCategory} name="Work" className={!darkMode ? "categoryBtn noteCategory WorkCategory" : "categoryBtn-dark noteCategory WorkCategoryDark"}>
-											Work
-										</button>
-									</li>
-									<li>
-										<button onClick={handleNoteCategory} name="School" className={!darkMode ? "categoryBtn noteCategory SchoolCategory" : "categoryBtn-dark noteCategory SchoolCategoryDark"}>
-											School
-										</button>
-									</li>
-									<li>
-										<button onClick={handleNoteCategory} name="Travel" className={!darkMode ? "categoryBtn noteCategory TravelCategory" : "categoryBtn-dark noteCategory TravelCategoryDark"}>
-											Travel
-										</button>
-									</li>
-									<li>
-										<button onClick={handleNoteCategory} name="Social" className={!darkMode ? "categoryBtn noteCategory SocialCategory" : "categoryBtn-dark noteCategory SocialCategoryDark"}>
-											Social
-										</button>
-									</li>
-									<li>
-										<button onClick={handleNoteCategory} name="Other" className={!darkMode ? "categoryBtn noteCategory OtherCategory" : "categoryBtn-dark noteCategory OtherCategoryDark"}>
-											Other
-										</button>
-									</li>
-								</ul>
-							</div>
-						)}
-					</div>
+					<CategoryMenu
+						tag={tag}
+						showCategoryMenu={showCategoryMenu}
+						categoryMenu={categoryMenu}
+						handleMouseOverCategory={handleMouseOverCategory}
+						handleMouseOutCategory={handleMouseOutCategory}
+						handleNoteCategory={handleNoteCategory}
+					/>
 					<div className="d-flex ms-5 align-items-center">
 						<p className="me-2 mb-0">Shared:</p>
 						<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
@@ -354,90 +233,14 @@ function TextEditor({ singleNoteData, noteId }) {
 														</button>
 													)}
 													{blockId === idx && showMenu && (
-														<div className={!darkMode ? "blockMenu" : "blockMenu-dark"} onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
-															<ul>
-																<li>
-																	<button onClick={() => changeIntoH1(blockId)}>
-																		<i className="bi bi-type-h1"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => changeIntoH2(blockId)}>
-																		<i className="bi bi-type-h2"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => changeIntoH3(blockId)}>
-																		<i className="bi bi-type-h3"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => changeIntoP(blockId)}>
-																		<i className="bi bi-paragraph"></i>
-																	</button>
-																</li>
-																<li className="me-3">
-																	<button onClick={() => changeIntoUl(blockId)}>
-																		<i className="bi bi-list-ul"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => deleteType(blockId)}>
-																		<i className="bi bi-fonts"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => changeIntoBold(blockId)}>
-																		<i className="bi bi-type-bold"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => changeIntoItalics(blockId)}>
-																		<i className="bi bi-type-italic"></i>
-																	</button>
-																</li>
-																<li className="me-3">
-																	<button onClick={() => changeIntoUnderline(blockId)}>
-																		<i className="bi bi-type-underline"></i>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorNone(blockId)}>
-																		<div className="colorBlock colorNone"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorBlue(blockId)}>
-																		<div className="colorBlock colorTextBlue"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorRed(blockId)}>
-																		<div className="colorBlock colorTextRed"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorYellow(blockId)}>
-																		<div className="colorBlock colorTextYellow"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorGreen(blockId)}>
-																		<div className="colorBlock colorTextGreen"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorOrange(blockId)}>
-																		<div className="colorBlock colorTextOrange"></div>
-																	</button>
-																</li>
-																<li>
-																	<button onClick={() => colorPurple(blockId)}>
-																		<div className="colorBlock colorTextPurple"></div>
-																	</button>
-																</li>
-															</ul>
-														</div>
+														<BlockMenu
+															blockId={blockId}
+															handleMenuIn={handleMenuIn}
+															handleMenuOut={handleMenuOut}
+															changeIntoTag={changeIntoTag}
+															changeIntoType={changeIntoType}
+															changeIntoColor={changeIntoColor}
+														/>
 													)}
 													<div
 														name={`block${idx}`}

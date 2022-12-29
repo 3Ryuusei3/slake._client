@@ -9,7 +9,7 @@ import singleNoteService from "../../services/singleNote.service"
 import { Container, Row, Card } from "react-bootstrap"
 import { Instagram } from "react-content-loader"
 
-function SharedList() {
+const SharedList = () => {
 	const [sharedNotesList, setSharedNotesList] = useState()
 
 	const { isSidebarOpen } = useContext(SidebarContext)

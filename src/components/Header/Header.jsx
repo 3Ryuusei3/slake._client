@@ -12,7 +12,7 @@ import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
 import HeaderSkeleton from "./Headerskeleton"
 
-function Header() {
+const Header = () => {
 	const [headerData, setHeaderData] = useState()
 
 	const { user } = useContext(AuthContext)

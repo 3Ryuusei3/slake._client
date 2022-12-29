@@ -8,7 +8,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import singleNoteService from "../../services/singleNote.service"
 import { List } from "react-content-loader"
 
-function NotesList() {
+const NotesList = () => {
 	const [notes, setNotes] = useState()
 	const [notesCopy, setNotesCopy] = useState()
 	const [noteId, setNoteId] = useState("")
