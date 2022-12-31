@@ -6,9 +6,8 @@ class AuthService {
 			baseURL: `${process.env.REACT_APP_API_URL}/auth`,
 		})
 
-		this.api.interceptors.request.use((config) => {
-
-			const storedToken = localStorage.getItem("authToken");
+		this.api.interceptors.request.use(config => {
+			const storedToken = localStorage.getItem("authToken")
 
 			if (storedToken) {
 				config.headers = { Authorization: `Bearer ${storedToken}` }
@@ -37,8 +36,6 @@ class AuthService {
 	deleteUser(id) {
 		return this.api.delete(`/delete/${id}`)
 	}
-
-
 }
 
 const authService = new AuthService()
