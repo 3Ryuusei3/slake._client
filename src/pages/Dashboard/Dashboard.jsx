@@ -44,7 +44,7 @@ function Dashboard() {
 					<Callout dashboardData={dashboardData} />
 					<Quote />
 					<ToDo dashboardData={dashboardData} />
-					<Pomodoro />
+					{/* <Pomodoro /> */}
 
 				</>
 			)}
