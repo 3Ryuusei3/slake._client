@@ -10,6 +10,21 @@
 	width: 230px !important;
 }
 
+@media (max-width: 600px) {
+	.toggled {
+		max-width: 60px !important;
+		min-width: 60px !important;
+		width: 60px !important;
+		display: flex !important;
+		justify-content: center !important;
+		overflow-y: hidden !important;
+	}
+
+	.toggled .head-div {
+		padding-right: 10px !important;
+	}
+}
+
 .sidebarProfileImg {
 	width: 30px;
 	height: 30px;

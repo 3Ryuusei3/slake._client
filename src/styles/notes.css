@@ -6,7 +6,7 @@
 	color: var(--text-primary) !important;
 	padding: 4px 5px;
 	border: none;
-	width: calc(130px + (250 - 130) * ((100vw - 400px) / (1600 - 400)));
+	width: calc(110px + (250 - 110) * ((100vw - 400px) / (1600 - 400)));
 	border-radius: 4px;
 	margin-right: calc(10px + (20 - 10) * ((100vw - 400px) / (1600 - 400)));
 	padding-left: 16px;
@@ -44,7 +44,7 @@
 
 table {
 	width: 100% !important;
-	padding-right: 2px;
+	padding-right: 4px;
 }
 
 @media (max-width: 500px) {
@@ -99,7 +99,13 @@ td a {
 
 .singleNoteLink-dark {
 	color: var(--dark-text-terciary) !important;
+	font-size: var(--sm);
 	text-decoration: none !important;
+}
+
+.noteDate,
+.noteShared {
+	font-size: var(--sm);
 }
 
 .table-color-border {

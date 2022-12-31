@@ -199,7 +199,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
-				<div className="d-flex gap-5 pb-3">
+				<div className="d-flex pb-3">
 					<CategoryMenu
 						tag={tag}
 						showCategoryMenu={showCategoryMenu}
