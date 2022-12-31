@@ -25,3 +25,4 @@ const CountdownAnimation = ({ key = 1, timer = 1, animate = true, children }) =>
 }
 
 export default CountdownAnimation
+
