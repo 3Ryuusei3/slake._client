@@ -24,8 +24,6 @@ const PrivateRoute = () => {
 		return <Navigate to="/login" />
 	}
 
-
-
 	return <Outlet />
 }
 
