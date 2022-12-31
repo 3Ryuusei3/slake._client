@@ -12,8 +12,7 @@ import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-function HeaderIcon({ headerIcon }) {
-
+const HeaderIcon = ({ headerIcon }) => {
 	const [icon, setIcon] = useState(headerIcon)
 
 	const { user } = useContext(AuthContext)

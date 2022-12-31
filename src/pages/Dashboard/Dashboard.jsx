@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { Code } from "react-content-loader"
 
-
 import dashboardServices from "../../services/dashboard.service"
 
 import Header from "../../components/Header/Header"
@@ -12,8 +11,7 @@ import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
 import Pomodoro from "../../components/Pomodoro/Pomodoro"
 
-
-function Dashboard() {
+const Dashboard = () => {
 	const [dashboardData, setDashboardData] = useState()
 
 	const { user } = useContext(AuthContext)
@@ -45,7 +43,6 @@ function Dashboard() {
 					<Quote />
 					<ToDo dashboardData={dashboardData} />
 					{/* <Pomodoro /> */}
-
 				</>
 			)}
 		</>

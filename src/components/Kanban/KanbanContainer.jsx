@@ -7,7 +7,7 @@ import kanbanServices from "../../services/kanban.service"
 import Board from "react-trello"
 import { Instagram } from "react-content-loader"
 
-function KanbanContainer() {
+const KanbanContainer = () => {
 	const [lanes, setLanes] = useState()
 
 	const { user } = useContext(AuthContext)

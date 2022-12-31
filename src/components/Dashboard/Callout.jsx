@@ -6,7 +6,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
-function Callout({ dashboardData }) {
+const Callout = ({ dashboardData }) => {
 	const [callout, setCallout] = useState(dashboardData.callout)
 	const [offset, setOffset] = useState()
 	const calloutRef = useRef()
@@ -42,7 +42,7 @@ function Callout({ dashboardData }) {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm mt-3" : "leftPaddingLg mt-3"}>
+		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
 			<div className={!darkMode ? "Callout" : "Callout-dark"}>
 				<p>💡</p>
 				<div>

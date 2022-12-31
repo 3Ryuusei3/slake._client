@@ -2,8 +2,8 @@ import { createContext, useState } from "react"
 
 const SidebarContext = createContext()
 
-function SidebarProviderWrapper(props) {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+const SidebarProviderWrapper = props => {
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
 	return <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>{props.children}</SidebarContext.Provider>
 }

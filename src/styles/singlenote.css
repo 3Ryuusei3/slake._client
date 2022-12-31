@@ -13,9 +13,15 @@
 	color: var(--dark-text-primary);
 }
 
+.blockList > div,
+.blockList-dark > div {
+	gap: calc(10px + (50 - 10) * ((100vw - 600px) / (1600 - 600)));
+}
+
 .noteCategory {
 	padding: 3px 10px;
 	border-radius: 4px;
+	font-size: var(--sm);
 }
 
 .categoryMenu,
@@ -81,7 +87,7 @@
 }
 
 .block {
-	padding: 4px;
+	padding-block: 4px;
 	position: relative;
 	margin-bottom: 4px;
 	display: flex;

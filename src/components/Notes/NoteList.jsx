@@ -8,7 +8,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import singleNoteService from "../../services/singleNote.service"
 import { List } from "react-content-loader"
 
-function NotesList() {
+const NotesList = () => {
 	const [notes, setNotes] = useState()
 	const [notesCopy, setNotesCopy] = useState()
 	const [noteId, setNoteId] = useState("")
@@ -72,7 +72,7 @@ function NotesList() {
 					<List />
 				</div>
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5" : "leftPaddingLg rightMargin my-3 mb-5"}>
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5 notesContainer" : "leftPaddingLg rightMargin my-3 mb-5 notesContainer"}>
 					<div className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
 						<div>
@@ -123,8 +123,8 @@ function NotesList() {
 											<td>
 												<span className={!darkMode ? `noteCategory ${elm.tag}Category mb-0` : `noteCategory ${elm.tag}CategoryDark mb-0`}>{elm.tag}</span>
 											</td>
-											<td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
-											<td>{elm.shared ? "✅" : "❌"}</td>
+											<td className="noteDate">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
+											<td className="noteShared">{elm.shared ? "✅" : "❌"}</td>
 										</tr>
 									)
 								})}

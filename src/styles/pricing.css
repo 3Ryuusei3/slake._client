@@ -1,5 +1,13 @@
 /* Pricing */
 
+@media (max-width: 999px) {
+	.pricingCards {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px !important;
+	}
+}
+
 .pricing-card-dark {
 	background-color: var(--bg-navbar);
 }

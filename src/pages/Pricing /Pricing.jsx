@@ -29,11 +29,11 @@ const Pricing = () => {
 				<Row className="my-4">
 					<h4>Pricing</h4>
 				</Row>
-				<Row className="pb-5">
-					<h1>One tool for your whole life.</h1>
-					<h1>A new way to organize.</h1>
+				<Row className="pricingTitles pb-5">
+					<h1>One tool for everything.</h1>
+					<h1 className="pt-3">A new way to organize.</h1>
 				</Row>
-				<Row className="justify-content-center">
+				<Row className="pricingCards justify-content-center">
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
 						<Card style={{ width: "18rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>

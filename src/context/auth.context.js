@@ -4,8 +4,7 @@ import toast from "react-hot-toast"
 
 const AuthContext = createContext()
 
-function AuthProviderWrapper(props) {
-
+const AuthProviderWrapper = props => {
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 
@@ -24,7 +23,6 @@ function AuthProviderWrapper(props) {
 	}
 
 	const authenticateUser = () => {
-
 		const token = localStorage.getItem("authToken")
 
 		if (token) {
@@ -51,13 +49,11 @@ function AuthProviderWrapper(props) {
 	}
 
 	const refreshToken = () => {
-
-		authService.refreshToken()
-			.then(({ data }) => {
-				const newToken = data.refreshedToken
-				storeToken(newToken)
-				authenticateUser()
-			})
+		authService.refreshToken().then(({ data }) => {
+			const newToken = data.refreshedToken
+			storeToken(newToken)
+			authenticateUser()
+		})
 	}
 
 	useEffect(() => {

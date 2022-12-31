@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast"
 import Navigation from "./components/Navbar/Navbar"
 import "./App.css"
 
-function App() {
+const App = () => {
 	const { darkMode } = useContext(DarkModeContext)
 
 	return (

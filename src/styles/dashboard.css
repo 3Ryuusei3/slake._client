@@ -13,7 +13,6 @@
 	background-color: var(--bg-navbar);
 	border-radius: 4px;
 	padding: 10px 16px;
-	width: 90%;
 	color: var(--text-primary);
 }
 
@@ -30,6 +29,7 @@
 
 .Callout div,
 .Callout-dark div {
+	font-size: var(--sm);
 	width: 90%;
 }
 
@@ -52,12 +52,21 @@
 	border: none !important;
 }
 
+/* Quote */
+.quoteBtn {
+	margin-left: 4px;
+}
+
+.quoteText {
+	font-size: var(--sm) !important;
+	font-style: italic;
+}
+
 /* Todo */
 
 .addTodoInput,
 .addTodoInput-dark {
 	background-color: var(--bg-navbar);
-	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	padding: 10px 16px;
@@ -110,7 +119,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 90%;
 }
 
 .todoList li:hover,

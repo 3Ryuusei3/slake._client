@@ -5,8 +5,7 @@ import { Link } from "react-router-dom"
 import { Container, Nav, Navbar } from "react-bootstrap"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-
-function Navigation() {
+const Navigation = () => {
 	const { user } = useContext(AuthContext)
 	const { darkMode, setDarkMode } = useContext(DarkModeContext)
 
@@ -17,9 +16,7 @@ function Navigation() {
 	return (
 		<>
 			{!user && (
-				<Navbar collapseOnSelect expand="lg"
-					bg={!darkMode ? "light" : "dark"}
-					variant={!darkMode ? "light" : "dark"} >
+				<Navbar collapseOnSelect expand="lg" bg={!darkMode ? "light" : "dark"} variant={!darkMode ? "light" : "dark"}>
 					<Container fluid className="py-2">
 						<Navbar.Brand>
 							<Link to="/" className="brand-link py-2 px-3">
@@ -37,9 +34,15 @@ function Navigation() {
 									<Nav.Link as="div">About</Nav.Link>
 								</Link>
 							</Nav>
-							<Nav >
-								<Link to="/" className={!darkMode ? "nav-btn" : "nav-btn-dark"} onClick={() => { toggleDarkMode() }}>
-									<Nav.Link as="div">{!darkMode ? 'Dark Mode' : 'Light Mode'}</Nav.Link>
+							<Nav>
+								<Link
+									to="/"
+									className={!darkMode ? "nav-btn" : "nav-btn-dark"}
+									onClick={() => {
+										toggleDarkMode()
+									}}
+								>
+									<Nav.Link as="div">{!darkMode ? "Dark Mode" : "Light Mode"}</Nav.Link>
 								</Link>
 							</Nav>
 							<Nav>
@@ -55,8 +58,7 @@ function Navigation() {
 						</Navbar.Collapse>
 					</Container>
 				</Navbar>
-			)
-			}
+			)}
 		</>
 	)
 }

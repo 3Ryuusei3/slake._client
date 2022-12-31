@@ -1,23 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { AuthContext } from "./auth.context"
 
-
 const DarkModeContext = createContext()
 
+const DarkModeProviderWrapper = props => {
+	const { user } = useContext(AuthContext)
 
-function DarkModeProviderWrapper(props) {
+	const [darkMode, setDarkMode] = useState(false)
 
-    const { user } = useContext(AuthContext)
+	useEffect(() => {
+		user ? setDarkMode(user.isDark) : setDarkMode(false)
+	}, [user])
 
-    const [darkMode, setDarkMode] = useState(false)
-
-    useEffect(() => {
-        user ? setDarkMode(user.isDark) : setDarkMode(false)
-    }, [user])
-
-    return <DarkModeContext.Provider value={{ setDarkMode, darkMode }}>
-        {props.children}
-    </DarkModeContext.Provider>
+	return <DarkModeContext.Provider value={{ setDarkMode, darkMode }}>{props.children}</DarkModeContext.Provider>
 }
 
 export { DarkModeProviderWrapper, DarkModeContext }
