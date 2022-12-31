@@ -16,13 +16,14 @@ const PrivateRoute = () => {
 		</ContentLoader>
 	)
 
+	if (isLoading) {
+		return <HeaderSkeleton />
+	}
+
 	if (!user) {
 		return <Navigate to="/login" />
 	}
 
-	if (isLoading) {
-		return <HeaderSkeleton />
-	}
 
 
 	return <Outlet />
