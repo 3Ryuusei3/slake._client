@@ -1,8 +1,10 @@
 import { useContext } from "react"
-import { AuthContext } from "../../context/auth.context"
-import { Card, Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
+
+import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+
+import { Card, Container, Row, Col } from "react-bootstrap"
 
 const Pricing = () => {
 	const { user } = useContext(AuthContext)

@@ -1,15 +1,18 @@
 import { useContext } from "react"
-import { Container, Row, Col } from "react-bootstrap"
 import { Navigate } from "react-router-dom"
-import SignUpForm from "../../components/SignupForm/SignUpForm"
+
 import { AuthContext } from "../../context/auth.context"
 
-const SignupPage = () => {
+import SignUpForm from "../../components/SignupForm/SignUpForm"
 
+import { Container, Row, Col } from "react-bootstrap"
+
+const SignupPage = () => {
 	const { user } = useContext(AuthContext)
 
 	return (
-		<>{user && <Navigate to="/dashboard" />}
+		<>
+			{user && <Navigate to="/dashboard" />}
 			<Container>
 				<Row style={{ maxWidth: "700px", marginInline: "auto" }}>
 					<Col sm={{ offset: 3, span: 6 }}>
