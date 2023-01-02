@@ -28,8 +28,12 @@ const Sidebar = () => {
 
 	return (
 		<>
-			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}>
-				<CDBSidebar style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
+			<div className="sidebar" style={{ height: "100vh", overflow: "scroll initial" }}>
+				<CDBSidebar
+					toggled={!isSidebarOpen ? true : false}
+					breakpoint={600}
+					style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}
+				>
 					<CDBSidebarHeader
 						prefix={
 							<img

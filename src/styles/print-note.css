@@ -1,0 +1,81 @@
+@media print {
+	@page {
+		margin: 0;
+	}
+
+	.sidebar {
+		display: none !important;
+	}
+
+	.printBtn,
+	.printBtn-dark {
+		display: none !important;
+	}
+
+	.leftPaddingSm {
+		margin-left: 30px !important;
+	}
+
+	.leftPaddingLg {
+		margin-left: 30px !important;
+	}
+
+	.rightMargin {
+		margin-right: 30px !important;
+	}
+
+	.headerImgPaddingSm {
+		padding-left: 0px !important;
+	}
+
+	.headerImgPaddingLg {
+		padding-left: 0px !important;
+	}
+
+	.pageContainer,
+	.pageContainer-dark {
+		color: var(--text-primary) !important;
+		background-color: var(--bg-primary) !important;
+	}
+
+	.fontDark {
+		color: var(--text-primary) !important;
+	}
+
+	.blockList,
+	.blockList-dark,
+	.blockList p,
+	.blockList-dark p {
+		color: var(--text-primary) !important;
+	}
+
+	.colorBlueDark,
+	.DiaryCategoryDark {
+		background-color: var(--block-blue) !important;
+	}
+
+	.colorRedDark,
+	.WorkCategoryDark {
+		background-color: var(--block-red) !important;
+	}
+
+	.colorYellowDark,
+	.SchoolCategoryDark {
+		background-color: var(--block-yellow) !important;
+	}
+
+	.colorGreenDark,
+	.TravelCategoryDark {
+		background-color: var(--block-green) !important;
+	}
+
+	.colorOrangeDark,
+	.SocialCategoryDark {
+		background-color: var(--block-orange) !important;
+	}
+
+	.colorPurpleDark,
+	.OtherCategoryDark {
+		background-color: var(--block-purple) !important;
+	}
+}

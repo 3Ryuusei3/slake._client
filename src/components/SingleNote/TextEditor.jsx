@@ -3,6 +3,7 @@ import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+
 import CategoryMenu from "./CategoryMenu"
 import BlockMenu from "./BlockMenu"
 
@@ -17,6 +18,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	const [shared, setShared] = useState(singleNoteData.shared)
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [blockId, setBlockId] = useState("")
+	const [clikedBlockId, setClickedBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
 	const [offset, setOffset] = useState()
 
@@ -40,7 +42,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	useLayoutEffect(() => {
 		if (offset !== undefined && offset > 0) {
 			const newRange = document.createRange()
-			newRange.setStart(blockRef.current[blockId].childNodes[0], offset)
+			newRange.setStart(blockRef.current[clikedBlockId].childNodes[0], offset)
 
 			const selection = document.getSelection()
 			selection.removeAllRanges()
@@ -129,8 +131,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	const handleMouseOut = () => {
-		setBlockId("")
 		setOffset(undefined)
+		setBlockId("")
 	}
 
 	const handleMenuOut = () => {
@@ -199,6 +201,9 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+				<button onClick={() => window.print()} className={!darkMode ? "printBtn" : "printBtn-dark"}>
+					<i class="bi bi-printer"></i>
+				</button>
 				<div className="d-flex pb-3">
 					<CategoryMenu
 						tag={tag}
@@ -221,16 +226,17 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 									return (
 										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
 											{provided => (
-												<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+												<li ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 													{blockId === idx && (
-														<button
-															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
+														<div
 															onClick={() => {
 																handleBlockMenu()
 															}}
+															{...provided.dragHandleProps}
+															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
 														>
 															<i className="bi bi-grid-3x2-gap"></i>
-														</button>
+														</div>
 													)}
 													{blockId === idx && showMenu && (
 														<BlockMenu
@@ -245,17 +251,19 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 													<div
 														name={`block${idx}`}
 														className={
-															!darkMode
-																? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
-																: ` blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+															!darkMode ? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
 														}
 														contentEditable={user._id !== singleNoteData.owner ? false : true}
 														suppressContentEditableWarning
-														spellCheck="false"
+														spellCheck={false}
 														onInput={e => handleBlockText(idx, e)}
 														onKeyDown={e => manageBlockByKey(e, elm, idx)}
-														onBlur={() => setOffset(undefined)}
+														onBlur={() => {
+															setOffset(undefined)
+															setClickedBlockId("")
+														}}
 														ref={el => (blockRef.current[idx] = el)}
+														onClick={() => setClickedBlockId(idx)}
 													>
 														{elm.content}
 													</div>

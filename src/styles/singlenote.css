@@ -2,6 +2,32 @@
 /* Single notes */
 /*  */
 
+/* Print button */
+
+.printBtn,
+.printBtn-dark {
+	position: absolute;
+	right: 60px;
+	background-color: var(--color-primary) !important;
+	color: var(--bg-primary);
+	border: none;
+	padding: 3px 6px;
+	border-radius: 4px;
+	display: block;
+}
+
+.printBtn:hover,
+.printBtn-dark:hover {
+	background-color: var(--color-primary-interact) !important;
+}
+
+@media (max-width: 600px) {
+	.printBtn,
+	.printBtn-dark {
+		right: 30px;
+	}
+}
+
 /* Header */
 
 .blockList p,
@@ -15,7 +41,7 @@
 
 .blockList > div,
 .blockList-dark > div {
-	gap: calc(10px + (50 - 10) * ((100vw - 600px) / (1600 - 600)));
+	gap: calc(5px + (50 - 5) * ((100vw - 600px) / (1600 - 600)));
 }
 
 .noteCategory {
@@ -99,7 +125,7 @@
 	align-items: center;
 	border: none;
 	width: 100%;
-	padding: 6px 8px;
+	padding: 6px 10px;
 	background-color: transparent;
 	border-radius: 2px;
 	word-break: break-word;
@@ -145,11 +171,10 @@
 	padding: 3px 2px;
 	font-weight: var(--button);
 	border-radius: 4px;
+	display: block;
 	position: absolute;
 	rotate: 90deg;
 	left: -25px;
-	top: 0;
-	bottom: 0;
 }
 
 .blockHandler i {
@@ -171,6 +196,7 @@
 	justify-content: center !important;
 	align-items: center !important;
 	margin-inline: auto !important;
+	z-index: 10;
 }
 
 .blockMenu-dark {
@@ -243,7 +269,7 @@
 	content: "●";
 	font-size: 7px;
 	left: 16px;
-	z-index: 100;
+	z-index: 2;
 }
 
 .boldBlock {
