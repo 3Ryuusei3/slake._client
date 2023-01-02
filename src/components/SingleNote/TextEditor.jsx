@@ -3,6 +3,7 @@ import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+
 import CategoryMenu from "./CategoryMenu"
 import BlockMenu from "./BlockMenu"
 
@@ -130,8 +131,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	const handleMouseOut = () => {
-		setBlockId("")
 		setOffset(undefined)
+		setBlockId("")
 	}
 
 	const handleMenuOut = () => {
@@ -222,16 +223,17 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 									return (
 										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
 											{provided => (
-												<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+												<li ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
 													{blockId === idx && (
-														<button
-															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
+														<div
 															onClick={() => {
 																handleBlockMenu()
 															}}
+															{...provided.dragHandleProps}
+															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
 														>
 															<i className="bi bi-grid-3x2-gap"></i>
-														</button>
+														</div>
 													)}
 													{blockId === idx && showMenu && (
 														<BlockMenu

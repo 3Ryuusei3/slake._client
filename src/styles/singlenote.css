@@ -99,7 +99,7 @@
 	align-items: center;
 	border: none;
 	width: 100%;
-	padding: 6px 8px;
+	padding: 6px 10px;
 	background-color: transparent;
 	border-radius: 2px;
 	word-break: break-word;
@@ -145,11 +145,10 @@
 	padding: 3px 2px;
 	font-weight: var(--button);
 	border-radius: 4px;
+	display: block;
 	position: absolute;
 	rotate: 90deg;
 	left: -25px;
-	top: 0;
-	bottom: 0;
 }
 
 .blockHandler i {
@@ -171,6 +170,7 @@
 	justify-content: center !important;
 	align-items: center !important;
 	margin-inline: auto !important;
+	z-index: 10;
 }
 
 .blockMenu-dark {
@@ -243,7 +243,7 @@
 	content: "●";
 	font-size: 7px;
 	left: 16px;
-	z-index: 100;
+	z-index: 2;
 }
 
 .boldBlock {
