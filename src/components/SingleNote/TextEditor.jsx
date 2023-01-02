@@ -17,6 +17,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	const [shared, setShared] = useState(singleNoteData.shared)
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [blockId, setBlockId] = useState("")
+	const [clikedBlockId, setClickedBlockId] = useState("")
 	const [showMenu, setShowMenu] = useState(false)
 	const [offset, setOffset] = useState()
 
@@ -40,7 +41,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	useLayoutEffect(() => {
 		if (offset !== undefined && offset > 0) {
 			const newRange = document.createRange()
-			newRange.setStart(blockRef.current[blockId].childNodes[0], offset)
+			newRange.setStart(blockRef.current[clikedBlockId].childNodes[0], offset)
 
 			const selection = document.getSelection()
 			selection.removeAllRanges()
@@ -245,17 +246,19 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 													<div
 														name={`block${idx}`}
 														className={
-															!darkMode
-																? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
-																: ` blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+															!darkMode ? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
 														}
 														contentEditable={user._id !== singleNoteData.owner ? false : true}
 														suppressContentEditableWarning
-														spellCheck="false"
+														spellCheck={false}
 														onInput={e => handleBlockText(idx, e)}
 														onKeyDown={e => manageBlockByKey(e, elm, idx)}
-														onBlur={() => setOffset(undefined)}
+														onBlur={() => {
+															setOffset(undefined)
+															setClickedBlockId("")
+														}}
 														ref={el => (blockRef.current[idx] = el)}
+														onClick={() => setClickedBlockId(idx)}
 													>
 														{elm.content}
 													</div>
