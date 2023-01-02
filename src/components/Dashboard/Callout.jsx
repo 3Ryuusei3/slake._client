@@ -16,7 +16,7 @@ const Callout = ({ dashboardData }) => {
 	const { darkMode } = useContext(DarkModeContext)
 
 	useLayoutEffect(() => {
-		if (offset !== undefined) {
+		if (offset !== undefined && offset > 0) {
 			const newRange = document.createRange()
 			newRange.setStart(calloutRef.current.childNodes[0], offset)
 

@@ -201,8 +201,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
-				<button onClick={() => window.print()} className={!darkMode ? "printBtn" : "printBtn-dark"}>
-					<i class="bi bi-printer"></i>
+				<button onClick={() => window.print()} className="printBtn">
+					<i className="bi bi-printer"></i>
 				</button>
 				<div className="d-flex pb-3">
 					<CategoryMenu

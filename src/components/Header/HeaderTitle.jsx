@@ -20,7 +20,7 @@ const HeaderTitle = ({ headerTitle }) => {
 	const { isSidebarOpen } = useContext(SidebarContext)
 
 	useLayoutEffect(() => {
-		if (offset !== undefined) {
+		if (offset !== undefined && offset > 0) {
 			const newRange = document.createRange()
 			newRange.setStart(titleRef.current.childNodes[0], offset)
 
@@ -37,8 +37,8 @@ const HeaderTitle = ({ headerTitle }) => {
 		const range = document.getSelection().getRangeAt(0)
 		setOffset(range.startOffset)
 
-		handleTitleUpdate()
 		setTitle(e.target.textContent)
+		handleTitleUpdate()
 	}
 
 	const handleTitleUpdate = () => {
@@ -76,7 +76,7 @@ const HeaderTitle = ({ headerTitle }) => {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
+		<div className={!isSidebarOpen ? "pt-3 pb-2 leftPaddingSm" : "pt-3 pb-2 leftPaddingLg"}>
 			<div className={!darkMode ? "headerInput" : "headerInput-dark"} contentEditable suppressContentEditableWarning spellCheck="false" onInput={handleTitle} onBlur={handleTitleUpdate} ref={titleRef}>
 				{title}
 			</div>
