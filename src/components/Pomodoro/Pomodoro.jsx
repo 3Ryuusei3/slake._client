@@ -24,13 +24,13 @@ const Pomodoro = () => {
 					<>
 						<ul>
 							<li>
-								<Button tittle="Work" activeClass={executing.active === "work" && "active-label"} _callback={() => setCurrentTimer("work")} />
+								<Button tittle="Work" activeclassName={executing.active === "work" && "active-label"} _callback={() => setCurrentTimer("work")} />
 							</li>
 							<li>
-								<Button tittle="Short Break" activeClass={executing.active === "shortBreak" && "active-label"} _callback={() => setCurrentTimer("shortBreak")} />
+								<Button tittle="Short Break" activeclassName={executing.active === "shortBreak" && "active-label"} _callback={() => setCurrentTimer("shortBreak")} />
 							</li>
 							<li>
-								<Button tittle="Long Break" activeClass={executing.active === "longBreak" && "active-label"} _callback={() => setCurrentTimer("longBreak")} />
+								<Button tittle="Long Break" activeclassName={executing.active === "longBreak" && "active-label"} _callback={() => setCurrentTimer("longBreak")} />
 							</li>
 						</ul>
 					</>

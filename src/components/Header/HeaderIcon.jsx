@@ -3,17 +3,18 @@ import { useLocation } from "react-router-dom"
 
 import { SidebarContext } from "../../context/sidebar.context"
 import { AuthContext } from "../../context/auth.context"
-
-import InputEmoji from "react-input-emoji"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
-import { DarkModeContext } from "../../context/darkmode.context"
+
+import Picker from "emoji-picker-react"
 
 const HeaderIcon = ({ headerIcon }) => {
 	const [icon, setIcon] = useState(headerIcon)
+	const [picker, setPicker] = useState(false)
 
 	const { user } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
@@ -65,11 +66,50 @@ const HeaderIcon = ({ headerIcon }) => {
 		}
 	}
 
+	// Check if mouse is outside of emoji picker
+	useEffect(() => {
+		document.addEventListener("click", handleDocumentClick, false)
+	})
+	const handleDocumentClick = e => {
+		let isEmojiClassFound = false
+
+		e &&
+			e.path &&
+			e.path.forEach(elm => {
+				if (elm && elm.classList) {
+					const data = elm.classList.value
+					if (data.includes("emoji")) {
+						isEmojiClassFound = true
+					}
+				}
+			})
+		if (isEmojiClassFound === false && e.target.id !== "emojis-btn") setPicker(false)
+	}
+
+	const onEmojiClick = emojiObject => {
+		setIcon(emojiObject.emoji)
+		setPicker(false)
+	}
+
 	return (
 		<>
 			<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
 				<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}}>
-					<InputEmoji value={icon} onChange={setIcon} placeholder={headerIcon} height={100} theme={!darkMode ? "light" : "dark"} />
+					<p className="emojiField" onClick={() => setPicker(true)}>
+						{icon}
+					</p>
+					{picker && (
+						<Picker
+							height={350}
+							width={300}
+							theme={!darkMode ? "light" : "dark"}
+							lazyLoadEmojis={true}
+							onEmojiClick={onEmojiClick}
+							disableAutoFocus={true}
+							previewConfig={{ showPreview: false }}
+							searchPlaceholder={"Search your icon"}
+						/>
+					)}
 				</div>
 			</div>
 		</>
