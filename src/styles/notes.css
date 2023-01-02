@@ -40,6 +40,13 @@
 	overflow-x: scroll !important;
 	white-space: nowrap !important;
 	padding: 2px !important;
+	/* Hide scrollbar but keep overflow on scroll below */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.noteList::-webkit-scrollbar {
+	display: none; /* Chrome, Safari and Opera */
 }
 
 table {
