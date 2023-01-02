@@ -37,8 +37,6 @@ class AuthService {
 	deleteUser(id) {
 		return this.api.delete(`/delete/${id}`)
 	}
-
-
 }
 
 const authService = new AuthService()
