@@ -1,26 +1,37 @@
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { PomodoroContext } from '../../context/pomodoro.context'
+import toast from "react-hot-toast"
 
-const CountdownAnimation = ({ key = 1, timer = 1, animate = true, children }) => {
+const CountdownAnimation = ({ key, timer, animate, children }) => {
 
-    const { stopTimer } = useContext(PomodoroContext)
+
+
+    const notify = () =>
+        toast("Time Out", {
+            icon: "⏰",
+        })
 
     return (
         <CountdownCircleTimer
             key={key}
             isPlaying={animate}
             duration={timer * 60}
-            colors={['#9b9b9b', 0.33]}
+            colors={['#9b9b9b']}
             strokeWidth={6}
+            size={180}
             trailColor="#191919"
             onComplete={() => {
-                stopTimer()
-            }}
+                notify()
+                return {
+                    shouldRepeat: true, delay: 1000
+                }
+            }
+            }
         >
             {children}
-        </CountdownCircleTimer>
+        </CountdownCircleTimer >
     )
 }
 

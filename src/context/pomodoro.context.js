@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react"
-import SetPomodoro from "../components/Pomodoro/setPomodoro"
+import { createContext, useState } from "react"
+
 
 const PomodoroContext = createContext()
 
 const PomodoroProviderWrapper = props => {
+
 	const [pomodoro, setPomodoro] = useState(0)
 	const [executing, setExecuting] = useState({})
 	const [startAnimate, setStartAnimate] = useState(false)
@@ -41,13 +42,10 @@ const PomodoroProviderWrapper = props => {
 	const setTimerTime = evaluate => {
 		switch (evaluate.active) {
 			case "work":
-				SetPomodoro(evaluate.work)
+				setPomodoro(evaluate.work)
 				break
-			case "shortBreak":
-				setPomodoro(evaluate.short)
-				break
-			case "longBreak":
-				setPomodoro(evaluate.long)
+			case "break":
+				setPomodoro(evaluate.break)
 				break
 			default:
 				setPomodoro(0)
@@ -55,9 +53,9 @@ const PomodoroProviderWrapper = props => {
 		}
 	}
 
-	const children = ({ remainingTimer }) => {
-		const minutes = Math.floor(remainingTimer / 60)
-		const seconds = remainingTimer % 60
+	const children = ({ remainingTime }) => {
+		const minutes = Math.floor(remainingTime / 60)
+		const seconds = remainingTime % 60
 
 		return `${minutes} : ${seconds}`
 	}

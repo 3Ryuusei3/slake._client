@@ -1,16 +1,15 @@
 import { useContext, useState } from "react"
 import { PomodoroContext } from "../../context/pomodoro.context"
-import Button from "./Button"
 
 
-const SetPomodoro = () => {
+
+const SettingPomodoro = () => {
 
     const { updateExecute } = useContext(PomodoroContext)
 
     const [newTimer, setNewTimer] = useState({
-        work: 50,
-        short: 5,
-        long: 15,
+        work: 45,
+        break: 10,
         active: 'work'
     })
 
@@ -25,19 +24,11 @@ const SetPomodoro = () => {
                     work: parseInt(value)
                 })
                 break
-            case "shortBreak":
+            case "break":
                 setNewTimer({
                     ...newTimer,
-                    short: parseInt(value)
+                    break: parseInt(value)
                 })
-                break
-            case "longBreak":
-                setNewTimer({
-                    ...newTimer,
-                    long: parseInt(value)
-                })
-                break
-            default:
                 break
         }
         console.log(newTimer)
@@ -50,19 +41,18 @@ const SetPomodoro = () => {
 
     return (
         <div>
-            <form noValidate>
+            <form noValidate onSubmit={handleSubmit}>
                 <div>
                     <input name="work" onChange={handleChange} value={newTimer.work} />
-                    <input name="shortBreak" onChange={handleChange} value={newTimer.short} />
-                    <input name="longBreak" onChange={handleChange} value={newTimer.long} />
+                    <input name="break" onChange={handleChange} value={newTimer.break} />
                 </div>
-                <Button title="Set Timer" _callback={handleSubmit} />
+                <button type="input">Set Timer</button>
             </form>
         </div>
     )
 
 }
 
-export default SetPomodoro
+export default SettingPomodoro
 
 
