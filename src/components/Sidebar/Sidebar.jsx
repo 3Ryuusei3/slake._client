@@ -28,7 +28,7 @@ const Sidebar = () => {
 
 	return (
 		<>
-			<div className="sidebar" style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}>
+			<div className="sidebar" style={{ height: "100vh", overflow: "scroll initial" }}>
 				<CDBSidebar
 					toggled={!isSidebarOpen ? true : false}
 					breakpoint={600}

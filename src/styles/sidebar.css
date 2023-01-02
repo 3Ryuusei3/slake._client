@@ -3,6 +3,7 @@
 .sidebar {
 	z-index: 9999;
 	position: fixed !important;
+	display: flex;
 }
 
 .sidebar > div:not(.toggled) {
