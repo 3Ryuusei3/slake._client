@@ -201,10 +201,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
-				<button onClick={() => window.print()} className="printBtn">
-					<i className="bi bi-printer"></i>
-				</button>
-				<div className="d-flex pb-3">
+				<div className={!darkMode ? "noteOptions py-4 px-3" : "noteOptions-dark py-4 px-3"}>
 					<CategoryMenu
 						tag={tag}
 						showCategoryMenu={showCategoryMenu}
@@ -217,7 +214,11 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 						<p className="me-2 mb-0">Shared:</p>
 						<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
 					</div>
+					<button onClick={() => window.print()} className="printBtn">
+						<i className="bi bi-printer"></i>
+					</button>
 				</div>
+				<hr className="my-4" />
 				<DragDropContext onDragEnd={handleOnDragEnd}>
 					<Droppable droppableId="blocks">
 						{provided => (

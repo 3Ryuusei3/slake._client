@@ -6,7 +6,7 @@
 
 .printBtn {
 	position: absolute;
-	right: 60px;
+	right: 80px;
 	background-color: var(--color-primary) !important;
 	color: var(--bg-primary);
 	border: none;
@@ -31,6 +31,17 @@
 }
 
 /* Header */
+
+.noteOptions,
+.noteOptions-dark {
+	display: flex;
+	background-color: var(--bg-secondary);
+	border-radius: 2px;
+}
+
+.noteOptions-dark {
+	background-color: var(--dark-bg-modal);
+}
 
 .blockList p,
 .blockList-dark p {
@@ -109,7 +120,6 @@
 .blockUl {
 	list-style: none !important;
 	padding: 0;
-	margin-top: 20px;
 	list-style: none;
 	margin-left: 0 !important;
 }
@@ -256,7 +266,7 @@
 /* HTML Tag */
 
 .h1Block {
-	font-size: var(--xxl);
+	font-size: var(--xl);
 	font-weight: 700;
 }
 
@@ -291,7 +301,7 @@
 }
 
 .calloutBlock {
-	font-size: var(--md);
+	font-size: var(--st);
 	font-weight: 400;
 	padding: 16px 14px 14px 60px !important;
 	position: relative;
