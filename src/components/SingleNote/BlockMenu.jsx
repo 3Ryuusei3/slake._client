@@ -28,9 +28,14 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 						<i className="bi bi-paragraph"></i>
 					</button>
 				</li>
-				<li className="me-3">
+				<li>
 					<button onClick={() => changeIntoTag(blockId, "ul")}>
 						<i className="bi bi-list-ul"></i>
+					</button>
+				</li>
+				<li className="me-3">
+					<button onClick={() => changeIntoTag(blockId, "img")}>
+						<i class="bi bi-image"></i>
 					</button>
 				</li>
 				<li>

@@ -10,9 +10,13 @@
 	background-color: var(--color-primary) !important;
 	color: var(--bg-primary);
 	border: none;
-	padding: 3px 6px;
+	padding: 2px 6px;
 	border-radius: 4px;
 	display: block;
+}
+
+.printBtn i {
+	font-size: var(--sm);
 }
 
 .printBtn:hover {
@@ -403,4 +407,14 @@
 
 .colorTextPurple {
 	background-color: var(--text-purple) !important;
+}
+
+/* Images */
+
+.blockImg {
+	width: 100%;
+	max-height: 500px;
+	object-fit: cover;
+	border-radius: 2px;
+	opacity: 0.9;
 }
