@@ -256,27 +256,27 @@
 /* HTML Tag */
 
 .h1Block {
-	font-size: 32px;
+	font-size: var(--xxl);
 	font-weight: 700;
 }
 
 .h2Block {
-	font-size: 24px;
+	font-size: var(--lg);
 	font-weight: 600;
 }
 
 .h3Block {
-	font-size: 18px;
+	font-size: var(--md);
 	font-weight: 500;
 }
 
 .pBlock {
-	font-size: 16px;
+	font-size: var(--sm);
 	font-weight: 400;
 }
 
 .ulBlock {
-	font-size: 16px;
+	font-size: var(--sm);
 	font-weight: 400;
 	padding-left: 40px !important;
 	position: relative;
@@ -285,8 +285,24 @@
 .ulBlock::after {
 	position: absolute;
 	content: "●";
-	font-size: 7px;
-	left: 16px;
+	font-size: var(--xxxs);
+	left: var(--sm);
+	z-index: 2;
+}
+
+.calloutBlock {
+	font-size: var(--md);
+	font-weight: 400;
+	padding: 16px 14px 14px 60px !important;
+	position: relative;
+	margin-bottom: 0 !important;
+}
+
+.calloutBlock::after {
+	position: absolute;
+	content: "💡";
+	font-size: var(--sm);
+	left: 20px;
 	z-index: 2;
 }
 
@@ -318,6 +334,11 @@
 }
 
 /* Light */
+
+.colorTheme {
+	background-color: var(--bg-navbar) !important;
+}
+
 .colorBlue,
 .DiaryCategory {
 	background-color: var(--block-blue) !important;
@@ -349,6 +370,10 @@
 }
 
 /* Dark */
+.colorThemeDark {
+	background-color: var(--dark-bg-navbar) !important;
+}
+
 .colorBlueDark,
 .DiaryCategoryDark {
 	background-color: var(--dark-block-blue) !important;
@@ -384,6 +409,10 @@
 }
 
 /* ColorPickers */
+
+.colorTextNone {
+	background: linear-gradient(to top right, var(--bg-navbar) calc(50% - 2px), rgb(255, 7, 7), var(--bg-navbar) calc(50% + 2px));
+}
 
 .colorTextBlue {
 	background-color: var(--text-blue) !important;

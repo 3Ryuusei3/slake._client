@@ -48,6 +48,11 @@
 		color: var(--text-primary) !important;
 	}
 
+	.colorTheme,
+	.colorThemeDark {
+		background-color: var(--bg-navbar) !important;
+	}
+
 	.colorBlueDark,
 	.DiaryCategoryDark {
 		background-color: var(--block-blue) !important;

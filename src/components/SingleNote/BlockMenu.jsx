@@ -33,9 +33,14 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 						<i className="bi bi-list-ul"></i>
 					</button>
 				</li>
-				<li className="me-3">
+				<li>
 					<button onClick={() => changeIntoTag(blockId, "img")}>
 						<i class="bi bi-image"></i>
+					</button>
+				</li>
+				<li className="me-3">
+					<button onClick={() => changeIntoTag(blockId, "callout")}>
+						<i class="bi bi-lightning-fill"></i>
 					</button>
 				</li>
 				<li>
@@ -60,6 +65,11 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 				</li>
 				<li>
 					<button onClick={() => changeIntoColor(blockId, "")}>
+						<div className="colorBlock colorTextNone"></div>
+					</button>
+				</li>
+				<li>
+					<button onClick={() => changeIntoColor(blockId, "Theme")}>
 						<div className="colorBlock colorNone"></div>
 					</button>
 				</li>
