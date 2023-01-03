@@ -103,7 +103,7 @@ const ToDo = ({ dashboardData }) => {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-5" : "leftPaddingLg rightMargin pb-5"}>
+		<section className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-5" : "leftPaddingLg rightMargin pb-5"}>
 			<h3 className="pt-4">To-do</h3>
 			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
 				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
@@ -148,7 +148,7 @@ const ToDo = ({ dashboardData }) => {
 					</Droppable>
 				</DragDropContext>
 			</div>
-		</div>
+		</section>
 	)
 }
 

@@ -12,11 +12,11 @@
 	}
 
 	.leftPaddingSm {
-		margin-left: 30px !important;
+		margin-left: 35px !important;
 	}
 
 	.leftPaddingLg {
-		margin-left: 30px !important;
+		margin-left: 35px !important;
 	}
 
 	.rightMargin {
@@ -46,6 +46,11 @@
 	.blockList p,
 	.blockList-dark p {
 		color: var(--text-primary) !important;
+	}
+
+	.colorTheme,
+	.colorThemeDark {
+		background-color: var(--bg-navbar) !important;
 	}
 
 	.colorBlueDark,

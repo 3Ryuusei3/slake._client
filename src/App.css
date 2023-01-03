@@ -24,7 +24,7 @@
 :root {
 	/* Light theme */
 	--bg-primary: #ffffff;
-	--bg-navbar: #e9e9e9;
+	--bg-navbar: #efeeee;
 	--bg-interact: #e3e3e3;
 	--bg-modal: #d5d5d5;
 	--text-primary: #37352f;
@@ -91,7 +91,8 @@
 	--md: calc(16px + (20 - 16) * ((100vw - 400px) / (1600 - 400)));
 	--sm: calc(14px + (16 - 14) * ((100vw - 400px) / (1600 - 400)));
 	--xs: calc(12px + (14 - 12) * ((100vw - 400px) / (1600 - 400)));
-	--xxs: calc(10px + (12 - 11) * ((100vw - 400px) / (1600 - 400)));
+	--xxs: calc(10px + (12 - 10) * ((100vw - 400px) / (1600 - 400)));
+	--xxxs: calc(7px + (8 - 7) * ((100vw - 400px) / (1600 - 400)));
 
 	/* For printing */
 	-webkit-print-color-adjust: exact !important;

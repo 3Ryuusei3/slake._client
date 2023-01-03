@@ -34,7 +34,7 @@ const SharedList = () => {
 			{!sharedNotesList ? (
 				<Instagram />
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-5" : "leftPaddingLg rightMargin py-5"}>
+				<section className={!isSidebarOpen ? "leftPaddingSm rightMargin py-5" : "leftPaddingLg rightMargin py-5"}>
 					<Container>
 						<Row className="gap-5">
 							{sharedNotesList.map(elm => {
@@ -57,7 +57,7 @@ const SharedList = () => {
 							})}
 						</Row>
 					</Container>
-				</div>
+				</section>
 			)}
 		</>
 	)

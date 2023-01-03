@@ -199,8 +199,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
-			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+		<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
+			<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
 				<button onClick={() => window.print()} className="printBtn">
 					<i className="bi bi-printer"></i>
 				</button>
@@ -248,25 +248,43 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 															changeIntoColor={changeIntoColor}
 														/>
 													)}
-													<div
-														name={`block${idx}`}
-														className={
-															!darkMode ? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
-														}
-														contentEditable={user._id !== singleNoteData.owner ? false : true}
-														suppressContentEditableWarning
-														spellCheck={false}
-														onInput={e => handleBlockText(idx, e)}
-														onKeyDown={e => manageBlockByKey(e, elm, idx)}
-														onBlur={() => {
-															setOffset(undefined)
-															setClickedBlockId("")
-														}}
-														ref={el => (blockRef.current[idx] = el)}
-														onClick={() => setClickedBlockId(idx)}
-													>
-														{elm.content}
-													</div>
+													{elm.htmlTag !== "img" ? (
+														<div
+															name={`block${idx}`}
+															className={
+																!darkMode
+																	? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
+																	: `blockLine-dark ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+															}
+															contentEditable={user._id !== singleNoteData.owner ? false : true}
+															suppressContentEditableWarning
+															spellCheck={false}
+															onInput={e => handleBlockText(idx, e)}
+															onKeyDown={e => manageBlockByKey(e, elm, idx)}
+															onBlur={() => {
+																setOffset(undefined)
+																setClickedBlockId("")
+															}}
+															ref={el => (blockRef.current[idx] = el)}
+															onClick={() => setClickedBlockId(idx)}
+														>
+															{elm.content}
+														</div>
+													) : (
+														<img
+															className="blockImg"
+															src={elm.imageUrl}
+															alt=""
+															name={`block${idx}`}
+															onKeyDown={e => manageBlockByKey(e, elm, idx)}
+															onBlur={() => {
+																setOffset(undefined)
+																setClickedBlockId("")
+															}}
+															ref={el => (blockRef.current[idx] = el)}
+															onClick={() => setClickedBlockId(idx)}
+														/>
+													)}
 													{blockId === idx && block.length > 1 && (
 														<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
 															<i className="bi bi-trash3"></i>
@@ -282,8 +300,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 						)}
 					</Droppable>
 				</DragDropContext>
-			</div>
-		</div>
+			</section>
+		</article>
 	)
 }
 

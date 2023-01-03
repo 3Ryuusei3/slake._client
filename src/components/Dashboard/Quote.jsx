@@ -29,7 +29,7 @@ const Quote = () => {
 	return (
 		<>
 			{quotes && rndNum !== undefined && (
-				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-1 mt-1" : "leftPaddingLg rightMargin pb-1 mt-1"}>
+				<section className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-1 mt-1" : "leftPaddingLg rightMargin pb-1 mt-1"}>
 					<h3 className="pt-4">Quote of the day</h3>
 					<div className={!darkMode ? "Callout py-3" : "Callout-dark py-3"}>
 						<button className="quoteBtn" onClick={genNewQuote}>
@@ -41,7 +41,7 @@ const Quote = () => {
 							</p>
 						</div>
 					</div>
-				</div>
+				</section>
 			)}
 		</>
 	)

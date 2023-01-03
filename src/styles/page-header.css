@@ -99,8 +99,6 @@
 	width: max-content;
 }
 
-/* New emoji picker */
-
 .emojiField {
 	font-size: var(--icon);
 	margin-bottom: 30px;
@@ -110,5 +108,16 @@
 .EmojiPickerReact {
 	position: absolute !important;
 	top: 100px;
+	z-index: 100;
 	--epr-emoji-size: 25px !important;
+}
+
+.epr-body {
+	/* Hide scrollbar but keep overflow on scroll below */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.epr-body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari and Opera */
 }

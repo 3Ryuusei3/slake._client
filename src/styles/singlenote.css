@@ -10,9 +10,13 @@
 	background-color: var(--color-primary) !important;
 	color: var(--bg-primary);
 	border: none;
-	padding: 3px 6px;
+	padding: 2px 6px;
 	border-radius: 4px;
 	display: block;
+}
+
+.printBtn i {
+	font-size: var(--sm);
 }
 
 .printBtn:hover {
@@ -118,7 +122,8 @@
 	align-items: center;
 }
 
-.blockLine {
+.blockLine,
+.blockLine-dark {
 	display: flex;
 	align-items: center;
 	border: none;
@@ -127,6 +132,14 @@
 	background-color: transparent;
 	border-radius: 2px;
 	word-break: break-word;
+}
+
+.blockLine:focus {
+	outline: 1px solid var(--bg-modal) !important;
+}
+
+.blockLine-dark:focus {
+	outline: 1px solid var(--dark-text-secondary) !important;
 }
 
 .fontLight {
@@ -142,7 +155,7 @@
 	position: absolute;
 	top: 4px;
 	bottom: 4px;
-	right: -32px;
+	right: -36px;
 	border: none;
 	padding: 0px 10px;
 	font-weight: var(--button);
@@ -152,6 +165,13 @@
 
 .deleteBlock-dark {
 	background-color: var(--dark-bg-modal) !important;
+}
+
+@media (max-width: 600px) {
+	.deleteBlock,
+	.deleteBlock-dark {
+		right: -16px;
+	}
 }
 
 .deleteBlock i {
@@ -236,27 +256,27 @@
 /* HTML Tag */
 
 .h1Block {
-	font-size: 32px;
+	font-size: var(--xxl);
 	font-weight: 700;
 }
 
 .h2Block {
-	font-size: 24px;
+	font-size: var(--lg);
 	font-weight: 600;
 }
 
 .h3Block {
-	font-size: 18px;
+	font-size: var(--md);
 	font-weight: 500;
 }
 
 .pBlock {
-	font-size: 16px;
+	font-size: var(--sm);
 	font-weight: 400;
 }
 
 .ulBlock {
-	font-size: 16px;
+	font-size: var(--sm);
 	font-weight: 400;
 	padding-left: 40px !important;
 	position: relative;
@@ -265,8 +285,24 @@
 .ulBlock::after {
 	position: absolute;
 	content: "●";
-	font-size: 7px;
-	left: 16px;
+	font-size: var(--xxxs);
+	left: var(--sm);
+	z-index: 2;
+}
+
+.calloutBlock {
+	font-size: var(--md);
+	font-weight: 400;
+	padding: 16px 14px 14px 60px !important;
+	position: relative;
+	margin-bottom: 0 !important;
+}
+
+.calloutBlock::after {
+	position: absolute;
+	content: "💡";
+	font-size: var(--sm);
+	left: 20px;
 	z-index: 2;
 }
 
@@ -298,6 +334,11 @@
 }
 
 /* Light */
+
+.colorTheme {
+	background-color: var(--bg-navbar) !important;
+}
+
 .colorBlue,
 .DiaryCategory {
 	background-color: var(--block-blue) !important;
@@ -329,6 +370,10 @@
 }
 
 /* Dark */
+.colorThemeDark {
+	background-color: var(--dark-bg-navbar) !important;
+}
+
 .colorBlueDark,
 .DiaryCategoryDark {
 	background-color: var(--dark-block-blue) !important;
@@ -365,6 +410,10 @@
 
 /* ColorPickers */
 
+.colorTextNone {
+	background: linear-gradient(to top right, var(--bg-navbar) calc(50% - 2px), rgb(255, 7, 7), var(--bg-navbar) calc(50% + 2px));
+}
+
 .colorTextBlue {
 	background-color: var(--text-blue) !important;
 }
@@ -387,4 +436,14 @@
 
 .colorTextPurple {
 	background-color: var(--text-purple) !important;
+}
+
+/* Images */
+
+.blockImg {
+	width: 100%;
+	max-height: 500px;
+	object-fit: cover;
+	border-radius: 2px;
+	opacity: 0.9;
 }
