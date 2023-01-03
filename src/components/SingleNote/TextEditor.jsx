@@ -199,8 +199,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	return (
-		<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
-			<div style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+		<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
+			<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
 				<button onClick={() => window.print()} className="printBtn">
 					<i className="bi bi-printer"></i>
 				</button>
@@ -251,7 +251,9 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 													<div
 														name={`block${idx}`}
 														className={
-															!darkMode ? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight` : `blockLine ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+															!darkMode
+																? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
+																: `blockLine-dark ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
 														}
 														contentEditable={user._id !== singleNoteData.owner ? false : true}
 														suppressContentEditableWarning
@@ -282,8 +284,8 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 						)}
 					</Droppable>
 				</DragDropContext>
-			</div>
-		</div>
+			</section>
+		</article>
 	)
 }
 

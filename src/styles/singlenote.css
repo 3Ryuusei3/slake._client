@@ -118,7 +118,8 @@
 	align-items: center;
 }
 
-.blockLine {
+.blockLine,
+.blockLine-dark {
 	display: flex;
 	align-items: center;
 	border: none;
@@ -127,6 +128,14 @@
 	background-color: transparent;
 	border-radius: 2px;
 	word-break: break-word;
+}
+
+.blockLine:focus {
+	outline: 1px solid var(--bg-modal) !important;
+}
+
+.blockLine-dark:focus {
+	outline: 1px solid var(--dark-text-secondary) !important;
 }
 
 .fontLight {
@@ -142,7 +151,7 @@
 	position: absolute;
 	top: 4px;
 	bottom: 4px;
-	right: -32px;
+	right: -36px;
 	border: none;
 	padding: 0px 10px;
 	font-weight: var(--button);
@@ -152,6 +161,13 @@
 
 .deleteBlock-dark {
 	background-color: var(--dark-bg-modal) !important;
+}
+
+@media (max-width: 600px) {
+	.deleteBlock,
+	.deleteBlock-dark {
+		right: -16px;
+	}
 }
 
 .deleteBlock i {

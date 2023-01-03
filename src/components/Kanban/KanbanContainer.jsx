@@ -38,11 +38,11 @@ const KanbanContainer = () => {
 	return (
 		<>
 			{!lanes ? (
-				<div style={{ paddingLeft: "300px" }}>
+				<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
 					<Instagram />
 				</div>
 			) : (
-				<div className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm" : "mt-4 rightMargin leftPaddingLg"}>
+				<section className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm" : "mt-4 rightMargin leftPaddingLg"}>
 					<Board
 						onDataChange={data => {
 							handleKanbanUpdate(data)
@@ -52,7 +52,7 @@ const KanbanContainer = () => {
 						editLaneTitle
 						data={lanes}
 					/>
-				</div>
+				</section>
 			)}
 		</>
 	)

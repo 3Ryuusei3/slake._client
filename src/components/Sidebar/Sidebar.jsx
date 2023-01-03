@@ -28,7 +28,7 @@ const Sidebar = () => {
 
 	return (
 		<>
-			<div className="sidebar" style={{ height: "100vh", overflow: "scroll initial" }}>
+			<nav className="sidebar" style={{ height: "100vh", overflow: "scroll initial" }}>
 				<CDBSidebar
 					toggled={!isSidebarOpen ? true : false}
 					breakpoint={600}
@@ -99,7 +99,7 @@ const Sidebar = () => {
 						</div>
 					</CDBSidebarFooter>
 				</CDBSidebar>
-			</div>
+			</nav>
 			<ModalProfile showModal={showModal} closeSidebarModal={closeSidebarModal} setShowModal={setShowModal} />
 		</>
 	)

@@ -72,8 +72,8 @@ const NotesList = () => {
 					<List />
 				</div>
 			) : (
-				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5 notesContainer" : "leftPaddingLg rightMargin my-3 mb-5 notesContainer"}>
-					<div className="d-flex justify-content-between align-items-center">
+				<article className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5 notesContainer" : "leftPaddingLg rightMargin my-3 mb-5 notesContainer"}>
+					<section className="d-flex justify-content-between align-items-center">
 						<h3 className="pt-2">Your notes</h3>
 						<div>
 							<input onChange={handleSearchInput} className={!darkMode ? "note-search" : "note-search-dark"} type="text" placeholder="Search a note" />
@@ -81,8 +81,8 @@ const NotesList = () => {
 								<i className="bi bi-plus-lg"></i>
 							</button>
 						</div>
-					</div>
-					<div className="noteList pt-2">
+					</section>
+					<section className="noteList pt-2">
 						<table>
 							<thead>
 								<tr className="text-muted text-muted-lg">
@@ -130,8 +130,8 @@ const NotesList = () => {
 								})}
 							</tbody>
 						</table>
-					</div>
-				</div>
+					</section>
+				</article>
 			)}
 		</>
 	)

@@ -92,27 +92,25 @@ const HeaderIcon = ({ headerIcon }) => {
 	}
 
 	return (
-		<>
-			<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
-				<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}}>
-					<p className="emojiField" onClick={() => setPicker(true)}>
-						{icon}
-					</p>
-					{picker && (
-						<Picker
-							height={350}
-							width={300}
-							theme={!darkMode ? "light" : "dark"}
-							lazyLoadEmojis={true}
-							onEmojiClick={onEmojiClick}
-							disableAutoFocus={true}
-							previewConfig={{ showPreview: false }}
-							searchPlaceholder={"Search your icon"}
-						/>
-					)}
-				</div>
+		<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
+			<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}}>
+				<p className="emojiField" onClick={() => setPicker(true)}>
+					{icon}
+				</p>
+				{picker && (
+					<Picker
+						height={350}
+						width={300}
+						theme={!darkMode ? "light" : "dark"}
+						lazyLoadEmojis={true}
+						onEmojiClick={onEmojiClick}
+						disableAutoFocus={true}
+						previewConfig={{ showPreview: false }}
+						searchPlaceholder={"Search your icon"}
+					/>
+				)}
 			</div>
-		</>
+		</div>
 	)
 }
 
