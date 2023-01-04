@@ -68,7 +68,7 @@
 		bottom: 50px;
 		opacity: 0;
 	}
-	100% {
+	70% {
 		position: relative;
 		bottom: 0;
 		opacity: 1;
