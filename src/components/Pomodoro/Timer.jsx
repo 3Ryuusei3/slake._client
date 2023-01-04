@@ -1,7 +1,9 @@
 
 import { useContext, useState, useEffect, useRef } from "react"
+
 import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
+import { PomodoroContext } from "../../context/pomodoro.context"
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import toast from "react-hot-toast"
@@ -10,25 +12,26 @@ import PlayButton from "./PlayButton"
 import PauseButton from "./PauseButton"
 import SettingsButton from "./SettingButton"
 
-import { PomodoroContext } from "../../context/pomodoro.context"
+const gray = '#8f8e8a'
+const purple = '#6c63ff'
+const lightGray = '#'
 
-const red = '#f54e4e'
-const green = '#4aec8c'
 
 const Timer = () => {
 
-    const { isSidebarOpen } = useContext(SidebarContext)
+
     const { darkMode } = useContext(DarkModeContext)
     const { setShowSettings, workMinutes, breakMinutes } = useContext(PomodoroContext)
 
     const [isPaused, setIsPaused] = useState(true)
     const [mode, setMode] = useState('work')
     const [secondsLeft, setSecondsLeft] = useState(0)
+    const [showSettingIcon, setShowSettingIcon] = useState(false)
 
     const secondsLeftRef = useRef(secondsLeft)
     const isPausedRef = useRef(isPaused)
     const modeRef = useRef(mode)
-    // I have to create REF because SET INTERVAL don`t have SCOPE
+    // I have to create REF because SET INTERVAL doesn`t have SCOPE
 
     const notifyBreak = () =>
         toast("Breeeeeak", {
@@ -81,7 +84,7 @@ const Timer = () => {
                 return switchMode()
             }
             tick()
-        }, 10)
+        }, 1000)
 
         return () => clearInterval(interval)
     }, [PomodoroContext])
@@ -89,31 +92,40 @@ const Timer = () => {
     const totalSeconds = mode === 'work' ? workMinutes * 60 : breakMinutes * 60
     const percentege = Math.round(secondsLeft / totalSeconds * 100)
 
-    const minutes = Math.floor(secondsLeft / 60)
+    let minutes = Math.floor(secondsLeft / 60)
     let seconds = secondsLeft % 60
+    if (minutes < 10) { minutes = '0' + minutes }
     if (seconds < 10) { seconds = '0' + seconds }
 
+    const handleMouseOver = () => {
+        setShowSettingIcon(true)
+    }
+
+    const handleMouseOut = () => {
+        setShowSettingIcon(false)
+    }
+
     return (
-        <div className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
-            <div className={!darkMode ? "Callout" : "Callout-dark"}>
-                <h1>Pomodoro</h1>
-                <small>Be productive everywhere</small>
-                <CircularProgressbar
-                    value={percentege}
-                    text={minutes + ':' + seconds}
-                    styles={buildStyles({
-                        textColor: '#fff',
-                        pathColor: mode === 'work' ? red : green,
-                        tailColor: 'rgba(255, 255, 255, .2)'
-                    })} />
-                <div>
-                    {isPaused ? <PlayButton onClick={() => { setIsPaused(false); isPausedRef.current = false }} />
-                        : <PauseButton onClick={() => { setIsPaused(true); isPausedRef.current = true }} />}
-                </div>
-                <div>
-                    <SettingsButton onClick={() => setShowSettings(true)} />
-                </div>
-            </div>
+
+        <div className={!darkMode ? "Pomodoro mt-4" : "Pomodoro-dark mt-4"}
+            onMouseOver={() => handleMouseOver()}
+            onMouseOut={() => handleMouseOut()}>
+            <CircularProgressbar
+                value={percentege}
+                strokeWidth={4}
+                text={<tspan dy={0} dx={-19} >{minutes + ':' + seconds}</tspan>}
+                styles={buildStyles({
+                    textColor: '#fff',
+                    pathColor: mode === 'work' ? purple : gray,
+                    trailColor: lightGray,
+                    strokeLinecap: 'round',
+                })
+                }
+            />
+
+            {isPaused ? <PlayButton onClick={() => { setIsPaused(false); isPausedRef.current = false }} />
+                : <PauseButton onClick={() => { setIsPaused(true); isPausedRef.current = true }} />}
+            {showSettingIcon && (<SettingsButton onClick={() => setShowSettings(true)} />)}
         </div>
     )
 }

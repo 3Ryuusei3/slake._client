@@ -1,9 +1,12 @@
 
 import { useContext } from "react"
+
+import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
+import { PomodoroContext } from "../../context/pomodoro.context"
 
 import ReactSlider from 'react-slider'
-import { PomodoroContext } from "../../context/pomodoro.context"
+
 import BackButton from "./BackButton"
 
 const Settings = () => {
@@ -14,9 +17,10 @@ const Settings = () => {
         setWorkMinutes,
         setBreakMinutes,
         setShowSettings } = useContext(PomodoroContext)
+    const { darkMode } = useContext(DarkModeContext)
 
     return (
-        <div className={isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
+        <div className={!darkMode ? "PomodoroSettings mt-4" : "PomodoroSettings-dark mt-4"}>
             <label>Work: {workMinutes}:00</label>
             <ReactSlider
                 className={'slider'}
@@ -29,7 +33,7 @@ const Settings = () => {
             />
             <label>Break: {breakMinutes}:00</label>
             <ReactSlider
-                className={'slider green'}
+                className={'slider-gray'}
                 thumbClassName={'thumb'}
                 trackClassName={'track'}
                 value={breakMinutes}

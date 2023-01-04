@@ -29,8 +29,8 @@ const Quote = () => {
 	return (
 		<>
 			{quotes && rndNum !== undefined && (
-				<section className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-1 mt-1" : "leftPaddingLg rightMargin pb-1 mt-1"}>
-					<h3 className="pt-4">Quote of the day</h3>
+				<section className="pb-2">
+					<h3 className="pt-4 pb-3">Quote of the day</h3>
 					<div className={!darkMode ? "Callout py-3" : "Callout-dark py-3"}>
 						<button className="quoteBtn" onClick={genNewQuote}>
 							🎈

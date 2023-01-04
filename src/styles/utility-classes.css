@@ -4,7 +4,8 @@
 .purple-outline-btn,
 .red-outline-btn,
 .react-trello-lane button,
-.react-trello-lane a {
+.react-trello-lane a,
+.back-btn {
 	font-weight: var(--button) !important;
 	background-color: var(--color-primary) !important;
 	font-size: var(--sm) !important;

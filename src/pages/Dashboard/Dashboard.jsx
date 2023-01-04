@@ -1,7 +1,8 @@
 import { useState, useContext, useEffect } from "react"
+
 import { AuthContext } from "../../context/auth.context"
 import { PomodoroContext } from "../../context/pomodoro.context"
-import { Code } from "react-content-loader"
+import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 
@@ -13,13 +14,14 @@ import Quote from "../../components/Dashboard/Quote"
 import Timer from "../../components/Pomodoro/Timer"
 import Settings from "../../components/Pomodoro/Settings"
 
-
+import { Code } from "react-content-loader"
 
 const Dashboard = () => {
 
 	const [dashboardData, setDashboardData] = useState()
 
 	const { showSettings } = useContext(PomodoroContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 	const { user } = useContext(AuthContext)
 
 	const getDashboardData = () => {
@@ -42,14 +44,22 @@ const Dashboard = () => {
 					<Code />
 				</div>
 			) : (
-				<>
+				<div>
 					<Sidebar />
 					<Header />
 					<Callout dashboardData={dashboardData} />
-					<Quote />
-					<ToDo dashboardData={dashboardData} />
-					{/* {showSettings ? <Settings /> : <Timer />} */}
-				</>
+
+					<div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-5 grid-container" : "leftPaddingLg rightMargin pb-5 grid-container"}>
+						<div>
+							<Quote />
+							<ToDo dashboardData={dashboardData} />
+						</div>
+						<div>
+							<h3 className="pt-4">Pomodoro</h3>
+							{showSettings ? <Settings /> : <Timer />}
+						</div>
+					</div>
+				</div>
 			)}
 		</>
 	)
