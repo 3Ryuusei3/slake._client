@@ -13,13 +13,14 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 
 const TextEditor = ({ singleNoteData, noteId }) => {
+	const [noteInfo, setNoteInfo] = useState(false)
 	const [tag, setTag] = useState(singleNoteData.tag)
 	const [categoryMenu, setCategoryMenu] = useState(false)
 	const [shared, setShared] = useState(singleNoteData.shared)
 	const [block, setBlock] = useState([...singleNoteData.block])
 	const [blockId, setBlockId] = useState("")
 	const [clikedBlockId, setClickedBlockId] = useState("")
-	const [showMenu, setShowMenu] = useState(false)
+	const [blockMenu, setBlockMenu] = useState(false)
 	const [offset, setOffset] = useState()
 
 	const blockRef = useRef([])
@@ -136,15 +137,15 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	const handleMenuOut = () => {
-		setShowMenu(false)
+		setBlockMenu(false)
 	}
 
 	const handleMenuIn = () => {
-		setShowMenu(true)
+		setBlockMenu(true)
 	}
 
 	const handleBlockMenu = () => {
-		setShowMenu(!showMenu)
+		setBlockMenu(!blockMenu)
 	}
 
 	// Block management by key
@@ -201,24 +202,38 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 			<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
-				<div className={!darkMode ? "noteOptions py-4 px-3" : "noteOptions-dark py-4 px-3"}>
-					<CategoryMenu
-						tag={tag}
-						showCategoryMenu={showCategoryMenu}
-						categoryMenu={categoryMenu}
-						handleMouseOverCategory={handleMouseOverCategory}
-						handleMouseOutCategory={handleMouseOutCategory}
-						handleNoteCategory={handleNoteCategory}
-					/>
-					<div className="d-flex ms-5 align-items-center">
-						<p className="me-2 mb-0">Shared:</p>
-						<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
-					</div>
-					<button onClick={() => window.print()} className="printBtn">
-						<i className="bi bi-printer"></i>
+				{user._id === singleNoteData.owner && (
+					<button
+						onClick={() => {
+							setNoteInfo(val => !val)
+						}}
+						style={noteInfo ? { rotate: "-90deg", transition: "0.4s ease" } : { rotate: "0deg", transition: "0.4s ease" }}
+						className={!darkMode ? "noteInfoBtn" : "noteInfoBtn-dark"}
+					>
+						<i className="bi bi-three-dots-vertical"></i>
 					</button>
-				</div>
-				<hr className="my-4" />
+				)}
+				{noteInfo && (
+					<div style={noteInfo ? { "--note-info": "fade-in" } : { "--note-info": "fade-out" }} className={!darkMode ? "noteInfo py-4 px-3" : "noteInfo-dark py-4 px-3"}>
+						<div>
+							<CategoryMenu
+								tag={tag}
+								showCategoryMenu={showCategoryMenu}
+								categoryMenu={categoryMenu}
+								handleMouseOverCategory={handleMouseOverCategory}
+								handleMouseOutCategory={handleMouseOutCategory}
+								handleNoteCategory={handleNoteCategory}
+							/>
+							<div className="d-flex ms-5 align-items-center">
+								<p className="me-2 mb-0">Shared:</p>
+								<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
+							</div>
+						</div>
+						<button onClick={() => window.print()} className="printBtn">
+							<i className="bi bi-printer"></i>
+						</button>
+					</div>
+				)}
 				<DragDropContext onDragEnd={handleOnDragEnd}>
 					<Droppable droppableId="blocks">
 						{provided => (
@@ -239,7 +254,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 															<i className="bi bi-grid-3x2-gap"></i>
 														</div>
 													)}
-													{blockId === idx && showMenu && (
+													{blockId === idx && blockMenu && (
 														<BlockMenu
 															blockId={blockId}
 															handleMenuIn={handleMenuIn}

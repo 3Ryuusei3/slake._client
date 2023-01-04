@@ -36,6 +36,11 @@ button {
 	font-weight: var(--link);
 }
 
+button {
+	border: none;
+	background-color: transparent !important;
+}
+
 p {
 	font-weight: var(--subtitle);
 }
