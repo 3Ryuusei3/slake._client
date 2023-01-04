@@ -64,7 +64,7 @@
 
 .grid-container {
 	display: grid;
-	grid-template-columns: 2.5fr 1fr;
+	grid-template-columns: 2.25fr 1fr;
 	gap: 30px;
 }
 
@@ -93,7 +93,7 @@
 	background-color: var(--bg-navbar);
 	display: flex;
 	justify-content: space-between;
-	padding: 10px 16px;
+	padding: 10px 12px;
 	border-radius: 4px;
 	color: var(--text-primary);
 }
@@ -124,15 +124,21 @@
 .addTodoInput-dark button {
 	border: none;
 	padding: 3px 7px;
-	background-color: var(--color-primary);
+	background-color: var(--color-primary) !important;
 	font-weight: var(--button);
 	border-radius: 4px;
+}
+
+.addTodoInput button i,
+.addTodoInput-dark button i {
+	color: var(--bg-primary) !important;
+	font-size: var(--sm);
 }
 
 .todoList ul,
 .todoList-dark ul {
 	margin-top: 20px;
-	margin-left: 16px;
+	margin-left: 11px;
 	list-style: none;
 	padding-left: 2px;
 }

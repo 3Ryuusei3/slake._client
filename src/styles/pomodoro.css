@@ -1,110 +1,133 @@
 .Pomodoro,
 .Pomodoro-dark {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-grow: 1;
-    background-color: var(--bg-navbar);
-    border-radius: 4px;
-    padding: calc(20px + (50 - 20) * ((100vw - 400px) / (1600 - 400))) calc(10px + (20 - 10) * ((100vw - 400px) / (1600 - 400)));
-    color: var(--text-primary);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-grow: 1;
+	background-color: var(--bg-navbar);
+	border-radius: 4px;
+	padding: calc(20px + (40 - 20) * ((100vw - 400px) / (1600 - 400))) calc(10px + (16 - 10) * ((100vw - 400px) / (1600 - 400)));
+	color: var(--text-primary);
 }
 
 .Pomodoro-dark {
-    background-color: var(--dark-bg-navbar);
-    color: var(--dark-text-primary);
+	background-color: var(--dark-bg-navbar);
+	color: var(--dark-text-primary);
 }
 
-.pomodoroBtn {
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    border: 0;
-    display: inline-block;
-    width: calc(24px + (46 - 24) * ((100vw - 400px) / (1600 - 400)));
-    cursor: pointer;
-    top: 55%;
-    right: 44.5%;
+.Pomodoro p,
+.Pomodoro-dark p {
+	position: absolute;
+	top: calc(36% + (42 - 36) * ((100vw - 400px) / (1600 - 400)));
+	font-size: var(--timer) !important;
 }
 
-.settingsBtn {
-
-    position: absolute;
-    top: 5%;
-    right: 5%;
+.pomodoroBtn,
+.pomodoroBtn-dark {
+	background-color: transparent;
+	color: var(--text-primary);
+	position: absolute;
+	border: 0;
+	display: inline-block;
+	cursor: pointer;
+	top: 52%;
+	right: 0;
+	left: 0;
 }
 
-.pomodoroBtn.with-text {
-
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1.4rem;
-    line-height: 36px;
+.pomodoroBtn i,
+.pomodoroBtn-dark i {
+	font-size: var(--xxl);
 }
 
-.pomodoroBtn.with-text svg {
-    width: calc(24px + (46 - 24) * ((100vw - 400px) / (1600 - 400)));
+.settingsBtn,
+.settingsBtn-dark {
+	position: absolute;
+	top: 5%;
+	left: 80%;
+}
+
+.settingsBtn i,
+.settingsBtn-dark i {
+	font-size: var(--lg);
+}
+
+.pomodoroBtn-dark,
+.settingsBtn-dark {
+	color: var(--dark-text-primary);
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    text-transform: capitalize;
+	display: block;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-transform: capitalize;
 }
 
 .CircularProgressbar {
-    width: 70% !important;
-}
-
-.CircularProgressbar .CircularProgressbar-text {
-    font-size: var(--xs) !important;
+	width: 70% !important;
 }
 
 .PomodoroSettings,
 .PomodoroSettings-dark {
-    background-color: var(--bg-navbar);
-    border-radius: 5px;
-    padding: 10px 36px 30px 36px;
-    color: var(--text-primary);
+	background-color: var(--bg-navbar);
+	border-radius: 5px;
+	padding: 10px 36px 40px 36px;
+	color: var(--text-primary);
 }
 
 .PomodoroSettings-dark {
-    background-color: var(--dark-bg-navbar);
-    color: var(--dark-text-primary);
+	background-color: var(--dark-bg-navbar);
+	color: var(--dark-text-primary);
 }
 
-.back-btn {
-    display: flex;
-    padding: 8px 26px;
-    margin-top: 30px;
-    margin-inline: auto;
+.saveBtn {
+	display: flex;
+	padding: 8px 26px;
+	margin-top: 40px;
+	margin-inline: auto;
 }
+
+/* Sliders */
 
 .slider,
 .slider-gray {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    outline: 2px solid var(--color-primary);
-    border-radius: 22px;
-    width: 100%;
+	display: flex;
+	align-items: center;
+	height: 45px;
+	outline: 2px solid var(--color-primary);
+	border-radius: 22px;
+	width: 100%;
 }
 
 .thumb {
-    background-color: var(--color-primary);
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+	background-color: var(--color-primary);
+	cursor: pointer;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
 }
 
 .slider-gray {
-    outline: 2px solid var(--text-secondary);
+	outline: 2px solid var(--text-secondary);
 }
 
 .slider-gray .thumb {
-    background-color: var(--text-secondary);
+	background-color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+	.Pomodoro p,
+	.Pomodoro-dark p {
+		font-size: var(--lg) !important;
+	}
+
+	.CircularProgressbar {
+		width: 40% !important;
+	}
+
+	.grid-container {
+		gap: 0;
+	}
 }

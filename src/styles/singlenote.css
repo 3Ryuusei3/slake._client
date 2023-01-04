@@ -75,19 +75,6 @@
 	}
 }
 
-@keyframes fade-out {
-	0% {
-		position: relative;
-		bottom: 0;
-		opacity: 1;
-	}
-	100% {
-		position: absolute;
-		bottom: 50px;
-		opacity: 0;
-	}
-}
-
 .noteInfo-dark {
 	background-color: var(--dark-bg-modal);
 }

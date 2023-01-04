@@ -8,6 +8,7 @@
 @import "./styles/sidebar.css";
 @import "./styles/page-header.css";
 @import "./styles/dashboard.css";
+@import "./styles/pomodoro.css";
 @import "./styles/kanban.css";
 @import "./styles/notes.css";
 @import "./styles/singlenote.css";
@@ -16,8 +17,6 @@
 @import "./styles/pricing.css";
 @import "./styles/utility-classes.css";
 @import "./styles/print-note.css";
-@import "./styles/pomodoro.css";
-@import "./styles/slider.css";
 
 /* Varibales */
 
@@ -30,6 +29,7 @@
 	--bg-modal: #d5d5d5;
 	--text-primary: #37352f;
 	--text-secondary: #8f8e8a;
+	--text-terciary: #cbcbcb;
 
 	/* Dark theme */
 	--dark-bg-primary: #191919;
@@ -84,6 +84,7 @@
 
 	/* Font size */
 	--icon: calc(76px + (90 - 76) * ((100vw - 400px) / (1600 - 400)));
+	--timer: calc(16px + (36 - 16) * ((100vw - 600px) / (1600 - 600)));
 	--xxxxl: calc(52px + (68 - 52) * ((100vw - 400px) / (1600 - 400)));
 	--xxxl: calc(34px + (50 - 34) * ((100vw - 400px) / (1600 - 400)));
 	--xxl: calc(26px + (38 - 26) * ((100vw - 400px) / (1600 - 400)));
