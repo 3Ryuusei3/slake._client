@@ -66,10 +66,6 @@
 	color: var(--light-color-primary);
 }
 
-.headerInput-dark {
-	color: var(--dark-color-primary);
-}
-
 .headerInput::placeholder,
 .headerInput-dark::placeholder {
 	font-size: var(--xxxl) !important;

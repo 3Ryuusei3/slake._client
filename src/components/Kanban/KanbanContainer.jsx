@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react"
+
 import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 import kanbanServices from "../../services/kanban.service"
 
@@ -11,6 +13,7 @@ const KanbanContainer = () => {
 	const [lanes, setLanes] = useState()
 
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 
 	const getKanbanData = () => {
@@ -51,6 +54,14 @@ const KanbanContainer = () => {
 						draggable
 						editLaneTitle
 						data={lanes}
+						style={{
+							"--textColor": !darkMode ? "var(--text-primary)" : "var(--dark-text-primary)",
+							"--headerColor": !darkMode ? "var(--color-primary)" : "var(--dark-color-primary)",
+							"--laneColor": !darkMode ? "var(--color-primary-btn)" : "var(--dark-bg-navbar)",
+							"--cardColor": !darkMode ? "var(--bg-primary)" : "var(--dark-bg-card)",
+							"--cardBtnColor": !darkMode ? "var(--bg-secondary)" : "var(--dark-bg-navbar)",
+							"--cardHoverBtnColor": !darkMode ? "var(--bg-navbar)" : "var(--dark-bg-interact)",
+						}}
 					/>
 				</section>
 			)}

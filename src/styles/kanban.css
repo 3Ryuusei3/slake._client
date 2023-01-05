@@ -10,16 +10,8 @@
 	outline: none !important;
 }
 
-.smooth-dnd-draggable-wrapper:first-child .react-trello-lane {
-	background-color: var(--color-primary-btn) !important;
-}
-
-.smooth-dnd-draggable-wrapper:nth-child(2) .react-trello-lane {
-	background-color: var(--color-primary-btn-interact) !important;
-}
-
-.smooth-dnd-draggable-wrapper:nth-child(3) .react-trello-lane {
-	background-color: var(--color-primary-btn-second-interact) !important;
+.react-trello-lane {
+	background-color: var(--laneColor) !important;
 }
 
 .react-trello-lane {
@@ -35,10 +27,7 @@
 	margin-top: 12px !important;
 	font-size: var(--lg) !important;
 	min-height: 26px !important;
-}
-
-.react-trello-lane header span:nth-child(2) {
-	display: none;
+	color: var(--textColor) !important;
 }
 
 .react-trello-board textarea {
@@ -65,6 +54,7 @@
 
 .react-trello-lane div div {
 	background-color: transparent !important;
+	color: var(--textColor) !important;
 	min-width: 290px !important;
 	max-width: none !important;
 }
@@ -75,6 +65,7 @@
 	width: 300px !important;
 	max-width: none !important;
 	margin-bottom: 20px !important;
+	background-color: var(--cardColor) !important;
 }
 
 .react-trello-card header {
@@ -83,7 +74,7 @@
 }
 
 .react-trello-card header textarea {
-	color: var(--color-primary) !important;
+	color: var(--headerColor) !important;
 	font-size: var(--sm) !important;
 }
 
@@ -91,14 +82,33 @@
 	font-size: var(--xs) !important;
 	padding-right: 26px !important;
 	min-height: 20px !important;
+	color: var(--textColor) !important;
 }
 
 .react-trello-card header div {
-	left: 120px;
+	width: 15px !important;
+	min-width: 15px !important;
+	margin-inline: 0 !important;
+	right: 15px;
 	top: 10px;
 }
 
 .react-trello-card header div button {
 	border: none !important;
 	background-color: transparent !important;
+	color: var(--textColor) !important;
+}
+
+.comPlainTextContentEditable {
+	padding-left: 10px;
+	padding-block: 5.5px !important;
+}
+
+.comPlainTextContentEditable--has-placeholder::before {
+	color: var(--textColor) !important;
+}
+
+.comPlainTextContentEditable--has-placeholder {
+	padding-block: 5.5px !important;
+	padding-left: 10px;
 }

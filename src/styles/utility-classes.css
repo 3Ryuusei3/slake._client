@@ -33,9 +33,16 @@
 	color: var(--color-primary) !important;
 }
 
-.purple-outline-btn:hover,
-.react-trello-lane a:hover {
+.react-trello-lane a {
+	background-color: var(--cardBtnColor) !important;
+}
+
+.purple-outline-btn:hover {
 	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.react-trello-lane a:hover {
+	background-color: var(--cardHoverBtnColor) !important;
 }
 
 .red-outline-btn {
@@ -59,7 +66,12 @@
 
 .gray-outline-button,
 .react-trello-lane button:nth-child(3) {
-	background-color: var(--bg-navbar) !important;
+	background-color: var(--cardBtnColor) !important;
+}
+
+.gray-outline-button:hover,
+.react-trello-lane button:nth-child(3):hover {
+	background-color: var(--cardHoverBtnColor) !important;
 }
 
 .leftPaddingSm {
