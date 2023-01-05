@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
-import { SidebarContext } from "../../context/sidebar.context"
+
 
 import dashboardServices from "../../services/dashboard.service"
 
@@ -13,7 +13,6 @@ const ToDo = ({ dashboardData }) => {
 	const [toDoId, setToDoId] = useState("")
 
 	const { user } = useContext(AuthContext)
-	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
 
 	const handleTodoUpdate = newTodo => {

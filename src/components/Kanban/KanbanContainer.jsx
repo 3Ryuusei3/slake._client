@@ -7,6 +7,7 @@ import kanbanServices from "../../services/kanban.service"
 import Board from "react-trello"
 import { Instagram } from "react-content-loader"
 
+
 const KanbanContainer = () => {
 	const [lanes, setLanes] = useState()
 
@@ -35,6 +36,8 @@ const KanbanContainer = () => {
 			.catch(err => console.log({ message: "Internal server error:", err }))
 	}
 
+
+
 	return (
 		<>
 			{!lanes ? (
@@ -42,6 +45,7 @@ const KanbanContainer = () => {
 					<Instagram />
 				</div>
 			) : (
+
 				<section className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm" : "mt-4 rightMargin leftPaddingLg"}>
 					<Board
 						onDataChange={data => {
@@ -57,5 +61,7 @@ const KanbanContainer = () => {
 		</>
 	)
 }
+
+
 
 export default KanbanContainer
