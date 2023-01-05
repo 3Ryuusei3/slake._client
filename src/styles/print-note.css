@@ -7,10 +7,6 @@
 		display: none !important;
 	}
 
-	.printBtn {
-		display: none !important;
-	}
-
 	.leftPaddingSm {
 		margin-left: 35px !important;
 	}
@@ -39,6 +35,13 @@
 
 	.fontDark {
 		color: var(--text-primary) !important;
+	}
+
+	.noteInfoBtn,
+	.noteInfoBtn-dark,
+	.noteInfo,
+	.noteInfo-dark {
+		display: none;
 	}
 
 	.blockList,

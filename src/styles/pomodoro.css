@@ -7,7 +7,7 @@
     flex-grow: 1;
     background-color: var(--bg-navbar);
     border-radius: 4px;
-    padding: calc(20px + (50 - 20) * ((100vw - 400px) / (1600 - 400))) calc(10px + (20 - 10) * ((100vw - 400px) / (1600 - 400)));
+    padding: calc(20px + (40 - 20) * ((100vw - 400px) / (1600 - 400))) calc(10px + (16 - 10) * ((100vw - 400px) / (1600 - 400)));
     color: var(--text-primary);
 }
 
@@ -16,35 +16,46 @@
     color: var(--dark-text-primary);
 }
 
-.pomodoroBtn {
+.Pomodoro p,
+.Pomodoro-dark p {
+    position: absolute;
+    top: calc(36% + (42 - 36) * ((100vw - 400px) / (1600 - 400)));
+    font-size: var(--timer) !important;
+}
+
+.pomodoroBtn,
+.pomodoroBtn-dark {
     background-color: transparent;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
     position: absolute;
     border: 0;
     display: inline-block;
-    width: calc(24px + (46 - 24) * ((100vw - 400px) / (1600 - 400)));
     cursor: pointer;
-    top: 55%;
-    right: 44.5%;
+    top: 52%;
+    right: 0;
+    left: 0;
 }
 
-.settingsBtn {
+.pomodoroBtn i,
+.pomodoroBtn-dark i {
+    font-size: var(--xxl);
+}
+
+.settingsBtn,
+.settingsBtn-dark {
     position: absolute;
     top: 5%;
-    right: 5%;
+    left: 80%;
 }
 
-.pomodoroBtn.with-text {
-
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1.4rem;
-    line-height: 36px;
+.settingsBtn i,
+.settingsBtn-dark i {
+    font-size: var(--lg);
 }
 
-.pomodoroBtn.with-text svg {
-    width: calc(24px + (46 - 24) * ((100vw - 400px) / (1600 - 400)));
+.pomodoroBtn-dark,
+.settingsBtn-dark {
+    color: var(--dark-text-primary);
 }
 
 label {
@@ -58,15 +69,11 @@ label {
     width: 70% !important;
 }
 
-.CircularProgressbar .CircularProgressbar-text {
-    font-size: var(--xs) !important;
-}
-
 .PomodoroSettings,
 .PomodoroSettings-dark {
     background-color: var(--bg-navbar);
     border-radius: 5px;
-    padding: 10px 36px 30px 36px;
+    padding: 10px 36px 40px 36px;
     color: var(--text-primary);
 }
 
@@ -75,12 +82,14 @@ label {
     color: var(--dark-text-primary);
 }
 
-.back-btn {
+.saveBtn {
     display: flex;
     padding: 8px 26px;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-inline: auto;
 }
+
+/* Sliders */
 
 .slider,
 .slider-gray {
@@ -106,4 +115,20 @@ label {
 
 .slider-gray .thumb {
     background-color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+
+    .Pomodoro p,
+    .Pomodoro-dark p {
+        font-size: var(--lg) !important;
+    }
+
+    .CircularProgressbar {
+        width: 40% !important;
+    }
+
+    .grid-container {
+        gap: 0;
+    }
 }
