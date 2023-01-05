@@ -33,19 +33,20 @@
 
 	/* Dark theme */
 	--dark-bg-primary: #191919;
-	--dark-bg-navbar: #202020;
+	--dark-bg-navbar: #222222;
 	--dark-bg-interact: #2c2c2c;
 	--dark-bg-modal: #272727;
+	--dark-bg-card: #373737;
 	--dark-text-primary: #f6f6f6;
 	--dark-text-secondary: #9b9b9b;
 	--dark-text-terciary: #b2b2b2;
 
 	/* Colors */
 	--color-primary: #6c63ff;
+	--dark-color-primary: #7b74fc;
 	--color-primary-interact: #6058f8;
 	--color-primary-btn: #f2f2ff;
-	--color-primary-btn-interact: #e2e1fd;
-	--color-primary-btn-second-interact: #d1d0fa;
+	--color-primary-btn-interact: #d9d8fe;
 	--color-secondary: #e15047;
 	--color-secondary-interact: #fae2e0;
 
