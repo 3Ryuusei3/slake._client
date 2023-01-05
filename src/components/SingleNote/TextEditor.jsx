@@ -10,7 +10,9 @@ import BlockMenu from "./BlockMenu"
 import singleNoteService from "../../services/singleNote.service"
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import { Modal } from "react-bootstrap"
 import toast from "react-hot-toast"
+import NewBlockImageForm from "./NewImageForm"
 
 const TextEditor = ({ singleNoteData, noteId }) => {
 	const [noteInfo, setNoteInfo] = useState(false)
@@ -22,6 +24,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	const [clikedBlockId, setClickedBlockId] = useState("")
 	const [blockMenu, setBlockMenu] = useState(false)
 	const [offset, setOffset] = useState()
+	const [showImgModal, setShowImgModal] = useState(false)
 
 	const blockRef = useRef([])
 
@@ -168,6 +171,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	const changeIntoTag = (i, tag) => {
 		let blocksCopy = [...block]
 		blocksCopy[i].htmlTag = `${tag}`
+		blocksCopy[i].imageUrl = ""
 		setBlock(blocksCopy)
 		handleBlockUpdate(blocksCopy)
 	}
@@ -197,6 +201,17 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 		newBlockList.splice(result.destination.index, 0, reorderedItem)
 		setBlock(newBlockList)
 		handleBlockUpdate(newBlockList)
+	}
+
+	// Image upload
+	const openImgModal = () => setShowImgModal(true)
+	const closeImgModal = () => setShowImgModal(false)
+
+	const changeImgUrl = (i, url) => {
+		let blocksCopy = [...block]
+		blocksCopy[i].imageUrl = url
+		setBlock(blocksCopy)
+		handleBlockUpdate(blocksCopy)
 	}
 
 	return (
@@ -262,6 +277,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 															changeIntoTag={changeIntoTag}
 															changeIntoType={changeIntoType}
 															changeIntoColor={changeIntoColor}
+															openImgModal={openImgModal}
 														/>
 													)}
 													{elm.htmlTag !== "img" ? (
@@ -316,6 +332,17 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 						)}
 					</Droppable>
 				</DragDropContext>
+				<Modal show={showImgModal} onHide={closeImgModal}>
+					<Modal.Header
+						style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}
+						closeButton
+					>
+						<Modal.Title>Add image</Modal.Title>
+					</Modal.Header>
+					<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
+						<NewBlockImageForm setShowImgModal={setShowImgModal} changeImgUrl={changeImgUrl} blockId={blockId} clikedBlockId={clikedBlockId} />
+					</Modal.Body>
+				</Modal>
 			</section>
 		</article>
 	)

@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
 
-const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, changeIntoType, changeIntoColor }) => {
+const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, changeIntoType, changeIntoColor, openImgModal }) => {
 	const { darkMode } = useContext(DarkModeContext)
 
 	return (
@@ -34,7 +34,12 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 					</button>
 				</li>
 				<li>
-					<button onClick={() => changeIntoTag(blockId, "img")}>
+					<button
+						onClick={() => {
+							changeIntoTag(blockId, "img")
+							openImgModal()
+						}}
+					>
 						<i className="bi bi-image"></i>
 					</button>
 				</li>
