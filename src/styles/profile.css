@@ -1,9 +1,5 @@
 /* Profile */
 
-.modal-content {
-	left: 20%;
-}
-
 .profileHeader {
 	background-color: var(--bg-navbar) !important;
 }

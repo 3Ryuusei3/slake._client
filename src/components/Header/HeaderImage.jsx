@@ -42,14 +42,11 @@ const HeaderImage = ({ headerImg, setHeaderData }) => {
 				)}
 				<img onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="headerImg" src={headerImg} alt="" />
 			</div>
-			<Modal show={showImgModal} onHide={closeImgModal}>
-				<Modal.Header
-					style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}
-					closeButton
-				>
+			<Modal className={darkMode && "modal-dark"} show={showImgModal} onHide={closeImgModal}>
+				<Modal.Header closeButton>
 					<Modal.Title>Change header image</Modal.Title>
 				</Modal.Header>
-				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-navbar)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
+				<Modal.Body>
 					<NewHeaderImgForm setShowImgModal={setShowImgModal} setHeaderData={setHeaderData} />
 				</Modal.Body>
 			</Modal>

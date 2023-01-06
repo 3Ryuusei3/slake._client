@@ -13,6 +13,7 @@
 @import "./styles/notes.css";
 @import "./styles/singlenote.css";
 @import "./styles/sharednotes.css";
+@import "./styles/modal.css";
 @import "./styles/profile.css";
 @import "./styles/pricing.css";
 @import "./styles/utility-classes.css";
@@ -84,19 +85,19 @@
 	--text: 200;
 
 	/* Font size */
-	--icon: calc(76px + (90 - 76) * ((100vw - 400px) / (1600 - 400)));
-	--timer: calc(16px + (36 - 16) * ((100vw - 600px) / (1600 - 600)));
-	--xxxxl: calc(52px + (68 - 52) * ((100vw - 400px) / (1600 - 400)));
-	--xxxl: calc(34px + (50 - 34) * ((100vw - 400px) / (1600 - 400)));
-	--xxl: calc(26px + (38 - 26) * ((100vw - 400px) / (1600 - 400)));
-	--xl: calc(20px + (30 - 20) * ((100vw - 400px) / (1600 - 400)));
-	--lg: calc(18px + (24 - 18) * ((100vw - 400px) / (1600 - 400)));
-	--md: calc(16px + (20 - 16) * ((100vw - 400px) / (1600 - 400)));
-	--st: calc(15px + (18 - 15) * ((100vw - 400px) / (1600 - 400)));
-	--sm: calc(14px + (16 - 14) * ((100vw - 400px) / (1600 - 400)));
-	--xs: calc(12px + (14 - 12) * ((100vw - 400px) / (1600 - 400)));
-	--xxs: calc(10px + (12 - 10) * ((100vw - 400px) / (1600 - 400)));
-	--xxxs: calc(7px + (8 - 7) * ((100vw - 400px) / (1600 - 400)));
+	--icon: calc(76px + (90 - 76) * ((100vw - 400px) / (1200 - 400)));
+	--timer: calc(16px + (36 - 16) * ((100vw - 600px) / (1200 - 600)));
+	--xxxxl: calc(52px + (68 - 52) * ((100vw - 400px) / (1200 - 400)));
+	--xxxl: calc(34px + (50 - 34) * ((100vw - 400px) / (1200 - 400)));
+	--xxl: calc(26px + (38 - 26) * ((100vw - 400px) / (1200 - 400)));
+	--xl: calc(20px + (30 - 20) * ((100vw - 400px) / (1200 - 400)));
+	--lg: calc(18px + (24 - 18) * ((100vw - 400px) / (1200 - 400)));
+	--md: calc(16px + (20 - 16) * ((100vw - 400px) / (1200 - 400)));
+	--st: calc(15px + (18 - 15) * ((100vw - 400px) / (1200 - 400)));
+	--sm: calc(14px + (16 - 14) * ((100vw - 400px) / (1200 - 400)));
+	--xs: calc(12px + (14 - 12) * ((100vw - 400px) / (1200 - 400)));
+	--xxs: calc(10px + (12 - 10) * ((100vw - 400px) / (1200 - 400)));
+	--xxxs: calc(7px + (8 - 7) * ((100vw - 400px) / (1200 - 400)));
 
 	/* For printing */
 	-webkit-print-color-adjust: exact !important;
