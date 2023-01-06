@@ -1,5 +1,4 @@
 .modal-content {
-	margin-top: 170px !important;
 	left: 20%;
 	background-color: transparent;
 }
@@ -32,10 +31,6 @@
 	background-color: var(--bg-navbar);
 	padding-bottom: 30px !important;
 	padding-inline: 30px;
-}
-
-.modal form div {
-	margin-bottom: 30px !important;
 }
 
 .form-control {

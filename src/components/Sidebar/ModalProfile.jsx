@@ -77,47 +77,40 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	return (
 		<>
-			<Modal show={showModal} onHide={closeSidebarModal} size={window.innerWidth > 800 ? "md" : "sm"} aria-labelledby="contained-modal-title-vcenter" centered>
-				<Modal.Header className={!darkMode ? "profileHeader" : "profileHeader-dark"} closeButton onClick={() => setShowModal(false)}>
-					<Modal.Title className="px-2" id="contained-modal-title-vcenter">
+			<Modal className={darkMode && "modal-dark"} show={showModal} onHide={closeSidebarModal} size={window.innerWidth > 800 ? "md" : "sm"} aria-labelledby="contained-modal-title-vcenter" centered>
+				<Modal.Header closeButton onClick={() => setShowModal(false)}>
+					<Modal.Title className="px-2 pt-2" id="contained-modal-title-vcenter">
 						{`${user.username} Profile`}
 					</Modal.Title>
 				</Modal.Header>
-				<Modal.Body style={!darkMode ? { color: "var(--text-primary)", backgroundColor: "var(--bg-primary)" } : { color: "var(--dark-text-primary)", backgroundColor: "var(--dark-bg-navbar)" }}>
+				<Modal.Body>
 					<Form onSubmit={handleFormSubmit} className="px-2">
 						<Form.Label className="text-muted">Image</Form.Label>
-						<div className="d-flex align-items-center justify-content-between mb-4">
+						<div className="d-flex align-items-center justify-content-between">
 							<img src={user.imageUrl} className="sidebarProfileImg" alt="profile" />
-							<Form.Group className="mt-2" controlId="image">
-								<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
+							<Form.Group controlId="image">
+								<Form.Control className={darkMode && "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 							</Form.Group>
 						</div>
 
-						<Form.Group className="mb-3" controlId="username">
+						<Form.Group controlId="username">
 							<Form.Label className="text-muted">Username</Form.Label>
-							<Form.Control className={!darkMode ? "form-control" : "form-control-dark"} type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
+							<Form.Control className={darkMode && "form-control-dark"} type="text" value={username} name="username" onChange={handleInputChange} placeholder="Enter a username..." />
 						</Form.Group>
 
-						<Form.Group className="mb-3" controlId="email">
+						<Form.Group controlId="email">
 							<Form.Label className="text-muted">Email address</Form.Label>
-							<Form.Control
-								className={!darkMode ? "form-control" : "form-control-dark"}
-								type="email"
-								value={email}
-								name="email"
-								onChange={handleInputChange}
-								placeholder="Enter your email address..."
-							/>
+							<Form.Control className={darkMode && "form-control-dark"} type="email" value={email} name="email" onChange={handleInputChange} placeholder="Enter your email address..." />
 						</Form.Group>
 
 						<Form.Group className="mb-3" controlId="theme">
-							<Form.Label className="text-muted">What do you prefer ?</Form.Label>
+							<Form.Label className="text-muted">Theme</Form.Label>
 							<div className="d-flex align-items-center gap-3">
 								Dark Mode
 								<input type="checkbox" className={!darkMode ? "modalProfileCheckBox" : "modalProfileCheckBox-dark"} name="isDark" onChange={handleCheckBox} checked={isDark ? true : false} />
 							</div>
 						</Form.Group>
-						<Button type="submit" className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
+						<Button type="submit" className="purple-outline-btn px-5 mt-5" style={{ maxWidth: "max-content", marginInline: "auto" }} disabled={loadingImage}>
 							{loadingImage ? "Uploading..." : "Update profile"}
 						</Button>
 					</Form>

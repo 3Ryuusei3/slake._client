@@ -35,7 +35,7 @@ const NewBlockImageForm = ({ setShowImgModal, changeImgUrl, /* blockId, */ clike
 
 	return (
 		<Form onSubmit={handleImageSubmit}>
-			<Form.Group controlId="image">
+			<Form.Group className="mb-4 pb-2" controlId="image">
 				<Form.Control className={darkMode && "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
 			</Form.Group>
 
