@@ -99,6 +99,7 @@
 	border: none !important;
 	background-color: transparent !important;
 	color: var(--textColor) !important;
+	filter: invert(var(--closeBtnColor));
 }
 
 .comPlainTextContentEditable {
