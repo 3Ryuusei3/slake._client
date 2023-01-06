@@ -303,19 +303,34 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 															{elm.content}
 														</div>
 													) : (
-														<img
-															className="blockImg"
-															src={elm.imageUrl}
-															alt=""
-															name={`block${idx}`}
-															onKeyDown={e => manageBlockByKey(e, elm, idx)}
-															onBlur={() => {
-																setOffset(undefined)
-																setClickedBlockId("")
-															}}
-															ref={el => (blockRef.current[idx] = el)}
-															onClick={() => setClickedBlockId(idx)}
-														/>
+														<figure>
+															<img
+																className="blockImg"
+																src={elm.imageUrl}
+																alt=""
+																name={`block${idx}`}
+																onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																onBlur={() => {
+																	setOffset(undefined)
+																	setClickedBlockId("")
+																}}
+																ref={el => (blockRef.current[idx] = el)}
+																onClick={() => setClickedBlockId(idx)}
+															/>
+															{elm.content && (
+																<figcaption
+																	contentEditable={user._id !== singleNoteData.owner ? false : true}
+																	suppressContentEditableWarning
+																	spellCheck={false}
+																	onInput={e => handleBlockText(idx, e)}
+																	onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																	ref={el => (blockRef.current[idx] = el)}
+																	onClick={() => setClickedBlockId(idx)}
+																>
+																	{elm.content}
+																</figcaption>
+															)}
+														</figure>
 													)}
 													{blockId === idx && block.length > 1 && (
 														<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>

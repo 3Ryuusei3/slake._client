@@ -486,6 +486,12 @@
 
 /* Images */
 
+figure {
+	position: relative !important;
+	margin: 0 !important;
+	width: 100%;
+}
+
 .blockImg {
 	width: 100%;
 	min-height: 40px;
@@ -493,4 +499,14 @@
 	object-fit: cover;
 	border-radius: 2px;
 	opacity: 0.9;
+}
+
+figcaption {
+	width: 100%;
+	position: absolute !important;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	padding: 6px 14px;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	bottom: 0;
 }
