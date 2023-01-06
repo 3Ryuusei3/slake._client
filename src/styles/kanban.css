@@ -20,6 +20,7 @@
 }
 
 .react-trello-lane header {
+	padding-top: 5px !important;
 	border: none !important;
 }
 
@@ -76,6 +77,7 @@
 .react-trello-card header textarea {
 	color: var(--headerColor) !important;
 	font-size: var(--sm) !important;
+	width: 260px !important;
 }
 
 .react-trello-card div textarea {
@@ -89,8 +91,8 @@
 	width: 15px !important;
 	min-width: 15px !important;
 	margin-inline: 0 !important;
-	right: 15px;
-	top: 10px;
+	right: 19px;
+	top: 12px;
 }
 
 .react-trello-card header div button {
