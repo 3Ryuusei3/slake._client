@@ -61,7 +61,7 @@ const HeaderTitle = ({ headerTitle }) => {
 			calendarServices
 				.getCalendarByUser(user._id)
 				.then(res => {
-					return kanbanServices.updateHeader(res.data[0]._id, { title })
+					return calendarServices.updateHeader(res.data[0]._id, { title })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {
