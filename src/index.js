@@ -8,17 +8,20 @@ import { AuthProviderWrapper } from "./context/auth.context"
 import { SidebarProviderWrapper } from "./context/sidebar.context"
 import { DarkModeProviderWrapper } from "./context/darkmode.context"
 import { PomodoroProviderWrapper } from "./context/pomodoro.context"
+import CalendarWrapper from "./context/calendar.context"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
 	<AuthProviderWrapper>
 		<DarkModeProviderWrapper>
 			<SidebarProviderWrapper>
-				<PomodoroProviderWrapper>
-					<Router>
-						<App />
-					</Router>
-				</PomodoroProviderWrapper>
+				<CalendarWrapper>
+					<PomodoroProviderWrapper>
+						<Router>
+							<App />
+						</Router>
+					</PomodoroProviderWrapper>
+				</CalendarWrapper>
 			</SidebarProviderWrapper>
 		</DarkModeProviderWrapper>
 	</AuthProviderWrapper>

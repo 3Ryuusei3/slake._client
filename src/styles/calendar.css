@@ -1,0 +1,9 @@
+.month {
+    display: flex;
+    flex-direction: column;
+}
+
+.month div {
+    display: flex;
+    min-width: 80px !important;
+}

@@ -10,6 +10,7 @@
 @import "./styles/dashboard.css";
 @import "./styles/pomodoro.css";
 @import "./styles/kanban.css";
+@import "./styles/calendar.css";
 @import "./styles/notes.css";
 @import "./styles/singlenote.css";
 @import "./styles/sharednotes.css";
