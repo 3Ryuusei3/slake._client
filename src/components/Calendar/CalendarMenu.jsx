@@ -1,33 +1,44 @@
-import dayjs from "dayjs"
 import { useContext } from "react"
+
+import dayjs from "dayjs"
+
 import CalIndexContext from "../../context/calindex.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 const CalendarMenu = () => {
+	const { monthIndex, setMonthIndex } = useContext(CalIndexContext)
 
-    const { monthIndex, setMonthIndex } = useContext(CalIndexContext)
+	const { darkMode } = useContext(DarkModeContext)
 
+	const handlePrevMonth = () => {
+		setMonthIndex(monthIndex - 1)
+	}
 
+	const handleNextMonth = () => {
+		setMonthIndex(monthIndex + 1)
+	}
 
-    const handlePrevMonth = () => {
-        setMonthIndex(monthIndex - 1)
-    }
+	const handleReset = () => {
+		setMonthIndex(dayjs().month())
+	}
 
-    const handleNextMonth = () => {
-        setMonthIndex(monthIndex + 1)
-    }
+	return (
+		<div className={!darkMode ? "calendarMenu mt-3" : "calendarMenu-dark mt-3"}>
+			<h4 className="d-inline m-0">{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</h4>
+			<div>
+				<button onClick={() => handlePrevMonth()}>
+					<i className="bi bi-chevron-left"></i>
+				</button>
+				<button className="todayBtn mx-2 pb-1" onClick={() => handleReset()}>
+					Today
+				</button>
 
-    return (
-        <div>
-            <button>
-                Today
-            </button>
-            <button onClick={() => handlePrevMonth()}><i className="bi bi-chevron-left"></i></button>
-            <button onClick={() => handleNextMonth()}><i className="bi bi-chevron-right"></i></button>
-            <h3>
-                {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
-            </h3>
-        </div>
-    )
+				<button onClick={() => handleNextMonth()}>
+					<i className="bi bi-chevron-right"></i>
+				</button>
+			</div>
+		</div>
+	)
 }
 
 export default CalendarMenu
