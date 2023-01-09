@@ -7,6 +7,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
+import calendarServices from "../../services/calendar.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
@@ -52,6 +53,13 @@ const HeaderTitle = ({ headerTitle }) => {
 		} else if (pageLocation === "kanban") {
 			kanbanServices
 				.getKanbanByUser(user._id)
+				.then(res => {
+					return kanbanServices.updateHeader(res.data[0]._id, { title })
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "calendar") {
+			calendarServices
+				.getCalendarByUser(user._id)
 				.then(res => {
 					return kanbanServices.updateHeader(res.data[0]._id, { title })
 				})

@@ -60,6 +60,9 @@ const Sidebar = () => {
 							<NavLink to="/kanban" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="th-large">Kanban</CDBSidebarMenuItem>
 							</NavLink>
+							<NavLink to="/calendar" activeclassname="activeClicked" style={{ color: "inherit" }}>
+								<CDBSidebarMenuItem icon="calendar">Calendar</CDBSidebarMenuItem>
+							</NavLink>
 							<NavLink to="/notes" activeclassname="activeClicked" style={{ color: "inherit" }}>
 								<CDBSidebarMenuItem icon="sticky-note">Notes</CDBSidebarMenuItem>
 							</NavLink>

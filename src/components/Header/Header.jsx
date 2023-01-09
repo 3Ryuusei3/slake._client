@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/auth.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
+import calendarServices from "../../services/calendar.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
@@ -35,6 +36,13 @@ const Header = () => {
 					setHeaderData(res.data[0])
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "calendar") {
+			calendarServices
+				.getCalendarByUser(user._id)
+				.then(res => {
+					setHeaderData(res.data[0])
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {
 			notesServices
 				.getNotesByUser(user._id)
@@ -50,6 +58,7 @@ const Header = () => {
 					icon: "📚",
 				},
 			})
+
 		} else if (location.pathname.includes("/note/")) {
 			let noteId = location.pathname.slice(6)
 

@@ -50,6 +50,6 @@ class SingleNoteService {
 	}
 }
 
-const singleNoteService = new SingleNoteService()
+const singleNoteServices = new SingleNoteService()
 
-export default singleNoteService
+export default singleNoteServices

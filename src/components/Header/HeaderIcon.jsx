@@ -7,6 +7,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
+import calendarServices from "../../services/calendar.service"
 import notesServices from "../../services/notes.service"
 import singleNoteService from "../../services/singleNote.service"
 
@@ -45,6 +46,13 @@ const HeaderIcon = ({ headerIcon }) => {
 				.getKanbanByUser(user._id)
 				.then(res => {
 					return kanbanServices.updateHeader(res.data[0]._id, { icon })
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "calendar") {
+			calendarServices
+				.getCalendarByUser(user._id)
+				.then(res => {
+					return notesServices.updateHeader(res.data[0]._id, { icon })
 				})
 				.catch(err => console.log({ message: "Internal server error:", err }))
 		} else if (pageLocation === "notes") {

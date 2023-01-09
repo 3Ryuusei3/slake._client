@@ -9,6 +9,7 @@ import kanbanServices from "../../services/kanban.service"
 import notesServices from "../../services/notes.service"
 import uploadServices from "../../services/upload.service"
 import singleNoteService from "../../services/singleNote.service"
+import calendarService from "../../services/calendar.service"
 
 import { Form, Button } from "react-bootstrap"
 
@@ -61,6 +62,18 @@ const NewHeaderImgForm = ({ setShowImgModal, setHeaderData }) => {
 				.getKanbanByUser(user._id)
 				.then(res => {
 					return kanbanServices.updateHeader(res.data[0]._id, headerImg)
+				})
+				.then(res => {
+					setHeaderImg({ image: res.data.cloudinary_url })
+					setHeaderData(res.data)
+					setShowImgModal(false)
+				})
+				.catch(err => console.log({ message: "Internal server error:", err }))
+		} else if (pageLocation === "calendar") {
+			calendarService
+				.getCalendarByUser(user._id)
+				.then(res => {
+					return calendarService.updateHeader(res.data[0]._id, headerImg)
 				})
 				.then(res => {
 					setHeaderImg({ image: res.data.cloudinary_url })
