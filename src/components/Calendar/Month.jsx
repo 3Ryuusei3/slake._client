@@ -1,10 +1,15 @@
-import dayjs from "dayjs"
 import { useContext } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
+import CalIndexContext from "../../context/calindex.context"
+
+import dayjs from "dayjs"
 
 const Month = ({ currentMonth }) => {
+
 	const { darkMode } = useContext(DarkModeContext)
+	const { setDaySelected, setEventModal } = useContext(CalIndexContext)
+
 	return (
 		<>
 			<div className="weekDays mt-4">
@@ -23,9 +28,14 @@ const Month = ({ currentMonth }) => {
 									return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "currentDay text-white" : "otherDay"
 								}
 								return (
-									<div className={!darkMode ? "date" : "date-dark"} key={idx}>
-										<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
-									</div>
+									<>
+										<div onClick={() => {
+											setDaySelected(day)
+											setEventModal(true)
+										}} className={!darkMode ? "date" : "date-dark"} key={idx}>
+											<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
+										</div>
+									</>
 								)
 							})}
 						</div>
