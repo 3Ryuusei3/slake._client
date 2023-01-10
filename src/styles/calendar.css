@@ -53,10 +53,27 @@
 	margin-bottom: 10px;
 }
 
+.smCal {
+	width: 235px;
+}
+
+.smCalHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.smCalHeader i {
+	color: var(--calColor);
+}
+
 .smWeekDays,
 .smMonth {
 	display: flex;
-	gap: 20px;
+	gap: 8px;
+}
+
+.smWeekDays p {
+	font-weight: var(--button);
 }
 
 .smMonth {
@@ -65,11 +82,28 @@
 
 .smMonth div {
 	display: flex;
+	gap: 8px;
 }
 
-/* .smMonth div button {
+.smMonth div button,
+.smWeekDays p {
+	color: var(--calColor);
+	text-align: center;
+	min-width: 27px !important;
+	max-width: 27px !important;
+	padding: 2px 3.5px !important;
+	margin: 0;
+}
 
-} */
+.smMonth div button:nth-child(6),
+.smMonth div button:nth-child(7) {
+	color: var(--dark-text-secondary);
+}
+
+.smMonth div .currentDay,
+.smMonth div .selectedDay {
+	padding: 2px 3.5px !important;
+}
 
 .currentDay,
 .otherDay,
