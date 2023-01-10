@@ -4,8 +4,10 @@ import CalIndexContext from '../../context/calindex.context'
 
 import getMonth from '../../utils/calendar.utils'
 
-import Month from './Month'
+import SmallCalendar from './SmallCalendar'
 import CalendarMenu from './CalendarMenu'
+import Month from './Month'
+
 
 const CalendarContainer = () => {
 
@@ -19,6 +21,7 @@ const CalendarContainer = () => {
 
     return (
         <>
+            <SmallCalendar />
             <CalendarMenu />
             <Month currentMonth={currentMonth} />
         </>

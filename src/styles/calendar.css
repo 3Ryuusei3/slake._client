@@ -38,7 +38,8 @@
 	display: flex;
 	min-width: 80px !important;
 	width: 100% !important;
-	height: 120px; /* Adjust based on vh */
+	height: 120px;
+	/* Adjust based on vh */
 }
 
 .weekDays {
@@ -52,8 +53,27 @@
 	margin-bottom: 10px;
 }
 
+.smWeekDays,
+.smMonth {
+	display: flex;
+	gap: 20px;
+}
+
+.smMonth {
+	flex-direction: column;
+}
+
+.smMonth div {
+	display: flex;
+}
+
+/* .smMonth div button {
+
+} */
+
 .currentDay,
-.otherDay {
+.otherDay,
+.selectedDay {
 	font-size: var(--sm);
 	height: max-content;
 	padding: 5px 7px;
@@ -62,7 +82,13 @@
 }
 
 .currentDay {
-	background-color: var(--color-primary);
+	color: var(--dark-text-primary) !important;
+	background-color: var(--color-primary) !important;
+}
+
+.selectedDay {
+	color: var(--color-primary) !important;
+	background-color: var(--color-primary-btn-interact) !important;
 }
 
 .date {
@@ -83,22 +109,22 @@
 	background-color: var(--dark-bg-modal);
 }
 
-.month div .date:nth-child(1),
+.month div .date:nth-child(6),
 .month div .date:nth-child(7) {
 	background-color: var(--bg-interact);
 }
 
-.month div .date-dark:nth-child(1),
+.month div .date-dark:nth-child(6),
 .month div .date-dark:nth-child(7) {
 	background-color: var(--dark-bg-card);
 }
 
-.month div .date:nth-child(1):hover,
+.month div .date:nth-child(6):hover,
 .month div .date:nth-child(7):hover {
 	background-color: var(--text-terciary);
 }
 
-.month div .date-dark:nth-child(1):hover,
+.month div .date-dark:nth-child(6):hover,
 .month div .date-dark:nth-child(7):hover {
 	background-color: var(--dark-bg-card-hover);
 }
