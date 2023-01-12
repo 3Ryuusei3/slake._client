@@ -28,14 +28,12 @@ const Month = ({ currentMonth }) => {
 									return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "currentDay text-white" : "otherDay"
 								}
 								return (
-									<>
-										<div onClick={() => {
-											setDaySelected(day)
-											setEventModal(true)
-										}} className={!darkMode ? "date" : "date-dark"} key={idx}>
-											<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
-										</div>
-									</>
+									<div onClick={() => {
+										setDaySelected(day)
+										setEventModal(true)
+									}} className={!darkMode ? "date" : "date-dark"} key={idx}>
+										<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
+									</div>
 								)
 							})}
 						</div>

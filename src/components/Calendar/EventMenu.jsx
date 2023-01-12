@@ -7,18 +7,12 @@ import { Modal } from "react-bootstrap"
 import CreateEventForm from "./CreateEventForm"
 
 
-const EventMenu = () => {
+const EventMenu = ({ events, setEvents }) => {
 
 
     const { eventModal, setEventModal } = useContext(CalIndexContext)
 
-    const [eventData, setEventData] = useState({
-        title: "",
-        description: "",
-        startDate: "",
-        finishDate: "",
-        tag: ""
-    })
+
 
     const { darkMode } = useContext(DarkModeContext)
 
@@ -28,7 +22,7 @@ const EventMenu = () => {
     return (
         <>
             <div>
-                <button onClick={() => openEventModal()} className="purple-outline-btn mt-3 px-4" /* style={{ maxWidth: "max-content", marginInline: "auto" }} */>
+                <button onClick={() => openEventModal()} className="purple-outline-btn mt-3 px-4">
                     New event
                 </button>
             </div>
@@ -37,7 +31,7 @@ const EventMenu = () => {
                     <Modal.Title>Add Event</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <CreateEventForm eventData={eventData} setEventData={setEventData} />
+                    <CreateEventForm events={events} setEvents={setEvents} closeEventModal={closeEventModal} />
                 </Modal.Body>
             </Modal>
         </>

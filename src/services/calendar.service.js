@@ -25,9 +25,9 @@ class CalendarService {
 		return this.api.put(`/update/header/${id}`, header)
 	}
 
-	/* updateKanban(id, lanes) {
-		return this.api.put(`/update/${id}`, lanes)
-	} */
+	updateEvent(id, event) {
+		return this.api.put(`/update/event/${id}`, event)
+	}
 }
 
 const calendarServices = new CalendarService()
