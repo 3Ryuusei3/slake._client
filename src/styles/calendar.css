@@ -38,7 +38,7 @@
 	display: flex;
 	min-width: 80px !important;
 	width: 100% !important;
-	height: 120px;
+	height: 150px;
 	/* Adjust based on vh */
 }
 
@@ -109,9 +109,10 @@
 .otherDay,
 .selectedDay {
 	font-size: var(--sm);
+	width: max-content;
 	height: max-content;
-	padding: 5px 7px;
-	margin: 5px 7px;
+	padding: 4px 7px;
+	margin: 7px;
 	border-radius: 50%;
 }
 
@@ -128,6 +129,8 @@
 .date {
 	outline: 1px solid var(--text-terciary);
 	background-color: var(--bg-secondary);
+	display: flex;
+	flex-direction: column;
 }
 
 .date:hover {
@@ -137,29 +140,31 @@
 .date-dark {
 	outline: 1px solid var(--dark-text-secondary);
 	background-color: var(--dark-bg-navbar);
+	display: flex;
+	flex-direction: column;
 }
 
 .date-dark:hover {
 	background-color: var(--dark-bg-modal);
 }
 
-.month div .date:nth-child(6),
-.month div .date:nth-child(7) {
+.month div:nth-child(6) .date,
+.month div:nth-child(7) .date {
+	background-color: var(--bg-navbar);
+}
+
+.month div:nth-child(6) .date-dark,
+.month div:nth-child(7) .date-dark {
+	background-color: var(--dark-bg-interact);
+}
+
+.month div:nth-child(6) .date:hover,
+.month div:nth-child(7) .date:hover {
 	background-color: var(--bg-interact);
 }
 
-.month div .date-dark:nth-child(6),
-.month div .date-dark:nth-child(7) {
-	background-color: var(--dark-bg-card);
-}
-
-.month div .date:nth-child(6):hover,
-.month div .date:nth-child(7):hover {
-	background-color: var(--text-terciary);
-}
-
-.month div .date-dark:nth-child(6):hover,
-.month div .date-dark:nth-child(7):hover {
+.month div:nth-child(6) .date-dark:hover,
+.month div:nth-child(7) .date-dark:hover {
 	background-color: var(--dark-bg-card-hover);
 }
 
@@ -175,5 +180,16 @@
 
 .eventBlock i {
 	font-size: 22px;
-	text-shadow: 0px 0px 5px black
+	text-shadow: 0px 0px 5px black;
+}
+
+.eventLine,
+.eventLine-dark {
+	height: max-content;
+	width: 100%;
+	margin-inline: 7px;
+	margin-bottom: 2px;
+	padding: 2px 7px;
+	border-radius: 2px;
+	font-size: var(--sm);
 }
