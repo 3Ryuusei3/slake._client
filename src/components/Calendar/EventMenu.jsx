@@ -9,15 +9,13 @@ import CreateEventForm from "./CreateEventForm"
 
 const EventMenu = ({ events, setEvents }) => {
 
-
-    const { eventModal, setEventModal } = useContext(CalIndexContext)
-
-
-
+    const { eventModal, setEventModal, setEventId } = useContext(CalIndexContext)
     const { darkMode } = useContext(DarkModeContext)
 
     const openEventModal = () => setEventModal(true)
-    const closeEventModal = () => setEventModal(false)
+    const closeEventModal = () => {
+        setEventModal(false)
+    }
 
     return (
         <>

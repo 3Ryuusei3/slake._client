@@ -25,7 +25,7 @@ class CalendarService {
 		return this.api.put(`/update/header/${id}`, header)
 	}
 
-	updateEvent(id, event) {
+	updateEvents(id, event) {
 		return this.api.put(`/update/event/${id}`, event)
 	}
 }

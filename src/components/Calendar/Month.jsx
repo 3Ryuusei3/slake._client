@@ -3,12 +3,13 @@ import { useContext } from "react"
 import { DarkModeContext } from "../../context/darkmode.context"
 import CalIndexContext from "../../context/calindex.context"
 
-import dayjs from "dayjs"
+import Day from "./Day"
 
-const Month = ({ currentMonth }) => {
+const Month = ({ currentMonth, events, setEvents }) => {
 
 	const { darkMode } = useContext(DarkModeContext)
 	const { setDaySelected, setEventModal } = useContext(CalIndexContext)
+
 
 	return (
 		<>
@@ -23,19 +24,7 @@ const Month = ({ currentMonth }) => {
 				{currentMonth.map((row, idx) => {
 					return (
 						<div key={idx}>
-							{row.map((day, idx) => {
-								const getCurrentDayClass = () => {
-									return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "currentDay text-white" : "otherDay"
-								}
-								return (
-									<div onClick={() => {
-										setDaySelected(day)
-										setEventModal(true)
-									}} className={!darkMode ? "date" : "date-dark"} key={idx}>
-										<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
-									</div>
-								)
-							})}
+							{row.map((day, idx) => <div key={idx}><Day events={events} setEvents={setEvents} day={day} /></div>)}
 						</div>
 					)
 				})}

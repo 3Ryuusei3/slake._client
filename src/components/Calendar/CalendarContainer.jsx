@@ -16,7 +16,7 @@ import EventMenu from './EventMenu'
 const CalendarContainer = () => {
 
     const [currentMonth, setCurrentMonth] = useState(getMonth())
-    const [events, setEvents] = useState()
+    const [events, setEvents] = useState([])
     const { user } = useContext(AuthContext)
     const { monthIndex } = useContext(CalIndexContext)
 
@@ -33,7 +33,6 @@ const CalendarContainer = () => {
         getEvents()
     }, [])
 
-
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex))
     }, [monthIndex])
@@ -41,11 +40,11 @@ const CalendarContainer = () => {
     return (
         <>
             <div className='d-flex'>
-                <SmallCalendar />
+                {/* <SmallCalendar /> */}
                 <EventMenu events={events} setEvents={setEvents} />
             </div>
             <CalendarMenu />
-            <Month currentMonth={currentMonth} />
+            <Month events={events} setEvents={setEvents} currentMonth={currentMonth} />
         </>
     )
 

@@ -10,23 +10,7 @@ import { Button, Form } from "react-bootstrap"
 
 const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
 
-    const [eventData, setEventData] = useState({
-        title: "",
-        description: "",
-        startDate: "",
-        /* finishDate: "", */
-        tag: ""
-    })
-
-    const { daySelected } = useContext(CalIndexContext)
-    const { user } = useContext(AuthContext)
-
-    const handleInputChange = e => {
-        const { value, name } = e.target
-        setEventData({ ...eventData, [name]: value })
-    }
-
-    const { darkMode } = useContext(DarkModeContext)
+    const { daySelected, selectedEvent, eventId, setEventId } = useContext(CalIndexContext)
 
     /* PENDIENTE: Pasar a carpeta const e importar */
     const labels = [
@@ -38,34 +22,59 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
         { tag: "Other", color: "Purple" }
     ]
 
-    const [selectedLabel, setSelectedLabel] = useState("")
-    // selectedEvent
-    //     ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
-    //     : labelsClasses[0] )
+    const [selectedLabel, setSelectedLabel] = useState(selectedEvent ? selectedEvent.tag : "Diary")
+    const [eventData, setEventData] = useState({
+        title: selectedEvent ? selectedEvent.title : "",
+        description: selectedEvent ? selectedEvent.description : "",
+        startDate: selectedEvent ? selectedEvent.startDate : "",
+        /* finishDate: "", */
+        tag: selectedLabel
+    })
+
+    const { user } = useContext(AuthContext)
+
+    const handleInputChange = e => {
+        const { value, name } = e.target
+        setEventData({ ...eventData, [name]: value })
+    }
+
+    const { darkMode } = useContext(DarkModeContext)
+
+
 
     const handleFormSubmit = (e, newEvent) => {
         e.preventDefault()
-        newEvent.startDate = daySelected.$d.toString()
-
-        console.log("newEvent:", newEvent)
+        newEvent.startDate = daySelected.valueOf()
 
         calendarServices
             .getCalendarByUser(user._id)
             .then(res => {
-                return calendarServices.updateEvent(res.data[0]._id, [...events, newEvent])
+                return calendarServices.updateEvents(res.data[0]._id, [...events, newEvent])
             })
             .then(() => {
                 setEvents([...events, newEvent])
                 closeEventModal(false)
-                setEventData({
-                    title: "",
-                    description: "",
-                    startDate: "",
-                    finishDate: "",
-                    tag: ""
-                })
             })
             .catch(err => console.log({ message: 'Internal Server Error', err }))
+    }
+
+    const handleUpdateEvents = (evt) => {
+
+        calendarServices
+            .getCalendarByUser(user._id)
+            .then(res => {
+                return calendarServices.updateEvents(res.data[0]._id, [...evt])
+            })
+            .catch(err => console.log({ message: 'Internal Server Error', err }))
+    }
+
+    const handleDeleteEvent = (id) => {
+        const eventsCopy = [...events]
+        const remainingEvents = eventsCopy.filter(event => event.startDate != id)
+        setEventId("")
+        setEvents(remainingEvents)
+        closeEventModal(false)
+        handleUpdateEvents(remainingEvents)
     }
 
     return (
@@ -104,9 +113,21 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
                 </div>
             </Form.Group>
 
-            <Button type="submit" className="purple-outline-btn px-5 mt-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
-                Create event
-            </Button>
+            {!selectedEvent ? (
+                <Button type="submit" className="purple-outline-btn px-5 mt-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+                    Create event
+                </Button>) : (
+                <>
+                    <Button className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+                        Update event
+                    </Button>
+                    <Button className="red-outline-btn px-5 mt-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={() => handleDeleteEvent(eventId)}>
+                        Delete event
+                    </Button>
+                </>
+            )
+            }
+
         </Form>
     )
 }

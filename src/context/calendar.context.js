@@ -8,12 +8,20 @@ const CalendarWrapper = (props) => {
     const [smallCalendarMonth, setSmallCalendarMonth] = useState(null)
     const [daySelected, setDaySelected] = useState(dayjs())
     const [eventModal, setEventModal] = useState(false)
+    const [selectedEvent, setSelectedEvent] = useState(null)
+    const [eventId, setEventId] = useState("")
 
     useEffect(() => {
         if (smallCalendarMonth !== null) {
             setMonthIndex(smallCalendarMonth)
         }
     }, [smallCalendarMonth])
+
+    useEffect(() => {
+        if (!eventModal) {
+            setSelectedEvent(null)
+        }
+    }, [eventModal])
 
     return (
         <CalIndexContext.Provider value={{
@@ -24,7 +32,11 @@ const CalendarWrapper = (props) => {
             daySelected,
             setDaySelected,
             eventModal,
-            setEventModal
+            setEventModal,
+            selectedEvent,
+            setSelectedEvent,
+            eventId,
+            setEventId
         }}>
             {props.children}
         </CalIndexContext.Provider>
