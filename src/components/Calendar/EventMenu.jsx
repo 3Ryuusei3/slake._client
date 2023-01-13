@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react"
+import { useContext } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
 import CalIndexContext from "../../context/calindex.context"
@@ -17,8 +17,8 @@ const EventMenu = () => {
 
 	return (
 		<>
-			<div>
-				<button onClick={() => openEventModal()} className="purple-outline-btn mt-3 px-4">
+			<div className="eventMenu">
+				<button onClick={() => openEventModal()} className="purple-outline-btn px-4 py-1">
 					New event
 				</button>
 
