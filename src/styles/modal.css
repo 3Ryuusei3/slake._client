@@ -33,7 +33,12 @@
 	padding-inline: 30px;
 }
 
-.form-control {
+.modal .form-control {
 	height: initial !important;
 	border-radius: 4px !important;
+	background-color: var(--bg-primary) !important;
+}
+
+.modal-dark .form-control {
+	background-color: var(--dark-bg-primary) !important;
 }

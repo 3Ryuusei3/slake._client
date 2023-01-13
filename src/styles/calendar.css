@@ -16,19 +16,6 @@
 	order: 2;
 }
 
-@media (max-width: 900px) {
-	.calContainer {
-		flex-direction: column;
-		gap: 40px;
-	}
-
-	.calendarMenu,
-	.calendarMenu-dark {
-		flex-direction: row;
-		order: 0;
-	}
-}
-
 .calendarMenu-dark {
 	background-color: var(--dark-bg-navbar);
 }
@@ -60,6 +47,12 @@
 .eventMenu {
 	display: flex;
 	flex-direction: column;
+}
+
+.eventMenu button {
+	padding-inline: calc(10px + (30 - 10) * ((100vw - 600px) / (1600 - 600)));
+	padding-block: 4px;
+	width: max-content;
 }
 
 /* Month */
@@ -153,7 +146,7 @@
 	font-size: var(--sm);
 	width: max-content;
 	height: max-content;
-	padding: 1px 4px;
+	padding: 1px 5px;
 	margin: 7px 7px 5px;
 	border-radius: 50%;
 }
@@ -212,7 +205,7 @@
 
 .eventBlock {
 	width: 24px;
-	height: 23px;
+	height: 24px;
 	border-radius: 2px;
 	margin-top: 6px !important;
 	display: flex;
@@ -222,7 +215,7 @@
 
 .eventBlock i {
 	font-size: 22px;
-	text-shadow: 0px 0px 5px black;
+	text-shadow: 0px 0px 2px black;
 }
 
 .date div,
@@ -239,6 +232,9 @@
 	padding: 1px 5px;
 	border-radius: 2px;
 	font-size: var(--xs);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .tagContainer {
@@ -259,4 +255,24 @@
 
 .tagContainer input {
 	margin-top: 0 !important;
+}
+
+@media (max-width: 1000px) {
+	.calContainer {
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.calendarMenu,
+	.calendarMenu-dark {
+		flex-direction: row;
+		order: 0;
+	}
+}
+
+@media (max-width: 700px) {
+	.calendarMenu,
+	.calendarMenu-dark {
+		flex-direction: column;
+	}
 }

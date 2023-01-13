@@ -18,7 +18,7 @@ const EventMenu = () => {
 	return (
 		<>
 			<div className="eventMenu">
-				<button onClick={() => openEventModal()} className="purple-outline-btn px-4 py-1">
+				<button onClick={() => openEventModal()} className="purple-outline-btn">
 					New event
 				</button>
 
@@ -31,13 +31,8 @@ const EventMenu = () => {
 					))}
 				</div>
 			</div>
-			<Modal className={darkMode && "modal-dark"} show={eventModal} onHide={closeEventModal}>
-				<Modal.Header closeButton>
-					<Modal.Title>Add Event</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>
-					<CreateEventForm closeEventModal={closeEventModal} />
-				</Modal.Body>
+			<Modal className={darkMode && "modal-dark"} show={eventModal} onHide={closeEventModal} size={window.innerWidth > 800 ? "md" : "sm"}>
+				<CreateEventForm closeEventModal={closeEventModal} />
 			</Modal>
 		</>
 	)

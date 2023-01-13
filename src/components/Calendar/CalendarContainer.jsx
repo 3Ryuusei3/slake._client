@@ -40,6 +40,9 @@ const CalendarContainer = () => {
 					</div>
 				)}
 				<div style={{ width: "100%" }}>
+					<div style={{ display: "none" }}>
+						<EventMenu />
+					</div>
 					<CalendarHeader />
 					<Month currentMonth={currentMonth} />
 				</div>
