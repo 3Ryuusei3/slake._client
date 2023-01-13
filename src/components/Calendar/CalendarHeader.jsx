@@ -5,7 +5,7 @@ import dayjs from "dayjs"
 import CalIndexContext from "../../context/calindex.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-const CalendarMenu = () => {
+const CalendarHeader = () => {
 	const { monthIndex, setMonthIndex } = useContext(CalIndexContext)
 
 	const { darkMode } = useContext(DarkModeContext)
@@ -23,7 +23,7 @@ const CalendarMenu = () => {
 	}
 
 	return (
-		<div className={!darkMode ? "calendarMenu mt-3" : "calendarMenu-dark mt-3"}>
+		<div className={!darkMode ? "calendarHeader mt-3" : "calendarHeader-dark mt-3"}>
 			<h4 className="d-inline m-0">{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</h4>
 			<div>
 				<button onClick={() => handlePrevMonth()}>
@@ -41,4 +41,4 @@ const CalendarMenu = () => {
 	)
 }
 
-export default CalendarMenu
+export default CalendarHeader

@@ -1,38 +1,33 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from "react"
 
-import CalIndexContext from '../../context/calindex.context'
+import CalIndexContext from "../../context/calindex.context"
 
-import getMonth from '../../utils/calendar.utils'
+import getMonth from "../../utils/calendar.utils"
 
-import SmallCalendar from './SmallCalendar'
-import CalendarMenu from './CalendarMenu'
-import Month from './Month'
-import Tags from './Tags'
-import EventMenu from './EventMenu'
-
+import SmallCalendar from "./SmallCalendar"
+import CalendarHeader from "./CalendarHeader"
+import Month from "./Month"
+import EventMenu from "./EventMenu"
 
 const CalendarContainer = () => {
+	const [currentMonth, setCurrentMonth] = useState(getMonth())
 
-    const [currentMonth, setCurrentMonth] = useState(getMonth())
+	const { monthIndex } = useContext(CalIndexContext)
 
-    const { monthIndex } = useContext(CalIndexContext)
+	useEffect(() => {
+		setCurrentMonth(getMonth(monthIndex))
+	}, [monthIndex])
 
-    useEffect(() => {
-        setCurrentMonth(getMonth(monthIndex))
-    }, [monthIndex])
-
-    return (
-        <>
-            <div className='d-flex'>
-                {/* <SmallCalendar /> */}
-                <EventMenu />
-                <Tags />
-            </div>
-            <CalendarMenu />
-            <Month currentMonth={currentMonth} />
-        </>
-    )
-
+	return (
+		<>
+			<div className="calendarMenu">
+				<SmallCalendar />
+				<EventMenu />
+			</div>
+			<calendarHeader />
+			<Month currentMonth={currentMonth} />
+		</>
+	)
 }
 
 export default CalendarContainer

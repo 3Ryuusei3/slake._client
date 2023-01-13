@@ -1,21 +1,26 @@
 /* Calendar menu */
 
-.calendarMenu,
-.calendarMenu-dark,
-.calendarMenu div,
-.calendarMenu-dark div {
+.calendarMenu {
+	display: flex;
+	gap: 40px;
+}
+
+.calendarHeader,
+.calendarHeader-dark,
+.calendarHeader div,
+.calendarHeader-dark div {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.calendarMenu,
-.calendarMenu button {
+.calendarHeader,
+.calendarHeader button {
 	color: var(--text-primary);
 }
 
-.calendarMenu-dark,
-.calendarMenu-dark button {
+.calendarHeader-dark,
+.calendarHeader-dark button {
 	color: var(--dark-text-primary);
 }
 
@@ -54,7 +59,7 @@
 }
 
 .smCal {
-	width: 235px;
+	width: 220px;
 }
 
 .smCalHeader {
@@ -69,7 +74,7 @@
 .smWeekDays,
 .smMonth {
 	display: flex;
-	gap: 8px;
+	gap: 6px;
 }
 
 .smWeekDays p {
@@ -82,7 +87,7 @@
 
 .smMonth div {
 	display: flex;
-	gap: 8px;
+	gap: 6px;
 }
 
 .smMonth div button,
@@ -197,4 +202,24 @@
 	padding: 1px 5px;
 	border-radius: 2px;
 	font-size: var(--xs);
+}
+
+.tagContainer {
+	max-height: 200px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+.tagContainer label {
+	margin: 0;
+	gap: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.tagContainer input {
+	margin-top: 0 !important;
 }
