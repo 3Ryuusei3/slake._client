@@ -9,7 +9,7 @@ import CalIndexContext from "../../context/calindex.context"
 import { Modal, Button, Form } from "react-bootstrap"
 
 const CreateEventForm = ({ closeEventModal }) => {
-	const { daySelected, selectedEvent, eventId, setEventId, events, setEvents } = useContext(CalIndexContext)
+	const { daySelected, selectedEvent, setSelectedEvent, eventId, setEventId, events, setEvents } = useContext(CalIndexContext)
 
 	/* PENDIENTE: Pasar a carpeta const e importar */
 	const labels = [
@@ -65,14 +65,16 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 	const handleDeleteEvent = id => {
 		const eventsCopy = [...events]
-		const remainingEvents = eventsCopy.filter(event => event.startDate != id)
+
+		const remainingEvents = eventsCopy.filter(event => event.startDate + event.title != id)
+		setSelectedEvent(null)
 		setEventId("")
 		finalHandleActions(remainingEvents)
 	}
 
 	const handleUpdateEvent = id => {
 		const eventsCopy = [...events]
-		const idToFind = event => event.startDate == id
+		const idToFind = event => event.startDate + event.title == id
 		const idToUpdate = eventsCopy.findIndex(idToFind)
 
 		eventsCopy[idToUpdate].title = eventData.title
@@ -147,7 +149,3 @@ const CreateEventForm = ({ closeEventModal }) => {
 }
 
 export default CreateEventForm
-
-{
-	/* <Form.Control className={darkMode && "form-control-dark"} type="text" value={eventData.tag} name="description" onChange={handleInputChange} placeholder="Add a description..." /> */
-}

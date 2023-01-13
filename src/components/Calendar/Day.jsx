@@ -43,9 +43,8 @@ const Day = ({ day }) => {
 						<p
 							onClick={() => {
 								setSelectedEvent(event)
-								setEventId(event.startDate)
+								setEventId(event.startDate + event.title)
 							}}
-
 							className={!darkMode ? `eventLine ${event.tag}Category fontLight` : `eventLine-dark ${event.tag}CategoryDark fontDark`}
 						>
 							{event.title}

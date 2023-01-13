@@ -67,7 +67,7 @@
 .month div {
 	flex-grow: 1;
 	display: flex;
-	min-width: 80px !important;
+	min-width: 30px !important;
 	width: 100% !important;
 	height: 150px;
 	/* Adjust based on vh */
@@ -257,7 +257,7 @@
 	margin-top: 0 !important;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1250px) {
 	.calContainer {
 		flex-direction: column;
 		gap: 40px;

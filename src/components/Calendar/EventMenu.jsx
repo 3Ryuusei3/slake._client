@@ -7,7 +7,7 @@ import { Modal } from "react-bootstrap"
 import CreateEventForm from "./CreateEventForm"
 
 const EventMenu = () => {
-	const { eventModal, setEventModal, labels, updateLabel } = useContext(CalIndexContext)
+	const { eventModal, setEventModal, setSelectedEvent, setEventId, labels, updateLabel } = useContext(CalIndexContext)
 	const { darkMode } = useContext(DarkModeContext)
 
 	const openEventModal = () => setEventModal(true)
