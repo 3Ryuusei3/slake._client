@@ -22,11 +22,14 @@ const CreateEventForm = ({ closeEventModal }) => {
         { tag: "Other", color: "Purple" }
     ]
 
+
+    const [selectedTime, setSelectedTime] = useState()
     const [selectedLabel, setSelectedLabel] = useState(selectedEvent ? selectedEvent.tag : "Diary")
     const [eventData, setEventData] = useState({
         title: selectedEvent ? selectedEvent.title : "",
         description: selectedEvent ? selectedEvent.description : "",
         startDate: selectedEvent ? selectedEvent.startDate : "",
+        time: selectedEvent ? selectedEvent.time : "",
         /* finishDate: "", */
         tag: selectedLabel
     })
@@ -79,6 +82,7 @@ const CreateEventForm = ({ closeEventModal }) => {
         eventsCopy[idToUpdate].title = eventData.title
         eventsCopy[idToUpdate].description = eventData.description
         eventsCopy[idToUpdate].tag = eventData.tag
+        eventsCopy[idToUpdate].time = eventData.time
         finalHandleActions(eventsCopy)
     }
 
@@ -99,6 +103,11 @@ const CreateEventForm = ({ closeEventModal }) => {
             <Form.Group controlId="description">
                 <Form.Label className="text-muted">Description</Form.Label>
                 <Form.Control className={darkMode && "form-control-dark"} type="text" value={eventData.description} name="description" onChange={handleInputChange} placeholder="Add a description..." />
+            </Form.Group>
+
+            <Form.Group controlId="time">
+                <Form.Label className="text-muted">Time</Form.Label>
+                <Form.Control className={darkMode && "form-control-dark"} type="text" value={eventData.time} name="time" onChange={handleInputChange} placeholder="Add a time..." />
             </Form.Group>
 
             <div style={{ maxWidth: "max-content", marginInline: "auto" }} className="px-3 mt-3">
