@@ -32,15 +32,12 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
     })
 
     const { user } = useContext(AuthContext)
+    const { darkMode } = useContext(DarkModeContext)
 
     const handleInputChange = e => {
         const { value, name } = e.target
         setEventData({ ...eventData, [name]: value })
     }
-
-    const { darkMode } = useContext(DarkModeContext)
-
-
 
     const handleFormSubmit = (e, newEvent) => {
         e.preventDefault()
@@ -58,8 +55,7 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
             .catch(err => console.log({ message: 'Internal Server Error', err }))
     }
 
-    const handleUpdateEvents = (evt) => {
-
+    const updateEvents = (evt) => {
         calendarServices
             .getCalendarByUser(user._id)
             .then(res => {
@@ -72,9 +68,25 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
         const eventsCopy = [...events]
         const remainingEvents = eventsCopy.filter(event => event.startDate != id)
         setEventId("")
-        setEvents(remainingEvents)
+        finalHandleActions(remainingEvents)
+    }
+
+    const handleUpdateEvent = (id) => {
+        const eventsCopy = [...events]
+        const idToFind = (event) => event.startDate == id
+        const idToUpdate = eventsCopy.findIndex(idToFind)
+
+        eventsCopy[idToUpdate].title = eventData.title
+        eventsCopy[idToUpdate].description = eventData.description
+        eventsCopy[idToUpdate].tag = eventData.tag
+        finalHandleActions(eventsCopy)
+    }
+
+    /* PENDIENTE: Imitar en TODO y TextEditor */
+    const finalHandleActions = (list) => {
+        setEvents(list)
         closeEventModal(false)
-        handleUpdateEvents(remainingEvents)
+        updateEvents(list)
     }
 
     return (
@@ -118,7 +130,7 @@ const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
                     Create event
                 </Button>) : (
                 <>
-                    <Button className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+                    <Button className="purple-outline-btn px-5 mt-4" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={() => handleUpdateEvent(eventId)}>
                         Update event
                     </Button>
                     <Button className="red-outline-btn px-5 mt-2" style={{ maxWidth: "max-content", marginInline: "auto" }} onClick={() => handleDeleteEvent(eventId)}>

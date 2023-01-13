@@ -28,7 +28,7 @@ const Day = ({ day, events, setEvents }) => {
 		setEventId("")
 	}
 
-	console.log(eventId)
+	console.log("EventID:", eventId)
 
 	return (
 		<div
@@ -41,13 +41,13 @@ const Day = ({ day, events, setEvents }) => {
 			<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
 			{dayEvents.map((event, idx) => {
 				return (
-					<div style={{ height: "30px", maxHeight: "30px" }} /* onMouseOver={() => handleMouseOver(event._id)} onMouseOut={handleMouseOut}  */>
+					<div key={idx} /* onMouseOver={() => handleMouseOver(event._id)} onMouseOut={handleMouseOut}  */>
 						<p
 							onClick={() => {
 								setSelectedEvent(event)
 								setEventId(event.startDate)
 							}}
-							key={idx}
+
 							className={!darkMode ? `eventLine ${event.tag}Category fontLight` : `eventLine-dark ${event.tag}CategoryDark fontDark`}
 						>
 							{event.title}
