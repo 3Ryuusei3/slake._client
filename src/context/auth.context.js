@@ -8,10 +8,11 @@ const AuthProviderWrapper = props => {
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 
-	const notifyLogIn = user =>
-		toast(`Welcome back, ${user}`, {
-			icon: "🎉",
-		})
+
+	// const notifyLogIn = () =>
+	// 	toast('Welcome back', {
+	// 		icon: "🎉",
+	// 	})
 
 	const notifyLogOut = () =>
 		toast("See you soon", {
@@ -30,7 +31,6 @@ const AuthProviderWrapper = props => {
 			authService
 				.verify(token)
 				.then(({ data }) => {
-					notifyLogIn(data.username)
 					setUser(data)
 					setIsLoading(false)
 				})
@@ -40,6 +40,7 @@ const AuthProviderWrapper = props => {
 				})
 		}
 	}
+
 
 	const logoutUser = () => {
 		setUser(null)

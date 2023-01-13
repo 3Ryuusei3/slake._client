@@ -48,6 +48,7 @@ const Day = ({ day }) => {
 							className={!darkMode ? `eventLine ${event.tag}Category fontLight` : `eventLine-dark ${event.tag}CategoryDark fontDark`}
 						>
 							{event.title}
+							{event.time}
 						</p>
 					</div>
 				)
