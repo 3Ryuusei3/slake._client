@@ -23,7 +23,7 @@ const CalendarHeader = () => {
 	}
 
 	return (
-		<div className={!darkMode ? "calendarHeader mt-4" : "calendarHeader-dark mt-4"}>
+		<div className={!darkMode ? "calendarHeader mt-3" : "calendarHeader-dark mt-3"}>
 			<h4 className="d-inline m-0">{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</h4>
 			<div>
 				<button onClick={() => handlePrevMonth()}>

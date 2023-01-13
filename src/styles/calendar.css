@@ -13,6 +13,7 @@
 	background-color: var(--bg-navbar);
 	border-radius: 4px;
 	padding: 20px 30px;
+	order: 2;
 }
 
 @media (max-width: 900px) {
@@ -24,6 +25,7 @@
 	.calendarMenu,
 	.calendarMenu-dark {
 		flex-direction: row;
+		order: 0;
 	}
 }
 
@@ -90,7 +92,7 @@
 }
 
 .smCal {
-	width: 220px;
+	width: 210px;
 }
 
 .smCalHeader {
@@ -105,11 +107,11 @@
 .smWeekDays,
 .smMonth {
 	display: flex;
-	gap: 2px;
+	gap: 4px;
 }
 
 .smWeekDays {
-	gap: 6px;
+	gap: 4px;
 }
 
 .smWeekDays p {
@@ -122,7 +124,7 @@
 
 .smMonth div {
 	display: flex;
-	gap: 6px;
+	gap: 4px;
 }
 
 .smMonth div button,
@@ -245,7 +247,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 6px;
-	margin-top: 11px;
+	margin-top: 12px;
 }
 
 .tagContainer label {
