@@ -12,11 +12,16 @@ import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
 import HeaderSkeleton from "./Headerskeleton"
+import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 const Header = () => {
 	const [headerData, setHeaderData] = useState()
 
+
+	const { darkMode } = useContext(DarkModeContext)
 	const { user } = useContext(AuthContext)
+	const { isSidebarOpen } = useContext(SidebarContext)
 
 	let location = useLocation()
 	let pageLocation = location.pathname.substring(1)
@@ -78,7 +83,8 @@ const Header = () => {
 	return (
 		<>
 			{!headerData ? (
-				<HeaderSkeleton />
+				<div className={
+					!isSidebarOpen ? "leftPaddingSm HeaderSkeleton" : "leftPaddingLg HeaderSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
 			) : (
 				<>
 					<header style={{ postion: "relative" }}>

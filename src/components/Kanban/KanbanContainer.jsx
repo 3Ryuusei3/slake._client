@@ -7,7 +7,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import kanbanServices from "../../services/kanban.service"
 
 import Board from "react-trello"
-import { Instagram } from "react-content-loader"
+
 
 const KanbanContainer = () => {
 	const [lanes, setLanes] = useState()
@@ -41,8 +41,8 @@ const KanbanContainer = () => {
 	return (
 		<>
 			{!lanes ? (
-				<div className={!isSidebarOpen ? "leftPaddingSm" : "leftPaddingLg"}>
-					<Instagram />
+				<div className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm KanbanSkeleton" : "mt-4 rightMargin leftPaddingLg KanbanSkeleton"}
+					style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
 				</div>
 			) : (
 				<section className={!isSidebarOpen ? "mt-4 rightMargin leftPaddingSm" : "mt-4 rightMargin leftPaddingLg"}>

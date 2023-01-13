@@ -102,52 +102,59 @@ const ToDo = ({ dashboardData }) => {
 	}
 
 	return (
-		<section>
-			<h3 className="pt-4">To-do</h3>
-			<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
-				<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
-					<button onClick={() => addToDoItem(input)}>
-						<i className="bi bi-plus-lg"></i>
-					</button>
-					<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
-				</div>
-				<DragDropContext onDragEnd={handleOnDragEnd}>
-					<Droppable droppableId="todo">
-						{provided => (
-							<ul {...provided.droppableProps} ref={provided.innerRef}>
-								{todo.map((elm, idx) => {
-									return (
-										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
-											{provided => (
-												<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-													<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-														<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
-														<input
-															type="text"
-															onKeyDown={e => manageBlockByKey(e, elm, idx)}
-															name={`todoItem${idx}`}
-															value={elm.text}
-															onChange={e => handleToDoItemText(idx, e)}
-															onBlur={() => handleTodoUpdate(todo)}
-														/>
-													</div>
-													{toDoId === idx && (
-														<button className={!darkMode ? "deleteTodo" : "deleteTodo-dark"} onClick={() => deleteTodo(idx)}>
-															<i className="bi bi-trash3"></i>
-														</button>
-													)}
-												</li>
-											)}
-										</Draggable>
-									)
-								})}
-								{provided.placeholder}
-							</ul>
-						)}
-					</Droppable>
-				</DragDropContext>
-			</div>
-		</section>
+		<>
+			{!todo ?
+				(
+					<div className="TodoSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
+				) : (
+					<section>
+						<h3 className="pt-4">To-do</h3>
+						<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
+							<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
+								<button onClick={() => addToDoItem(input)}>
+									<i className="bi bi-plus-lg"></i>
+								</button>
+								<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
+							</div>
+							<DragDropContext onDragEnd={handleOnDragEnd}>
+								<Droppable droppableId="todo">
+									{provided => (
+										<ul {...provided.droppableProps} ref={provided.innerRef}>
+											{todo.map((elm, idx) => {
+												return (
+													<Draggable key={idx} draggableId={`${idx}`} index={idx}>
+														{provided => (
+															<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+																<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
+																	<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
+																	<input
+																		type="text"
+																		onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																		name={`todoItem${idx}`}
+																		value={elm.text}
+																		onChange={e => handleToDoItemText(idx, e)}
+																		onBlur={() => handleTodoUpdate(todo)}
+																	/>
+																</div>
+																{toDoId === idx && (
+																	<button className={!darkMode ? "deleteTodo" : "deleteTodo-dark"} onClick={() => deleteTodo(idx)}>
+																		<i className="bi bi-trash3"></i>
+																	</button>
+																)}
+															</li>
+														)}
+													</Draggable>
+												)
+											})}
+											{provided.placeholder}
+										</ul>
+									)}
+								</Droppable>
+							</DragDropContext>
+						</div>
+					</section>
+				)}
+		</>
 	)
 }
 

@@ -11,24 +11,31 @@ const Month = ({ currentMonth }) => {
 
 	return (
 		<>
-			<div className="weekDays mt-4">
-				{currentMonth[0].map((day, idx) => {
-					return <p key={idx}>{day.format("ddd").toUpperCase()}</p>
-				})}
-			</div>
-			<div className="month">
-				{currentMonth.map((row, idx) => {
-					return (
-						<div key={idx}>
-							{row.map((day, idx) => (
+			{!events ? (
+				<div className="weekDays mt-4 CalendarSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
+				</div>
+			) : (
+				<>
+					<div className="weekDays mt-4">
+						{currentMonth[0].map((day, idx) => {
+							return <p key={idx}>{day.format("ddd").toUpperCase()}</p>
+						})}
+					</div>
+					<div className="month">
+						{currentMonth.map((row, idx) => {
+							return (
 								<div key={idx}>
-									<Day events={events} setEvents={setEvents} day={day} />
+									{row.map((day, idx) => (
+										<div key={idx}>
+											<Day events={events} setEvents={setEvents} day={day} />
+										</div>
+									))}
 								</div>
-							))}
-						</div>
-					)
-				})}
-			</div>
+							)
+						})}
+					</div>
+				</>
+			)}
 		</>
 	)
 }

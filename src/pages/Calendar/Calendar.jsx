@@ -14,6 +14,7 @@ const Calendar = () => {
         <>
             <Sidebar />
             <Header />
+
             <div className={!isSidebarOpen ? "leftPaddingSm rightMargin pb-5" : "leftPaddingLg rightMargin pb-5"}>
                 <CalendarContainer />
             </div>

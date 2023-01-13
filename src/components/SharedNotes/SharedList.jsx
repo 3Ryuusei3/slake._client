@@ -7,7 +7,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 import singleNoteService from "../../services/singleNote.service"
 
 import { Container, Row, Card } from "react-bootstrap"
-import { Instagram } from "react-content-loader"
+
 
 const SharedList = () => {
 	const [sharedNotesList, setSharedNotesList] = useState()
@@ -32,7 +32,7 @@ const SharedList = () => {
 	return (
 		<>
 			{!sharedNotesList ? (
-				<Instagram />
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-5 SharedNotesSkeleton" : "leftPaddingLg rightMargin py-5 SharedNotesSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
 			) : (
 				<section className={!isSidebarOpen ? "leftPaddingSm rightMargin py-5" : "leftPaddingLg rightMargin py-5"}>
 					<Container>
