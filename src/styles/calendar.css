@@ -1,27 +1,65 @@
 /* Calendar menu */
 
+.calContainer {
+	display: flex;
+	gap: 40px;
+}
+
 .calendarMenu,
-.calendarMenu-dark,
-.calendarMenu div,
-.calendarMenu-dark div {
+.calendarMenu-dark {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	background-color: var(--bg-navbar);
+	border-radius: 4px;
+	padding: 20px 30px;
+	order: 2;
+}
+
+@media (max-width: 900px) {
+	.calContainer {
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.calendarMenu,
+	.calendarMenu-dark {
+		flex-direction: row;
+		order: 0;
+	}
+}
+
+.calendarMenu-dark {
+	background-color: var(--dark-bg-navbar);
+}
+
+.calendarHeader,
+.calendarHeader-dark,
+.calendarHeader div,
+.calendarHeader-dark div {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.calendarMenu,
-.calendarMenu button {
+.calendarHeader,
+.calendarHeader button {
 	color: var(--text-primary);
 }
 
-.calendarMenu-dark,
-.calendarMenu-dark button {
+.calendarHeader-dark,
+.calendarHeader-dark button {
 	color: var(--dark-text-primary);
 }
 
 .todayBtn {
 	font-size: var(--lg);
 	font-weight: 500;
+}
+
+.eventMenu {
+	display: flex;
+	flex-direction: column;
 }
 
 /* Month */
@@ -54,7 +92,7 @@
 }
 
 .smCal {
-	width: 235px;
+	width: 210px;
 }
 
 .smCalHeader {
@@ -69,7 +107,11 @@
 .smWeekDays,
 .smMonth {
 	display: flex;
-	gap: 8px;
+	gap: 4px;
+}
+
+.smWeekDays {
+	gap: 4px;
 }
 
 .smWeekDays p {
@@ -82,7 +124,7 @@
 
 .smMonth div {
 	display: flex;
-	gap: 8px;
+	gap: 4px;
 }
 
 .smMonth div button,
@@ -197,4 +239,24 @@
 	padding: 1px 5px;
 	border-radius: 2px;
 	font-size: var(--xs);
+}
+
+.tagContainer {
+	max-height: 180px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 12px;
+}
+
+.tagContainer label {
+	margin: 0;
+	gap: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.tagContainer input {
+	margin-top: 0 !important;
 }

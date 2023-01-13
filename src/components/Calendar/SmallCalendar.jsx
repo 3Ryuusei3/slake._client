@@ -45,7 +45,7 @@ const SmallCalendar = () => {
 	}
 
 	return (
-		<div className="smCal mt-3" style={!darkMode ? { "--calColor": "var(--text-primary)" } : { "--calColor": "var(--dark-text-primary)" }}>
+		<div className="smCal" style={!darkMode ? { "--calColor": "var(--text-primary)" } : { "--calColor": "var(--dark-text-primary)" }}>
 			<header className="smCalHeader">
 				<button onClick={() => handlePrevMonth()}>
 					<i className="bi bi-chevron-left"></i>

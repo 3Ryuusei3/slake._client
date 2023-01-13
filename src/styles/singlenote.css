@@ -22,7 +22,6 @@
 }
 
 @media (max-width: 600px) {
-
 	.printBtn,
 	.printBtn-dark {
 		right: 30px;
@@ -34,7 +33,7 @@
 .noteInfoBtn,
 .noteInfoBtn-dark {
 	position: absolute;
-	right: 60px;
+	right: 70px;
 	top: calc(222px + (274 - 222) * ((100vw - 800px) / (1600 - 800)));
 }
 
@@ -90,8 +89,8 @@
 	color: var(--dark-text-primary);
 }
 
-.blockList>div,
-.blockList-dark>div {
+.blockList > div,
+.blockList-dark > div {
 	gap: calc(5px + (50 - 5) * ((100vw - 600px) / (1600 - 600)));
 }
 
@@ -216,7 +215,6 @@
 }
 
 @media (max-width: 600px) {
-
 	.deleteBlock,
 	.deleteBlock-dark {
 		right: -16px;
