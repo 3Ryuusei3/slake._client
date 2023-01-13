@@ -13,8 +13,9 @@ import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
 import Timer from "../../components/Pomodoro/Timer"
 import Settings from "../../components/Pomodoro/Settings"
+import { DarkModeContext } from "../../context/darkmode.context"
 
-import { Code } from "react-content-loader"
+
 
 const Dashboard = () => {
 
@@ -23,6 +24,7 @@ const Dashboard = () => {
 	const { showSettings } = useContext(PomodoroContext)
 	const { isSidebarOpen } = useContext(SidebarContext)
 	const { user } = useContext(AuthContext)
+	const { darkMode } = useContext(DarkModeContext)
 
 	const getDashboardData = () => {
 		dashboardServices
@@ -40,9 +42,8 @@ const Dashboard = () => {
 	return (
 		<>
 			{!dashboardData ? (
-				<div style={{ paddingLeft: "300px" }}>
-					<Code />
-				</div>
+				<div className={
+					!isSidebarOpen ? "leftPaddingSm DashboardSkeleton" : "leftPaddingLg DashboardSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
 			) : (
 				<div>
 					<Sidebar />

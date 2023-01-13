@@ -215,148 +215,156 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	}
 
 	return (
-		<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
-			<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
-				{user._id === singleNoteData.owner && (
-					<button
-						onClick={() => {
-							setNoteInfo(val => !val)
-						}}
-						style={noteInfo ? { rotate: "-90deg", transition: "0.4s ease" } : { rotate: "0deg", transition: "0.4s ease" }}
-						className={!darkMode ? "noteInfoBtn" : "noteInfoBtn-dark"}
-					>
-						<i className="bi bi-three-dots-vertical"></i>
-					</button>
-				)}
-				{noteInfo && (
-					<div style={noteInfo ? { "--note-info": "fade-in" } : { "--note-info": "fade-out" }} className={!darkMode ? "noteInfo py-4 px-3" : "noteInfo-dark py-4 px-3"}>
-						<div>
-							<CategoryMenu
-								tag={tag}
-								showCategoryMenu={showCategoryMenu}
-								categoryMenu={categoryMenu}
-								handleMouseOverCategory={handleMouseOverCategory}
-								handleMouseOutCategory={handleMouseOutCategory}
-								handleNoteCategory={handleNoteCategory}
-							/>
-							<div className="d-flex ms-5 align-items-center">
-								<p className="me-2 mb-0">Shared:</p>
-								<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
+		<>
+			{!block ? (
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3 SingleNoteSkeleton" : "leftPaddingLg rightMargin py-3 SingleNoteSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
+				</div>
+			) : (
+				<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
+					<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
+						{user._id === singleNoteData.owner && (
+							<button
+								onClick={() => {
+									setNoteInfo(val => !val)
+								}}
+								style={noteInfo ? { rotate: "-90deg", transition: "0.4s ease" } : { rotate: "0deg", transition: "0.4s ease" }}
+								className={!darkMode ? "noteInfoBtn" : "noteInfoBtn-dark"}
+							>
+								<i className="bi bi-three-dots-vertical"></i>
+							</button>
+						)}
+						{noteInfo && (
+							<div style={noteInfo ? { "--note-info": "fade-in" } : { "--note-info": "fade-out" }} className={!darkMode ? "noteInfo py-4 px-3" : "noteInfo-dark py-4 px-3"}>
+								<div>
+									<CategoryMenu
+										tag={tag}
+										showCategoryMenu={showCategoryMenu}
+										categoryMenu={categoryMenu}
+										handleMouseOverCategory={handleMouseOverCategory}
+										handleMouseOutCategory={handleMouseOutCategory}
+										handleNoteCategory={handleNoteCategory}
+									/>
+									<div className="d-flex ms-5 align-items-center">
+										<p className="me-2 mb-0">Shared:</p>
+										<input className="mb-0" type="checkbox" onChange={handleNoteCheck} checked={shared ? true : false} />
+									</div>
+								</div>
+								<button onClick={() => window.print()} className="printBtn">
+									<i className="bi bi-printer"></i>
+								</button>
 							</div>
-						</div>
-						<button onClick={() => window.print()} className="printBtn">
-							<i className="bi bi-printer"></i>
-						</button>
-					</div>
-				)}
-				<DragDropContext onDragEnd={handleOnDragEnd}>
-					<Droppable droppableId="blocks">
-						{provided => (
-							<ul className="blockUl" {...provided.droppableProps} ref={provided.innerRef}>
-								{block.map((elm, idx) => {
-									return (
-										<Draggable key={idx} draggableId={`${idx}`} index={idx}>
-											{provided => (
-												<li ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-													{blockId === idx && (
-														<div
-															onClick={() => {
-																handleBlockMenu()
-															}}
-															{...provided.dragHandleProps}
-															className={!darkMode ? "blockHandler" : "blockHandler-dark"}
-														>
-															<i className="bi bi-grid-3x2-gap"></i>
-														</div>
-													)}
-													{blockId === idx && blockMenu && (
-														<BlockMenu
-															blockId={blockId}
-															handleMenuIn={handleMenuIn}
-															handleMenuOut={handleMenuOut}
-															changeIntoTag={changeIntoTag}
-															changeIntoType={changeIntoType}
-															changeIntoColor={changeIntoColor}
-															openImgModal={openImgModal}
-														/>
-													)}
-													{elm.htmlTag !== "img" ? (
-														<div
-															name={`block${idx}`}
-															className={
-																!darkMode
-																	? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
-																	: `blockLine-dark ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
-															}
-															contentEditable={user._id !== singleNoteData.owner ? false : true}
-															suppressContentEditableWarning
-															spellCheck={false}
-															onInput={e => handleBlockText(idx, e)}
-															onKeyDown={e => manageBlockByKey(e, elm, idx)}
-															onBlur={() => {
-																setOffset(undefined)
-																setClickedBlockId("")
-															}}
-															ref={el => (blockRef.current[idx] = el)}
-															onClick={() => setClickedBlockId(idx)}
-														>
-															{elm.content}
-														</div>
-													) : (
-														<figure>
-															<img
-																className="blockImg"
-																src={elm.imageUrl}
-																alt=""
-																name={`block${idx}`}
-																onKeyDown={e => manageBlockByKey(e, elm, idx)}
-																onBlur={() => {
-																	setOffset(undefined)
-																	setClickedBlockId("")
-																}}
-																ref={el => (blockRef.current[idx] = el)}
-																onClick={() => setClickedBlockId(idx)}
-															/>
-															{elm.content && (
-																<figcaption
+						)}
+						<DragDropContext onDragEnd={handleOnDragEnd}>
+							<Droppable droppableId="blocks">
+								{provided => (
+									<ul className="blockUl" {...provided.droppableProps} ref={provided.innerRef}>
+										{block.map((elm, idx) => {
+											return (
+												<Draggable key={idx} draggableId={`${idx}`} index={idx}>
+													{provided => (
+														<li ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+															{blockId === idx && (
+																<div
+																	onClick={() => {
+																		handleBlockMenu()
+																	}}
+																	{...provided.dragHandleProps}
+																	className={!darkMode ? "blockHandler" : "blockHandler-dark"}
+																>
+																	<i className="bi bi-grid-3x2-gap"></i>
+																</div>
+															)}
+															{blockId === idx && blockMenu && (
+																<BlockMenu
+																	blockId={blockId}
+																	handleMenuIn={handleMenuIn}
+																	handleMenuOut={handleMenuOut}
+																	changeIntoTag={changeIntoTag}
+																	changeIntoType={changeIntoType}
+																	changeIntoColor={changeIntoColor}
+																	openImgModal={openImgModal}
+																/>
+															)}
+															{elm.htmlTag !== "img" ? (
+																<div
+																	name={`block${idx}`}
+																	className={
+																		!darkMode
+																			? `blockLine ${elm.htmlTag}Block color${elm.style} ${elm.type}Block fontLight`
+																			: `blockLine-dark ${elm.htmlTag}Block color${elm.style}Dark ${elm.type}Block fontDark`
+																	}
 																	contentEditable={user._id !== singleNoteData.owner ? false : true}
 																	suppressContentEditableWarning
 																	spellCheck={false}
 																	onInput={e => handleBlockText(idx, e)}
 																	onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																	onBlur={() => {
+																		setOffset(undefined)
+																		setClickedBlockId("")
+																	}}
 																	ref={el => (blockRef.current[idx] = el)}
 																	onClick={() => setClickedBlockId(idx)}
 																>
 																	{elm.content}
-																</figcaption>
+																</div>
+															) : (
+																<figure>
+																	<img
+																		className="blockImg"
+																		src={elm.imageUrl}
+																		alt=""
+																		name={`block${idx}`}
+																		onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																		onBlur={() => {
+																			setOffset(undefined)
+																			setClickedBlockId("")
+																		}}
+																		ref={el => (blockRef.current[idx] = el)}
+																		onClick={() => setClickedBlockId(idx)}
+																	/>
+																	{elm.content && (
+																		<figcaption
+																			contentEditable={user._id !== singleNoteData.owner ? false : true}
+																			suppressContentEditableWarning
+																			spellCheck={false}
+																			onInput={e => handleBlockText(idx, e)}
+																			onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																			ref={el => (blockRef.current[idx] = el)}
+																			onClick={() => setClickedBlockId(idx)}
+																		>
+																			{elm.content}
+																		</figcaption>
+																	)}
+																</figure>
 															)}
-														</figure>
+															{blockId === idx && block.length > 1 && (
+																<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
+																	<i className="bi bi-trash3"></i>
+																</button>
+															)}
+														</li>
 													)}
-													{blockId === idx && block.length > 1 && (
-														<button className={!darkMode ? "deleteBlock" : "deleteBlock-dark"} onClick={() => deleteBlock(idx)}>
-															<i className="bi bi-trash3"></i>
-														</button>
-													)}
-												</li>
-											)}
-										</Draggable>
-									)
-								})}
-								{provided.placeholder}
-							</ul>
-						)}
-					</Droppable>
-				</DragDropContext>
-				<Modal className={darkMode && "modal-dark"} show={showImgModal} onHide={closeImgModal}>
-					<Modal.Header closeButton>
-						<Modal.Title>Add image</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<NewBlockImageForm setShowImgModal={setShowImgModal} changeImgUrl={changeImgUrl} blockId={blockId} clikedBlockId={clikedBlockId} />
-					</Modal.Body>
-				</Modal>
-			</section>
-		</article>
+												</Draggable>
+											)
+										})}
+										{provided.placeholder}
+									</ul>
+								)}
+							</Droppable>
+						</DragDropContext>
+						<Modal className={darkMode && "modal-dark"} show={showImgModal} onHide={closeImgModal}>
+							<Modal.Header closeButton>
+								<Modal.Title>Add image</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								<NewBlockImageForm setShowImgModal={setShowImgModal} changeImgUrl={changeImgUrl} blockId={blockId} clikedBlockId={clikedBlockId} />
+							</Modal.Body>
+						</Modal>
+					</section>
+				</article>
+			)}
+		</>
+
 	)
 }
 

@@ -1,0 +1,77 @@
+/*Skeleton*/
+
+
+.DashboardSkeleton {
+    width: 100%;
+    height: calc(130px + (200 - 130) * ((100vw - 500px) / (1600 - 500)));
+    margin-left: 80px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.HeaderSkeleton {
+    width: 100%;
+    height: calc(130px + (200 - 130) * ((100vw - 500px) / (1600 - 500)));
+    margin-left: 80px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.CalloutSkeleton {
+    width: 90%;
+    height: 50px;
+    background-color: var(--skeletonColor);
+    border-radius: 4px;
+    padding: 10px 16px;
+}
+
+.TodoSkeleton {
+    width: 100%;
+    height: 90px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.KanbanSkeleton {
+    width: 70%;
+    padding: 20px;
+    height: 50vh;
+    margin-left: 150px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.CalendarSkeleton {
+    width: 85%;
+    height: 50vh;
+    margin-left: 150px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+
+}
+
+.NotesSkeleton {
+    width: 85%;
+    height: 50vh;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.SingleNoteSkeleton {
+    width: 85%;
+    height: 50vh;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}
+
+.SharedNotesSkeleton {
+    width: 85%;
+    padding: 20px;
+    height: 50vh;
+    margin-left: 150px;
+    border-radius: 4px;
+    background-color: var(--skeletonColor);
+}

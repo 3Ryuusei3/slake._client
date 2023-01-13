@@ -6,7 +6,7 @@ import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import singleNoteService from "../../services/singleNote.service"
-import { List } from "react-content-loader"
+
 
 const NotesList = () => {
 	const [notes, setNotes] = useState()
@@ -68,8 +68,7 @@ const NotesList = () => {
 	return (
 		<>
 			{!notes ? (
-				<div style={{ paddingLeft: "300px" }}>
-					<List />
+				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5 notesContainer NotesSkeleton " : "leftPaddingLg rightMargin my-3 mb-5 notesContainer NotesSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
 				</div>
 			) : (
 				<article className={!isSidebarOpen ? "leftPaddingSm rightMargin my-3 mb-5 notesContainer" : "leftPaddingLg rightMargin my-3 mb-5 notesContainer"}>

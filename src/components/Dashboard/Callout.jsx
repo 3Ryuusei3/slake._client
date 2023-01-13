@@ -42,16 +42,20 @@ const Callout = ({ dashboardData }) => {
 	}
 
 	return (
-		<section className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
-			<div className={!darkMode ? "Callout" : "Callout-dark"}>
-				<p>💡</p>
-				<div>
-					<div contentEditable suppressContentEditableWarning spellCheck="false" onInput={handleCallout} onBlur={handleCalloutUpdate} ref={calloutRef}>
-						{callout}
+		<> {!callout ? (
+			<div className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3 CalloutSkeleton" : "leftPaddingLg rightMargin mt-3 CalloutSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>)
+			: (
+				<section className={!isSidebarOpen ? "leftPaddingSm rightMargin mt-3" : "leftPaddingLg rightMargin mt-3"}>
+					< div className={!darkMode ? "Callout" : "Callout-dark"}>
+						<p>💡</p>
+						<div>
+							<div contentEditable suppressContentEditableWarning spellCheck="false" onInput={handleCallout} onBlur={handleCalloutUpdate} ref={calloutRef}>
+								{callout}
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</section>
+				</section >)}
+		</>
 	)
 }
 
