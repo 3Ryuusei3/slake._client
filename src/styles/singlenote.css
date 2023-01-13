@@ -22,6 +22,7 @@
 }
 
 @media (max-width: 600px) {
+
 	.printBtn,
 	.printBtn-dark {
 		right: 30px;
@@ -68,6 +69,7 @@
 		bottom: 50px;
 		opacity: 0;
 	}
+
 	70% {
 		position: relative;
 		bottom: 0;
@@ -88,8 +90,8 @@
 	color: var(--dark-text-primary);
 }
 
-.blockList > div,
-.blockList-dark > div {
+.blockList>div,
+.blockList-dark>div {
 	gap: calc(5px + (50 - 5) * ((100vw - 600px) / (1600 - 600)));
 }
 
@@ -214,6 +216,7 @@
 }
 
 @media (max-width: 600px) {
+
 	.deleteBlock,
 	.deleteBlock-dark {
 		right: -16px;
@@ -460,28 +463,40 @@
 	background: linear-gradient(to top right, var(--bg-navbar) calc(50% - 2px), rgb(255, 7, 7), var(--bg-navbar) calc(50% + 2px));
 }
 
-.colorTextBlue {
+.colorTextBlue,
+.colorTextDiary {
 	background-color: var(--text-blue) !important;
+	accent-color: var(--text-blue) !important;
 }
 
-.colorTextRed {
+.colorTextRed,
+.colorTextWork {
 	background-color: var(--text-red) !important;
+	accent-color: var(--text-red);
 }
 
-.colorTextYellow {
+.colorTextYellow,
+.colorTextSchool {
 	background-color: var(--text-yellow) !important;
+	accent-color: var(--text-yellow);
 }
 
-.colorTextGreen {
+.colorTextGreen,
+.colorTextTravel {
 	background-color: var(--text-green) !important;
+	accent-color: var(--text-green);
 }
 
-.colorTextOrange {
+.colorTextOrange,
+.colorTextSocial {
 	background-color: var(--text-orange) !important;
+	accent-color: var(--text-orange);
 }
 
-.colorTextPurple {
+.colorTextPurple,
+.colorTextOther {
 	background-color: var(--text-purple) !important;
+	accent-color: var(--text-purple);
 }
 
 /* Images */

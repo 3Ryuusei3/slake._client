@@ -5,9 +5,9 @@ import CalIndexContext from "../../context/calindex.context"
 
 import Day from "./Day"
 
-const Month = ({ currentMonth, events, setEvents }) => {
+const Month = ({ currentMonth }) => {
 	const { darkMode } = useContext(DarkModeContext)
-	const { setDaySelected, setEventModal } = useContext(CalIndexContext)
+	const { setDaySelected, setEventModal, events, setEvents } = useContext(CalIndexContext)
 
 	return (
 		<>

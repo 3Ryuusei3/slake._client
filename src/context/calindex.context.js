@@ -9,17 +9,12 @@ const CalIndexContext = React.createContext({
     setDaySelected: (day) => { },
     eventModal: false,
     setEventModal: () => { },
-    // savedEvents: [],
     selectedEvent: null,
     setSelectedEvent: () => { },
-    // setLabels: () => { },
-    // labels: [],
-    // updateLabel: () => { },
-    // filteredEvents: [],
+    setLabels: () => { },
+    labels: [],
+    updateLabel: () => { },
+    filteredEvents: [],
 });
 
 export default CalIndexContext
-
-// GLOBALCONTEXT
-
-// dispatchCalEvent: ({ type, payload }) => { },

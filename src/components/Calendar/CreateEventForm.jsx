@@ -8,9 +8,9 @@ import CalIndexContext from "../../context/calindex.context"
 
 import { Button, Form } from "react-bootstrap"
 
-const CreateEventForm = ({ events, setEvents, closeEventModal }) => {
+const CreateEventForm = ({ closeEventModal }) => {
 
-    const { daySelected, selectedEvent, eventId, setEventId } = useContext(CalIndexContext)
+    const { daySelected, selectedEvent, eventId, setEventId, events, setEvents } = useContext(CalIndexContext)
 
     /* PENDIENTE: Pasar a carpeta const e importar */
     const labels = [

@@ -7,9 +7,9 @@ import { Modal } from "react-bootstrap"
 import CreateEventForm from "./CreateEventForm"
 
 
-const EventMenu = ({ events, setEvents }) => {
+const EventMenu = () => {
 
-    const { eventModal, setEventModal, setEventId } = useContext(CalIndexContext)
+    const { eventModal, setEventModal, setEventId, events, setEvents } = useContext(CalIndexContext)
     const { darkMode } = useContext(DarkModeContext)
 
     const openEventModal = () => setEventModal(true)
@@ -29,7 +29,7 @@ const EventMenu = ({ events, setEvents }) => {
                     <Modal.Title>Add Event</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <CreateEventForm events={events} setEvents={setEvents} closeEventModal={closeEventModal} />
+                    <CreateEventForm closeEventModal={closeEventModal} />
                 </Modal.Body>
             </Modal>
         </>

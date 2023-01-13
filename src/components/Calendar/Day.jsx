@@ -5,16 +5,16 @@ import CalIndexContext from "../../context/calindex.context"
 
 import dayjs from "dayjs"
 
-const Day = ({ day, events, setEvents }) => {
+const Day = ({ day }) => {
 	const [dayEvents, setDayEvents] = useState([])
 
 	const { darkMode } = useContext(DarkModeContext)
-	const { setDaySelected, setEventModal, setSelectedEvent, eventId, setEventId } = useContext(CalIndexContext)
+	const { setDaySelected, setEventModal, setSelectedEvent, eventId, setEventId, filteredEvents, setEvents } = useContext(CalIndexContext)
 
 	useEffect(() => {
-		const eventsFiltered = events.filter(event => dayjs(event.startDate).format("DD-MM-YY") === day.format("DD-MM-YY"))
+		const eventsFiltered = filteredEvents.filter(event => dayjs(event.startDate).format("DD-MM-YY") === day.format("DD-MM-YY"))
 		setDayEvents(eventsFiltered)
-	}, [events, day])
+	}, [filteredEvents, day])
 
 	const getCurrentDayClass = () => {
 		return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "currentDay text-white" : "otherDay"
@@ -27,8 +27,6 @@ const Day = ({ day, events, setEvents }) => {
 	const handleMouseOut = () => {
 		setEventId("")
 	}
-
-	console.log("EventID:", eventId)
 
 	return (
 		<div
