@@ -39,17 +39,17 @@ const Day = ({ day }) => {
 			<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
 			{dayEvents.map((event, idx) => {
 				return (
-					<div key={idx} /* onMouseOver={() => handleMouseOver(event._id)} onMouseOut={handleMouseOut}  */>
+					<div className={!darkMode ? `${event.tag}Category` : `${event.tag}CategoryDark`} key={idx} /* onMouseOver={() => handleMouseOver(event._id)} onMouseOut={handleMouseOut}  */>
 						<p
 							onClick={() => {
 								setSelectedEvent(event)
 								setEventId(event.startDate + event.title)
 							}}
-							className={!darkMode ? `eventLine ${event.tag}Category fontLight` : `eventLine-dark ${event.tag}CategoryDark fontDark`}
+							className={!darkMode ? `eventLine fontLight` : `eventLine-dark fontDark`}
 						>
 							{event.title}
-							{event.time}
 						</p>
+						<p className="eventTime">{event.time}</p>
 					</div>
 				)
 			})}

@@ -30,23 +30,6 @@
 
 /* Header */
 
-.noteInfoBtn,
-.noteInfoBtn-dark {
-	position: absolute;
-	right: 70px;
-	top: calc(222px + (274 - 222) * ((100vw - 800px) / (1600 - 800)));
-}
-
-.noteInfoBtn i,
-.noteInfoBtn-dark i {
-	font-size: var(--xl);
-	color: var(--text-primary);
-}
-
-.noteInfoBtn-dark i {
-	color: var(--dark-text-primary);
-}
-
 .noteInfo,
 .noteInfo-dark {
 	display: flex;

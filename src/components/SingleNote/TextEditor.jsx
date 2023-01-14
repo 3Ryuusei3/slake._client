@@ -217,8 +217,10 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	return (
 		<>
 			{!block ? (
-				<div className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3 SingleNoteSkeleton" : "leftPaddingLg rightMargin py-3 SingleNoteSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
-				</div>
+				<div
+					className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3 SingleNoteSkeleton" : "leftPaddingLg rightMargin py-3 SingleNoteSkeleton"}
+					style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}
+				></div>
 			) : (
 				<article className={!isSidebarOpen ? "leftPaddingSm rightMargin py-3" : "leftPaddingLg rightMargin py-3"}>
 					<section style={user._id !== singleNoteData.owner ? { pointerEvents: "none" } : {}} className={!darkMode ? "blockList pt-2 pb-5" : "blockList-dark pt-2 pb-5"}>
@@ -228,7 +230,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 									setNoteInfo(val => !val)
 								}}
 								style={noteInfo ? { rotate: "-90deg", transition: "0.4s ease" } : { rotate: "0deg", transition: "0.4s ease" }}
-								className={!darkMode ? "noteInfoBtn" : "noteInfoBtn-dark"}
+								className={!darkMode ? "topMenuBtn" : "topMenuBtn-dark"}
 							>
 								<i className="bi bi-three-dots-vertical"></i>
 							</button>
@@ -262,7 +264,14 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 											return (
 												<Draggable key={idx} draggableId={`${idx}`} index={idx}>
 													{provided => (
-														<li ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="block" onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+														<li
+															ref={provided.innerRef}
+															{...provided.dragHandleProps}
+															{...provided.draggableProps}
+															className="block"
+															onMouseOver={() => handleMouseOver(idx)}
+															onMouseOut={handleMouseOut}
+														>
 															{blockId === idx && (
 																<div
 																	onClick={() => {
@@ -364,7 +373,6 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 				</article>
 			)}
 		</>
-
 	)
 }
 

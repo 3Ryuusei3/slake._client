@@ -37,8 +37,8 @@
 		color: var(--text-primary) !important;
 	}
 
-	.noteInfoBtn,
-	.noteInfoBtn-dark,
+	.topMenuBtn,
+	.topMenuBtn-dark,
 	.noteInfo,
 	.noteInfo-dark {
 		display: none;

@@ -111,3 +111,20 @@
 	color: var(--dark-text-primary);
 	background-color: var(--dark-bg-primary);
 }
+
+.topMenuBtn,
+.topMenuBtn-dark {
+	position: absolute;
+	right: calc(36px + (70 - 36) * ((100vw - 600px) / (1600 - 600)));
+	top: calc(222px + (274 - 222) * ((100vw - 800px) / (1600 - 800)));
+}
+
+.topMenuBtn i,
+.topMenuBtn-dark i {
+	font-size: var(--xl);
+	color: var(--text-primary);
+}
+
+.topMenuBtn-dark i {
+	color: var(--dark-text-primary);
+}

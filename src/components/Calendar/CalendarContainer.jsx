@@ -28,7 +28,7 @@ const CalendarContainer = () => {
 					setCalendarMenu(val => !val)
 				}}
 				style={calendarMenu ? { rotate: "-90deg", transition: "0.4s ease" } : { rotate: "0deg", transition: "0.4s ease" }}
-				className={!darkMode ? "noteInfoBtn" : "noteInfoBtn-dark"}
+				className={!darkMode ? "topMenuBtn" : "topMenuBtn-dark"}
 			>
 				<i className="bi bi-three-dots-vertical"></i>
 			</button>
