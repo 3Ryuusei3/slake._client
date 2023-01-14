@@ -220,13 +220,13 @@
 
 .date div,
 .date-dark div {
-	max-height: 25px !important;
+	max-height: 22px !important;
 	position: relative;
-	margin-bottom: 2px;
+	margin-bottom: 2.5px;
 	border-radius: 2px;
 	margin-inline: 6px;
 	width: initial !important;
-	padding: 1px 5px;
+	padding: 0 5px;
 }
 
 .eventLine,
@@ -234,7 +234,7 @@
 	height: max-content;
 	margin-bottom: 0;
 	font-size: var(--xs);
-	max-width: 80%;
+	max-width: calc(60% + (80 - 60) * ((100vw - 1000px) / (1600 - 1000)));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -244,8 +244,8 @@
 .date-dark .eventTime {
 	position: absolute;
 	font-size: var(--xxs);
-	right: 6px;
-	top: 3.5px;
+	right: 4px;
+	top: 3px;
 	color: var(--text-secondary);
 }
 
@@ -283,6 +283,18 @@
 	.calendarMenu-dark {
 		flex-direction: row;
 		order: 0;
+	}
+}
+
+@media (max-width: 1000px) {
+	.date .eventTime,
+	.date-dark .eventTime {
+		display: none;
+	}
+
+	.eventLine,
+	.eventLine-dark {
+		max-width: 100%;
 	}
 }
 

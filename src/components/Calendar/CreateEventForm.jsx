@@ -21,7 +21,6 @@ const CreateEventForm = ({ closeEventModal }) => {
 		{ tag: "Other", color: "Purple" },
 	]
 
-	const [selectedTime, setSelectedTime] = useState()
 	const [selectedLabel, setSelectedLabel] = useState(selectedEvent ? selectedEvent.tag : "Diary")
 	const [eventData, setEventData] = useState({
 		title: selectedEvent ? selectedEvent.title : "",
@@ -68,7 +67,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 	const handleDeleteEvent = id => {
 		const eventsCopy = [...events]
 
-		const remainingEvents = eventsCopy.filter(event => event.startDate + event.title != id)
+		const remainingEvents = eventsCopy.filter(event => event.startDate + event.title !== id)
 		setSelectedEvent(null)
 		setEventId("")
 		finalHandleActions(remainingEvents)
@@ -76,7 +75,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 	const handleUpdateEvent = id => {
 		const eventsCopy = [...events]
-		const idToFind = event => event.startDate + event.title == id
+		const idToFind = event => event.startDate + event.title === id
 		const idToUpdate = eventsCopy.findIndex(idToFind)
 
 		eventsCopy[idToUpdate].title = eventData.title
@@ -129,7 +128,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 										key={idx}
 										onClick={() => {
 											setSelectedLabel(lbl.tag)
-											setEventData({ ...eventData, ["tag"]: lbl.tag })
+											setEventData({ ...eventData, tag: lbl.tag })
 										}}
 										className={`colorText${lbl.color} eventBlock`}
 									>
