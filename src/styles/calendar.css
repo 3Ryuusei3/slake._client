@@ -130,6 +130,24 @@
 	margin: 0;
 }
 
+.calendarMenu .smMonth div button:hover {
+	background-color: var(--bg-modal) !important;
+}
+
+.calendarMenu-dark .smMonth div button:hover {
+	background-color: var(--dark-bg-card-hover) !important;
+}
+
+.calendarMenu .smMonth div button.selectedDay:hover,
+.calendarMenu-dark .smMonth div button.selectedDay:hover {
+	background-color: var(--color-primary-btn-interact) !important;
+}
+
+.calendarMenu .smMonth div button.currentDay:hover,
+.calendarMenu-dark .smMonth div button.currentDay:hover {
+	background-color: var(--color-primary) !important;
+}
+
 .smMonth div button:nth-child(6),
 .smMonth div button:nth-child(7) {
 	color: var(--dark-text-secondary);
@@ -245,7 +263,7 @@
 	position: absolute;
 	font-size: var(--xxs);
 	right: 4px;
-	top: 3px;
+	top: 2px;
 	color: var(--text-secondary);
 }
 
