@@ -17,7 +17,8 @@
 
 .purple-btn,
 .purple-outline-btn,
-.red-outline-btn {
+.red-outline-btn,
+.gray-outline-btn {
 	display: block !important;
 }
 
@@ -55,7 +56,7 @@
 	background-color: var(--color-secondary-interact) !important;
 }
 
-.gray-outline-button,
+.gray-outline-btn,
 .react-trello-lane button:nth-child(3) {
 	border: 1px solid var(--text-secondary) !important;
 	background-color: var(--bg-primary) !important;
@@ -64,12 +65,12 @@
 	font-size: var(--sm) !important;
 }
 
-.gray-outline-button,
+.gray-outline-btn,
 .react-trello-lane button:nth-child(3) {
 	background-color: var(--cardBtnColor) !important;
 }
 
-.gray-outline-button:hover,
+.gray-outline-btn:hover,
 .react-trello-lane button:nth-child(3):hover {
 	background-color: var(--cardHoverBtnColor) !important;
 }

@@ -111,12 +111,8 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 					<Form.Group controlId="time">
 						<Form.Label className="text-muted">Time</Form.Label>
-						<Form.Control className={darkMode && "form-control-dark"} type="text" value={eventData.time} name="time" onChange={handleInputChange} placeholder="Add a time..." />
+						<Form.Control className={darkMode && "form-control-dark"} type="time" value={eventData.time} name="time" onChange={handleInputChange} placeholder="Add a time..." />
 					</Form.Group>
-
-					<div style={{ maxWidth: "max-content", marginInline: "auto" }} className="px-3 mt-3">
-						<p>{daySelected.format("dddd, MMMM, DD")}</p>
-					</div>
 
 					<Form.Group controlId="labels">
 						<Form.Label className="text-muted">Label</Form.Label>
@@ -140,7 +136,12 @@ const CreateEventForm = ({ closeEventModal }) => {
 					</Form.Group>
 
 					{!selectedEvent ? (
-						<Button type="submit" className="purple-outline-btn px-5 mt-5" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+						<Button
+							disabled={eventData.title ? false : true}
+							type="submit"
+							className={eventData.title ? "purple-outline-btn px-5 mt-5" : "gray-outline-btn px-5 mt-5"}
+							style={{ maxWidth: "max-content", marginInline: "auto" }}
+						>
 							Create event
 						</Button>
 					) : (

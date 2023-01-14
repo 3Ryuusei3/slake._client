@@ -245,6 +245,9 @@
 	margin-inline: 6px;
 	width: initial !important;
 	padding: 0 5px;
+	display: grid;
+	align-content: center;
+	grid-template-columns: 2fr max-content;
 }
 
 .eventLine,
@@ -252,7 +255,6 @@
 	height: max-content;
 	margin-bottom: 0;
 	font-size: var(--xs);
-	max-width: calc(60% + (80 - 60) * ((100vw - 1000px) / (1600 - 1000)));
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -260,7 +262,8 @@
 
 .date .eventTime,
 .date-dark .eventTime {
-	position: absolute;
+	margin: 0;
+	padding-top: 2px;
 	font-size: var(--xxs);
 	right: 4px;
 	top: 2px;
@@ -304,15 +307,10 @@
 	}
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
 	.date .eventTime,
 	.date-dark .eventTime {
 		display: none;
-	}
-
-	.eventLine,
-	.eventLine-dark {
-		max-width: 100%;
 	}
 }
 
