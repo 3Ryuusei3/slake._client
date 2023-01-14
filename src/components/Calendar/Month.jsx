@@ -7,13 +7,12 @@ import Day from "./Day"
 
 const Month = ({ currentMonth }) => {
 	const { darkMode } = useContext(DarkModeContext)
-	const { setDaySelected, setEventModal, events, setEvents } = useContext(CalIndexContext)
+	const { events, setEvents } = useContext(CalIndexContext)
 
 	return (
 		<>
 			{!events ? (
-				<div className="weekDays mt-4 CalendarSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}>
-				</div>
+				<div className="weekDays mt-4 CalendarSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
 			) : (
 				<>
 					<div className="weekDays mt-4">

@@ -11,13 +11,11 @@ import singleNoteService from "../../services/singleNote.service"
 import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
-import HeaderSkeleton from "./Headerskeleton"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 const Header = () => {
 	const [headerData, setHeaderData] = useState()
-
 
 	const { darkMode } = useContext(DarkModeContext)
 	const { user } = useContext(AuthContext)
@@ -63,7 +61,6 @@ const Header = () => {
 					icon: "📚",
 				},
 			})
-
 		} else if (location.pathname.includes("/note/")) {
 			let noteId = location.pathname.slice(6)
 
@@ -83,8 +80,10 @@ const Header = () => {
 	return (
 		<>
 			{!headerData ? (
-				<div className={
-					!isSidebarOpen ? "leftPaddingSm HeaderSkeleton" : "leftPaddingLg HeaderSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
+				<div
+					className={!isSidebarOpen ? "leftPaddingSm HeaderSkeleton" : "leftPaddingLg HeaderSkeleton"}
+					style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}
+				></div>
 			) : (
 				<>
 					<header style={{ postion: "relative" }}>
