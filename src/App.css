@@ -43,7 +43,7 @@
 	--dark-bg-card-hover: #3b3b3b;
 	--dark-text-primary: #f6f6f6;
 	--dark-text-secondary: #9b9b9b;
-	--dark-text-terciary: #b2b2b2;
+	--dark-text-terciary: #5d5d5d;
 
 	/* Colors */
 	--color-primary: #6c63ff;
@@ -58,21 +58,22 @@
 	--block-blue: #d1e4ec;
 	--block-red: #fadada;
 	--block-yellow: #fbf1d1;
-	--block-green: #d0ebe6;
+	--block-green: #d0ebe0;
 	--block-orange: #fae6d3;
 	--block-purple: #e4d9f3;
 
+	--text-theme: #717d85;
 	--text-blue: #529cca;
 	--text-red: #ff7369;
-	--text-yellow: #ffdc49;
-	--text-green: #4dab9a;
+	--text-yellow: #fcd741;
+	--text-green: #4dab84;
 	--text-orange: #ffa344;
 	--text-purple: #9a6dd7;
 
 	--dark-block-blue: #364954;
 	--dark-block-red: #594141;
 	--dark-block-yellow: #59563b;
-	--dark-block-green: #354c4b;
+	--dark-block-green: #354c41;
 	--dark-block-orange: #594a3a;
 	--dark-block-purple: #443f57;
 

@@ -365,12 +365,18 @@
 
 /* Light */
 
-.colorTheme {
-	background-color: var(--bg-navbar) !important;
+.colorTheme,
+.BirthdayCategory {
+	background-color: var(--bg-interact) !important;
+}
+
+.BirthdayCategory {
+	border: 1px solid var(--bg-modal);
 }
 
 .colorBlue,
-.DiaryCategory {
+.DiaryCategory,
+.PersonalCategory {
 	background-color: var(--block-blue) !important;
 }
 
@@ -400,12 +406,18 @@
 }
 
 /* Dark */
-.colorThemeDark {
-	background-color: var(--dark-bg-navbar) !important;
+.colorThemeDark,
+.BirthdayCategoryDark {
+	background-color: var(--dark-bg-modal) !important;
+}
+
+.BirthdayCategoryDark {
+	border: 1px solid var(--dark-text-terciary);
 }
 
 .colorBlueDark,
-.DiaryCategoryDark {
+.DiaryCategoryDark,
+.PersonalCategoryDark {
 	background-color: var(--dark-block-blue) !important;
 }
 
@@ -444,8 +456,15 @@
 	background: linear-gradient(to top right, var(--bg-navbar) calc(50% - 2px), rgb(255, 7, 7), var(--bg-navbar) calc(50% + 2px));
 }
 
+.colorTextTheme,
+.colorTextBirthday {
+	background-color: var(--text-theme) !important;
+	accent-color: var(--text-theme) !important;
+}
+
 .colorTextBlue,
-.colorTextDiary {
+.colorTextDiary,
+.colorTextPersonal {
 	background-color: var(--text-blue) !important;
 	accent-color: var(--text-blue) !important;
 }

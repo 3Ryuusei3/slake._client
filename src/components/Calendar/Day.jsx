@@ -29,21 +29,23 @@ const Day = ({ day }) => {
 			className={!darkMode ? "date" : "date-dark"}
 		>
 			<p className={`${getCurrentDayClass()}`}>{day.format("DD")} </p>
-			{dayEvents.map((event, idx) => {
-				return (
-					<div
-						onClick={() => {
-							setSelectedEvent(event)
-							setEventId(event.startDate + event.title)
-						}}
-						className={!darkMode ? `${event.tag}Category` : `${event.tag}CategoryDark`}
-						key={idx}
-					>
-						<p className={!darkMode ? `eventLine fontLight` : `eventLine-dark fontDark`}>{event.title}</p>
-						<p className="eventTime">{event.time}</p>
-					</div>
-				)
-			})}
+			{dayEvents
+				.sort((a, b) => (a.time > b.time ? 1 : b.time > a.time ? -1 : 0))
+				.map((event, idx) => {
+					return (
+						<div
+							onClick={() => {
+								setSelectedEvent(event)
+								setEventId(event.startDate + event.title)
+							}}
+							className={!darkMode ? `${event.tag}Category` : `${event.tag}CategoryDark`}
+							key={idx}
+						>
+							<p className={!darkMode ? `eventLine fontLight` : `eventLine-dark fontDark`}>{event.title}</p>
+							<p className="eventTime">{event.time}</p>
+						</div>
+					)
+				})}
 		</div>
 	)
 }

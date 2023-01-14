@@ -105,7 +105,7 @@ td a {
 }
 
 .singleNoteLink-dark {
-	color: var(--dark-text-terciary) !important;
+	color: var(--text-terciary) !important;
 	font-size: var(--sm);
 	text-decoration: none !important;
 }

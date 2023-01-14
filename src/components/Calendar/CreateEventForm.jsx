@@ -13,12 +13,13 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 	/* PENDIENTE: Pasar a carpeta const e importar */
 	const labels = [
-		{ tag: "Diary", color: "Blue" },
+		{ tag: "Personal", color: "Blue" },
 		{ tag: "Work", color: "Red" },
 		{ tag: "School", color: "Yellow" },
 		{ tag: "Travel", color: "Green" },
 		{ tag: "Social", color: "Orange" },
 		{ tag: "Other", color: "Purple" },
+		{ tag: "Birthday", color: "Theme" },
 	]
 
 	const [selectedLabel, setSelectedLabel] = useState(selectedEvent ? selectedEvent.tag : "Diary")
@@ -106,7 +107,15 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 					<Form.Group controlId="description">
 						<Form.Label className="text-muted">Description</Form.Label>
-						<Form.Control className={darkMode && "form-control-dark"} type="text" value={eventData.description} name="description" onChange={handleInputChange} placeholder="Add a description..." />
+						<Form.Control
+							className={darkMode && "form-control-dark"}
+							as="textarea"
+							rows={3}
+							value={eventData.description}
+							name="description"
+							onChange={handleInputChange}
+							placeholder="Add a description..."
+						/>
 					</Form.Group>
 
 					<Form.Group controlId="time">
