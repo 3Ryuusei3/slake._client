@@ -1,13 +1,11 @@
 import { useContext } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
-import { SidebarContext } from "../../context/sidebar.context"
 import { PomodoroContext } from "../../context/pomodoro.context"
 
 import ReactSlider from "react-slider"
 
 const Settings = () => {
-	const { isSidebarOpen } = useContext(SidebarContext)
 	const { workMinutes, breakMinutes, setWorkMinutes, setBreakMinutes, setShowSettings } = useContext(PomodoroContext)
 	const { darkMode } = useContext(DarkModeContext)
 

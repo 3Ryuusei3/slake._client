@@ -315,7 +315,7 @@
 .ulBlock::after {
 	position: absolute;
 	content: "●";
-	font-size: var(--xxxs);
+	font-size: var(--xxxxs);
 	left: var(--sm);
 	z-index: 2;
 }

@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 
 import { DarkModeContext } from "../../context/darkmode.context"
-import { SidebarContext } from "../../context/sidebar.context"
 
 import quotesData from "./data.json"
 
@@ -9,7 +8,6 @@ const Quote = () => {
 	const [quotes, setQuotes] = useState()
 	const [rndNum, setRndNum] = useState()
 
-	const { isSidebarOpen } = useContext(SidebarContext)
 	const { darkMode } = useContext(DarkModeContext)
 
 	const updateRndNmb = () => {
