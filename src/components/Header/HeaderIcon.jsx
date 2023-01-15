@@ -77,7 +77,8 @@ const HeaderIcon = ({ headerIcon }) => {
 	// Check if mouse is outside of emoji picker
 	useEffect(() => {
 		document.addEventListener("click", handleDocumentClick, false)
-	})
+	}, [picker])
+
 	const handleDocumentClick = e => {
 		let isEmojiClassFound = false
 
@@ -101,8 +102,13 @@ const HeaderIcon = ({ headerIcon }) => {
 
 	return (
 		<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
-			<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}}>
-				<p className="emojiField" onClick={() => setPicker(true)}>
+			<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}} onMouseOver={() => setPicker(true)}>
+				<p
+					className="emojiField"
+					onClick={() => {
+						setPicker(true)
+					}}
+				>
 					{icon}
 				</p>
 				{picker && (

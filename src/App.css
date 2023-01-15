@@ -12,6 +12,7 @@
 @import "./styles/kanban.css";
 @import "./styles/calendar.css";
 @import "./styles/notes.css";
+@import "./styles/colors.css";
 @import "./styles/singlenote.css";
 @import "./styles/sharednotes.css";
 @import "./styles/modal.css";

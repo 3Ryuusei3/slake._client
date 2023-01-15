@@ -20,7 +20,7 @@
 .createNewNote {
 	border: none;
 	padding: 3px 7px;
-	background-color: var(--color-primary);
+	background-color: var(--color-primary) !important;
 	font-weight: var(--button);
 	border-radius: 4px;
 	height: max-content;

@@ -77,7 +77,6 @@ const CreateEventForm = ({ closeEventModal }) => {
 		finalHandleActions(eventsCopy)
 	}
 
-	/* PENDIENTE: Imitar en TODO y TextEditor */
 	const finalHandleActions = list => {
 		setEvents(list)
 		closeEventModal(false)
