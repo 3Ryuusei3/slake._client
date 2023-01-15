@@ -16,7 +16,7 @@ const SmallCalendar = () => {
 		setCurrentMonth(getMonth(currentMonthIdx))
 	}, [currentMonthIdx])
 
-	const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected } = useContext(CalIndexContext)
+	const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected, setEventModal } = useContext(CalIndexContext)
 
 	useEffect(() => {
 		setCurrentMonthIdx(monthIndex)
@@ -44,15 +44,22 @@ const SmallCalendar = () => {
 		}
 	}
 
+	const openEventModal = () => setEventModal(true)
+
 	return (
 		<div className="smCal" style={!darkMode ? { "--calColor": "var(--text-primary)" } : { "--calColor": "var(--dark-text-primary)" }}>
 			<header className="smCalHeader">
-				<button onClick={() => handlePrevMonth()}>
-					<i className="bi bi-chevron-left"></i>
-				</button>
-				<p className="m-0">{dayjs(new Date(dayjs().year(), currentMonthIdx)).format("MMMM YYYY")}</p>
-				<button onClick={() => handleNextMonth()}>
-					<i className="bi bi-chevron-right"></i>
+				<div>
+					<button onClick={() => handlePrevMonth()}>
+						<i className="bi bi-chevron-left"></i>
+					</button>
+					<p className="m-0">{dayjs(new Date(dayjs().year(), currentMonthIdx)).format("MMMM YYYY")}</p>
+					<button onClick={() => handleNextMonth()}>
+						<i className="bi bi-chevron-right"></i>
+					</button>
+				</div>
+				<button onClick={() => openEventModal()} className="addEventBtn">
+					<i className="bi bi-plus-lg"></i>
 				</button>
 			</header>
 			<div className="d-flex flex-column mt-3">

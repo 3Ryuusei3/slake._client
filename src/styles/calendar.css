@@ -8,6 +8,7 @@
 .calendarMenu,
 .calendarMenu-dark {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	gap: 30px;
 	background-color: var(--bg-navbar);
@@ -26,7 +27,28 @@
 
 .smCalHeader {
 	display: flex;
+	gap: 10px;
+}
+
+.smCalHeader div {
+	display: flex;
 	justify-content: space-between;
+	width: 100%;
+}
+
+.addEventBtn {
+	z-index: 100;
+	width: max-content;
+	border: none;
+	padding: 0px 4px;
+	background-color: var(--color-primary) !important;
+	font-weight: var(--button);
+	border-radius: 4px;
+}
+
+.addEventBtn i {
+	color: var(--bg-primary) !important;
+	font-size: var(--sm);
 }
 
 .smCalHeader i {
@@ -97,13 +119,7 @@
 .eventMenu {
 	display: flex;
 	flex-direction: column;
-}
-
-.eventMenu button {
-	padding-inline: calc(10px + (30 - 10) * ((100vw - 600px) / (1600 - 600)));
-	padding-block: 4px;
-	margin-inline: auto;
-	width: max-content;
+	position: relative;
 }
 
 .tagContainer {
@@ -111,7 +127,6 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 14px;
-	margin-top: 40px;
 }
 
 .tagContainer label {
@@ -123,6 +138,71 @@
 
 .tagContainer input {
 	margin-top: 0 !important;
+	-webkit-appearance: none;
+	appearance: none;
+	display: grid;
+	place-content: center;
+	position: relative;
+}
+
+input[type="checkbox"]::before {
+	content: "";
+	border-radius: 2px;
+	width: 24px;
+	height: 24px;
+	background-color: white !important;
+}
+
+.tagContainer label:nth-child(1) input[type="checkbox"]:before,
+.tagContainer label:nth-child(1) input[type="checkbox"]:checked:before {
+	background-color: var(--text-red) !important;
+}
+
+.tagContainer label:nth-child(2) input[type="checkbox"]:before,
+.tagContainer label:nth-child(2) input[type="checkbox"]:checked:before {
+	background-color: var(--text-green) !important;
+}
+
+.tagContainer label:nth-child(3) input[type="checkbox"]:before,
+.tagContainer label:nth-child(3) input[type="checkbox"]:checked:before {
+	background-color: var(--text-orange) !important;
+}
+
+.tagContainer label:nth-child(4) input[type="checkbox"]:before,
+.tagContainer label:nth-child(4) input[type="checkbox"]:checked:before {
+	background-color: var(--text-yellow) !important;
+}
+
+.tagContainer label:nth-child(5) input[type="checkbox"]:before,
+.tagContainer label:nth-child(5) input[type="checkbox"]:checked:before {
+	background-color: var(--text-blue) !important;
+}
+
+.tagContainer label:nth-child(6) input[type="checkbox"]:before,
+.tagContainer label:nth-child(6) input[type="checkbox"]:checked:before {
+	background-color: var(--text-purple) !important;
+}
+
+.tagContainer label:nth-child(7) input[type="checkbox"]:before,
+.tagContainer label:nth-child(7) input[type="checkbox"]:checked:before {
+	background-color: var(--text-theme) !important;
+}
+
+input[type="checkbox"]::after {
+	width: 23px;
+	height: 28px;
+	content: "✖";
+	position: absolute;
+	display: grid;
+	place-items: center;
+	font-size: var(--md);
+	transform: scale(0);
+	transition: 0.15s transform ease-in-out;
+	filter: brightness(0) invert(1) drop-shadow(0 0 1px black);
+}
+
+input[type="checkbox"]:checked::after {
+	transform: scale(1);
 }
 
 /* Calendar header */
@@ -313,13 +393,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 	}
 
 	.tagContainer {
-		max-height: 180px;
-		gap: 6.5px;
-		margin-top: 12px;
+		max-height: 228px;
+		gap: 9px;
 	}
 
 	.eventMenu {
-		margin-inline: unset;
+		width: 270px;
 	}
 }
 
@@ -330,9 +409,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 	}
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 	.calendarMenu,
 	.calendarMenu-dark {
 		flex-direction: column;
+		align-items: center;
+	}
+
+	.eventMenu {
+		width: unset;
 	}
 }

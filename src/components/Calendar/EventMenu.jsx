@@ -10,7 +10,6 @@ const EventMenu = () => {
 	const { eventModal, setEventModal, labels, updateLabel } = useContext(CalIndexContext)
 	const { darkMode } = useContext(DarkModeContext)
 
-	const openEventModal = () => setEventModal(true)
 	const closeEventModal = () => {
 		setEventModal(false)
 	}
@@ -18,16 +17,16 @@ const EventMenu = () => {
 	return (
 		<>
 			<div className="eventMenu">
-				<button onClick={() => openEventModal()} className="purple-outline-btn">
-					New event
-				</button>
+				{/* <button onClick={() => openEventModal()} className={!darkMode ? "addEventBtn" : "addEventBtn-dark"}>
+					<i className="bi bi-plus-lg"></i>
+				</button> */}
 
 				<div className="tagContainer">
 					{labels
 						.sort((a, b) => (b.label > a.label ? 1 : a.label > b.label ? -1 : 0))
 						.map(({ label: lbl, checked }, idx) => (
 							<label key={idx}>
-								<input type="checkbox" checked={checked} onChange={() => updateLabel({ label: lbl, checked: !checked })} className={`colorText${lbl} eventBlock`} />
+								<input type="checkbox" checked={checked} onChange={() => updateLabel({ label: lbl, checked: !checked })} className={` eventBlock`} />
 								<span>{lbl}</span>
 							</label>
 						))}
