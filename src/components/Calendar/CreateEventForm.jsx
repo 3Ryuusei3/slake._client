@@ -6,21 +6,12 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import { AuthContext } from "../../context/auth.context"
 import CalIndexContext from "../../context/calindex.context"
 
+import { labelArray } from "../../const/labels"
+
 import { Modal, Button, Form } from "react-bootstrap"
 
 const CreateEventForm = ({ closeEventModal }) => {
 	const { daySelected, selectedEvent, setSelectedEvent, eventId, setEventId, events, setEvents } = useContext(CalIndexContext)
-
-	/* PENDIENTE: Pasar a carpeta const e importar */
-	const labels = [
-		{ tag: "Personal", color: "Blue" },
-		{ tag: "Work", color: "Red" },
-		{ tag: "School", color: "Yellow" },
-		{ tag: "Travel", color: "Green" },
-		{ tag: "Social", color: "Orange" },
-		{ tag: "Other", color: "Purple" },
-		{ tag: "Birthday", color: "Theme" },
-	]
 
 	const [selectedLabel, setSelectedLabel] = useState(selectedEvent ? selectedEvent.tag : "Diary")
 	const [eventData, setEventData] = useState({
@@ -135,7 +126,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 						<Form.Label className="text-muted">Label</Form.Label>
 
 						<div className="d-flex gap-2">
-							{labels.map((lbl, idx) => {
+							{labelArray.map((lbl, idx) => {
 								return (
 									<div
 										key={idx}

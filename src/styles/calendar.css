@@ -145,7 +145,7 @@
 	position: relative;
 }
 
-input[type="checkbox"]::before {
+.tagContainer input[type="checkbox"]::before {
 	content: "";
 	border-radius: 2px;
 	width: 24px;
@@ -188,7 +188,7 @@ input[type="checkbox"]::before {
 	background-color: var(--text-theme) !important;
 }
 
-input[type="checkbox"]::after {
+.tagContainer input[type="checkbox"]::after {
 	width: 23px;
 	height: 28px;
 	content: "✖";
@@ -201,7 +201,7 @@ input[type="checkbox"]::after {
 	filter: brightness(0) invert(1) drop-shadow(0 0 1px black);
 }
 
-input[type="checkbox"]:checked::after {
+.tagContainer input[type="checkbox"]:checked::after {
 	transform: scale(1);
 }
 
