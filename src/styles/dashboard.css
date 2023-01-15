@@ -29,6 +29,7 @@
 
 .Callout div,
 .Callout-dark div {
+	font-style: italic;
 	font-size: var(--sm);
 	width: 90%;
 }
@@ -53,6 +54,7 @@
 }
 
 /* Quote */
+
 .quoteBtn {
 	margin-left: 4px;
 }
@@ -112,7 +114,7 @@
 .addTodoInput-dark input {
 	background-color: transparent;
 	width: 100%;
-	margin-left: 16px;
+	margin-left: 22px;
 	border: none;
 }
 

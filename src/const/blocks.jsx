@@ -17,7 +17,7 @@ const types = [
 
 const colors = [
 	{ color: "", class: "TextNone" },
-	{ color: "None", class: "TextNone" },
+	{ color: "Theme", class: "None" },
 	{ color: "Blue", class: "TextBlue" },
 	{ color: "Red", class: "TextRed" },
 	{ color: "Yellow", class: "TextYellow" },

@@ -33,7 +33,7 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 				{types.map(elm => {
 					return (
 						<li>
-							<button onClick={() => changeIntoColor(blockId, elm.color)}>
+							<button onClick={() => changeIntoType(blockId, elm.type)}>
 								<i className={`bi ${elm.icon}`}></i>
 							</button>
 						</li>
@@ -44,7 +44,7 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 				{colors.map(elm => {
 					return (
 						<li>
-							<button onClick={() => changeIntoType(blockId, elm.type)}>
+							<button onClick={() => changeIntoColor(blockId, elm.color)}>
 								<div className={`colorBlock color${elm.class}`}></div>
 							</button>
 						</li>

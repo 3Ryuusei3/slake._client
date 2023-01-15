@@ -4,7 +4,6 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-
 import dashboardServices from "../../services/dashboard.service"
 
 const ToDo = ({ dashboardData }) => {
@@ -35,23 +34,27 @@ const ToDo = ({ dashboardData }) => {
 		setInput("")
 	}
 
+	const handleEnterInput = (e, item) => {
+		if (e.key === "Enter") {
+			addToDoItem(item)
+		}
+	}
+
 	const addToDoItemAtIdx = (item, idx) => {
 		const newToDo = {
 			text: item,
 			isDone: false,
 		}
 
-		let newToDoList = [...todo]
-		newToDoList.splice(idx + 1, 0, newToDo)
-		setTodo(newToDoList)
-		handleTodoUpdate(newToDoList)
+		let toDoListCopy = [...todo]
+		toDoListCopy.splice(idx + 1, 0, newToDo)
+		finalHandleActions(toDoListCopy)
 	}
 
 	const deleteTodo = idx => {
-		let newToDoList = [...todo]
-		newToDoList.splice(idx, 1)
-		setTodo(newToDoList)
-		handleTodoUpdate(newToDoList)
+		let toDoListCopy = [...todo]
+		toDoListCopy.splice(idx, 1)
+		finalHandleActions(toDoListCopy)
 	}
 
 	const manageBlockByKey = (e, elm, idx) => {
@@ -76,15 +79,13 @@ const ToDo = ({ dashboardData }) => {
 	const handleToDoItemText = (i, e) => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].text = e.target.value
-		setTodo(toDoListCopy)
-		handleTodoUpdate(toDoListCopy)
+		finalHandleActions(toDoListCopy)
 	}
 
 	const handleToDoItemCheck = i => {
 		let toDoListCopy = [...todo]
 		toDoListCopy[i].isDone = !toDoListCopy[i].isDone
-		setTodo(toDoListCopy)
-		handleTodoUpdate(toDoListCopy)
+		finalHandleActions(toDoListCopy)
 	}
 
 	const isItemChecked = i => {
@@ -97,63 +98,66 @@ const ToDo = ({ dashboardData }) => {
 		let toDoListCopy = [...todo]
 		const [reorderedItem] = toDoListCopy.splice(result.source.index, 1)
 		toDoListCopy.splice(result.destination.index, 0, reorderedItem)
-		setTodo(toDoListCopy)
-		handleTodoUpdate(toDoListCopy)
+		finalHandleActions(toDoListCopy)
+	}
+
+	const finalHandleActions = list => {
+		setTodo(list)
+		handleTodoUpdate(list)
 	}
 
 	return (
 		<>
-			{!todo ?
-				(
-					<div className="TodoSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
-				) : (
-					<section>
-						<h3 className="pt-4">To-do</h3>
-						<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
-							<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
-								<button onClick={() => addToDoItem(input)}>
-									<i className="bi bi-plus-lg"></i>
-								</button>
-								<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." />
-							</div>
-							<DragDropContext onDragEnd={handleOnDragEnd}>
-								<Droppable droppableId="todo">
-									{provided => (
-										<ul {...provided.droppableProps} ref={provided.innerRef}>
-											{todo.map((elm, idx) => {
-												return (
-													<Draggable key={idx} draggableId={`${idx}`} index={idx}>
-														{provided => (
-															<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
-																<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
-																	<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
-																	<input
-																		type="text"
-																		onKeyDown={e => manageBlockByKey(e, elm, idx)}
-																		name={`todoItem${idx}`}
-																		value={elm.text}
-																		onChange={e => handleToDoItemText(idx, e)}
-																		onBlur={() => handleTodoUpdate(todo)}
-																	/>
-																</div>
-																{toDoId === idx && (
-																	<button className={!darkMode ? "deleteTodo" : "deleteTodo-dark"} onClick={() => deleteTodo(idx)}>
-																		<i className="bi bi-trash3"></i>
-																	</button>
-																)}
-															</li>
-														)}
-													</Draggable>
-												)
-											})}
-											{provided.placeholder}
-										</ul>
-									)}
-								</Droppable>
-							</DragDropContext>
+			{!todo ? (
+				<div className="TodoSkeleton" style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
+			) : (
+				<section>
+					<h3 className="pt-4">To-do</h3>
+					<div className={!darkMode ? "todoList pt-3" : "todoList-dark pt-3"}>
+						<div className={!darkMode ? "addTodoInput" : "addTodoInput-dark"}>
+							<button onClick={() => addToDoItem(input)}>
+								<i className="bi bi-plus-lg"></i>
+							</button>
+							<input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a new item..." onKeyDown={e => handleEnterInput(e, input)} />
 						</div>
-					</section>
-				)}
+						<DragDropContext onDragEnd={handleOnDragEnd}>
+							<Droppable droppableId="todo">
+								{provided => (
+									<ul {...provided.droppableProps} ref={provided.innerRef}>
+										{todo.map((elm, idx) => {
+											return (
+												<Draggable key={idx} draggableId={`${idx}`} index={idx}>
+													{provided => (
+														<li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} onMouseOver={() => handleMouseOver(idx)} onMouseOut={handleMouseOut}>
+															<div style={{ width: "100%" }} className={isItemChecked(idx) === true ? "crossedItem" : ""}>
+																<input type="checkbox" onChange={e => handleToDoItemCheck(idx, e)} onBlur={() => handleTodoUpdate(todo)} checked={elm.isDone ? true : false} />
+																<input
+																	type="text"
+																	onKeyDown={e => manageBlockByKey(e, elm, idx)}
+																	name={`todoItem${idx}`}
+																	value={elm.text}
+																	onChange={e => handleToDoItemText(idx, e)}
+																	onBlur={() => handleTodoUpdate(todo)}
+																/>
+															</div>
+															{toDoId === idx && (
+																<button className={!darkMode ? "deleteTodo" : "deleteTodo-dark"} onClick={() => deleteTodo(idx)}>
+																	<i className="bi bi-trash3"></i>
+																</button>
+															)}
+														</li>
+													)}
+												</Draggable>
+											)
+										})}
+										{provided.placeholder}
+									</ul>
+								)}
+							</Droppable>
+						</DragDropContext>
+					</div>
+				</section>
+			)}
 		</>
 	)
 }
