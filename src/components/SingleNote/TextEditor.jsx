@@ -105,18 +105,16 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 			style: "",
 			type: "",
 		}
-		let newBlockList = [...block]
-		newBlockList.splice(idx + 1, 0, newBlock)
-		setBlock(newBlockList)
-		handleBlockUpdate(newBlockList)
+		let blocksCopy = [...block]
+		blocksCopy.splice(idx + 1, 0, newBlock)
+		finalHandleActions(blocksCopy)
 	}
 
 	const deleteBlock = idx => {
-		let newBlockList = [...block]
+		let blocksCopy = [...block]
 		setOffset(undefined)
-		newBlockList.splice(idx, 1)
-		setBlock(newBlockList)
-		handleBlockUpdate(newBlockList)
+		blocksCopy.splice(idx, 1)
+		finalHandleActions(blocksCopy)
 	}
 
 	const handleBlockText = (i, e) => {
@@ -125,8 +123,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 
 		let blocksCopy = [...block]
 		blocksCopy[i].content = e.target.textContent
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
+		finalHandleActions(blocksCopy)
 	}
 
 	// Mouse and menu handle
@@ -172,35 +169,31 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 		let blocksCopy = [...block]
 		blocksCopy[i].htmlTag = `${tag}`
 		blocksCopy[i].imageUrl = ""
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
+		finalHandleActions(blocksCopy)
 	}
 
 	//// Type
 	const changeIntoType = (i, type) => {
 		let blocksCopy = [...block]
 		blocksCopy[i].type = `${type}`
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
+		finalHandleActions(blocksCopy)
 	}
 
 	//// Color
 	const changeIntoColor = (i, color) => {
 		let blocksCopy = [...block]
 		blocksCopy[i].style = `${color}`
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
+		finalHandleActions(blocksCopy)
 	}
 
 	// Drag and Drop
 	const handleOnDragEnd = result => {
 		if (!result.destination) return
 
-		let newBlockList = [...block]
-		const [reorderedItem] = newBlockList.splice(result.source.index, 1)
-		newBlockList.splice(result.destination.index, 0, reorderedItem)
-		setBlock(newBlockList)
-		handleBlockUpdate(newBlockList)
+		let blocksCopy = [...block]
+		const [reorderedItem] = blocksCopy.splice(result.source.index, 1)
+		blocksCopy.splice(result.destination.index, 0, reorderedItem)
+		finalHandleActions(blocksCopy)
 	}
 
 	// Image upload
@@ -210,8 +203,13 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 	const changeImgUrl = (i, url) => {
 		let blocksCopy = [...block]
 		blocksCopy[i].imageUrl = url
-		setBlock(blocksCopy)
-		handleBlockUpdate(blocksCopy)
+		finalHandleActions(blocksCopy)
+	}
+
+	// Final action
+	const finalHandleActions = list => {
+		setBlock(list)
+		handleBlockUpdate(list)
 	}
 
 	return (

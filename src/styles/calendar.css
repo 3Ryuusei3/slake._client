@@ -332,9 +332,12 @@
 	align-items: center;
 }
 
-.eventBlock i {
+.eventBlock p {
+	margin: 0;
+	width: 23px;
+	height: 31px;
 	font-size: 22px;
-	text-shadow: 0px 0px 2px black;
+	filter: brightness(0) invert(1) drop-shadow(0 0 1px black) !important;
 }
 
 .date div,

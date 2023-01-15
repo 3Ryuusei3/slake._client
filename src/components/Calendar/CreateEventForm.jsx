@@ -136,7 +136,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 										}}
 										className={`colorText${lbl.color} eventBlock`}
 									>
-										{selectedLabel === lbl.tag && <i className="bi bi-check-lg text-white"></i>}
+										{selectedLabel === lbl.tag && <p>✖︎</p>}
 									</div>
 								)
 							})}
