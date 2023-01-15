@@ -112,16 +112,18 @@ const HeaderIcon = ({ headerIcon }) => {
 					{icon}
 				</p>
 				{picker && (
-					<Picker
-						height={350}
-						width={300}
-						theme={!darkMode ? "light" : "dark"}
-						lazyLoadEmojis={true}
-						onEmojiClick={onEmojiClick}
-						disableAutoFocus={true}
-						previewConfig={{ showPreview: false }}
-						searchPlaceholder={"Search your icon"}
-					/>
+					<div onMouseOut={() => setPicker(false)}>
+						<Picker
+							height={350}
+							width={300}
+							theme={!darkMode ? "light" : "dark"}
+							lazyLoadEmojis={true}
+							onEmojiClick={onEmojiClick}
+							disableAutoFocus={true}
+							previewConfig={{ showPreview: false }}
+							searchPlaceholder={"Search your icon"}
+						/>
+					</div>
 				)}
 			</div>
 		</div>

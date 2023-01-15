@@ -95,6 +95,14 @@
 	width: max-content;
 }
 
+.emojiHeader > div {
+	height: 450px;
+	width: 300px;
+	position: absolute;
+	top: 10px;
+	z-index: 101;
+}
+
 .emojiField {
 	font-size: var(--icon);
 	margin-bottom: 30px;
