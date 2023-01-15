@@ -289,9 +289,15 @@
 	color: var(--dark-text-terciary);
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+	filter: invert(var(--clockColor)) !important;
+}
+
 .date-dark .eventTime {
 	color: var(--bg-modal);
 }
+
+/* Media queries */
 
 @media (max-width: 1350px) {
 	.calContainer {

@@ -120,7 +120,15 @@ const CreateEventForm = ({ closeEventModal }) => {
 
 					<Form.Group controlId="time">
 						<Form.Label className="text-muted">Time</Form.Label>
-						<Form.Control className={darkMode && "form-control-dark"} type="time" value={eventData.time} name="time" onChange={handleInputChange} placeholder="Add a time..." />
+						<Form.Control
+							className={darkMode && "form-control-dark"}
+							type="time"
+							value={eventData.time}
+							name="time"
+							onChange={handleInputChange}
+							style={darkMode ? { "--clockColor": "1" } : { "--clockColor": "0" }}
+							placeholder="Add a time..."
+						/>
 					</Form.Group>
 
 					<Form.Group controlId="labels">

@@ -330,8 +330,10 @@
 
 .calloutBlock::after {
 	position: absolute;
+	font-style: normal !important;
+	font-weight: normal !important;
 	content: "💡";
-	font-size: var(--sm);
+	font-size: var(--md);
 	left: 20px;
 	z-index: 2;
 }
