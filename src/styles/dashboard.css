@@ -213,7 +213,6 @@
 
 .crossedItem,
 .crossedItem-dark {
-	text-decoration: line-through !important;
 	color: var(--dark-text-secondary) !important;
 }
 
@@ -224,10 +223,7 @@
 .crossedItem input[type="text"],
 .crossedItem-dark input[type="text"] {
 	color: var(--dark-text-secondary) !important;
-}
-
-.crossedItem-dark input[type="text"] {
-	color: var(--light-text-secondary) !important;
+	text-decoration: line-through !important;
 }
 
 .crossedItem-dark input[type="text"] {
