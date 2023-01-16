@@ -1,4 +1,4 @@
-import { useContext } from "react"
+/* import { useContext } from "react"
 import ContentLoader from "react-content-loader"
 import { SidebarContext } from "../../context/sidebar.context"
 
@@ -14,4 +14,4 @@ const HeaderSkeleton = () => {
 	)
 }
 
-export default HeaderSkeleton
+export default HeaderSkeleton */
