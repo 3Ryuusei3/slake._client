@@ -15,7 +15,7 @@
 
 .react-trello-lane {
 	padding-inline: 20px !important;
-	max-width: 340px !important;
+	max-width: 360px !important;
 }
 
 .react-trello-lane header {
@@ -62,7 +62,7 @@
 .react-trello-card,
 .react-trello-lane div div article {
 	border: none !important;
-	width: 300px !important;
+	width: 320px !important;
 	max-width: none !important;
 	margin-bottom: 20px !important;
 	background-color: var(--cardColor) !important;
