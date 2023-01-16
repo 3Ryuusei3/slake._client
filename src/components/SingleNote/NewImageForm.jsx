@@ -33,6 +33,8 @@ const NewBlockImageForm = ({ setShowImgModal, changeImgUrl, /* blockId, */ clike
 		setShowImgModal(false)
 	}
 
+	console.log(clikedBlockId)
+
 	return (
 		<Form onSubmit={handleImageSubmit}>
 			<Form.Group className="mb-4 pb-2" controlId="image">

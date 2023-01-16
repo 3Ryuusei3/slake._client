@@ -16,9 +16,9 @@ const CategoryMenu = ({ tag, categoryMenu, showCategoryMenu, handleMouseOverCate
 			{categoryMenu && (
 				<div onMouseOver={handleMouseOverCategory} onMouseOut={handleMouseOutCategory} className={!darkMode ? "categoryMenu" : "categoryMenu-dark"}>
 					<ul>
-						{tagArray.map(elm => {
+						{tagArray.map((elm, idx) => {
 							return (
-								<li>
+								<li key={idx + elm.tag}>
 									<button onClick={handleNoteCategory} name={elm.tag} className={!darkMode ? `categoryBtn noteCategory ${elm.tag}Category` : `categoryBtn-dark noteCategory ${elm.tag}CategoryDark`}>
 										{elm.tag}
 									</button>

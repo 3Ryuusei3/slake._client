@@ -44,8 +44,8 @@ const Homepage = () => {
 							className="featureImg"
 							src={
 								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.28_glskzy.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.32_ezjwfx.png"
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862192/Dashboard_cgkcgm.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862196/Dashboard-dark_zelwhr.png"
 							}
 							alt="Dashboard"
 						/>
@@ -71,9 +71,7 @@ const Homepage = () => {
 						<img
 							className="featureImg"
 							src={
-								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094629/Captura_de_pantalla_2022-12-15_a_las_9.52.39_x1mh5g.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094631/Captura_de_pantalla_2022-12-15_a_las_9.52.43_izjjuv.png"
+								!darkMode ? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862192/Kanban_cutzwk.png" : "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862189/Kanban-dark_e8jjc0.png"
 							}
 							alt="Kanban"
 						/>
@@ -86,12 +84,22 @@ const Homepage = () => {
 							className="featureImg"
 							src={
 								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.59_nyf7pg.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671114857/Captura_de_pantalla_2022-12-15_a_las_15.33.54_cn8alo.png"
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862193/Calendar_nulgod.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862190/Calendar-dark_yskml6.png"
 							}
-							alt="Notes"
+							alt="Calendar"
 						/>
 					</Col>
+					<Col lg={{ span: 5 }}>
+						<div className=" pt-3 ps-4">
+							<h1>📆</h1>
+							<h2>Take one day at a time</h2>
+							<h4 className="pt-4">Did you forget grandma's birthday last year? Not anymore!</h4>
+						</div>
+					</Col>
+				</Row>
+
+				<Row className="align-items-center my-5 py-5 wow fadeInLeft " data-wow-duration="2s">
 					<Col lg={{ span: 5 }}>
 						<div className=" pt-3 ps-4">
 							<h1>📚</h1>
@@ -99,47 +107,54 @@ const Homepage = () => {
 							<h4 className="pt-4">Why memorize if you can note it down?</h4>
 						</div>
 					</Col>
+					<Col lg={{ span: 7 }}>
+						<img
+							className="featureImg"
+							src={!darkMode ? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862192/Notes_i1logb.png" : "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862190/Notes-dark_gjg5le.png"}
+							alt="Notes"
+						/>
+					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5 wow fadeInLeft " data-wow-duration="2s">
-					<Col lg={{ span: 5 }}>
-						<div className=" pt-3 text-end pe-4">
-							<h1>📝</h1>
-							<h2>Create beautiful notes</h2>
-							<h4 className="pt-4">Colors? Styling? We have it all.</h4>
-						</div>
-					</Col>
+				<Row className="align-items-center my-5 py-5 wow fadeInRight" data-wow-duration="2s">
 					<Col lg={{ span: 7 }}>
 						<img
 							className="featureImg"
 							src={
 								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094630/Captura_de_pantalla_2022-12-15_a_las_9.56.21_enxtec.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671094630/Captura_de_pantalla_2022-12-15_a_las_9.56.15_f8aavq.png"
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673865897/Singlenote_yukgql.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673865897/Singlenote-dark_w9etkz.png"
 							}
 							alt="Note"
 						/>
 					</Col>
+					<Col lg={{ span: 5 }}>
+						<div className=" pt-3 text-end pe-4">
+							<h1>📝</h1>
+							<h2>Create beautiful notes</h2>
+							<h4 className="pt-4">Colors? Styling? Photos? We have it all.</h4>
+						</div>
+					</Col>
 				</Row>
 
-				<Row className="align-items-center my-5 py-5 wow fadeInRight ">
-					<Col lg={{ span: 7 }}>
-						<img
-							className="featureImg"
-							src={
-								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671097193/Captura_de_pantalla_2022-12-15_a_las_10.39.29_szor6n.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1671097193/Captura_de_pantalla_2022-12-15_a_las_10.39.23_mimxff.png"
-							}
-							alt="Shared notes"
-						/>
-					</Col>
+				<Row className="align-items-center my-5 py-5 wow fadeInLeft ">
 					<Col lg={{ span: 5 }}>
 						<div className="ms-4 pt-3">
 							<h1>📖 </h1>
 							<h2>Share your favourite notes</h2>
 							<h4 className="pt-4">Ready to share the greatest guacamole recipe?</h4>
 						</div>
+					</Col>
+					<Col lg={{ span: 7 }}>
+						<img
+							className="featureImg"
+							src={
+								!darkMode
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862196/Sharednote_nza4hw.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862196/Sharednote-dark_wxpnfv.png"
+							}
+							alt="Shared notes"
+						/>
 					</Col>
 				</Row>
 				<hr />
