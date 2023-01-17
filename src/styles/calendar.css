@@ -342,13 +342,13 @@
 
 .date div,
 .date-dark div {
-	max-height: 23px !important;
+	max-height: 24px !important;
 	position: relative;
 	margin-bottom: 2.5px;
 	border-radius: 2px;
 	margin-inline: 6px;
 	width: initial !important;
-	padding: 1px 5px 0;
+	padding: 0 5px;
 	gap: 1px;
 	display: grid;
 	grid-template-columns: 2fr max-content;
