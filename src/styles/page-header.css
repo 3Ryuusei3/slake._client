@@ -100,7 +100,14 @@
 	width: 300px;
 	position: absolute;
 	top: 10px;
-	z-index: 101;
+}
+
+.emojiHeader > div > div {
+	position: absolute;
+	top: 124px;
+	right: 12px;
+	z-index: 1000;
+	cursor: pointer;
 }
 
 .emojiField {
