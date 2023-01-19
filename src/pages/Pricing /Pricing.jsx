@@ -31,7 +31,7 @@ const Pricing = () => {
 				<Row className="my-4">
 					<h4>Pricing</h4>
 				</Row>
-				<Row className="pricingTitles pb-5">
+				<Row className="pb-5">
 					<h1>One tool for everything.</h1>
 					<h1 className="pt-3">A new way to organize.</h1>
 				</Row>
@@ -122,8 +122,22 @@ const Pricing = () => {
 					</Col>
 				</Row>
 			</Container>
+
+			{/* <Container fluid className={!darkMode ? "footer px-5 py-4" : "footer-dark px-5 py-4"}>
+				©️ Developed by <a href="https://github.com/3Ryuusei3">Manuel Atance</a> and <a href="https://github.com/albertonaval">Alberto Naval</a>
+			</Container> */}
 		</>
 	)
 }
 
 export default Pricing
+
+
+
+
+
+
+
+
+
+

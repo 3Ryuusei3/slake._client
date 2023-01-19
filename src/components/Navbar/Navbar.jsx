@@ -36,7 +36,6 @@ const Navigation = () => {
 							</Nav>
 							<Nav>
 								<Link
-									to="/"
 									className={!darkMode ? "nav-btn" : "nav-btn-dark"}
 									onClick={() => {
 										toggleDarkMode()

@@ -1,0 +1,203 @@
+.subText {
+    margin-top: 25px !important;
+    font-style: italic !important;
+}
+
+.values,
+.values-dark {
+    background-color: var(--bg-navbar) !important;
+    padding: 40px;
+    border-radius: 6px;
+}
+
+.titleh1 {
+    padding: 40px;
+    text-align: center;
+    margin-top: -20px;
+
+}
+
+.values-dark {
+    background-color: var(--dark-bg-navbar) !important;
+}
+
+.valuesCol,
+.valuesCol-dark {
+    text-align: center;
+    padding: 20px 40px;
+    transition: background-color 0.5s, color 0.5s ease-out;
+}
+
+.valuesCol:hover,
+.valuesCol-dark:hover {
+    background-color: var(--color-primary);
+    color: var(--bg-navbar);
+
+}
+
+
+.valuesCol p,
+.valuesCol-dark p {
+    max-width: 35ch;
+    margin-inline: auto;
+}
+
+.profile-card,
+.profile-card-dark {
+    text-align: center;
+    border: none;
+    background-color: var(--bg-modal);
+}
+
+.profile-card-dark {
+    background-color: var(--dark-bg-modal);
+}
+
+.cardImg,
+.cardImg-dark {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: box-shadow 0.2s ease-out;
+}
+
+.cardImg:hover {
+    box-shadow: 3px 3px 20px var(--dark-bg-modal);
+    scale: 1.10;
+
+}
+
+.cardImg-dark:hover {
+    box-shadow: 3px 3px 20px var(--bg-modal);
+    scale: 1.10
+}
+
+
+.cardBody {
+    background-color: var(--bg-navbar);
+}
+
+.cardBody-dark {
+    background-color: var(--dark-bg-navbar);
+}
+
+.cardBodyLink,
+.cardBodyLink-dark {
+    border-radius: 6px;
+    background-color: var(--bg-navbar);
+}
+
+.cardBodyLink-dark {
+    background-color: var(--dark-bg-navbar);
+}
+
+
+
+.title {
+    margin: 0 0 5px;
+    font-weight: var(--title);
+    font-size: var(--xl);
+    display: block;
+    padding: 10px;
+}
+
+.subTitle {
+    display: block;
+    font-size: var(--sm);
+    margin-top: 10px;
+}
+
+.purpleLink,
+.purpleLink-dark {
+    font-weight: var(--button) !important;
+    font-size: var(--sm) !important;
+    text-decoration: none !important;
+    color: var(--color-primary) !important;
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    border-radius: 50% !important;
+    padding: 8px;
+}
+
+.purpleLink:hover {
+    color: var(--bg-primary) !important;
+    background-color: var(--color-primary);
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.purpleLink-dark:hover {
+    color: var(--dark-bg-modal) !important;
+    background-color: var(--dark-color-primary);
+    width: 50px;
+    height: 50px;
+}
+
+
+@media (min-width: 991px) {
+    .values .valuesCol:nth-child(2) {
+        border-bottom: 0.5px solid var(--dark-bg-primary);
+        border-right: 0.5px solid var(--dark-bg-primary);
+    }
+
+    .values-dark .valuesCol-dark:nth-child(2) {
+        border-bottom: 0.5px solid var(--bg-primary);
+        border-right: 0.5px solid var(--bg-primary);
+    }
+
+    .values .valuesCol:nth-child(3) {
+        border-bottom: 0.5px solid var(--dark-bg-primary);
+        border-left: 0.5px solid var(--dark-bg-primary);
+    }
+
+    .values-dark .valuesCol-dark:nth-child(3) {
+        border-bottom: 0.5px solid var(--bg-primary);
+        border-left: 0.5px solid var(--bg-primary);
+    }
+
+    .values .valuesCol:nth-child(4) {
+        border-top: 0.5px solid var(--dark-bg-primary);
+        border-right: 0.5px solid var(--dark-bg-primary);
+    }
+
+    .values-dark .valuesCol-dark:nth-child(4) {
+        border-top: 0.5px solid var(--bg-primary);
+        border-right: 0.5px solid var(--bg-primary);
+    }
+
+
+    .values .valuesCol:nth-child(5) {
+        border-top: 0.5px solid var(--dark-bg-primary);
+        border-left: 0.5px solid var(--dark-bg-primary);
+    }
+
+    .values-dark .valuesCol-dark:nth-child(5) {
+        border-top: 0.5px solid var(--bg-primary);
+        border-left: 0.5px solid var(--bg-primary);
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .values .valuesCol:not(.valuesCol:last-child) {
+        border-bottom: 0.5px solid var(--dark-bg-primary);
+    }
+
+    .values-dark .valuesCol-dark:not(.valuesCol-dark:last-child) {
+        border-bottom: 0.5px solid var(--bg-primary);
+    }
+
+    .profile-card,
+    .profile-card-dark {
+        margin: 20px;
+    }
+
+    .cardImg {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+}
