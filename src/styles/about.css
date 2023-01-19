@@ -47,6 +47,7 @@
     text-align: center;
     border: none;
     background-color: var(--bg-modal);
+    border-radius: 6px;
 }
 
 .profile-card-dark {
