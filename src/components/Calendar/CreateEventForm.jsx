@@ -135,7 +135,7 @@ const CreateEventForm = ({ closeEventModal }) => {
 										}}
 										className={`colorText${lbl.color} eventBlock`}
 									>
-										{selectedLabel === lbl.tag && <p>✖︎</p>}
+										{selectedLabel === lbl.tag && <p>✖</p>}
 									</div>
 								)
 							})}

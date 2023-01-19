@@ -263,6 +263,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 												<Draggable key={idx} draggableId={`${idx}`} index={idx}>
 													{provided => (
 														<li
+															key={idx}
 															ref={provided.innerRef}
 															{...provided.dragHandleProps}
 															{...provided.draggableProps}
@@ -273,6 +274,7 @@ const TextEditor = ({ singleNoteData, noteId }) => {
 															{blockId === idx && (
 																<div
 																	onClick={() => {
+																		setClickedBlockId(blockId)
 																		handleBlockMenu()
 																	}}
 																	{...provided.dragHandleProps}

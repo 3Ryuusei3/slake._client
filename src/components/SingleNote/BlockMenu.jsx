@@ -10,9 +10,9 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 	return (
 		<div className={!darkMode ? "blockMenu" : "blockMenu-dark"} onMouseOut={handleMenuOut} onMouseOver={handleMenuIn}>
 			<ul className="pe-4">
-				{tags.map(elm => {
+				{tags.map((elm, idx) => {
 					return (
-						<li>
+						<li key={idx + elm.tag}>
 							<button
 								onClick={
 									elm.tag !== "img"
@@ -30,9 +30,9 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 				})}
 			</ul>
 			<ul className="pe-4">
-				{types.map(elm => {
+				{types.map((elm, idx) => {
 					return (
-						<li>
+						<li key={idx + elm.type}>
 							<button onClick={() => changeIntoType(blockId, elm.type)}>
 								<i className={`bi ${elm.icon}`}></i>
 							</button>
@@ -41,9 +41,9 @@ const BlockMenu = ({ blockId, handleMenuIn, handleMenuOut, changeIntoTag, change
 				})}
 			</ul>
 			<ul>
-				{colors.map(elm => {
+				{colors.map((elm, idx) => {
 					return (
-						<li>
+						<li key={idx + elm.color}>
 							<button onClick={() => changeIntoColor(blockId, elm.color)}>
 								<div className={`colorBlock color${elm.class}`}></div>
 							</button>

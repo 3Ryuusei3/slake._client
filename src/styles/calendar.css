@@ -195,7 +195,7 @@
 	position: absolute;
 	display: grid;
 	place-items: center;
-	font-size: var(--md);
+	font-size: 1.2rem;
 	transform: scale(0);
 	transition: 0.15s transform ease-in-out;
 	filter: brightness(0) invert(1) drop-shadow(0 0 1px black);
@@ -335,20 +335,20 @@
 .eventBlock p {
 	margin: 0;
 	width: 23px;
-	height: 31px;
-	font-size: 22px;
+	height: 28px;
+	font-size: 1.2rem;
 	filter: brightness(0) invert(1) drop-shadow(0 0 1px black) !important;
 }
 
 .date div,
 .date-dark div {
-	max-height: 23px !important;
+	max-height: 24px !important;
 	position: relative;
 	margin-bottom: 2.5px;
 	border-radius: 2px;
 	margin-inline: 6px;
 	width: initial !important;
-	padding: 1px 5px 0;
+	padding: 0 5px;
 	gap: 1px;
 	display: grid;
 	grid-template-columns: 2fr max-content;

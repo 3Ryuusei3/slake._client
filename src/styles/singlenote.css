@@ -162,6 +162,7 @@
 	background-color: transparent;
 	border-radius: 2px;
 	word-break: break-word;
+	min-height: 34px;
 }
 
 .blockLine:focus {

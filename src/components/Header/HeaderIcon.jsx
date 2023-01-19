@@ -74,7 +74,7 @@ const HeaderIcon = ({ headerIcon }) => {
 		}
 	}
 
-	// Check if mouse is outside of emoji picker
+	/* // Check if mouse is outside of emoji picker
 	useEffect(() => {
 		document.addEventListener("click", handleDocumentClick, false)
 	}, [picker])
@@ -94,15 +94,17 @@ const HeaderIcon = ({ headerIcon }) => {
 			})
 		if (isEmojiClassFound === false && e.target.id !== "emojis-btn") setPicker(false)
 	}
-
+ */
 	const onEmojiClick = emojiObject => {
 		setIcon(emojiObject.emoji)
 		setPicker(false)
 	}
 
+	const closePicker = () => setPicker(false)
+
 	return (
 		<div style={{ position: "relative", marginRight: "5%" }} className={!isSidebarOpen ? "leftPaddingSm mb-5" : "leftPaddingLg mb-5"}>
-			<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}} onMouseOver={() => setPicker(true)}>
+			<div className="emojiHeader" style={isSharedRoute ? { pointerEvents: "none" } : {}} onClick={() => setPicker(true)}>
 				<p
 					className="emojiField"
 					onClick={() => {
@@ -112,14 +114,16 @@ const HeaderIcon = ({ headerIcon }) => {
 					{icon}
 				</p>
 				{picker && (
-					<div onMouseOut={() => setPicker(false)}>
+					<div>
+						<div onClick={closePicker}>
+							<i className="bi bi-x-lg"></i>
+						</div>
 						<Picker
 							height={350}
 							width={300}
 							theme={!darkMode ? "light" : "dark"}
 							lazyLoadEmojis={true}
 							onEmojiClick={onEmojiClick}
-							disableAutoFocus={true}
 							previewConfig={{ showPreview: false }}
 							searchPlaceholder={"Search your icon"}
 						/>
