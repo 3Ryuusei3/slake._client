@@ -57,17 +57,18 @@
 	width: 150px;
 	height: 150px;
 	object-fit: cover;
-	transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+	transition: box-shadow 0.2s ease-out, transform 0.5s ease;
 }
 
-.cardImg:hover {
-	box-shadow: 3px 3px 20px var(--dark-bg-modal);
+.cardImg:hover,
+.cardImg-dark:hover {
+	box-shadow: 0 0 20px var(--dark-bg-modal);
 	transform: scale(1.1);
+	transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .cardImg-dark:hover {
-	box-shadow: 3px 3px 20px var(--bg-modal);
-	scale: 1.1;
+	box-shadow: 0 0 20px var(--bg-modal);
 }
 
 .cardBody {
