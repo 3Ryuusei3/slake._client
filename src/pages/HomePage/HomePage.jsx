@@ -52,7 +52,7 @@ const Homepage = () => {
 					</Col>
 					<Col lg={{ span: 5 }}>
 						<div className="pt-3 ms-4">
-							<h1>🌉</h1>
+							<h1 className="pb-3">🌉</h1>
 							<h2>Organize your space</h2>
 							<h4 className="pt-4">No chaos, just you and your things.</h4>
 						</div>
@@ -62,7 +62,7 @@ const Homepage = () => {
 				<Row className="align-items-center my-5 py-5  wow fadeInLeft " data-wow-duration="2s">
 					<Col lg={{ span: 5 }}>
 						<div className=" pt-3 text-end pe-4 ">
-							<h1>🔖</h1>
+							<h1 className="pb-3">🔖</h1>
 							<h2>You said Trello? We say slake.</h2>
 							<h4 className="pt-4">Plan your future, get one step ahead of the game.</h4>
 						</div>
@@ -92,17 +92,17 @@ const Homepage = () => {
 					</Col>
 					<Col lg={{ span: 5 }}>
 						<div className=" pt-3 ps-4">
-							<h1>📆</h1>
+							<h1 className="pb-3">📆</h1>
 							<h2>Take one day at a time</h2>
-							<h4 className="pt-4">Did you forget grandma's birthday last year? Not anymore!</h4>
+							<h4 className="pt-4">Did you forget grandma's birthday last year? Not anymore.</h4>
 						</div>
 					</Col>
 				</Row>
 
 				<Row className="align-items-center my-5 py-5 wow fadeInLeft " data-wow-duration="2s">
 					<Col lg={{ span: 5 }}>
-						<div className=" pt-3 ps-4">
-							<h1>📚</h1>
+						<div className="text-end pt-3 ps-4">
+							<h1 className="pb-3">📚</h1>
 							<h2>Never lose any notes again</h2>
 							<h4 className="pt-4">Why memorize if you can note it down?</h4>
 						</div>
@@ -129,8 +129,8 @@ const Homepage = () => {
 						/>
 					</Col>
 					<Col lg={{ span: 5 }}>
-						<div className=" pt-3 text-end pe-4">
-							<h1>📝</h1>
+						<div className="pt-3 pe-4">
+							<h1 className="pb-3">📝</h1>
 							<h2>Create beautiful notes</h2>
 							<h4 className="pt-4">Colors? Styling? Photos? We have it all.</h4>
 						</div>
@@ -139,8 +139,8 @@ const Homepage = () => {
 
 				<Row className="align-items-center my-5 py-5 wow fadeInLeft ">
 					<Col lg={{ span: 5 }}>
-						<div className="ms-4 pt-3">
-							<h1>📖 </h1>
+						<div className="text-end ms-4 pt-3">
+							<h1 className="pb-3">📖 </h1>
 							<h2>Share your favourite notes</h2>
 							<h4 className="pt-4">Ready to share the greatest guacamole recipe?</h4>
 						</div>
