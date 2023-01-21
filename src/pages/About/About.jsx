@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import WOW from "wowjs"
+import Slider from "./Slider"
 
 const About = () => {
 	const { darkMode } = useContext(DarkModeContext)
@@ -23,7 +24,7 @@ const About = () => {
 				<Row className="my-5">
 					<h4>About</h4>
 				</Row>
-				<Row className="pb-5">
+				<Row>
 					<h1 className="pb-3">The History Of Slake.</h1>
 					<p className="subText">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam eos impedit alias labore provident numquam itaque recusandae exercitationem atque amet deleniti nihil, neque error
@@ -46,11 +47,18 @@ const About = () => {
 					</p>
 				</Row>
 			</Container>
+			<Container fluid>
+				<Row className="my-5">
+					<Slider />
+				</Row>
+			</Container>
 
 			<Container fluid className={!darkMode ? "my-2 d-flex values wow fadeIn" : "mt-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
 				<Container>
-					<Row>
+					<Row className="my-4">
 						<h1 className="titleh1">Values</h1>
+					</Row>
+					<Row className="mb-3">
 						<Col lg={{ span: 6 }} className={!darkMode ? "valuesCol" : "valuesCol-dark"}>
 							<h2>Curiosity.</h2>
 							<p>augue interdum velit euismod in pellentesque massa placerat duis ultricies</p>
