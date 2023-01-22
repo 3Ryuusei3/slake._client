@@ -1,0 +1,119 @@
+/* Slider */
+
+.carousel,
+.carousel-dark {
+	height: 60px;
+	position: relative;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel-dark::before,
+.carousel-dark::after {
+	position: absolute;
+	background-image: linear-gradient(to right, var(--bg-primary) 0%, rgba(255, 255, 255, 0) 100%);
+	content: "";
+	height: 100%;
+	width: 25%;
+	z-index: 2;
+	pointer-events: none;
+}
+
+.carousel-dark::before,
+.carousel-dark::after {
+	background-image: linear-gradient(to right, var(--dark-bg-primary) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.carousel::before,
+.carousel-dark::before {
+	left: 0;
+	top: 0;
+}
+
+.carousel::after,
+.carousel-dark::after {
+	right: 0;
+	top: 0;
+	transform: rotateZ(180deg);
+}
+
+.sliderTrack {
+	width: calc(122px * 30);
+	display: flex;
+	animation: scroll 25s linear infinite;
+	justify-content: space-between;
+}
+
+.slide {
+	width: 150px;
+	height: 60px;
+	font-size: var(--xl);
+	font-weight: var(--title);
+
+	display: grid;
+	place-items: center;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.slide:hover {
+	transform: scale(1.1);
+}
+
+.slide-regular {
+	color: var(--slideText) !important;
+}
+
+.slide-outline,
+.slide-purple-outline {
+	color: var(--slideBg) !important;
+	background: var(--slideBg) !important;
+	letter-spacing: 1px;
+	text-shadow: 1.2px 1.2px 0 var(--dark-text-terciary), 1.2px -1.2px 0 var(--dark-text-terciary), -1.2px 1.2px 0 var(--dark-text-terciary), -1.2px -1.2px 0 var(--dark-text-terciary),
+		1.2px 0px 0 var(--dark-text-terciary), 0px 1.2px 0 var(--dark-text-terciary), -1.2px 0px 0 var(--dark-text-terciary), 0px -1.2px 0 var(--dark-text-terciary);
+}
+
+.slide-purple {
+	color: var(--color-primary);
+}
+
+.slide-purple-outline {
+	text-shadow: 1.2px 1.2px 0 var(--color-primary), 1.2px -1.2px 0 var(--color-primary), -1.2px 1.2px 0 var(--color-primary), -1.2px -1.2px 0 var(--color-primary), 1.2px 0px 0 var(--color-primary),
+		0px 1.2px 0 var(--color-primary), -1.2px 0px 0 var(--color-primary), 0px -1.2px 0 var(--color-primary);
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(calc(-150px * 10));
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.slide-track {
+		width: calc(80px * 20);
+	}
+
+	.slide-track2 {
+		width: calc(80px * 15);
+	}
+
+	.slide {
+		width: 80px;
+	}
+
+	@keyframes scroll {
+		0% {
+			transform: translateX(0px);
+		}
+		100% {
+			transform: translateX(calc(-80px * 10));
+		}
+	}
+}

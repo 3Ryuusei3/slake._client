@@ -27,17 +27,16 @@ const Pricing = () => {
 					</Row>
 				</Container>
 			)}
-			<Container>
-				<Row className="my-4">
+			<Container className="py-2">
+				<Row className="my-5">
 					<h4>Pricing</h4>
 				</Row>
 				<Row className="pb-5">
-					<h1>One tool for everything.</h1>
-					<h1 className="pt-3">A new way to organize.</h1>
+					<h1 className="pricingTitle">One tool for everything. A new way to organize.</h1>
 				</Row>
-				<Row className="pricingCards justify-content-center">
+				<Row className="mt-3 pricingCards justify-content-center">
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
-						<Card style={{ width: "18rem" }} className="mb-2">
+						<Card style={{ width: "20rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-fill"></i>
@@ -65,11 +64,11 @@ const Pricing = () => {
 										</li>
 									</ul>
 									{!user ? (
-										<Link to="/signup" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/signup" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get Started
 										</Link>
 									) : (
-										<Link to="/dashboard" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/dashboard" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Back to Dashboard
 										</Link>
 									)}
@@ -78,7 +77,7 @@ const Pricing = () => {
 						</Card>
 					</Col>
 					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
-						<Card style={{ width: "18rem" }} className="mb-2">
+						<Card style={{ width: "20rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
 									<i className="pricing-icon bi bi-house-up-fill"></i>
@@ -108,11 +107,11 @@ const Pricing = () => {
 										</li>
 									</ul>
 									{!user ? (
-										<Link to="/signup" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/signup" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get Started
 										</Link>
 									) : (
-										<Link to="/" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get PRO
 										</Link>
 									)}
@@ -131,13 +130,3 @@ const Pricing = () => {
 }
 
 export default Pricing
-
-
-
-
-
-
-
-
-
-

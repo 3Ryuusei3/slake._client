@@ -20,20 +20,20 @@ const Slider = () => {
 				<div className="slide slide-outline">slake.</div>
 				<div className="slide slide-purple">slake.</div>
 
-				<div className="slide slide-purple-outline">slake.</div>
 				<div className="slide slide-regular">slake.</div>
-				<div className="slide slide-purple">slake.</div>
+				<div className="slide slide-purple-outline">slake.</div>
 				<div className="slide slide-outline">slake.</div>
+				<div className="slide slide-purple">slake.</div>
 
-				<div className="slide slide-purple-outline">slake.</div>
-				<div className="slide slide-regular">slake.</div>
-				<div className="slide slide-purple">slake.</div>
 				<div className="slide slide-outline">slake.</div>
+				<div className="slide slide-purple">slake.</div>
+				<div className="slide slide-regular">slake.</div>
+				<div className="slide slide-purple-outline">slake.</div>
 
-				<div className="slide slide-purple-outline">slake.</div>
 				<div className="slide slide-regular">slake.</div>
 				<div className="slide slide-purple">slake.</div>
 				<div className="slide slide-outline">slake.</div>
+				<div className="slide slide-purple-outline">slake.</div>
 			</div>
 		</div>
 	)

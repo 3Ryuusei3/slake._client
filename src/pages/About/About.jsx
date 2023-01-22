@@ -32,8 +32,8 @@ const About = () => {
 						rerum veniam, dicta earum quaerat! Sapiente quae perferendis ab repellendus illo perspiciatis!
 					</p>
 					<p className="subText">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In error illum dicta eaque quisquam qui beatae voluptatem, dolorum odio iusto maiores nulla numquam autem rem placeat doloribus et
-						laudantium perspiciatis!
+						Possimus vitae mollitia facilis labore adipisci distinctio, velit delectus dolorem! Ab, obcaecati optio deserunt consequuntur iure animi dolor perferendis magnam debitis vel recusandae,
+						veritatis, sapiente inventore. Provident assumenda minus voluptas!
 					</p>
 					<p className="subText">
 						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam accusamus eveniet earum dicta commodi, accusantium nam id consequuntur quis iure asperiores, veritatis qui
@@ -53,7 +53,7 @@ const About = () => {
 				</Row>
 			</Container>
 
-			<Container fluid className={!darkMode ? "my-2 d-flex values wow fadeIn" : "mt-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
+			<Container fluid className={!darkMode ? "my-2 d-flex values wow fadeIn" : "my-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
 				<Container>
 					<Row className="my-4">
 						<h1 className="titleh1">Values</h1>
@@ -80,44 +80,45 @@ const About = () => {
 			</Container>
 
 			<Container className="py-5">
-				<Row className={!darkMode ? "m-5 d-flex wow fadeInLeft" : "m-5 d-flex wow fadeInLeft"} data-wow-duration="3s">
+				<Row>
 					<h1 className="titleh1">Our Team</h1>
-
+				</Row>
+				<Row className={!darkMode ? "my-5 pb-4 d-flex justify-content-center wow fadeInLeft" : "my-5 pb-4 d-flex justify-content-center wow fadeInLeft"} data-wow-duration="3s">
 					<Col lg={{ span: 6 }} className="d-flex justify-content-center">
-						<Card className={!darkMode ? "profile-card" : "profile-card-dark"}>
+						<Card style={{ width: "18rem" }} className={!darkMode ? "profile-card" : "profile-card-dark"}>
 							<Card.Header className="p-5">
 								<Card.Img variant="top" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1673869820/Alberto_Naval_eegvyj.jpg" className={!darkMode ? "cardImg" : "cardImg-dark"} />
 							</Card.Header>
-							<Card.Body className={!darkMode ? " cardBody" : "cardBody-dark"}>
+							<Card.Body className={!darkMode ? " cardBody pb-5" : "cardBody-dark pb-5"}>
 								<Card.Title className="title">Alberto Naval</Card.Title>
 								<Card.Text className="subTitle">Fullstack Developer</Card.Text>
 							</Card.Body>
 							<Card.Body className={!darkMode ? "cardBodyLink" : "cardBodyLink-dark"}>
 								<Card.Link href="https://www.linkedin.com/in/alberto-naval/">
-									<i className={!darkMode ? "bi bi-linkedin purpleLink" : "bi bi-linkedin purpleLink-dark"}></i>
+									<i className="bi bi-linkedin purpleLink"></i>
 								</Card.Link>
 								<Card.Link href="https://github.com/albertonaval">
-									<i className={!darkMode ? "bi bi-github purpleLink" : "bi bi-github purpleLink-dark"}></i>
+									<i className="bi bi-github purpleLink"></i>
 								</Card.Link>
 							</Card.Body>
 						</Card>
 					</Col>
 
-					<Col lg={{ span: 6 }} className="d-flex justify-content-center" style={{ maxWidth: "400px" }}>
-						<Card className={!darkMode ? "profile-card" : "profile-card-dark"}>
+					<Col lg={{ span: 6 }} className="d-flex justify-content-center">
+						<Card style={{ width: "18rem" }} className={!darkMode ? "profile-card" : "profile-card-dark"}>
 							<Card.Header className="p-5">
 								<Card.Img variant="top" src="https://avatars.githubusercontent.com/u/88399410?v=4" className={!darkMode ? "cardImg" : "cardImg-dark"} />
 							</Card.Header>
-							<Card.Body className={!darkMode ? "cardBody" : "cardBody-dark"}>
+							<Card.Body className={!darkMode ? "cardBody pb-5" : "cardBody-dark pb-5"}>
 								<Card.Title className="title">Manuel Atance</Card.Title>
 								<Card.Text className="subTitle">Fullstack Developer</Card.Text>
 							</Card.Body>
 							<Card.Body className={!darkMode ? "cardBodyLink" : "cardBodyLink-dark"}>
 								<Card.Link href="https://www.linkedin.com/in/manuel-atance/">
-									<i className={!darkMode ? "bi bi-linkedin purpleLink" : "bi bi-linkedin purpleLink-dark"}></i>
+									<i className="bi bi-linkedin purpleLink"></i>
 								</Card.Link>
 								<Card.Link href="https://github.com/3Ryuusei3">
-									<i className={!darkMode ? "bi bi-github purpleLink" : "bi bi-github purpleLink-dark"}></i>
+									<i className="bi bi-github purpleLink"></i>
 								</Card.Link>
 							</Card.Body>
 						</Card>

@@ -8,6 +8,11 @@
 	}
 }
 
+.pricingTitle {
+	max-width: 18ch;
+	line-height: 1.1 !important;
+}
+
 .pricing-card {
 	background-color: var(--bg-navbar);
 }
@@ -30,7 +35,7 @@
 }
 
 .pricing-body {
-	background-color: var(--bg-modal);
+	background-color: var(--bg-secondary);
 }
 
 .pricing-body-dark {
