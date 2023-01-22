@@ -42,7 +42,7 @@
 }
 
 .sliderTrack {
-	width: calc(122px * 30);
+	width: calc(132px * 30);
 	display: flex;
 	animation: scroll 25s linear infinite;
 	justify-content: space-between;
@@ -51,12 +51,11 @@
 .slide {
 	width: 150px;
 	height: 60px;
-	font-size: var(--xl);
+	font-size: var(--xxl);
 	font-weight: var(--title);
-
 	display: grid;
 	place-items: center;
-	transition: 0.5s;
+	transition: 0.5s ease;
 	cursor: pointer;
 }
 

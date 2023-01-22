@@ -20,7 +20,7 @@ const Navigation = () => {
 					<Container fluid className="py-2">
 						<Navbar.Brand>
 							<Link to="/" className="brand-link py-2 px-3">
-								<img className="nav-icon me-3 mb-1" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670318446/favicon_rpvk1o.ico" alt="" />
+								<img className="nav-icon me-3 mb-1" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1674388189/slakelogo_pczzsv.svg" alt="slake. icon" />
 								<span style={!darkMode ? { color: "var(--text-primary)" } : { color: "var(--dark-text-primary)" }}>slake.</span>
 							</Link>
 						</Navbar.Brand>

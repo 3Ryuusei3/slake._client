@@ -21,6 +21,7 @@ h1 {
 h2 {
 	font-weight: var(--title) !important;
 	font-size: var(--xxxl) !important;
+	line-height: 1 !important;
 }
 
 h4 {

@@ -3,6 +3,15 @@
 	font-style: italic !important;
 }
 
+.aboutTextBackground {
+	position: absolute;
+	width: 380px;
+	opacity: 0.08;
+	rotate: -10deg;
+	right: 20%;
+	top: 22%;
+}
+
 .values,
 .values-dark {
 	background-color: var(--bg-navbar) !important;
@@ -160,6 +169,17 @@
 }
 
 @media screen and (max-width: 990px) {
+	.aboutTextBackground {
+		width: 300px;
+		right: 20%;
+		top: 30%;
+	}
+
+	.values,
+	.values-dark {
+		padding: 60px 0px;
+	}
+
 	.values .valuesCol:not(.valuesCol:last-child) {
 		border-bottom: 0.5px solid var(--dark-bg-primary);
 	}

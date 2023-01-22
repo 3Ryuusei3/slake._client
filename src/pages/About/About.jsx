@@ -4,11 +4,12 @@ import { Link, Navigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
-import Slider from "./Slider"
+import Slider from "../../components/Footer/Slider"
 
 import { Card, Col, Container, Row } from "react-bootstrap"
 import WOW from "wowjs"
 import Footer from "../../components/Footer/Footer"
+import TrySlake from "../../components/Footer/TrySlake"
 
 const About = () => {
 	const { darkMode } = useContext(DarkModeContext)
@@ -27,7 +28,7 @@ const About = () => {
 				<Row className="my-5">
 					<h4>About</h4>
 				</Row>
-				<Row>
+				<Row style={{ position: "relative" }}>
 					<h1 className="pb-3">The History Of Slake.</h1>
 					<p className="historyText">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ullam eos impedit alias labore provident numquam itaque recusandae exercitationem atque amet deleniti nihil, neque error
@@ -48,11 +49,12 @@ const About = () => {
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. In error illum dicta eaque quisquam qui beatae voluptatem, dolorum odio iusto maiores nulla numquam autem rem placeat doloribus et
 						laudantium perspiciatis!
 					</p>
+					<img className="aboutTextBackground mb-3" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1674388189/slakelogo_pczzsv.svg" alt="slake. icon" />
 				</Row>
 			</Container>
 			<Slider />
 
-			<Container fluid className={!darkMode ? "my-2 d-flex values wow fadeIn" : "my-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
+			<Container fluid className={!darkMode ? "my-5 d-flex values wow fadeIn" : "my-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
 				<Container>
 					<Row>
 						<h1 className="aboutSectionTitle">Values</h1>
@@ -78,11 +80,11 @@ const About = () => {
 				</Container>
 			</Container>
 
-			<Container className="py-5">
+			<Container className="pt-5">
 				<Row>
 					<h1 className="aboutSectionTitle">Our Team</h1>
 				</Row>
-				<Row className={!darkMode ? "my-5 pb-4 d-flex justify-content-center wow fadeInLeft" : "my-5 pb-4 d-flex justify-content-center wow fadeInLeft"} data-wow-duration="3s">
+				<Row className={!darkMode ? "my-5d-flex justify-content-center wow fadeInLeft" : "my-5 pb-4 d-flex justify-content-center wow fadeInLeft"} data-wow-duration="3s">
 					<Col lg={{ span: 6 }} className="d-flex justify-content-center">
 						<Card style={{ width: "20rem" }} className={!darkMode ? "profile-card" : "profile-card-dark"}>
 							<Card.Header className="p-5">
@@ -123,17 +125,8 @@ const About = () => {
 						</Card>
 					</Col>
 				</Row>
-				<hr />
-				<Row className="text-center pt-5 wow fadeInUp ">
-					<img className="home-icon mb-3" src="https://res.cloudinary.com/dhws4e2ty/image/upload/v1670318446/favicon_rpvk1o.ico" alt="" />
-					<h2>Start using slake. today</h2>
-					<h4 className="pt-2 pb-5">Get started for free.</h4>
-					<Link to="/signup" className="purple-btn mb-5 px-5 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
-						Try slake. for free
-					</Link>
-				</Row>
-				<hr />
 			</Container>
+			<TrySlake />
 			<Footer />
 		</>
 	)

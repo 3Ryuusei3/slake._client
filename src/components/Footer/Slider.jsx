@@ -9,7 +9,7 @@ const Slider = () => {
 
 	return (
 		<Container fluid>
-			<Row className="my-5">
+			<Row className="mt-5">
 				<Row className={!darkMode ? "my-4 carousel" : "my-4 carousel-dark"}>
 					<div
 						className="sliderTrack"
