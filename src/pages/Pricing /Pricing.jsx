@@ -1,14 +1,24 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
+import Slider from "../About/Slider"
+
 import { Card, Container, Row, Col } from "react-bootstrap"
+import WOW from "wowjs"
+import Footer from "../../components/Footer/Footer"
 
 const Pricing = () => {
 	const { user } = useContext(AuthContext)
 	const { darkMode } = useContext(DarkModeContext)
+
+	useEffect(() => {
+		new WOW.WOW({
+			live: false,
+		}).init()
+	}, [])
 
 	return (
 		<>
@@ -27,15 +37,17 @@ const Pricing = () => {
 					</Row>
 				</Container>
 			)}
-			<Container className="py-2">
-				<Row className="my-5">
+			<Container className="py-2 wow fadeInRight" data-wow-duration="2s">
+				<Row className="mt-5 mb-4">
 					<h4>Pricing</h4>
 				</Row>
-				<Row className="pb-5">
+				<Row className="pb-4">
 					<h1 className="pricingTitle">One tool for everything. A new way to organize.</h1>
 				</Row>
+			</Container>
+			<Container className="py-2 wow fadeInLeft" data-wow-duration="2s">
 				<Row className="mt-3 pricingCards justify-content-center">
-					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
+					<Col className="p-0 m-0 d-flex justify-content-center">
 						<Card style={{ width: "20rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
@@ -56,19 +68,19 @@ const Pricing = () => {
 										</li>
 										<li>
 											<i className="bi bi-check-lg"></i>
-											<p>Only five Notes.</p>
+											<p>Up to 100 Notes.</p>
 										</li>
 										<li>
 											<i className="bi bi-check-lg"></i>
-											<p>To-do</p>
+											<p>To-do & Kanban.</p>
 										</li>
 									</ul>
 									{!user ? (
-										<Link to="/signup" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/signup" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get Started
 										</Link>
 									) : (
-										<Link to="/dashboard" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/dashboard" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Back to Dashboard
 										</Link>
 									)}
@@ -76,7 +88,7 @@ const Pricing = () => {
 							</Card.Body>
 						</Card>
 					</Col>
-					<Col className="p-0 m-0 d-flex justify-content-center" md={4}>
+					<Col className="p-0 m-0 d-flex justify-content-center">
 						<Card style={{ width: "20rem" }} className="mb-2">
 							<Card.Header className={!darkMode ? "pricing-header" : "pricing-header-dark"}>
 								<div className="d-flex gap-3 mt-3">
@@ -95,7 +107,7 @@ const Pricing = () => {
 									<ul className="mb-4">
 										<li>
 											<i className="bi bi-check-lg"> </i>
-											<p>Kan-Ban.</p>
+											<p>Calendar.</p>
 										</li>
 										<li>
 											<i className="bi bi-check-lg"></i>
@@ -103,15 +115,15 @@ const Pricing = () => {
 										</li>
 										<li>
 											<i className="bi bi-check-lg"></i>
-											<p>Personal space.</p>
+											<p>Pomodoro.</p>
 										</li>
 									</ul>
 									{!user ? (
-										<Link to="/signup" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/signup" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get Started
 										</Link>
 									) : (
-										<Link to="/" className="purple-btn mt-5 mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
+										<Link to="/" className="purple-btn mb-3 px-4 py-2" style={{ maxWidth: "max-content", marginInline: "auto" }}>
 											Get PRO
 										</Link>
 									)}
@@ -121,10 +133,8 @@ const Pricing = () => {
 					</Col>
 				</Row>
 			</Container>
-
-			{/* <Container fluid className={!darkMode ? "footer px-5 py-4" : "footer-dark px-5 py-4"}>
-				©️ Developed by <a href="https://github.com/3Ryuusei3">Manuel Atance</a> and <a href="https://github.com/albertonaval">Alberto Naval</a>
-			</Container> */}
+			<Slider />
+			<Footer />
 		</>
 	)
 }

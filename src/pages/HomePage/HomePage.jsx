@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/auth.context"
 import { Container, Row, Col } from "react-bootstrap"
 import { Link, Navigate } from "react-router-dom"
 import WOW from "wowjs"
+import Footer from "../../components/Footer/Footer"
 
 const Homepage = () => {
 	const { darkMode } = useContext(DarkModeContext)
@@ -29,11 +30,9 @@ const Homepage = () => {
 					</Col>
 					<Col lg={{ span: 5 }} className="text-center d-flex justify-content-lg-end justify-content-md-center pb-5 mb-5">
 						<div className="text-start ">
-							<h1 className="mt-5">One place.</h1>
-							<h1>All your data.</h1>
-							<h1>Just for you.</h1>
-							<h4 className="pt-4">Get ready to organize.</h4>
-							<h4>Get ready to be the best version of you.</h4>
+							<h1 className="mt-5 homeTitle">All your data. Just for you. One place.</h1>
+							<h4 className="pt-5">Get ready to organize.</h4>
+							<h4>Get ready to become the best version of you.</h4>
 						</div>
 					</Col>
 				</Row>
@@ -64,7 +63,7 @@ const Homepage = () => {
 						<div className=" pt-3 text-end pe-4 ">
 							<h1 className="pb-3">🔖</h1>
 							<h2>You said Trello? We say slake.</h2>
-							<h4 className="pt-4">Plan your future, get one step ahead of the game.</h4>
+							<h4 className="pt-4">Plan your future and start getting one step ahead of the game.</h4>
 						</div>
 					</Col>
 					<Col lg={{ span: 7 }}>
@@ -169,9 +168,7 @@ const Homepage = () => {
 				</Row>
 				<hr />
 			</Container>
-			<Container fluid className={!darkMode ? "footer px-5 py-4" : "footer-dark px-5 py-4"}>
-				©️ Developed by <a href="https://github.com/3Ryuusei3">Manuel Atance</a> and <a href="https://github.com/albertonaval">Alberto Naval</a>
-			</Container>
+			<Footer />
 		</>
 	)
 }

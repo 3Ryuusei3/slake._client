@@ -1,4 +1,4 @@
-.subText {
+.historyText {
 	margin-top: 20px !important;
 	font-style: italic !important;
 }
@@ -10,8 +10,8 @@
 	border-radius: 6px;
 }
 
-.titleh1 {
-	padding: 60px 40px 30px;
+.aboutSectionTitle {
+	padding: 60px 40px 80px;
 	text-align: center;
 }
 
@@ -50,24 +50,24 @@
 	background-color: var(--dark-bg-modal);
 }
 
-.cardImg,
-.cardImg-dark {
+.aboutCardImg,
+.aboutCardImg-dark {
 	border-radius: 50%;
-	width: 150px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	object-fit: cover;
 	transition: box-shadow 0.2s ease-out, transform 0.5s ease;
 }
 
-.cardImg:hover,
-.cardImg-dark:hover {
+.aboutCardImg:hover,
+.aboutCardImg-dark:hover {
 	box-shadow: 0 0 20px var(--dark-bg-modal);
-	transform: scale(1.1);
+	transform: scale(1.05);
 	transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.cardImg-dark:hover {
-	box-shadow: 0 0 20px var(--bg-modal);
+.aboutCardImg-dark:hover {
+	box-shadow: 0 0 10px var(--bg-modal);
 }
 
 .cardBody {
@@ -88,7 +88,7 @@
 	background-color: var(--dark-bg-navbar);
 }
 
-.title {
+.developerName {
 	margin: 0 0 5px;
 	font-weight: var(--title);
 	font-size: var(--xl);
@@ -96,7 +96,7 @@
 	padding: 10px;
 }
 
-.subTitle {
+.developerRole {
 	display: block;
 	font-size: var(--sm);
 	margin-top: 10px;
@@ -173,10 +173,8 @@
 		margin: 20px;
 	}
 
-	.cardImg {
-		border-radius: 50%;
-		width: 100px;
-		height: 100px;
-		object-fit: cover;
+	.aboutCardImg {
+		width: 170px;
+		height: 170px;
 	}
 }

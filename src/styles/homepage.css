@@ -1,5 +1,10 @@
 /* Homepage */
 
+.homeTitle {
+	max-width: 18ch;
+	line-height: 1 !important;
+}
+
 .featureImg {
 	width: 100%;
 	border-radius: 4px;
