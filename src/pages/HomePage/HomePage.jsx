@@ -4,7 +4,7 @@ import { DarkModeContext } from "../../context/darkmode.context"
 import { AuthContext } from "../../context/auth.context"
 
 import { Container, Row, Col } from "react-bootstrap"
-import { Link, Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import WOW from "wowjs"
 import Footer from "../../components/Footer/Footer"
 import TrySlake from "../../components/Footer/TrySlake"
