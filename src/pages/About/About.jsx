@@ -6,10 +6,11 @@ import { DarkModeContext } from "../../context/darkmode.context"
 
 import Slider from "../../components/Footer/Slider"
 
-import { Card, Col, Container, Row } from "react-bootstrap"
-import WOW from "wowjs"
 import Footer from "../../components/Footer/Footer"
 import TrySlake from "../../components/Footer/TrySlake"
+
+import { Card, Col, Container, Row } from "react-bootstrap"
+import WOW from "wowjs"
 
 const About = () => {
 	const { darkMode } = useContext(DarkModeContext)
@@ -54,7 +55,7 @@ const About = () => {
 			</Container>
 			<Slider />
 
-			<Container fluid className={!darkMode ? "my-5 d-flex values wow fadeIn" : "my-2 d-flex values-dark wow fadeIn"} data-wow-duration="3s">
+			<Container fluid className={!darkMode ? "my-5 d-flex values wow fadeIn" : "my-2 d-flex values-dark wow fadeIn"} data-wow-duration="2s">
 				<Container>
 					<Row>
 						<h1 className="aboutSectionTitle">Values</h1>

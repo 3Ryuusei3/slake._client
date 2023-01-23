@@ -1,9 +1,10 @@
 import { useContext } from "react"
-import { AuthContext } from "../../context/auth.context"
 import { Link } from "react-router-dom"
 
-import { Container, Nav, Navbar } from "react-bootstrap"
+import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
+
+import { Container, Nav, Navbar } from "react-bootstrap"
 
 const Navigation = () => {
 	const { user } = useContext(AuthContext)

@@ -5,11 +5,11 @@ import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import Slider from "../../components/Footer/Slider"
+import Footer from "../../components/Footer/Footer"
+import TrySlake from "../../components/Footer/TrySlake"
 
 import { Card, Container, Row, Col } from "react-bootstrap"
 import WOW from "wowjs"
-import Footer from "../../components/Footer/Footer"
-import TrySlake from "../../components/Footer/TrySlake"
 
 const Pricing = () => {
 	const { user } = useContext(AuthContext)

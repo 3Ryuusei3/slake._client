@@ -1,13 +1,14 @@
 import { useContext, useEffect } from "react"
+import { Navigate } from "react-router-dom"
 
 import { DarkModeContext } from "../../context/darkmode.context"
 import { AuthContext } from "../../context/auth.context"
 
-import { Container, Row, Col } from "react-bootstrap"
-import { Navigate } from "react-router-dom"
-import WOW from "wowjs"
 import Footer from "../../components/Footer/Footer"
 import TrySlake from "../../components/Footer/TrySlake"
+
+import { Container, Row, Col } from "react-bootstrap"
+import WOW from "wowjs"
 
 const Homepage = () => {
 	const { darkMode } = useContext(DarkModeContext)
