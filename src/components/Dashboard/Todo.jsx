@@ -1,10 +1,11 @@
 import { useState, useContext } from "react"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
 import dashboardServices from "../../services/dashboard.service"
+
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 const ToDo = ({ dashboardData }) => {
 	const [todo, setTodo] = useState([...dashboardData.todo])

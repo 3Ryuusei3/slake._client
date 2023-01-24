@@ -4,15 +4,15 @@ import { AuthContext } from "../../context/auth.context"
 import { SidebarContext } from "../../context/sidebar.context"
 import { DarkModeContext } from "../../context/darkmode.context"
 
+import singleNoteService from "../../services/singleNote.service"
+
 import CategoryMenu from "./CategoryMenu"
 import BlockMenu from "./BlockMenu"
-
-import singleNoteService from "../../services/singleNote.service"
+import NewBlockImageForm from "./NewImageForm"
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { Modal } from "react-bootstrap"
 import toast from "react-hot-toast"
-import NewBlockImageForm from "./NewImageForm"
 
 const TextEditor = ({ singleNoteData, noteId }) => {
 	const [noteInfo, setNoteInfo] = useState(false)

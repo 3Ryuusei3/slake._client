@@ -4,8 +4,9 @@ import { useLocation } from "react-router-dom"
 import { DarkModeContext } from "../../context/darkmode.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
-import { Modal } from "react-bootstrap"
 import NewHeaderImgForm from "./NewHeaderImgForm"
+
+import { Modal } from "react-bootstrap"
 
 const HeaderImage = ({ headerImg, setHeaderData }) => {
 	const [showIcon, setShowIcon] = useState(false)

@@ -1,11 +1,13 @@
 import { useState, useContext } from "react"
-import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+
 import { AuthContext } from "../../context/auth.context"
 import { DarkModeContext } from "../../context/darkmode.context"
-import toast from "react-hot-toast"
 
 import authService from "../../services/auth.service"
+
+import { Form, Button } from "react-bootstrap"
+import toast from "react-hot-toast"
 
 const LoginForm = () => {
 	const [signupData, setSignupData] = useState({

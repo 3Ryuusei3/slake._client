@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 
 import { AuthContext } from "../../context/auth.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 import { PomodoroContext } from "../../context/pomodoro.context"
 import { SidebarContext } from "../../context/sidebar.context"
 
@@ -13,12 +14,8 @@ import ToDo from "../../components/Dashboard/Todo"
 import Quote from "../../components/Dashboard/Quote"
 import Timer from "../../components/Pomodoro/Timer"
 import Settings from "../../components/Pomodoro/Settings"
-import { DarkModeContext } from "../../context/darkmode.context"
-
-
 
 const Dashboard = () => {
-
 	const [dashboardData, setDashboardData] = useState()
 
 	const { showSettings } = useContext(PomodoroContext)
@@ -42,8 +39,10 @@ const Dashboard = () => {
 	return (
 		<>
 			{!dashboardData ? (
-				<div className={
-					!isSidebarOpen ? "leftPaddingSm DashboardSkeleton" : "leftPaddingLg DashboardSkeleton"} style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}></div>
+				<div
+					className={!isSidebarOpen ? "leftPaddingSm DashboardSkeleton" : "leftPaddingLg DashboardSkeleton"}
+					style={!darkMode ? { "--skeletonColor": "var(--bg-interact)" } : { "--skeletonColor": "var(--dark-bg-interact)" }}
+				></div>
 			) : (
 				<div>
 					<Sidebar />

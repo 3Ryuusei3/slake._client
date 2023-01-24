@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { useLocation } from "react-router-dom"
 
 import { AuthContext } from "../../context/auth.context"
+
 import singleNoteService from "../../services/singleNote.service"
 
 import Header from "../../components/Header/Header"

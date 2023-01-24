@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-
 import { Link } from "react-router-dom"
+
 import { Container, Row } from "react-bootstrap"
 import WOW from "wowjs"
 

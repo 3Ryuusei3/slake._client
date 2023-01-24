@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+
 import { AuthContext } from "../../context/auth.context"
+import { SidebarContext } from "../../context/sidebar.context"
+import { DarkModeContext } from "../../context/darkmode.context"
 
 import dashboardServices from "../../services/dashboard.service"
 import kanbanServices from "../../services/kanban.service"
@@ -11,8 +14,6 @@ import singleNoteService from "../../services/singleNote.service"
 import HeaderIcon from "./HeaderIcon"
 import HeaderImage from "./HeaderImage"
 import HeaderTitle from "./HeaderTitle"
-import { SidebarContext } from "../../context/sidebar.context"
-import { DarkModeContext } from "../../context/darkmode.context"
 
 const Header = () => {
 	const [headerData, setHeaderData] = useState()

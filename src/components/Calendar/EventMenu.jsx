@@ -3,8 +3,9 @@ import { useContext } from "react"
 import { DarkModeContext } from "../../context/darkmode.context"
 import CalIndexContext from "../../context/calindex.context"
 
-import { Modal } from "react-bootstrap"
 import CreateEventForm from "./CreateEventForm"
+
+import { Modal } from "react-bootstrap"
 
 const EventMenu = () => {
 	const { eventModal, setEventModal, labels, updateLabel } = useContext(CalIndexContext)

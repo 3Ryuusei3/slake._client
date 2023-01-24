@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react"
 
-import dayjs from "dayjs"
-import getMonth from "../../utils/calendar.utils"
-
 import { DarkModeContext } from "../../context/darkmode.context"
 import CalIndexContext from "../../context/calindex.context"
+
+import getMonth from "../../utils/calendar.utils"
+
+import dayjs from "dayjs"
 
 const SmallCalendar = () => {
 	const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month())
