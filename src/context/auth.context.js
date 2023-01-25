@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react"
+
 import authService from "../services/auth.service"
+
 import toast from "react-hot-toast"
 
 const AuthContext = createContext()
@@ -7,7 +9,6 @@ const AuthContext = createContext()
 const AuthProviderWrapper = props => {
 	const [user, setUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
-
 
 	// const notifyLogIn = () =>
 	// 	toast('Welcome back', {
@@ -40,7 +41,6 @@ const AuthProviderWrapper = props => {
 				})
 		}
 	}
-
 
 	const logoutUser = () => {
 		setUser(null)
