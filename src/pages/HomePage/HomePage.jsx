@@ -45,8 +45,8 @@ const Homepage = () => {
 							className="featureImg"
 							src={
 								!darkMode
-									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862192/Dashboard_cgkcgm.png"
-									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1673862196/Dashboard-dark_zelwhr.png"
+									? "https://res.cloudinary.com/dhws4e2ty/image/upload/v1674674476/Dashboard_nanke7.png"
+									: "https://res.cloudinary.com/dhws4e2ty/image/upload/v1674674476/Dashboard-dark_tynjhx.png"
 							}
 							alt="Dashboard"
 						/>
