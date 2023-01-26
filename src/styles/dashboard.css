@@ -76,7 +76,13 @@
 	}
 }
 
-@media (max-height: 850px) {
+@media (max-height: 1000px) {
+	.grid-container {
+		grid-template-columns: 1.75fr 1fr;
+	}
+}
+
+@media (max-height: 700px) {
 	.grid-container {
 		grid-template-columns: 1fr 1fr;
 	}

@@ -86,7 +86,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 				<Modal.Body>
 					<Form onSubmit={handleFormSubmit} className="px-2">
 						<Form.Label className="text-muted">Image</Form.Label>
-						<div className="d-flex align-items-center justify-content-between">
+						<div className="d-flex align-items-center justify-content-between gap-3">
 							<img src={user.imageUrl} className="sidebarProfileImg" alt="profile" />
 							<Form.Group controlId="image">
 								<Form.Control className={darkMode && "form-control-dark"} type="file" onChange={handleFileUpload} placeholder="Select an image..." />
