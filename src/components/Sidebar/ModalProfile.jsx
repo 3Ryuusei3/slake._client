@@ -77,7 +77,7 @@ const ModalProfile = ({ showModal, closeSidebarModal, setShowModal }) => {
 
 	return (
 		<>
-			<Modal className={darkMode && "modal-dark"} show={showModal} onHide={closeSidebarModal} size={window.innerWidth > 800 ? "md" : "sm"} aria-labelledby="contained-modal-title-vcenter" centered>
+			<Modal className={darkMode && "modal-dark"} show={showModal} onHide={closeSidebarModal} size={window.innerWidth > 1000 ? "md" : "sm"} aria-labelledby="contained-modal-title-vcenter" centered>
 				<Modal.Header closeButton onClick={() => setShowModal(false)}>
 					<Modal.Title className="px-2 pt-2" id="contained-modal-title-vcenter">
 						{`${user.username} Profile`}
